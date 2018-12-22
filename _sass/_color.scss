@@ -7,8 +7,8 @@
 /**
  * Light color palette
  */
-$l-text-color:       #111;
-$l-link-color:       #aaa;
+$l-text-color:       #111111;
+$l-link-color:       #aaaaaa;
 $l-background-color: #fdfdfd;
 $l-brand-color:      #2a7ae2;
 $l-grey-color:       #828282;
@@ -66,16 +66,16 @@ body.light {
       color: darken($l-link-color, 50%) !important;
 
       &:visited {
-          color: $l-crimson !important;
-          border-color: $l-crimson;
+          //color: $l-crimson !important;
+          //border-color: $l-crimson;
       }
     }
     &.post-title-link{
       color: darken($l-link-color, 50%) !important;
 
       &:visited {
-          color: $l-crimson !important;
-          border-color: $l-crimson;
+          //color: $l-crimson !important;
+          //border-color: $l-crimson;
       }
     }
   }
@@ -183,16 +183,16 @@ body.dark {
       color: darken($d-link-color, 50%) !important;
 
       &:visited {
-          color: $d-crimson !important;
-          border-color: $d-crimson;
+          //color: $d-crimson !important;
+          //border-color: $d-crimson;
       }
     }
     &.post-title-link{
       color: darken($d-link-color, 50%) !important;
 
       &:visited {
-          color: $d-crimson !important;
-          border-color: $d-crimson;
+          //color: $d-crimson !important;
+          //border-color: $d-crimson;
       }
     }
   }

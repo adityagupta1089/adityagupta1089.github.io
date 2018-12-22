@@ -1,0 +1,25 @@
+---
+layout: post
+title: "Tutorial 4"
+date: Sunday, 24 September 2017 1:59PM
+mathjax: true
+
+categories: ["CSL471"]
+---
+1. Given a binary string, the total strings that have maximum length of zeroes as $k$ can be found out by defining $a(n;k)$ as the valid strings that end at $1$ and $b(n;k)$ as the valid strings that end at $0$. Then we have:\\
+- We can $1$ to end of any valid string:\\
+$$a(n;k)=a(n-1;k)+b(n-1;k)$$
+- We can add upto $k$ consecutive zeroes after a $1$:\\
+$$b(n;k)=a(n-1;k)+a(n-2;k)+...a(n-k;k)$$\\
+Which can be written as:
+$$a(n-1;k)+a(n-2;k)+..a(n-k;k)=b(n;k)=a(n+1;k)-a(n;k)\\\displaystyle
+\implies a(n+1;k)=\sum_{i=n-k}^na(i;k)$$
+Solve using generating functions, Define $T(n;k)=a(n;k)+b(n;k)$ and then the expected value is $\frac 1{2^n}\sum T(n;k)\cdot k$ (**Note**: Calculation remaining.)
+2. Suppose $ai\equiv aj\pmod n\implies a(i-j)\equiv 0\pmod n\implies i-j\equiv 0\pmod n$ (since $(a,n)=1$) hence $i=j$
+3. [Fisher-Yates Shuffle](https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle)
+4. We check $AB=C$ by finding $ABv$ and $Cv$ which is computationally faster. Suppose $AB= C$ then $\forall v\in{\mathbb Z}_k^n$, $ABv=Cv$. However, if $AB\ne C\implies (AB-C)\ne {\bf 0}$ then we may find some vectors $v\in {\mathbb Z}_k^n$ such that $(AB-C)v={\bf 0}$. But for every $u$ such that $(AB-C)u\ne {\bf 0}$ (whose existence is easy to prove by inspecting the entries of $AB-C$) we have $(AB-C)(u+v)\ne {\bf 0}$, $(AB-C)(u+2v)\ne {\bf 0}$, till $(AB-C)(u+(k-1)v)\ne {\bf 0}$ hence\\
+$$\displaystyle |\{u\in {\mathbb Z}_k^n|(AB-C)u= {\bf 0}\}|\le\frac 1{k}|{\mathbb Z_k^n}|=k^{n-1}$$\\
+Hence the probability with which we get the correct result is $1-1/{k^t}$ where we perform $t$ iterations. In the case $k\to\infty$, that becomes close to $1$.
+5. $$\sum_{i=1}^{52}\left(\frac 1{52}\cdot 1 +\frac {51}{52}\cdot 0\right)=1$$
+6. $$\sum_{i=1}^{52}\left(\frac 1{52-i+1}\cdot 1 +\frac {51}{52}\cdot 0\right)=\sum_{i=1}^{52}\frac 1i \approx 4.53$$
+7. $$\frac 1{n!}$$

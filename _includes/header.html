@@ -1,9 +1,6 @@
 
-<div class="wrapper">
+<div class="wrapper topround">
   <center> <a href="/index.html"><div class="site-title">   {{site.title}} </div></a></center>
-</div>
-<div class="wrapper site-description">
-<center>  {{site.description}} </center>
 </div>
 <div class="wrapper">
   <div class="trigger site-navigation">
@@ -11,9 +8,13 @@
 
     {% for sitePage in site.pages %}
     {% if sitePage.title %}
-
-    <span class="exclamationMark">/</span><a class="page-link" href="{{sitePage.url | prepend: site.baseurl }}">{{sitePage.title}}</a>
+      <span class="exclamationMark">/</span>
+      <a class="page-link" href="{{sitePage.url | prepend: site.baseurl }}">
+        {{sitePage.autogen}}
+        {{sitePage.title}}
+      </a>
     {% endif %}
     {% endfor %}
   </div>
 </div>
+{% include mathjax.html %}

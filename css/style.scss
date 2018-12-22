@@ -255,7 +255,10 @@ pre {
   padding-top: 0;
 }
 .home{
-  padding-bottom: 5em;
+  padding-bottom: 2.5em;
+}
+.page-content .postContent:nth-last-child(1) {
+  padding-bottom: 2.5em;
 }
 .download {
   padding: 10px;
@@ -355,7 +358,6 @@ pre {
   text-indent: 6px;
   font-family: 'Josefin Sans';
   font-weight: 300;
-  padding-top: 5em;
 }
 .page-title {
   text-transform: uppercase;
@@ -434,33 +436,36 @@ pre {
 }
 .small-site-title {
   font-family: "PT Sans";
+  text-align: center;
 }
 .footer-col-wrapper {
   font-size: 15px;
   margin-left: -$spacing-unit / 2;
+  padding: $spacing-unit / 2;
   @extend %clearfix;
 }
 .footer-content {
   font-family: "Josefin Sans";
+  text-align: center;
   font-weight: 300;
   letter-spacing: 1px;
 }
 .footer-col {
   float: left;
-  margin-bottom: $spacing-unit / 2;
-  padding-left: $spacing-unit / 2;
+  padding: $spacing-unit / 4;
+  height: 100%;
 }
 .footer-col-1 {
   width: -webkit-calc(35% - (#{$spacing-unit} / 2));
   width: calc(35% - (#{$spacing-unit} / 2));
 }
 .footer-col-2 {
-  width: -webkit-calc(20% - (#{$spacing-unit} / 2));
-  width: calc(20% - (#{$spacing-unit} / 2));
+  width: -webkit-calc(35% - (#{$spacing-unit} / 2));
+  width: calc(35% - (#{$spacing-unit} / 2));
 }
 .footer-col-3 {
-  width: -webkit-calc(45% - (#{$spacing-unit} / 2));
-  width: calc(45% - (#{$spacing-unit} / 2));
+  width: -webkit-calc(30% - (#{$spacing-unit} / 2));
+  width: calc(30% - (#{$spacing-unit} / 2));
 }
 @include media-query($on-laptop) {
   .footer-col-1,
@@ -485,6 +490,7 @@ pre {
  */
 .page-content {
   padding: 0;
+  margin-bottom: $spacing-unit;
 }
 .page-heading {
   font-size: 20px;
@@ -523,6 +529,8 @@ pre {
 }
 .post-content {
   margin-bottom: $spacing-unit;
+  margin-top: -$spacing-unit;
+  padding-top: 3em !important;
   padding-bottom: 3em !important;
   p {
     font-size: 1.5rem;

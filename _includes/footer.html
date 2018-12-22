@@ -1,16 +1,16 @@
 <footer class="site-footer">
 
-  <div class="wrapper">
-
-    <h2 class="footer-heading small-site-title">{{ site.title }}</h2>
+  <div class="wrapper topround bottomround">
 
     <div class="footer-col-wrapper">
       <div class="footer-col footer-col-1">
         <ul class="contact-list footer-content">
-          <li>Powered By <a href="http://github.com/hemangsk/Gravity">Gravity</a></li>
-          <li>Made with <i class="fa fa-heart"></i> on <a href="http://jekyllrb.com"><span>{ { Jekyll } }</a></span></li>
-
-
+          <li>Powered By
+            <a href="http://github.com/hemangsk/Gravity">Gravity</a>
+          </li>
+          <li>Made with <i class="fa fa-heart"></i> on
+            <a href="http://jekyllrb.com"><span>{ { Jekyll } }</a></span>
+          </li>
         </ul>
       </div>
 
@@ -21,17 +21,12 @@
             {% include icon-github.html username=site.github_username %}
           </li>
           {% endif %}
-
-          {% if site.twitter_username %}
-          <li>
-            {% include icon-twitter.html username=site.twitter_username %}
-          </li>
-          {% endif %}
         </ul>
       </div>
 
-      <div class="footer-col footer-col-3 site-description">
-        <p>{{ site.description }}</p>
+      <div class="footer-col footer-col-3 footer-content">
+          <img src="{{site.url}}{{site.baseurl}}/images/rss-icon.png" style="filter: opacity(45%);width:16px;height:16px;">
+          <a href="{{site.url}}{{site.baseurl}}/feed.xml">RSS Feed</a>
       </div>
     </div>
 

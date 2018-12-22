@@ -1,0 +1,125 @@
+---
+layout: post
+title: "Tutorial 1"
+date: Friday, 22 September 2017 10:03PM
+mathjax: true
+
+categories: ["CSL471"]
+---
+1. Here $M$ is the total money, we use Law of total expectation in the first step, i.e. $E[M]=E[E[M|Y]]$ where $Y$ is the die throw and $E[M|Y=y] = y+ E[M]$ for $1\le y \le 5$ and $6$ for $Y=6$.
+  $$\begin{align}E[M]&=\frac 16((1+E[M])+(2+E[M])+(3+E[M])+(4+E[M])+(5+E[M])+6)\\
+  E[M]&=\frac 16(21 + 5E[M])\\
+  E[M]&=21
+  \end{align}$$\\
+  **Method 1:**\\
+  For standard deviation this particular form seems useful
+  $$\begin{align}
+  \sigma(M)&=\sqrt{E[M^2]-E^2[m])]}\\
+  E[M^2]&=\frac 166^2+\left(\frac 16\right)^2((1+6)^2+(2+6)^2+..(5+6)^2)+\left(\frac 16\right)^3(\sum_{1\le y_1\le 5\\1\le y_2\le 5}(y_1+y_2+6)^2)+...
+  \end{align}$$\\
+  Now let's define (here $$y_1,y_2...y_k\in\{1,2,..5\}$$) $$\begin{align}V_k&=\sum_{y_1}\sum_{y_2}...\sum_{y_k}(y_1+y_2+...y_k+6)^2\\
+  &=\sum_{y_1}\sum_{y_2}..\sum_{y_k}(y_1+y_2+..y_{k-1}+6)^2+\sum_{y_1}\sum_{y_2}..\sum_{y_k}y_k^2+2\underbrace{\sum_{y_1}\sum_{y_2}..\sum_{y_{k-1}}(y_1+y_2+..y_{k-1}+6)}_{T_{k-1}}\sum_{y_k}y_k\\
+  &=5V_{k-1}+55\cdot 5^{k-1}+2\cdot T_{k-1} \cdot 15\\
+  T_k&=\sum_{y_1}\sum_{y_2}..\sum_{y_k}(y_1+y_2+..y_k+6)\\
+  &=\sum_{y_1}\sum_{y_2}..\sum_{y_{k-1}}(5y_1+5y_2+..5y_{k-1}+15+5\cdot 6)\\
+  &=\underbrace{5^{k-1}\cdot 15+5^{k-1}\cdot 15+..}_{k\text{ times}}+6\cdot 5^k\\
+  &=3(k+2)\cdot 5^k \\
+  V_k&=5V_{k-1}+55\cdot 5^{k-1}+90(k+1)\cdot 5^{k-1}\\
+  &=5V_{k-1}+5^k(18k+29)\\
+  &=5^2V_{k-2}+5^k((18k+29)+(18(k-1)+29))\\
+  &=5^{k-1}V_1+5^k\left(\sum _{j=2}^k(18j+29)\right)\\
+  &=5^{k-1}\cdot 415 + 5^k(9k^2+38k-47)\\
+  &=5^k(9k^2+38k+36)
+  \end{align}$$\\
+    Now we have:
+    $$E[M^2]=6+\sum_{k=1}^{\infty}\left(\frac 16\right)^{k+1}V_k=6+715=721$$\\
+    **Method 2**:\\
+    $$E[M^2]=\frac 16\sum_{y=1}^6E[M^2|Y=y]$$\\
+    Now let's define the sum of money that we obtain after first roll as $M'$:\\
+    $$M=Y+M'\implies M^2=Y^2+M'^2+2YM'$$\\
+    Here $Y$ and $M'$ are independent and $M$ and $M'$ are identical, hence $E[M]=E[M']$ and $E[M^2]=E[M'^2]$:\\
+    $$E[M^2|Y=y]=y^2+E[M'^2]+2yE[M']$$\\
+    Giving us (using $E[M]=21$):\\
+    $$\begin{align}E[M^2]&=\frac 16\sum_{y=1}^5(y^2+E[M^2]+42y)+\frac 166^2\\&=\frac 16(55+5E[M^2]+630)+6\\&=721\end{align}$$\\
+    and hence:\\
+    $$\sigma(M)=\sqrt{721-21^2}=\sqrt{280}\approx 16.73$$\\
+    **Method 3**:\\
+    We use law of total variance:\\ $$Var(M)=E[Var(M|Y)]+Var(E[M|Y])$$\\
+    where:
+    $$E[M|Y]=\begin{cases}
+    22&y=1\\
+    23&y=2\\
+    24&y=3\\
+    25&y=4\\
+    26&y=5\\
+    6&y=6\end{cases}$$\\
+    and hence $Var(E[M|Y])=\frac 16(1^2+2^2+3^2+4^2+5^2+(-15)^2)=\frac {140}3$\\
+    Also:\\
+    $$Var(M|Y)=\begin{cases}
+    Var(y+M')=Var(M')&y\in\{1,2,3,4,5\}\\
+    0&y=6
+    \end{cases}$$\\
+    Hence:\\
+    $$Var(M)=\frac {140}3+\frac 16(5Var(M'))\\$$
+    $$Var(M)=280\\\sigma(M)=\sqrt{280}$$
+    **Note:** See a simulation using:
+    <script src="https://gist.github.com/adityagupta1089/0e3154f94c667ef3e14f165659cf5189.js"></script>
+
+2. Again using law of total expectation ($X$ is for coin and $Y$ is for die and $S$ is for sum on die, dice is thrown first):
+   $$\begin{align}E[S]&=E[Y]+P(X=H)E[S|X=H]+P(X=T)E[S|X=T]\\&=E[Y]+\frac 12E[S|X=H]+\frac 12\cdot 0\\&=E[Y]+\frac 12E[S|X=H]\\&=E[Y]+\frac 12(E[Y]+E[S])\\E[S]&=2E[Y]=7\end{align}$$\\
+   Now for standard deviation:\\
+   $$\begin{align}\sigma(S)&=\sqrt{E[S^2]-E^2[S]}\\
+   E[S^2]&=\underbrace{\left(\frac 12\right)}_{Y=T}\frac16(1^2+2^2+...6^2)+\underbrace{\left(\frac12\right)^2}_{Y=HT}\left(\frac 16\right)^2\sum_{1\le y_1\le 6\\1\le y_2\le 6}(y_1+y_2)^2+...\\
+   V_{k}&=\frac 1{6^k}\sum_{y_1}\sum_{y_2}..\sum_{y_k}(y_1+y_2+..y_k)^2\\
+   &=\frac 7{12}k(21k+5)\tag{Similar to previous one}\\
+   E[S^2]&=\sum_{k=1}^{\infty} \left(\frac 1{2}\right)^kV_k
+   \\&=\frac {280}3\approx 79.33\end{align}$$\\
+   Now:\\
+   $$\sigma(S)=\sqrt{\frac {280}3-7^2}=\sqrt{\frac {133}3}\approx 6.65$$\\
+   **Note:** See a simulation using:
+   <script src="https://gist.github.com/adityagupta1089/6d28763f7720043ca161ad5af8535be1.js"></script>
+3. $$\sum_{k=1}^n\frac1i\sim \ln n$$
+4. [Secretary Problem - Unknown number of applicants](https://en.wikipedia.org/wiki/Secretary_problem#Unknown_number_of_applicants)
+
+5. $$\frac k{k+1}\cdot\frac1{k-1}=\frac k{k^2-1}$$
+
+6. Secretary Problem:
+    - Expected number of candidates ($C$) seen (we see $i$ candidates):\\
+      $$\displaystyle E[C]=\sum_{i=k+1}^ni\cdot \left(\underbrace{\frac k{i-1}}_{\text{Pseudo-best}\\\text{in k-slot}}\cdot \underbrace{\frac 1i}_{i^{\text{th}}\text{best in}\\1^{\text{st}}\text{ to }i}\right)+\underbrace{n\cdot \frac k n}_{\text{None selected}}=k+k\sum_{i=k}^{n-1}\frac 1i\sim k\left(1+\ln \frac {n-1}{k-1}\right)\sim2k$$
+    - Probability of getting the best girl:\\
+      $$\displaystyle P_1=\sum_{i=k+1}^n\frac k{i-1}\frac 1n=\frac kn\ln \frac nk=\frac 1e$$
+    - Probability of getting the second best girl. The best girl cannot be in the k-slot. Also she can't be in $(k+1)$-th position to $(i-1)$-th position if the second best girl is in $i$-th position, i.e. the best girl must occur after the second best girl:\\
+      $$\displaystyle\begin{align} P_2&=\sum_{i=k+1}^{n-1}\frac k{i-1}\frac 1n\frac{n-i}{n-1}\\
+      &=\frac k{n(n-1)}\sum_{i=k+1}^{n-1}\frac{n-i}{i-1}
+      =\frac k{n(n-1)}\sum_{i=k}^{n-2}\frac{n-i-1}i\\
+      &=\frac k{n(n-1)}\left(\sum_{i=k}^{n-2}\frac {n-1}i - \sum_{i=k}^{n-2}1\right)\\
+      &\sim\frac k{n(n-1)}\left((n-1)\ln \frac{n-2}{k-1}-(n-k-1)\right)\\
+      &\sim\frac k{n(n-1)}\left((n-1)-(n-k-1)\right)=\frac {k^2}{n(n-1)}\\
+      &\sim\frac 1{e^2}
+      \end{align}$$
+    - Probability of getting the third best girl:\\
+      $$\begin{align}
+      P_3&=\sum_{i=k+1}^{n-2}\frac k{i-1}\frac 1n \frac{\binom {n-i}2}{\binom {n-1}2}\\
+      &=\frac k{n(n-1)(n-2)}\sum_{i=k+1}^{n-2}\frac{(n-i)(n-i-1)}{i-1}\\
+      &=\frac k{n(n-1)(n-2)}\sum_{i=k}^{n-3}\frac{(n-i-1)(n-i-2)}i\\
+      &=\frac k{n(n-1)(n-2)}\sum_{i=k}^{n-3}\left((n-1)(n-2)\frac 1i-(2n-3)+i\right)\\
+      &\sim\frac kn\ln \frac{n-3}{k-1}-\frac {k(2n-3)(n-k+2)}{n(n-1)(n-2)}+\frac{k\left(\frac {(n-3)(n-2)}2-\frac{(k-1)k}2\right)}{n(n-1)(n-2)}\\
+      &\sim\frac 1e-\frac{2}{e}\left(1-\frac1e\right)+\frac 1{2e}\left(1-\frac 1{e^2}\right)\\
+      &=\frac{4e-1-e^2}{2e^3}
+      \end{align}$$
+    - Probability of getting the $t^{\text{th}}$ best girl:\\
+      $$\begin{align}
+      P_t&=\sum_{i=k+1}^{n-t+1}\frac k{i-1}\frac 1n\frac{\binom {n-i}{t-1}}{\binom {n-1}{t-1}}\\
+      &=\frac k{n\binom {n-1}{t-1}}\sum_{i=k+1}^{n-t+1}\frac 1{i-1}\binom{n-i}{t-1}\\
+      &=\frac k{n\binom {n-1}{t-1}}\sum_{i=k}^{n-t}\frac 1i\binom{n-i-1}{t-1}\\
+      &=\frac k{n\binom {n-1}{t-2}\frac {n-t+1}{t-1}}\sum_{i=k}^{n-t}\frac 1i\binom{n-i-1}{t-2}\frac{n-i-t+1}{t-1}\\
+      &=\frac k{n\binom {n-1}{t-2}}\sum_{i=k}^{n-t}\frac 1i\binom{n-i-1}{t-2}\left(1-\frac i{n-t+1}\right)\\
+      &=\left(P_{t-1}-\frac k{n\binom{n-1}{t-2}}\frac 1{n-t+1}\right)-\frac k{n\binom{n-1}{t-2}}\sum_{i=k}^{n-t}\frac 1i\binom{n-i-1}{t-2}\frac i{n-t+1}\\
+      &=P_{t-1}-\frac {k}{t(t-1)\binom nt}-\frac {k}{t(t-1)\binom nt}\sum_{i=k}^{n-t}\binom{n-i-1}{t-2}\\
+      &=P_{t-1}-\frac{k}{t(t-1)\binom nt}\binom {n-k}{t-1}\\
+      &=P_{t-1}-\frac{k}{t-1}\frac{(n-t)!(n-k)!}{n!(n-k-t+1)!}\\
+      &=P_{t-1}-\frac{k}{t-1}\frac{(n-k)(n-k-1)...(n-k-t+2)}{n(n-1)(n-2)...(n-t+1)}\\
+      &=P_{t-1}-\frac{1}{e(t-1)}\frac{n-k}{n-1}\frac{n-k-1}{n-2}...\frac{n-k-t+2}{n-t+1}\\
+      &\sim P_{t-1}-\frac 1{e(t-1)}\left(1-\frac 1e\right)^{t-1}\\
+      P_t&\sim \underbrace{\frac 1e}_{P_1} -\sum _{i=1}^{t-1}\frac 1{e\cdot i}\left(1-\frac 1e\right)^i\end{align}$$\\
+      Interestingly the second term contains the partial sum for expansion of $-\ln(1-x)$ where $x=1-1/e$.
