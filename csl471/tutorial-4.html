@@ -6,13 +6,13 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Aditya Gupta - HOME</title>
-  <meta name="description" content="">
+  <title>Aditya Gupta - TUTORIAL 4</title>
+  <meta name="description" content="  Given a binary string, the total strings that have maximum length of zeroes as $k$ can be found out by defining $a(n;k)$ as the valid strings that end at $...">
   <link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic|Source+Sans+Pro:400,700,200,300|Josefin+Sans:400,600,700,300' rel='stylesheet' type='text/css'>
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
 
   <link rel="stylesheet" href="/css/style.css">
-  <link rel="canonical" href="https://adityagupta1089.github.io/">
+  <link rel="canonical" href="https://adityagupta1089.github.io/csl471/tutorial-4.html">
   <link rel="alternate" type="application/rss+xml" title="Aditya Gupta" href="https://adityagupta1089.github.io/feed.xml">
 </head>
 
@@ -111,102 +111,62 @@
 
     <div class="page-content">
       <div class="wrapper bottomround">
-        <div class="home">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline"><a class="post-title-link"  href="/csl471/tutorial-4.html">Tutorial 4</a></h1>
+  <center>  <p class="post-meta"><time datetime="2017-09-24T13:59:00+00:00" itemprop="datePublished">Sep 24, 2017</time></p>
+    
+   </center>
+  </header>
 
-  
-  <div class="post postContent">
-    <div  class="postDate"><time datetime="2017-07-20T23:51:00+00:00" itemprop="datePublished">Jul 20, 2017</time>
-    </div>
-    <div class="postTag">
-      
-    </div>
-    <br>
-    <div class="postTitle">
-    <a class='postLink' href="https://adityagupta1089.github.io/programming/exptree.html">How I solved Tree Expectancy (EXPTREE)</a>
-    </div>
-    <div class="postExt">
-   This post is about this question.
+  <div class="post-content" itemprop="articleBody">
+    <ol>
+  <li>Given a binary string, the total strings that have maximum length of zeroes as $k$ can be found out by defining $a(n;k)$ as the valid strings that end at $1$ and $b(n;k)$ as the valid strings that end at $0$. Then we have:<br />
+    <ul>
+      <li>We can $1$ to end of any valid string:<br />
+<script type="math/tex">a(n;k)=a(n-1;k)+b(n-1;k)</script></li>
+      <li>We can add upto $k$ consecutive zeroes after a $1$:<br />
+<script type="math/tex">b(n;k)=a(n-1;k)+a(n-2;k)+...a(n-k;k)</script><br />
+Which can be written as:
+<script type="math/tex">a(n-1;k)+a(n-2;k)+..a(n-k;k)=b(n;k)=a(n+1;k)-a(n;k)\\\displaystyle
+\implies a(n+1;k)=\sum_{i=n-k}^na(i;k)</script>
+Solve using generating functions, Define $T(n;k)=a(n;k)+b(n;k)$ and then the expected value is $\frac 1{2^n}\sum T(n;k)\cdot k$ (<strong>Note</strong>: Calculation remaining.)</li>
+    </ul>
+  </li>
+  <li>Suppose $ai\equiv aj\pmod n\implies a(i-j)\equiv 0\pmod n\implies i-j\equiv 0\pmod n$ (since $(a,n)=1$) hence $i=j$</li>
+  <li><a href="https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle">Fisher-Yates Shuffle</a></li>
+  <li>We check $AB=C$ by finding $ABv$ and $Cv$ which is computationally faster. Suppose $AB= C$ then $\forall v\in{\mathbb Z}_k^n$, $ABv=Cv$. However, if $AB\ne C\implies (AB-C)\ne {\bf 0}$ then we may find some vectors $v\in {\mathbb Z}_k^n$ such that $(AB-C)v={\bf 0}$. But for every $u$ such that $(AB-C)u\ne {\bf 0}$ (whose existence is easy to prove by inspecting the entries of $AB-C$) we have $(AB-C)(u+v)\ne {\bf 0}$, $(AB-C)(u+2v)\ne {\bf 0}$, till $(AB-C)(u+(k-1)v)\ne {\bf 0}$ hence<br />
+<script type="math/tex">\displaystyle |\{u\in {\mathbb Z}_k^n|(AB-C)u= {\bf 0}\}|\le\frac 1{k}|{\mathbb Z_k^n}|=k^{n-1}</script><br />
+Hence the probability with which we get the correct result is $1-1/{k^t}$ where we perform $t$ iterations. In the case $k\to\infty$, that becomes close to $1$.</li>
+  <li>
+    <script type="math/tex; mode=display">\sum_{i=1}^{52}\left(\frac 1{52}\cdot 1 +\frac {51}{52}\cdot 0\right)=1</script>
+  </li>
+  <li>
+    <script type="math/tex; mode=display">\sum_{i=1}^{52}\left(\frac 1{52-i+1}\cdot 1 +\frac {51}{52}\cdot 0\right)=\sum_{i=1}^{52}\frac 1i \approx 4.53</script>
+  </li>
+  <li>
+    <script type="math/tex; mode=display">\frac 1{n!}</script>
+  </li>
+</ol>
 
-The first thing I noted was that the total trees with $N$ nodes are $C_{n-1}$ (Catalan Number). So if we consider the size of subtrees rooted at children then we get an ordered tuple $(a_1, a_2 … a_k)$ where $a_1+a_2 … a_k=n-1$. Thus it ...
-    </div>
   </div>
+
+  <footer class="postNavigation">
   
-  <div class="post postContent">
-    <div  class="postDate"><time datetime="2017-07-29T23:51:00+00:00" itemprop="datePublished">Jul 29, 2017</time>
-    </div>
-    <div class="postTag">
-      
-    </div>
-    <br>
-    <div class="postTitle">
-    <a class='postLink' href="https://adityagupta1089.github.io/music/intervals.html">Songs I use to identify Music Intervals</a>
-    </div>
-    <div class="postExt">
-   These are some of the Songs that I use to identify music intervals. Many of them are missing because I don’t know many songs that I have heard frequently and have those intervals.
+    <a class="postPrev" href="/csl471/tutorial-3.html">
+        &laquo; Tutorial 3
+    </a>
+  
+  
+    <a class="postNext" href="/csl471/tutorial-5.html">
+        Tutorial 5 &raquo;
+    </a>
+  
+  </footer>
 
 
-  
-    
-      Interval
-      Songs (Increasing)
-      Songs (Decreasing)
-    
-  
-  
-    
- ...
-    </div>
-  </div>
-  
-  <div class="post postContent">
-    <div  class="postDate"><time datetime="2017-09-22T22:03:00+00:00" itemprop="datePublished">Sep 22, 2017</time>
-    </div>
-    <div class="postTag">
-      
-    </div>
-    <br>
-    <div class="postTitle">
-    <a class='postLink' href="https://adityagupta1089.github.io/csl471/tutorial-1.html">Tutorial 1</a>
-    </div>
-    <div class="postExt">
-   
-  
-    Here $M$ is the total money, we use Law of total expectation in the first step, i.e. $E[M]=E[E[M|Y]]$ where $Y$ is the die throw and $E[M|Y=y] = y+ E[M]$ for $1\le y \le 5$ and $6$ for $Y=6$.
-  
-  Method 1:
-  For standard deviation this particular form seems usefu...
-    </div>
-  </div>
-  
-
-  
-    <nav class="pagination">
-      
-
-    
-      
-        <em class="paginationLink paginationLinkCurrent">1</em>
-      
-    
-      
-        <a class="paginationLink" href="/page2">2</a>
-      
-    
-      
-        <a class="paginationLink" href="/page3">3</a>
-      
-    
-
-    
-      <a class="paginationLink" href="/page/2/">Next &raquo;</a>
-    
-    </nav>
-  
-
-
-
-</div>
+</article>
 
       </div>
     </div>

@@ -6,13 +6,13 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Aditya Gupta - HOME</title>
-  <meta name="description" content="">
+  <title>Aditya Gupta - TUTORIAL 5</title>
+  <meta name="description" content="  For a polynomial $p(x)$ of degree $d$, we had $p(x)=f(x)g(x)$, we concluded that $p(x)-f(x)g(x)$ is a polynomial of degree atmost $d$, hence can have atmos...">
   <link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic|Source+Sans+Pro:400,700,200,300|Josefin+Sans:400,600,700,300' rel='stylesheet' type='text/css'>
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
 
   <link rel="stylesheet" href="/css/style.css">
-  <link rel="canonical" href="https://adityagupta1089.github.io/">
+  <link rel="canonical" href="https://adityagupta1089.github.io/csl471/tutorial-5.html">
   <link rel="alternate" type="application/rss+xml" title="Aditya Gupta" href="https://adityagupta1089.github.io/feed.xml">
 </head>
 
@@ -111,102 +111,46 @@
 
     <div class="page-content">
       <div class="wrapper bottomround">
-        <div class="home">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline"><a class="post-title-link"  href="/csl471/tutorial-5.html">Tutorial 5</a></h1>
+  <center>  <p class="post-meta"><time datetime="2017-09-26T12:50:00+00:00" itemprop="datePublished">Sep 26, 2017</time></p>
+    
+   </center>
+  </header>
 
-  
-  <div class="post postContent">
-    <div  class="postDate"><time datetime="2017-07-20T23:51:00+00:00" itemprop="datePublished">Jul 20, 2017</time>
-    </div>
-    <div class="postTag">
-      
-    </div>
-    <br>
-    <div class="postTitle">
-    <a class='postLink' href="https://adityagupta1089.github.io/programming/exptree.html">How I solved Tree Expectancy (EXPTREE)</a>
-    </div>
-    <div class="postExt">
-   This post is about this question.
+  <div class="post-content" itemprop="articleBody">
+    <ol>
+  <li>For a polynomial $p(x)$ of degree $d$, we had $p(x)=f(x)g(x)$, we concluded that $p(x)-f(x)g(x)$ is a polynomial of degree atmost $d$, hence can have atmost $d$ roots which are false-positives in this case. The probability that $n(&gt;d)$ elements chosen out of <script type="math/tex">\{1,2,\ldots10^6d\}</script> belong to these false-positives is
+<script type="math/tex">\displaystyle\le\frac{\binom n d\binom {10^6d-d}{n-d}}{\binom {10^6d}n}=\frac{n!((10^6-1)d)!}{d!(n-d)!(n-d)!(10^6d-n)!}\frac{n!(10^6d-n)!}{(10^6d)!}</script><br />
+which becomes <script type="math/tex">\displaystyle\frac{n!^2((10^6-1)d)!}{d!(10^6d)!(n-d)!^2}=\frac{n^2(n-1)^2..1^2}{(n-d)^2(n-d-1)^2...1^2}\frac{1}{\binom {10^6d}d}\stackrel{n\to\infty}\longrightarrow\binom {10^6d}d^{-1}\\\displaystyle
+=\frac{d(d-1)...1}{(10^6d)(10^6d-1)..(10^6d-(d-1))}\stackrel{d\to\infty}\longrightarrow \frac1{10^{6d}}</script> which is astronomically small.</li>
+  <li>The determinant of the <a href="https://en.wikipedia.org/wiki/Tutte_matrix">Tutte Matrix</a> which is a polynomial in $x_{ij}$’s $(i&lt;j)$ is non-zero for a perfect-matching. Hence, we can use the polynomial verification algorithm to check if it is non-zero. Also see <a href="http://www.imsc.res.in/~meena/matching/lecture7.pdf">this</a></li>
+  <li>Given $F:{\mathbb Z_n}\to{\mathbb Z_m}$ s.t. $F(x+y)=F(x)+F(y)$ which is a homomorphism. Given $n$ we can estimate $F(n)$ by writing $F(z)=F(k+(z-k))=F(k)+F(z-k)$ where the probability that this is right is $1-1/9=8/9$. If we can run this 5 times, that would mean trying different combinations of $k$ and $z-k$ and taking the majority which will be correct $1-\binom 53(1/9)^3(8/9)^2-\binom 54(1/9)^4(8/9)^1-\binom 55(1/9)^5(8/9)^0=19456/19683\approx98.8\%$</li>
+  <li>Probability of getting a min-cut was calculated in class as <script type="math/tex">\displaystyle\prod_{k=3}^n\left(1-\frac 2k\right)=\binom n2^{-1}</script></li>
+  <li>Probability of getting a min-cut after $\lambda$ operations: $1-\left(1-\binom n2^{-1}\right)^{\lambda}=1-\left(\frac{n(n-1)-2}{n(n-1)}\right)^{\lambda}\stackrel{\lambda \to\infty}\longrightarrow1$</li>
+  <li>$O(n!)$</li>
+  <li>TODO (Binary search on unsorted elements?)</li>
+</ol>
 
-The first thing I noted was that the total trees with $N$ nodes are $C_{n-1}$ (Catalan Number). So if we consider the size of subtrees rooted at children then we get an ordered tuple $(a_1, a_2 … a_k)$ where $a_1+a_2 … a_k=n-1$. Thus it ...
-    </div>
   </div>
+
+  <footer class="postNavigation">
   
-  <div class="post postContent">
-    <div  class="postDate"><time datetime="2017-07-29T23:51:00+00:00" itemprop="datePublished">Jul 29, 2017</time>
-    </div>
-    <div class="postTag">
-      
-    </div>
-    <br>
-    <div class="postTitle">
-    <a class='postLink' href="https://adityagupta1089.github.io/music/intervals.html">Songs I use to identify Music Intervals</a>
-    </div>
-    <div class="postExt">
-   These are some of the Songs that I use to identify music intervals. Many of them are missing because I don’t know many songs that I have heard frequently and have those intervals.
+    <a class="postPrev" href="/csl471/tutorial-4.html">
+        &laquo; Tutorial 4
+    </a>
+  
+  
+    <a class="postNext" href="/csl471/tutorial-6.html">
+        Tutorial 6 &raquo;
+    </a>
+  
+  </footer>
 
 
-  
-    
-      Interval
-      Songs (Increasing)
-      Songs (Decreasing)
-    
-  
-  
-    
- ...
-    </div>
-  </div>
-  
-  <div class="post postContent">
-    <div  class="postDate"><time datetime="2017-09-22T22:03:00+00:00" itemprop="datePublished">Sep 22, 2017</time>
-    </div>
-    <div class="postTag">
-      
-    </div>
-    <br>
-    <div class="postTitle">
-    <a class='postLink' href="https://adityagupta1089.github.io/csl471/tutorial-1.html">Tutorial 1</a>
-    </div>
-    <div class="postExt">
-   
-  
-    Here $M$ is the total money, we use Law of total expectation in the first step, i.e. $E[M]=E[E[M|Y]]$ where $Y$ is the die throw and $E[M|Y=y] = y+ E[M]$ for $1\le y \le 5$ and $6$ for $Y=6$.
-  
-  Method 1:
-  For standard deviation this particular form seems usefu...
-    </div>
-  </div>
-  
-
-  
-    <nav class="pagination">
-      
-
-    
-      
-        <em class="paginationLink paginationLinkCurrent">1</em>
-      
-    
-      
-        <a class="paginationLink" href="/page2">2</a>
-      
-    
-      
-        <a class="paginationLink" href="/page3">3</a>
-      
-    
-
-    
-      <a class="paginationLink" href="/page/2/">Next &raquo;</a>
-    
-    </nav>
-  
-
-
-
-</div>
+</article>
 
       </div>
     </div>

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Aditya Gupta - TUTORIAL 2</title>
+  <meta name="description" content="  See proof of   The probability of $a_k$ is given by:    And therefore    And hence    Fisher-Yates Shuffle  $F$ is whether the coin is faulty, $H$ is heads...">
+  <link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic|Source+Sans+Pro:400,700,200,300|Josefin+Sans:400,600,700,300' rel='stylesheet' type='text/css'>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="canonical" href="https://adityagupta1089.github.io/csl471/tutorial-2.html">
+  <link rel="alternate" type="application/rss+xml" title="Aditya Gupta" href="https://adityagupta1089.github.io/feed.xml">
+</head>
+
+
+  <body class=" light  ">
+
+    
+<div class="wrapper topround">
+  <center> <a href="/index.html"><div class="site-title">Aditya Gupta </div></a></center>
+</div>
+<div class="wrapper">
+  <div class="trigger site-navigation">
+    
+      
+        
+          <a class="page-link" href="/about/">
+            About
+          </a>
+            <span class="exclamationMark">/</span>
+        
+      
+    
+      
+    
+      
+    
+      
+        
+          <a class="page-link" href="/index.html">
+            Home
+          </a>
+            <span class="exclamationMark">/</span>
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+          <a class="page-link" href="/category/programming/index.html">
+            programming
+          </a>
+            <span class="exclamationMark">/</span>
+        
+      
+    
+      
+        
+          <a class="page-link" href="/category/music/index.html">
+            music
+          </a>
+            <span class="exclamationMark">/</span>
+        
+      
+    
+      
+        
+          <a class="page-link" href="/category/csl471/index.html">
+            csl471
+          </a>
+            <span class="exclamationMark">/</span>
+        
+      
+    
+      
+        
+      
+    
+  </div>
+</div>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'] ],
+      displayMath: [ ['$$', '$$'] ],
+      processEscapes: true
+    },
+    CommonHTML: { linebreaks: { automatic: true , width: "30em"} }
+  });
+</script>
+<script
+  type="text/javascript"
+  charset="utf-8"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"
+>
+</script>
+</script>
+
+
+
+    <div class="page-content">
+      <div class="wrapper bottomround">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline"><a class="post-title-link"  href="/csl471/tutorial-2.html">Tutorial 2</a></h1>
+  <center>  <p class="post-meta"><time datetime="2017-09-23T22:43:00+00:00" itemprop="datePublished">Sep 23, 2017</time></p>
+    
+   </center>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <ol>
+  <li>See proof of <script type="math/tex">\displaystyle\lim_{n\to\infty}(H_n-\ln n)=\gamma</script></li>
+  <li>The probability of $a_k$ is given by:<br />
+  <script type="math/tex">\displaystyle P(a_k=i)=\frac{\binom {i-1}{k-1}}{\binom nk}</script><br />
+  And therefore<br />
+  <script type="math/tex">% <![CDATA[
+\displaystyle \begin{align}E[a_k^2]&=\sum_{i=k}^n\frac{\binom {i-1}{k-1}}{\binom nk}i^2=\frac 1{\binom nk}\sum_{i=k}^{n}ki\binom ik=\frac 1{\binom nk}\sum_{i=k}^{n}\left(k(k+1)\binom {i+1}{k+1}-k\binom ik\right)\\&=\frac1{\binom nk}\left(k(k+1)\binom {n+2}{k+2}-k\binom {n+1}{k+1}\right)\\
+  &=\frac{k(k+1)(n+k+nk)}{(k+1)(k+2)}
+  \end{align} %]]></script><br />
+  And hence<br />
+  <script type="math/tex">\sigma(a_k)=\sqrt{\frac{k(k+1)(n+k+nk)}{(k+1)(k+2)}-\frac {k^2(n+1)^2}{(k+1)^2}}=\frac 1{k+1}\sqrt{\frac{k(k-n)(k^2+(k+2)nk+k-1)}{k+2}}</script></li>
+  <li><a href="https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle">Fisher-Yates Shuffle</a></li>
+  <li>$F$ is whether the coin is faulty, $H$ is heads. We are given:
+    <ul>
+      <li>Unbiased coin:
+$P(H=1|F=0)=P(H=0|F=0)=1/2$</li>
+      <li>Biased coin:
+$P(H=1|F=1)=1,P(H=0|F=1)=0$</li>
+      <li>Now<br />
+$P(F=1|H=0)=\frac{P(H=0|F=1)P(F=1)}{P(H=0)}=\frac{0\cdot P(F=1)}{P(H=0)}=0$</li>
+      <li>And:<br />
+$P(F=1|H=1)=\frac{P(H=1|F=1)P(F=1)}{P(H=1|F=1)P(F=1)+P(H=1|F=0)P(F=0)}=\frac{P(F=1)}{P(F=1)+(1/2)P(F=0)}$<br />
+Assuming $P(F=1)=P(F=0)=1/2$ we get $\frac{1/2}{1/2+1/4}=\frac 23$.</li>
+    </ul>
+  </li>
+  <li>$C$ student has cheated, $G$ student held guilty, we are given:
+    <ul>
+      <li>If a student cheats, the software might declare the student honest with a probability of 0.8<br />
+$P(G=0|C=1)=0.8\implies P(G=1|C=1)=0.2$</li>
+      <li>If a student has not cheated, the software might hold the student guilty with a probability of 0.0001.<br />
+$P(G=1|C=0)=0.0001\implies P(G=1|C=0)=0.9999$</li>
+      <li>10% of the students in the class actually cheated in the mid semester exams.<br />
+$P(C=1)=0.1\implies P(C=0)=0.9$</li>
+      <li>Now we have:<br />
+<script type="math/tex">P(G=1)=P(G=1|C=0)P(C=0)+P(G=1|C=1)P(C=1)\\=0.0001\cdot 0.9+0.2\cdot 0.1\\=0.02009</script>
+<script type="math/tex">P(C=1|G=1)=\frac{P(G=1|C=1)P(C=1)}{P(G=1)}=\frac{0.2\cdot 0.1}{0.02009}\approx 99.95\%</script></li>
+    </ul>
+  </li>
+  <li>Examples:
+    <ul>
+      <li>all are mutually dependent - $A=B=C$</li>
+      <li>all are independent - independent die</li>
+      <li><a href="https://en.wikipedia.org/wiki/Independence_(probability_theory)#Pairwise_and_mutual_independence">Pairwise and mutual independence</a></li>
+    </ul>
+  </li>
+  <li>Every subset $\displaystyle {x_1,x_2…x_k}$ has an attached probability:<br />
+  <script type="math/tex">\displaystyle \left(\frac12\right)^{k}\left(1-\frac 12\right)^{n-k}=\frac 1{2^n}</script><br />
+    <ul>
+      <li>(i) $S$ is partitioned by 3 sets - $X$, $Y\setminus X$, $S\setminus Y$ hence $(3/4)^n$</li>
+      <li>(ii) symmetric - $(3/4)^n$</li>
+      <li>(iii) $S$ is partitioned by 2 sets - $X=Y$ and $S\setminus X=S\setminus Y$ hence $(1/2)^n$</li>
+      <li>(iv) $S$ is partitioned by 3 sets $X\setminus Y$, $Y\setminus X$ and $X\cap Y$ hence $(3/4)^n$</li>
+    </ul>
+  </li>
+  <li><strong>Case a:</strong> We perform an enumeration:
+    <ul>
+      <li>3 X’s: $8$ positions</li>
+      <li>4 X’s: $8\times6=48$ positions (In each of the above $\binom 61$ can become a X)</li>
+      <li>5 X’s: First we count where only one line is formed. For horizontal and vertical, this can be done by adding 2 X to 3 X’s such that they do not create a line, i.e. in $\binom 62 -3=12$ and for diagonal $\binom 62-7=8$, so total $6\times 12+2\times 8=88$. Now when two lines can be formed, it will be $3\times3$ for horizontal and vertical, $1$ for both diagonals, hence total $88+10=98$.</li>
+      <li>6 X’s: Leave any three blocks empty $\binom 93=84$ minus two where these three lie on the diagonal, hence $82$</li>
+      <li>7 X’s: Leave any two blocks empty $\binom 92=36$.</li>
+      <li>8 X’s: Leave every block with circle each time $9$.</li>
+      <li>9 X’s: All blocks: $1$.</li>
+      <li><strong>Total</strong>: $8+48+98+82+36+9+1=282$ hence $282/512=141/256$, Note that in the below enumeration, both can win $21/64$ which is also counted here, giving: $99/256+21/128=141/256$
+  <script src="https://gist.github.com/adityagupta1089/4cb318cb8fc38ff7d6d323813cf2b727.js"></script></li>
+      <li>We get the following (where $X$ is 1 if crosses win and $Y$ is 1 if circles win):
+  <script type="math/tex">% <![CDATA[
+P_{X,Y}(x,y)=\begin{cases}
+  \frac{1}{16}&x=0,y=0\\
+  \frac{99}{256}&x=0,y=1\\
+  \frac{99}{256}&x=1,y=0\\
+  \frac{21}{128}&x=1,y=1
+  \end{cases} %]]></script>\</li>
+    </ul>
+
+    <p><strong>Case b:</strong> We perform an enumeration:</p>
+    <ul>
+      <li>TODO (Manual calculation is quite tedious)</li>
+    </ul>
+  </li>
+  <li>
+    <script type="math/tex; mode=display">\frac {70000}{100000}\frac {999}{1000}+\frac {30000}{100000}\frac{1}{1000}=\frac{1749}{2500}\approx 69.96\%</script>
+  </li>
+  <li>Let her win $k$ rounds and loose $n-k$ rounds then:<br />
+  <script type="math/tex">P=k\cdot 1+(n-k)\cdot (-1)=2k-n>0\implies k>n/2</script><br />
+  Now the expected number of steps to get positive profit: (TODO, Possibly not taught yet)</li>
+</ol>
+
+  </div>
+
+  <footer class="postNavigation">
+  
+    <a class="postPrev" href="/csl471/tutorial-1.html">
+        &laquo; Tutorial 1
+    </a>
+  
+  
+    <a class="postNext" href="/csl471/tutorial-3.html">
+        Tutorial 3 &raquo;
+    </a>
+  
+  </footer>
+
+
+</article>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper topround bottomround">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list footer-content">
+          <li>Powered By
+            <a href="http://github.com/hemangsk/Gravity">Gravity</a>
+          </li>
+          <li>Made with <i class="fa fa-heart"></i> on
+            <a href="http://jekyllrb.com"><span>{ { Jekyll } }</a></span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2 footer-content">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/adityagupta1089"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">adityagupta1089</span></a>
+
+          </li>
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3 footer-content">
+          <img src="https://adityagupta1089.github.io/images/rss-icon.png" style="filter: opacity(45%);width:16px;height:16px;">
+          <a href="https://adityagupta1089.github.io/feed.xml">RSS Feed</a>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>
