@@ -1,0 +1,23 @@
+#!/bin/bash
+
+if [ $TRAVIS_PULL_REQUEST == "true" ]; then exit 0; fi
+
+set -e
+
+# cleanup "_site"
+rm -rf _site
+mkdir _site
+
+# clone remote repo to "_site"
+git clone https://${GH_TOKEN}@https://github.com/adityagupta1089/adityagupta1089.github.io.git --branch gh-pages _site
+
+# build with Jekyll into "_site"
+bundle exec jekyll build
+
+# push
+cd _site
+git config user.email "adityagupta1089@gmail.com"
+git config user.name "Aditya Gupta"
+git add --all
+git commit -a -m "Travis #$TRAVIS_BUILD_NUMBER"
+git push --force origin gh-pages
