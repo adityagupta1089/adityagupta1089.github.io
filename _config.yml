@@ -1,7 +1,7 @@
 title: Aditya Gupta
 email: adityagupta1089@gmail.com
 baseurl: ""
-url: "http://adityagupta1089.github.io"
+url: "https://adityagupta1089.github.io"
 github_username:  adityagupta1089
 theme-dark: false
 plugins: [jekyll-paginate-v2, kramdown]
