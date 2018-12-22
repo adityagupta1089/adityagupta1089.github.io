@@ -68,12 +68,12 @@ categories: ["CSL471"]
 2. Again using law of total expectation ($X$ is for coin and $Y$ is for die and $S$ is for sum on die, dice is thrown first):
    $$\begin{align}E[S]&=E[Y]+P(X=H)E[S|X=H]+P(X=T)E[S|X=T]\\&=E[Y]+\frac 12E[S|X=H]+\frac 12\cdot 0\\&=E[Y]+\frac 12E[S|X=H]\\&=E[Y]+\frac 12(E[Y]+E[S])\\E[S]&=2E[Y]=7\end{align}$$\\
    Now for standard deviation:\\
-   $$\begin{align}\sigma(S)&=\sqrt{E[S^2]-E^2[S]}\\
-   E[S^2]&=\underbrace{\left(\frac 12\right)}_{Y=T}\frac16(1^2+2^2+...6^2)+\underbrace{\left(\frac12\right)^2}_{Y=HT}\left(\frac 16\right)^2\sum_{1\le y_1\le 6\\1\le y_2\le 6}(y_1+y_2)^2+...\\
-   V_{k}&=\frac 1{6^k}\sum_{y_1}\sum_{y_2}..\sum_{y_k}(y_1+y_2+..y_k)^2\\
-   &=\frac 7{12}k(21k+5)\tag{Similar to previous one}\\
-   E[S^2]&=\sum_{k=1}^{\infty} \left(\frac 1{2}\right)^kV_k
-   \\&=\frac {280}3\approx 79.33\end{align}$$\\
+$$\begin{align}\sigma(S)&=\sqrt{E[S^2]-E^2[S]}\\
+E[S^2]&=\underbrace{\left(\frac 12\right)}_{Y=T}\frac16(1^2+2^2+...6^2)+\underbrace{\left(\frac12\right)^2}_{Y=HT}\left(\frac 16\right)^2\sum_{1\le y_1\le 6\\1\le y_2\le 6}(y_1+y_2)^2+...\\
+V_{k}&=\frac 1{6^k}\sum_{y_1}\sum_{y_2}..\sum_{y_k}(y_1+y_2+..y_k)^2\\
+&=\frac 7{12}k(21k+5)\tag{Similar to previous one}\\
+E[S^2]&=\sum_{k=1}^{\infty} \left(\frac 1{2}\right)^kV_k
+\\&=\frac {280}3\approx 79.33\end{align}$$\\
    Now:\\
    $$\sigma(S)=\sqrt{\frac {280}3-7^2}=\sqrt{\frac {133}3}\approx 6.65$$\\
    **Note:** See a simulation using:

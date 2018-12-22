@@ -5,7 +5,8 @@ permalink: /about/
 categories: [General]
 ---
 Hi! I am Aditya Gupta. I am currently a final year undergraduate at IIT Ropar.
-I like computers and mathematics.
+I like computers and mathematics. If you are a prospective employer you might
+want to look at my [Curriculum Vitae](https://drive.google.com/file/d/1mv5550jWKoo4OXpRwEmUCA2G3cB2k8Vm/view?usp=sharing)
 
 Other places you can find me are:
 
