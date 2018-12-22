@@ -4,16 +4,15 @@
 </div>
 <div class="wrapper">
   <div class="trigger site-navigation">
-    <a class="page-link" href="{{site.url}}{{site.baseurl}}">HOME</a>
-
     {% for sitePage in site.pages %}
-    {% if sitePage.title %}
-      <span class="exclamationMark">/</span>
-      <a class="page-link" href="{{sitePage.url | prepend: site.baseurl }}">
-        {{sitePage.autogen}}
-        {{sitePage.title}}
-      </a>
-    {% endif %}
+      {% if sitePage.title %}
+        {% unless sitePage.url contains "page" %}
+          <a class="page-link" href="{{sitePage.url | prepend: site.baseurl }}">
+            {{sitePage.title}}
+          </a>
+          <span class="exclamationMark">/</span>
+        {% endunless %}
+      {% endif %}
     {% endfor %}
   </div>
 </div>

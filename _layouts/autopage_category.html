@@ -1,10 +1,8 @@
 ---
 layout: default
-pagination:
-  enabled: true
-title: "Home"
 ---
 <div class="home">
+
 
 
   {% for post in paginator.posts %}
@@ -30,22 +28,20 @@ title: "Home"
         <a class="paginationLink" href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&laquo; Prev</a>
       {% endif %}
 
-    {% for page in (1..paginator.total_pages) %}
-      {% if page == paginator.page %}
-        <em class="paginationLink paginationLinkCurrent">{{ page }}</em>
-      {% elsif page == 1 %}
-        <a class="paginationLink" href="/">{{ page }}</a>
-      {% else %}
-        <a class="paginationLink" href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a>
-      {% endif %}
-    {% endfor %}
+    {% if paginator.page_trail %}
+      {% for trail in paginator.page_trail %}
+        {% if page.url == trail.path %}
+          <em class="paginationLink paginationLinkCurrent">{{ trail.num }}</em>
+        {% else %}
+          <a class="paginationLink" href="{{ trail.path | prepend: site.baseurl }}">{{ trail.num }}</a>
+        {% endif %}
+      {% endfor %}
+    {% endif %}
 
     {% if paginator.next_page %}
       <a class="paginationLink" href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Next &raquo;</a>
     {% endif %}
     </nav>
   {% endif %}
-
-
 
 </div>

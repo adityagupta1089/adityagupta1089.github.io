@@ -20,20 +20,11 @@ pagination:
     after: 2
 
 autopages:
-  enabled: false
+  enabled: true
   categories:
+    layouts:
+      - 'autopage_category.html'
+    title: ':cat'
     permalink: '/category/:cat'
-
-  # Collection pages, omit to disable
   collections:
-    layouts:
-      - 'autopage_collection.html'
-    title: 'Posts in collection :coll' # :coll is replaced by the collection name
-    permalink: '/collection/:coll'
-
-  # Tag pages, omit to disable
-  tags:
-    layouts:
-      - 'autopage_tags.html'
-    title: 'Posts tagged with :tag' # :tag is replaced by the tag name
-    permalink: '/tag/:tag'
+    enabled: false
