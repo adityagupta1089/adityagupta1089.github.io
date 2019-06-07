@@ -1,7 +1,8 @@
 ---
 layout: post
 title: "Git Commands"
-date: Friday, 7 June 2019 1:33 PM
+date: Friday, 7 June 2019 1:33PM
+mathjax: true
 categories: ["Notes"]
 ---
 Some common git commands frequently used
