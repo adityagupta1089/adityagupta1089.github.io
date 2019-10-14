@@ -6,13 +6,13 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Aditya Gupta - PAGE 4</title>
-  <meta name="description" content="">
+  <title>Aditya Gupta - SUPERVISED LEARNING</title>
+  <meta name="description" content="Given a set $(x,y)$ need to estimate $f(x)=y$ .">
   <link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic|Source+Sans+Pro:400,700,200,300|Josefin+Sans:400,600,700,300' rel='stylesheet' type='text/css'>
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
 
   <link rel="stylesheet" href="/css/style.css">
-  <link rel="canonical" href="https://adityagupta1089.github.io/page/4/">
+  <link rel="canonical" href="https://adityagupta1089.github.io/notes/machine%20learning/Supervised-Learning.html">
   <link rel="alternate" type="application/rss+xml" title="Aditya Gupta" href="https://adityagupta1089.github.io/feed.xml">
 </head>
 
@@ -137,103 +137,57 @@
 
     <div class="page-content">
       <div class="wrapper bottomround">
-        <div class="home">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline"><a class="post-title-link"  href="/notes/machine%20learning/Supervised-Learning.html">Supervised Learning</a></h1>
+  <center>  <p class="post-meta"><time datetime="2019-10-14T00:00:00+00:00" itemprop="datePublished">Oct 14, 2019</time></p>
+    
+   </center>
+  </header>
 
-  
-  <div class="post postContent">
-    <div  class="postDate"><time datetime="2019-06-07T13:37:00+00:00" itemprop="datePublished">Jun 7, 2019</time>
-    </div>
-    <div class="postTag">
-      
-    </div>
-    <br>
-    <div class="postTitle">
-    <a class='postLink' href="https://adityagupta1089.github.io/notes/haskell-notes.html">Haskell Notes</a>
-    </div>
-    <div class="postExt">
-   These are the notes on Haskell which I wrote when I was studying it.
+  <div class="post-content" itemprop="articleBody">
+    <p>Given a set $(x,y)$ need to estimate $f(x)=y$ .</p>
 
+<p>Terms:</p>
 
+<ul>
+  <li>Feature $x_i$ - property of object to be classified</li>
+  <li>Instance $x=\begin{pmatrix}x_1&amp;x_2&amp;x_3&amp;\ldots\end{pmatrix}$ - features of an object</li>
+  <li>Instance Space $\cal I$ - space of all possible instances</li>
+  <li>Class $\cal Y$ - categorical feature of an object</li>
+  <li>Example $(x,y)$ - instance with membership</li>
+  <li>Training Set $X = {}_{i=1}^N{x_i,y_i}$</li>
+  <li>Target Concept $\cal C$ - correct expression of class.</li>
+  <li>Concept Class - Space of all possible concepts</li>
+  <li>Hypothesis $h :x\mapsto{0,1}$ - Approximation to target concept</li>
+  <li>Hypothesis class $\cal H$ - Space of all possible hypothesis</li>
+  <li>Learning Goal - Find $h\in\cal H$ that closely approximates $\cal C$ (possible $\cal C\not\in H$)</li>
+</ul>
 
+<p>Errors:</p>
 
-    </div>
+<ul>
+  <li>Empirical: $E(h|X) = \frac 1N\sum_{t=1}^N 1(h(x_t)\ne y_t)$</li>
+  <li>Generalization: instances not in $X$</li>
+  <li>True: instances in $\cal I$</li>
+  <li>Most specific and general hypothesis $\cal S$ and $\cal G$ covering fewest and most instances.</li>
+  <li>Version space - between $\cal S$ and $\cal G$</li>
+</ul>
+
   </div>
+
+  <footer class="postNavigation">
   
-  <div class="post postContent">
-    <div  class="postDate"><time datetime="2019-06-07T13:38:00+00:00" itemprop="datePublished">Jun 7, 2019</time>
-    </div>
-    <div class="postTag">
-      
-    </div>
-    <br>
-    <div class="postTitle">
-    <a class='postLink' href="https://adityagupta1089.github.io/notes/elasticsearch-notes.html">Elastic Search Notes</a>
-    </div>
-    <div class="postExt">
-   These are the notes on Elastic Search which I wrote while studying it.
-
-
-
-
-    </div>
-  </div>
+    <a class="postPrev" href="/notes/elasticsearch-notes.html">
+        &laquo; Elastic Search Notes
+    </a>
   
-  <div class="post postContent">
-    <div  class="postDate"><time datetime="2019-10-14T00:00:00+00:00" itemprop="datePublished">Oct 14, 2019</time>
-    </div>
-    <div class="postTag">
-      
-    </div>
-    <br>
-    <div class="postTitle">
-    <a class='postLink' href="https://adityagupta1089.github.io/notes/machine%20learning/Supervised-Learning.html">Supervised Learning</a>
-    </div>
-    <div class="postExt">
-   Given a set $(x,y)$ need to estimate $f(x)=y$ .
-
-Terms:
-
-
-  Feature $x_i$ - property of object to be classified
-  Instance $x=\begin{pmatrix}x_1&amp;x_2&amp;x_3&amp;\ldots\end{pmatrix}$ - features of an object
-  Instance Space $\cal I$ - space of all possible instances
-  ...
-    </div>
-  </div>
   
-
-  
-    <nav class="pagination">
-      
-        <a class="paginationLink" href="/page/3/">&laquo; Prev</a>
-      
-
-    
-      
-        <a class="paginationLink" href="/">1</a>
-      
-    
-      
-        <a class="paginationLink" href="/page2">2</a>
-      
-    
-      
-        <a class="paginationLink" href="/page3">3</a>
-      
-    
-      
-        <em class="paginationLink paginationLinkCurrent">4</em>
-      
-    
-
-    
-    </nav>
-  
+  </footer>
 
 
-
-</div>
+</article>
 
       </div>
     </div>

@@ -5,9 +5,50 @@
     <description></description>
     <link>https://adityagupta1089.github.io/</link>
     <atom:link href="https://adityagupta1089.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 07 Jun 2019 15:02:34 +0000</pubDate>
-    <lastBuildDate>Fri, 07 Jun 2019 15:02:34 +0000</lastBuildDate>
-    <generator>Jekyll v3.8.5</generator>
+    <pubDate>Mon, 14 Oct 2019 06:27:18 +0000</pubDate>
+    <lastBuildDate>Mon, 14 Oct 2019 06:27:18 +0000</lastBuildDate>
+    <generator>Jekyll v3.8.6</generator>
+    
+      <item>
+        <title>Supervised Learning</title>
+        <description>&lt;p&gt;Given a set $(x,y)$ need to estimate $f(x)=y$ .&lt;/p&gt;
+
+&lt;p&gt;Terms:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Feature $x_i$ - property of object to be classified&lt;/li&gt;
+  &lt;li&gt;Instance $x=\begin{pmatrix}x_1&amp;amp;x_2&amp;amp;x_3&amp;amp;\ldots\end{pmatrix}$ - features of an object&lt;/li&gt;
+  &lt;li&gt;Instance Space $\cal I$ - space of all possible instances&lt;/li&gt;
+  &lt;li&gt;Class $\cal Y$ - categorical feature of an object&lt;/li&gt;
+  &lt;li&gt;Example $(x,y)$ - instance with membership&lt;/li&gt;
+  &lt;li&gt;Training Set $X = {}_{i=1}^N{x_i,y_i}$&lt;/li&gt;
+  &lt;li&gt;Target Concept $\cal C$ - correct expression of class.&lt;/li&gt;
+  &lt;li&gt;Concept Class - Space of all possible concepts&lt;/li&gt;
+  &lt;li&gt;Hypothesis $h :x\mapsto{0,1}$ - Approximation to target concept&lt;/li&gt;
+  &lt;li&gt;Hypothesis class $\cal H$ - Space of all possible hypothesis&lt;/li&gt;
+  &lt;li&gt;Learning Goal - Find $h\in\cal H$ that closely approximates $\cal C$ (possible $\cal C\not\in H$)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Errors:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Empirical: $E(h|X) = \frac 1N\sum_{t=1}^N 1(h(x_t)\ne y_t)$&lt;/li&gt;
+  &lt;li&gt;Generalization: instances not in $X$&lt;/li&gt;
+  &lt;li&gt;True: instances in $\cal I$&lt;/li&gt;
+  &lt;li&gt;Most specific and general hypothesis $\cal S$ and $\cal G$ covering fewest and most instances.&lt;/li&gt;
+  &lt;li&gt;Version space - between $\cal S$ and $\cal G$&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Mon, 14 Oct 2019 00:00:00 +0000</pubDate>
+        <link>https://adityagupta1089.github.io/notes/machine%20learning/Supervised-Learning.html</link>
+        <guid isPermaLink="true">https://adityagupta1089.github.io/notes/machine%20learning/Supervised-Learning.html</guid>
+        
+        
+        <category>Notes</category>
+        
+        <category>Machine Learning</category>
+        
+      </item>
     
       <item>
         <title>Elastic Search Notes</title>
@@ -413,101 +454,6 @@ Interestingly the second term contains the partial sum for expansion of $-\ln(1-
         
         
         <category>CSL471</category>
-        
-      </item>
-    
-      <item>
-        <title>Songs I use to identify Music Intervals</title>
-        <description>&lt;p&gt;These are some of the Songs that I use to identify music intervals. Many of them are missing because I don’t know many songs that I have heard frequently and have those intervals.&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;Interval&lt;/th&gt;
-      &lt;th&gt;Songs (Increasing)&lt;/th&gt;
-      &lt;th&gt;Songs (Decreasing)&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Unison&lt;/td&gt;
-      &lt;td&gt;N/A&lt;/td&gt;
-      &lt;td&gt;N/A&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Minor 2nd&lt;/td&gt;
-      &lt;td&gt;&lt;a href=&quot;https://youtu.be/HhHwnrlZRus?t=10s&quot;&gt;Pink Panther&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;&lt;a href=&quot;https://youtu.be/Lkcvrxj0eLY&quot;&gt;Für Elise&lt;/a&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Major 2nd&lt;/td&gt;
-      &lt;td&gt;&lt;a href=&quot;https://youtu.be/QDWKzG5oaog?t=7s&quot;&gt;Major Scale&lt;/a&gt;/&lt;a href=&quot;https://youtu.be/_z-1fTlSDF0?t=3s&quot;&gt;Happy Birthday&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;-&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Minor 3rd&lt;/td&gt;
-      &lt;td&gt;&lt;a href=&quot;https://youtu.be/uvO-v4u5DYU?t=7s&quot;&gt;Brahms Lullby&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;&lt;a href=&quot;https://youtu.be/fOk8Tm815lE&quot;&gt;Beethoven’s 5th Symphony&lt;/a&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Major 3rd&lt;/td&gt;
-      &lt;td&gt;&lt;a href=&quot;https://youtu.be/GRxofEmo3HA&quot;&gt;Four Seasons: Spring (Vivaldi)&lt;/a&gt;/&lt;a href=&quot;https://youtu.be/Yp-lX7F5E2M&quot;&gt;Michael Row the Boat Ashore&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;-&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Perfect 4th&lt;/td&gt;
-      &lt;td&gt;&lt;a href=&quot;https://youtu.be/DczKNnP2XoQ?t=2s&quot;&gt;The Rebel Fleet (Star Wars)&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;-&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Tritone&lt;/td&gt;
-      &lt;td&gt;-&lt;/td&gt;
-      &lt;td&gt;-&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Perfect 5th&lt;/td&gt;
-      &lt;td&gt;&lt;a href=&quot;https://youtu.be/_D0ZQPqeJkk?t=8s&quot;&gt;Star Wars Main Theme&lt;/a&gt;/&lt;a href=&quot;https://youtu.be/yCjJyiqpAuU?t=19s&quot;&gt;Twinkle Twinkle&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;-&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Minor 6th&lt;/td&gt;
-      &lt;td&gt;&lt;a href=&quot;https://youtu.be/XGLqYr-pUvM?t=12s&quot;&gt;Across the Stars (Star Wars)&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;-&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Major 6th&lt;/td&gt;
-      &lt;td&gt;&lt;a href=&quot;https://youtu.be/aQIyDKM_heo&quot;&gt;Prince Leia’s Theme (Star Wars)&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;-&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Minor 7th&lt;/td&gt;
-      &lt;td&gt;-&lt;/td&gt;
-      &lt;td&gt;-&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Major 7th&lt;/td&gt;
-      &lt;td&gt;-&lt;/td&gt;
-      &lt;td&gt;-&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Octave&lt;/td&gt;
-      &lt;td&gt;-&lt;/td&gt;
-      &lt;td&gt;-&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt; &lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-</description>
-        <pubDate>Sat, 29 Jul 2017 23:51:00 +0000</pubDate>
-        <link>https://adityagupta1089.github.io/music/intervals.html</link>
-        <guid isPermaLink="true">https://adityagupta1089.github.io/music/intervals.html</guid>
-        
-        
-        <category>Music</category>
         
       </item>
     
