@@ -117,6 +117,15 @@
         
       
     
+      
+        
+          <a class="page-link" href="/category/data structures/index.html">
+            data structures
+          </a>
+            <span class="exclamationMark">/</span>
+        
+      
+    
   </div>
 </div>
 <script type="text/x-mathjax-config">
@@ -146,66 +155,67 @@
 
   
   <div class="post postContent">
-    <div  class="postDate"><time datetime="2017-09-22T22:03:00+00:00" itemprop="datePublished">Sep 22, 2017</time>
+    <div  class="postDate"><time datetime="2019-10-14T09:33:00+00:00" itemprop="datePublished">Oct 14, 2019</time>
     </div>
     <div class="postTag">
       
     </div>
     <br>
     <div class="postTitle">
-    <a class='postLink' href="https://adityagupta1089.github.io/csl471/tutorial-1.html">Tutorial 1</a>
+    <a class='postLink' href="https://adityagupta1089.github.io/notes/data%20structures/b-trees.html">B-Trees</a>
     </div>
     <div class="postExt">
-   
-  
-    Here $M$ is the total money, we use Law of total expectation in the first step, i.e. $E[M]=E[E[M|Y]]$ where $Y$ is the die throw and $E[M|Y=y] = y+ E[M]$ for $1\le y \le 5$ and $6$ for $Y=6$.
-  
-  Method 1:
-  For standard deviation this particular form seems usefu...
+   Definition
+
+
+  Every node $x$ has $x.n$ keys and $x.n+1$ children (possibly undefined).
+  The key $x.k_i$ separates the range of keys stores in children subtrees, say $l_i$ then $l_1\le x.k_1\le l_2\le x.k_2\le \ldots x.k_n \le l_{n+1}$
+  All leaves have same depth
+  Each...
     </div>
   </div>
   
   <div class="post postContent">
-    <div  class="postDate"><time datetime="2017-07-29T23:51:00+00:00" itemprop="datePublished">Jul 29, 2017</time>
+    <div  class="postDate"><time datetime="2019-10-14T09:29:00+00:00" itemprop="datePublished">Oct 14, 2019</time>
     </div>
     <div class="postTag">
       
     </div>
     <br>
     <div class="postTitle">
-    <a class='postLink' href="https://adityagupta1089.github.io/music/intervals.html">Songs I use to identify Music Intervals</a>
+    <a class='postLink' href="https://adityagupta1089.github.io/notes/data%20structures/decision-trees.html">Decision Trees</a>
     </div>
     <div class="postExt">
-   These are some of the Songs that I use to identify music intervals. Many of them are missing because I don’t know many songs that I have heard frequently and have those intervals.
+   Entropy 2-class
+
+If $\cal I$ is the set of training examples, $p_+$ ratio of posititive examples in $\cal I$ and $p_-$ negative examples then entropy which measures impurity:
 
 
-  
-    
-      Interval
-      Songs (Increasing)
-      Songs (Decreasing)
-    
-  
-  
-    
- ...
+
+This represents expected number of bits to encode the class of a randomly drawn member of $\ca...
     </div>
   </div>
   
   <div class="post postContent">
-    <div  class="postDate"><time datetime="2017-07-20T23:51:00+00:00" itemprop="datePublished">Jul 20, 2017</time>
+    <div  class="postDate"><time datetime="2019-10-14T00:00:00+00:00" itemprop="datePublished">Oct 14, 2019</time>
     </div>
     <div class="postTag">
       
     </div>
     <br>
     <div class="postTitle">
-    <a class='postLink' href="https://adityagupta1089.github.io/programming/exptree.html">How I solved Tree Expectancy (EXPTREE)</a>
+    <a class='postLink' href="https://adityagupta1089.github.io/notes/machine%20learning/Supervised-Learning.html">Supervised Learning</a>
     </div>
     <div class="postExt">
-   This post is about this question.
+   Given a set $(x,y)$ need to estimate $f(x)=y$ .
 
-The first thing I noted was that the total trees with $N$ nodes are $C_{n-1}$ (Catalan Number). So if we consider the size of subtrees rooted at children then we get an ordered tuple $(a_1, a_2 … a_k)$ where $a_1+a_2 … a_k=n-1$. Thus it ...
+Terms:
+
+
+  Feature $x_i$ - property of object to be classified
+  Instance $x=\begin{pmatrix}x_1&amp;x_2&amp;x_3&amp;\ldots\end{pmatrix}$ - features of an object
+  Instance Space $\cal I$ - space of all possible instances
+  ...
     </div>
   </div>
   
@@ -220,19 +230,19 @@ The first thing I noted was that the total trees with $N$ nodes are $C_{n-1}$ (C
       
     
       
-        <a class="paginationLink" href="/page2">2</a>
+        <a class="paginationLink" href="/page/2">2</a>
       
     
       
-        <a class="paginationLink" href="/page3">3</a>
+        <a class="paginationLink" href="/page/3">3</a>
       
     
       
-        <a class="paginationLink" href="/page4">4</a>
+        <a class="paginationLink" href="/page/4">4</a>
       
     
       
-        <a class="paginationLink" href="/page5">5</a>
+        <a class="paginationLink" href="/page/5">5</a>
       
     
 
@@ -256,7 +266,7 @@ The first thing I noted was that the total trees with $N$ nodes are $C_{n-1}$ (C
     <div class="footer-col-wrapper">
       <div class="footer-col footer-col-1">
         <ul class="contact-list footer-content">
-          <li>Powered By
+          <li>Forked & Modified from
             <a href="http://github.com/hemangsk/Gravity">Gravity</a>
           </li>
           <li>Made with <i class="fa fa-heart"></i> on

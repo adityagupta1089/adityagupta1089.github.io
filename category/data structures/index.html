@@ -6,13 +6,13 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Aditya Gupta - DECISION TREES</title>
-  <meta name="description" content="Entropy 2-class">
+  <title>Aditya Gupta - DATA STRUCTURES</title>
+  <meta name="description" content="">
   <link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic|Source+Sans+Pro:400,700,200,300|Josefin+Sans:400,600,700,300' rel='stylesheet' type='text/css'>
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
 
   <link rel="stylesheet" href="/css/style.css">
-  <link rel="canonical" href="https://adityagupta1089.github.io/notes/machine%20learning/decision-trees.html">
+  <link rel="canonical" href="https://adityagupta1089.github.io/category/data structures/">
   <link rel="alternate" type="application/rss+xml" title="Aditya Gupta" href="https://adityagupta1089.github.io/feed.xml">
 </head>
 
@@ -117,6 +117,15 @@
         
       
     
+      
+        
+          <a class="page-link" href="/category/data structures/index.html">
+            data structures
+          </a>
+            <span class="exclamationMark">/</span>
+        
+      
+    
   </div>
 </div>
 <script type="text/x-mathjax-config">
@@ -141,130 +150,57 @@
 
     <div class="page-content">
       <div class="wrapper bottomround">
-        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+        <div class="home">
 
-  <header class="post-header">
-    <h1 class="post-title" itemprop="name headline"><a class="post-title-link"  href="/notes/machine%20learning/decision-trees.html">Decision Trees</a></h1>
-  <center>  <p class="post-meta"><time datetime="2019-10-14T09:29:00+00:00" itemprop="datePublished">Oct 14, 2019</time></p>
-    
-   </center>
-  </header>
 
-  <div class="post-content" itemprop="articleBody">
-    <h1 id="entropy-2-class">Entropy 2-class</h1>
 
-<p>If $\cal I$ is the set of training examples, $p_+$ ratio of posititive examples in $\cal I$ and $p_-$ negative examples then entropy which measures impurity:</p>
+  
+  <div class="post postContent">
+    <div  class="postDate"><time datetime="2019-10-14T09:33:00+00:00" itemprop="datePublished">Oct 14, 2019</time>
+    </div>
+    <div class="postTag">
+      
+    </div>
+    <br>
+    <div class="postTitle">
+    <a class='postLink' href="https://adityagupta1089.github.io/notes/data%20structures/b-trees.html">B-Trees</a>
+    </div>
+    <div class="postExt">
+   Definition
 
-<script type="math/tex; mode=display">\text{Entropy}(I) = -p_+\log_2p_+ - p_-\log _2p_-</script>
 
-<p>This represents expected number of bits to encode the class of a randomly drawn member of $\cal I$</p>
-
-<h1 id="information-gain">Information Gain</h1>
-
-<p>Expected reduction in entropy due to sorting on attribute $x_i$</p>
-
-<script type="math/tex; mode=display">\text{Gain}({\cal I}, x_i)=\text{Entropy}(I)-\sum_{v\in\text{values}(x
-_i)}\frac{|\cal I_v|}{|\cal I|}\text{Entropy}(\cal I_v)</script>
-
-<ul>
-  <li>$\text{values}(x_i)$: all possible values of $x_i$</li>
-  <li>$\cal I_v\subset \cal I$ : points in $\cal I$ that take value $v$ for $x_i$</li>
-</ul>
-
-<h1 id="mutual-information-gain--information-gain">Mutual Information Gain &amp; Information Gain</h1>
-
-<p>Mutual information is the measure of mutual dependence of two random variables.</p>
-
-<p>Mutual information gain for two random variables $X$ and $Y$ is:</p>
-
-<script type="math/tex; mode=display">I(X;Y)=\sum_{y\in Y}\sum_{x\in X}p(x, y)\log\left(\frac{p(x,y)}{p(x)p(y)}\right)</script>
-
-<p>In decision trees mutual information gain and information gain are synonymous:</p>
-
-<script type="math/tex; mode=display">I(X;Y)=H(Y)-H(Y|X)</script>
-
-<h1 id="id3-algorithm">ID3 Algorithm</h1>
-
-<p>Recursively perform on all examples.</p>
-
-<ul>
-  <li>For all $+$/$-$ examples return single node with corresponding label.</li>
-  <li>Otherwise split on attribute that best classifies current set of examples.</li>
-</ul>
-
-<h1 id="decision-trees-features">Decision Trees Features</h1>
-
-<ul>
-  <li>Hypothesis space is complete</li>
-  <li>Only single hypothesis as output</li>
-  <li>No backtracking</li>
-  <li>Statistically based choices</li>
-  <li>True bias hard to estimate</li>
-  <li>Shorter trees are preferred</li>
-  <li>Trees with high information gain near root are preferred</li>
-</ul>
-
-<h1 id="overfitting">Overfitting</h1>
-
-<p>Hypothesis $h\in \cal H$ overfits $X$ if $\exists h’$ such that:</p>
-
-<p>$E(h|X)&lt; E(h’|X)$ but $E_p(h)&gt;E_p(h’)$ where $p$ is the entire distribution of data.</p>
-
-<p>Strategies:</p>
-
-<ul>
-  <li>Stop when insignificant information gain</li>
-  <li>post pruning  - subtrees/rules/</li>
-  <li>using ensembles</li>
-</ul>
-
-<h1 id="problems">Problems</h1>
-
-<ul>
-  <li>Real values functions - sort and split on midpoints</li>
-  <li>Alternative measures for selecting attributes - gain ratio / cost sensitive information gain</li>
-  <li>Missing attribute values - most commomn value at node / node with same target value / probability based on descendents of node</li>
-</ul>
-
-<h1 id="advantages--disadvantages">Advantages / Disadvantages</h1>
-
-<ul>
-  <li>Easy to explain</li>
-  <li>No hyperparameters</li>
-  <li>Overfitting</li>
-  <li>Low accuracies (cf. other approaches)</li>
-</ul>
-
-<h1 id="random-forests">Random Forests</h1>
-
-<h2 id="instane-bagging--bootstrap-aggregation">Instane Bagging / Bootstrap aggregation</h2>
-
-<ul>
-  <li>Generate $K$ different bootstrapped trainig datasets (sampling with replacement)</li>
-  <li>Learn a decision tree on each</li>
-  <li>Final prediction is the majority/average vote of all.</li>
-</ul>
-
-<h2 id="freature-bagging">Freature bagging</h2>
-
-<ul>
-  <li>Improved than instance bagging</li>
-  <li>Build a decision tree using a subset of $m$ features rather than all $D$ features, typically $m\approx \sqrt D$</li>
-</ul>
-
+  Every node $x$ has $x.n$ keys and $x.n+1$ children (possibly undefined).
+  The key $x.k_i$ separates the range of keys stores in children subtrees, say $l_i$ then $l_1\le x.k_1\le l_2\le x.k_2\le \ldots x.k_n \le l_{n+1}$
+  All leaves have same depth
+  Each...
+    </div>
   </div>
-
-  <footer class="postNavigation">
   
-    <a class="postPrev" href="/notes/machine%20learning/Supervised-Learning.html">
-        &laquo; Supervised Learning
-    </a>
-  
-  
-  </footer>
+  <div class="post postContent">
+    <div  class="postDate"><time datetime="2019-10-14T09:29:00+00:00" itemprop="datePublished">Oct 14, 2019</time>
+    </div>
+    <div class="postTag">
+      
+    </div>
+    <br>
+    <div class="postTitle">
+    <a class='postLink' href="https://adityagupta1089.github.io/notes/data%20structures/decision-trees.html">Decision Trees</a>
+    </div>
+    <div class="postExt">
+   Entropy 2-class
+
+If $\cal I$ is the set of training examples, $p_+$ ratio of posititive examples in $\cal I$ and $p_-$ negative examples then entropy which measures impurity:
 
 
-</article>
+
+This represents expected number of bits to encode the class of a randomly drawn member of $\ca...
+    </div>
+  </div>
+  
+
+  
+
+</div>
 
       </div>
     </div>
@@ -276,7 +212,7 @@ _i)}\frac{|\cal I_v|}{|\cal I|}\text{Entropy}(\cal I_v)</script>
     <div class="footer-col-wrapper">
       <div class="footer-col footer-col-1">
         <ul class="contact-list footer-content">
-          <li>Powered By
+          <li>Forked & Modified from
             <a href="http://github.com/hemangsk/Gravity">Gravity</a>
           </li>
           <li>Made with <i class="fa fa-heart"></i> on

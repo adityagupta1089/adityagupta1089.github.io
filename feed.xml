@@ -5,9 +5,79 @@
     <description></description>
     <link>https://adityagupta1089.github.io/</link>
     <atom:link href="https://adityagupta1089.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 14 Oct 2019 09:31:51 +0000</pubDate>
-    <lastBuildDate>Mon, 14 Oct 2019 09:31:51 +0000</lastBuildDate>
+    <pubDate>Mon, 14 Oct 2019 10:25:57 +0000</pubDate>
+    <lastBuildDate>Mon, 14 Oct 2019 10:25:57 +0000</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
+    
+      <item>
+        <title>B-Trees</title>
+        <description>&lt;h1 id=&quot;definition&quot;&gt;Definition&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Every node $x$ has $x.n$ keys and $x.n+1$ children (possibly undefined).&lt;/li&gt;
+  &lt;li&gt;The key $x.k_i$ separates the range of keys stores in children subtrees, say $l_i$ then $l_1\le x.k_1\le l_2\le x.k_2\le \ldots x.k_n \le l_{n+1}$&lt;/li&gt;
+  &lt;li&gt;All leaves have same depth&lt;/li&gt;
+  &lt;li&gt;Each node except root has $t-1$ keys to $2t-1$ keys. Therefore $t$ to $2t$ children.&lt;/li&gt;
+  &lt;li&gt;Height of tree $h=O(\log_tn)$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;operations&quot;&gt;Operations&lt;/h1&gt;
+
+&lt;h2 id=&quot;search-othotlog_tn&quot;&gt;Search $O(th)=O(t\log_tn)$&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Find the subtree where given key exists using linear search&lt;/li&gt;
+  &lt;li&gt;recurse in that tree&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;create-o1&quot;&gt;Create $O(1)$&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Create a empty root node&lt;/li&gt;
+  &lt;li&gt;Insert keys&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;insert-othotlog_tn&quot;&gt;Insert $O(th)=O(t\log_tn)$&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Find the the leaf node by searching.&lt;/li&gt;
+  &lt;li&gt;If node is full split on median key to make two children nodes and insert the meadian key into parent node.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;For single pass, split whenever you come across a full node while searching so as to be assured to no more split any nodes while shifting the median key upwards.&lt;/p&gt;
+
+&lt;h2 id=&quot;splitting&quot;&gt;Splitting&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Make two nodes with keys less than and more than the median key respectively.&lt;/li&gt;
+  &lt;li&gt;Move the children between the keys to respective trees.&lt;/li&gt;
+  &lt;li&gt;Move the median key to parent node.&lt;/li&gt;
+  &lt;li&gt;Move the children around the median key to the left and right new nodes respectively.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;delete-othotlog_tn&quot;&gt;Delete $O(th)=O(t\log_tn)$&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;If key $k$ is in leaf node $x$ then delete $k$ from $x$.&lt;/li&gt;
+  &lt;li&gt;If key $k$ is in internal node $x$ then
+    &lt;ul&gt;
+      &lt;li&gt;If left child $y$ of $k$ has $\ge t$ keys then find predecessor $k’$ of $k$ in $y$. Delete $k’$ from $y$ and replace $k$ by $k’$ in $x$.&lt;/li&gt;
+      &lt;li&gt;Otherwise check for right child $z$ and do symmetrically.&lt;/li&gt;
+      &lt;li&gt;Otherwise merge $y$ and $z$ along with $k$ into $y$. Recursively delete $k$ from $y$.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Mon, 14 Oct 2019 09:33:00 +0000</pubDate>
+        <link>https://adityagupta1089.github.io/notes/data%20structures/b-trees.html</link>
+        <guid isPermaLink="true">https://adityagupta1089.github.io/notes/data%20structures/b-trees.html</guid>
+        
+        
+        <category>Notes</category>
+        
+        <category>Data Structures</category>
+        
+      </item>
     
       <item>
         <title>Decision Trees</title>
@@ -113,13 +183,13 @@ _i)}\frac{|\cal I_v|}{|\cal I|}\text{Entropy}(\cal I_v)&lt;/script&gt;
 &lt;/ul&gt;
 </description>
         <pubDate>Mon, 14 Oct 2019 09:29:00 +0000</pubDate>
-        <link>https://adityagupta1089.github.io/notes/machine%20learning/decision-trees.html</link>
-        <guid isPermaLink="true">https://adityagupta1089.github.io/notes/machine%20learning/decision-trees.html</guid>
+        <link>https://adityagupta1089.github.io/notes/data%20structures/decision-trees.html</link>
+        <guid isPermaLink="true">https://adityagupta1089.github.io/notes/data%20structures/decision-trees.html</guid>
         
         
         <category>Notes</category>
         
-        <category>Machine Learning</category>
+        <category>Data Structures</category>
         
       </item>
     
@@ -171,7 +241,7 @@ _i)}\frac{|\cal I_v|}{|\cal I|}\text{Entropy}(\cal I_v)&lt;/script&gt;
 &lt;script src=&quot;https://gist.github.com/adityagupta1089/9e9af730f16384f54f53a1827cf1215e.js&quot;&gt;&lt;/script&gt;
 
 </description>
-        <pubDate>Fri, 07 Jun 2019 13:38:00 +0000</pubDate>
+        <pubDate>Fri, 07 Jun 2019 08:08:00 +0000</pubDate>
         <link>https://adityagupta1089.github.io/notes/elasticsearch-notes.html</link>
         <guid isPermaLink="true">https://adityagupta1089.github.io/notes/elasticsearch-notes.html</guid>
         
@@ -187,7 +257,7 @@ _i)}\frac{|\cal I_v|}{|\cal I|}\text{Entropy}(\cal I_v)&lt;/script&gt;
 &lt;script src=&quot;https://gist.github.com/adityagupta1089/0b7b7d332d37a1b1861bb79b76ee2b48.js&quot;&gt;&lt;/script&gt;
 
 </description>
-        <pubDate>Fri, 07 Jun 2019 13:37:00 +0000</pubDate>
+        <pubDate>Fri, 07 Jun 2019 08:07:00 +0000</pubDate>
         <link>https://adityagupta1089.github.io/notes/haskell-notes.html</link>
         <guid isPermaLink="true">https://adityagupta1089.github.io/notes/haskell-notes.html</guid>
         
@@ -203,7 +273,7 @@ _i)}\frac{|\cal I_v|}{|\cal I|}\text{Entropy}(\cal I_v)&lt;/script&gt;
 &lt;script src=&quot;https://gist.github.com/adityagupta1089/3ce91dbff58b2e56af6fcf01cfe98191.js&quot;&gt;&lt;/script&gt;
 
 </description>
-        <pubDate>Fri, 07 Jun 2019 13:33:00 +0000</pubDate>
+        <pubDate>Fri, 07 Jun 2019 08:03:00 +0000</pubDate>
         <link>https://adityagupta1089.github.io/notes/git-commands.html</link>
         <guid isPermaLink="true">https://adityagupta1089.github.io/notes/git-commands.html</guid>
         
@@ -223,7 +293,7 @@ _i)}\frac{|\cal I_v|}{|\cal I|}\text{Entropy}(\cal I_v)&lt;/script&gt;
   &lt;li&gt;&lt;script type=&quot;math/tex&quot;&gt;E[M]=\underbrace{\left(\frac{2\cdot4}{36}\right)}_{(1,3),(2,4),(3,5),(4,6)}\times 2+\underbrace{\left(\frac{2\cdot1}{36}\right)}_{(1,6)}\times 5= 0.7\bar2&lt;/script&gt; Unfair.&lt;/li&gt;
 &lt;/ol&gt;
 </description>
-        <pubDate>Tue, 26 Sep 2017 12:55:00 +0000</pubDate>
+        <pubDate>Tue, 26 Sep 2017 07:25:00 +0000</pubDate>
         <link>https://adityagupta1089.github.io/csl471/tutorial-6.html</link>
         <guid isPermaLink="true">https://adityagupta1089.github.io/csl471/tutorial-6.html</guid>
         
@@ -247,7 +317,7 @@ which becomes &lt;script type=&quot;math/tex&quot;&gt;\displaystyle\frac{n!^2((1
   &lt;li&gt;TODO (Binary search on unsorted elements?)&lt;/li&gt;
 &lt;/ol&gt;
 </description>
-        <pubDate>Tue, 26 Sep 2017 12:50:00 +0000</pubDate>
+        <pubDate>Tue, 26 Sep 2017 07:20:00 +0000</pubDate>
         <link>https://adityagupta1089.github.io/csl471/tutorial-5.html</link>
         <guid isPermaLink="true">https://adityagupta1089.github.io/csl471/tutorial-5.html</guid>
         
@@ -287,7 +357,7 @@ Hence the probability with which we get the correct result is $1-1/{k^t}$ where 
   &lt;/li&gt;
 &lt;/ol&gt;
 </description>
-        <pubDate>Sun, 24 Sep 2017 13:59:00 +0000</pubDate>
+        <pubDate>Sun, 24 Sep 2017 08:29:00 +0000</pubDate>
         <link>https://adityagupta1089.github.io/csl471/tutorial-4.html</link>
         <guid isPermaLink="true">https://adityagupta1089.github.io/csl471/tutorial-4.html</guid>
         
@@ -313,108 +383,9 @@ Hence the probability with which we get the correct result is $1-1/{k^t}$ where 
   &lt;li&gt;Total messages reachable are $k!\frac nk=n(k-1)!&amp;lt;n!$&lt;/li&gt;
 &lt;/ol&gt;
 </description>
-        <pubDate>Sun, 24 Sep 2017 13:33:00 +0000</pubDate>
+        <pubDate>Sun, 24 Sep 2017 08:03:00 +0000</pubDate>
         <link>https://adityagupta1089.github.io/csl471/tutorial-3.html</link>
         <guid isPermaLink="true">https://adityagupta1089.github.io/csl471/tutorial-3.html</guid>
-        
-        
-        <category>CSL471</category>
-        
-      </item>
-    
-      <item>
-        <title>Tutorial 2</title>
-        <description>&lt;ol&gt;
-  &lt;li&gt;See proof of &lt;script type=&quot;math/tex&quot;&gt;\displaystyle\lim_{n\to\infty}(H_n-\ln n)=\gamma&lt;/script&gt;&lt;/li&gt;
-  &lt;li&gt;The probability of $a_k$ is given by:&lt;br /&gt;
-  &lt;script type=&quot;math/tex&quot;&gt;\displaystyle P(a_k=i)=\frac{\binom {i-1}{k-1}}{\binom nk}&lt;/script&gt;&lt;br /&gt;
-  And therefore&lt;br /&gt;
-  &lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
-\displaystyle \begin{align}E[a_k^2]&amp;=\sum_{i=k}^n\frac{\binom {i-1}{k-1}}{\binom nk}i^2=\frac 1{\binom nk}\sum_{i=k}^{n}ki\binom ik=\frac 1{\binom nk}\sum_{i=k}^{n}\left(k(k+1)\binom {i+1}{k+1}-k\binom ik\right)\\&amp;=\frac1{\binom nk}\left(k(k+1)\binom {n+2}{k+2}-k\binom {n+1}{k+1}\right)\\
-  &amp;=\frac{k(k+1)(n+k+nk)}{(k+1)(k+2)}
-  \end{align} %]]&gt;&lt;/script&gt;&lt;br /&gt;
-  And hence&lt;br /&gt;
-  &lt;script type=&quot;math/tex&quot;&gt;\sigma(a_k)=\sqrt{\frac{k(k+1)(n+k+nk)}{(k+1)(k+2)}-\frac {k^2(n+1)^2}{(k+1)^2}}=\frac 1{k+1}\sqrt{\frac{k(k-n)(k^2+(k+2)nk+k-1)}{k+2}}&lt;/script&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle&quot;&gt;Fisher-Yates Shuffle&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;$F$ is whether the coin is faulty, $H$ is heads. We are given:
-    &lt;ul&gt;
-      &lt;li&gt;Unbiased coin:
-$P(H=1|F=0)=P(H=0|F=0)=1/2$&lt;/li&gt;
-      &lt;li&gt;Biased coin:
-$P(H=1|F=1)=1,P(H=0|F=1)=0$&lt;/li&gt;
-      &lt;li&gt;Now&lt;br /&gt;
-$P(F=1|H=0)=\frac{P(H=0|F=1)P(F=1)}{P(H=0)}=\frac{0\cdot P(F=1)}{P(H=0)}=0$&lt;/li&gt;
-      &lt;li&gt;And:&lt;br /&gt;
-$P(F=1|H=1)=\frac{P(H=1|F=1)P(F=1)}{P(H=1|F=1)P(F=1)+P(H=1|F=0)P(F=0)}=\frac{P(F=1)}{P(F=1)+(1/2)P(F=0)}$&lt;br /&gt;
-Assuming $P(F=1)=P(F=0)=1/2$ we get $\frac{1/2}{1/2+1/4}=\frac 23$.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;$C$ student has cheated, $G$ student held guilty, we are given:
-    &lt;ul&gt;
-      &lt;li&gt;If a student cheats, the software might declare the student honest with a probability of 0.8&lt;br /&gt;
-$P(G=0|C=1)=0.8\implies P(G=1|C=1)=0.2$&lt;/li&gt;
-      &lt;li&gt;If a student has not cheated, the software might hold the student guilty with a probability of 0.0001.&lt;br /&gt;
-$P(G=1|C=0)=0.0001\implies P(G=1|C=0)=0.9999$&lt;/li&gt;
-      &lt;li&gt;10% of the students in the class actually cheated in the mid semester exams.&lt;br /&gt;
-$P(C=1)=0.1\implies P(C=0)=0.9$&lt;/li&gt;
-      &lt;li&gt;Now we have:&lt;br /&gt;
-&lt;script type=&quot;math/tex&quot;&gt;P(G=1)=P(G=1|C=0)P(C=0)+P(G=1|C=1)P(C=1)\\=0.0001\cdot 0.9+0.2\cdot 0.1\\=0.02009&lt;/script&gt;
-&lt;script type=&quot;math/tex&quot;&gt;P(C=1|G=1)=\frac{P(G=1|C=1)P(C=1)}{P(G=1)}=\frac{0.2\cdot 0.1}{0.02009}\approx 99.95\%&lt;/script&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Examples:
-    &lt;ul&gt;
-      &lt;li&gt;all are mutually dependent - $A=B=C$&lt;/li&gt;
-      &lt;li&gt;all are independent - independent die&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Independence_(probability_theory)#Pairwise_and_mutual_independence&quot;&gt;Pairwise and mutual independence&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Every subset $\displaystyle {x_1,x_2…x_k}$ has an attached probability:&lt;br /&gt;
-  &lt;script type=&quot;math/tex&quot;&gt;\displaystyle \left(\frac12\right)^{k}\left(1-\frac 12\right)^{n-k}=\frac 1{2^n}&lt;/script&gt;&lt;br /&gt;
-    &lt;ul&gt;
-      &lt;li&gt;(i) $S$ is partitioned by 3 sets - $X$, $Y\setminus X$, $S\setminus Y$ hence $(3/4)^n$&lt;/li&gt;
-      &lt;li&gt;(ii) symmetric - $(3/4)^n$&lt;/li&gt;
-      &lt;li&gt;(iii) $S$ is partitioned by 2 sets - $X=Y$ and $S\setminus X=S\setminus Y$ hence $(1/2)^n$&lt;/li&gt;
-      &lt;li&gt;(iv) $S$ is partitioned by 3 sets $X\setminus Y$, $Y\setminus X$ and $X\cap Y$ hence $(3/4)^n$&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Case a:&lt;/strong&gt; We perform an enumeration:
-    &lt;ul&gt;
-      &lt;li&gt;3 X’s: $8$ positions&lt;/li&gt;
-      &lt;li&gt;4 X’s: $8\times6=48$ positions (In each of the above $\binom 61$ can become a X)&lt;/li&gt;
-      &lt;li&gt;5 X’s: First we count where only one line is formed. For horizontal and vertical, this can be done by adding 2 X to 3 X’s such that they do not create a line, i.e. in $\binom 62 -3=12$ and for diagonal $\binom 62-7=8$, so total $6\times 12+2\times 8=88$. Now when two lines can be formed, it will be $3\times3$ for horizontal and vertical, $1$ for both diagonals, hence total $88+10=98$.&lt;/li&gt;
-      &lt;li&gt;6 X’s: Leave any three blocks empty $\binom 93=84$ minus two where these three lie on the diagonal, hence $82$&lt;/li&gt;
-      &lt;li&gt;7 X’s: Leave any two blocks empty $\binom 92=36$.&lt;/li&gt;
-      &lt;li&gt;8 X’s: Leave every block with circle each time $9$.&lt;/li&gt;
-      &lt;li&gt;9 X’s: All blocks: $1$.&lt;/li&gt;
-      &lt;li&gt;&lt;strong&gt;Total&lt;/strong&gt;: $8+48+98+82+36+9+1=282$ hence $282/512=141/256$, Note that in the below enumeration, both can win $21/64$ which is also counted here, giving: $99/256+21/128=141/256$
-  &lt;script src=&quot;https://gist.github.com/adityagupta1089/4cb318cb8fc38ff7d6d323813cf2b727.js&quot;&gt;&lt;/script&gt;&lt;/li&gt;
-      &lt;li&gt;We get the following (where $X$ is 1 if crosses win and $Y$ is 1 if circles win):
-  &lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
-P_{X,Y}(x,y)=\begin{cases}
-  \frac{1}{16}&amp;x=0,y=0\\
-  \frac{99}{256}&amp;x=0,y=1\\
-  \frac{99}{256}&amp;x=1,y=0\\
-  \frac{21}{128}&amp;x=1,y=1
-  \end{cases} %]]&gt;&lt;/script&gt;\&lt;/li&gt;
-    &lt;/ul&gt;
-
-    &lt;p&gt;&lt;strong&gt;Case b:&lt;/strong&gt; We perform an enumeration:&lt;/p&gt;
-    &lt;ul&gt;
-      &lt;li&gt;TODO (Manual calculation is quite tedious)&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac {70000}{100000}\frac {999}{1000}+\frac {30000}{100000}\frac{1}{1000}=\frac{1749}{2500}\approx 69.96\%&lt;/script&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Let her win $k$ rounds and loose $n-k$ rounds then:&lt;br /&gt;
-  &lt;script type=&quot;math/tex&quot;&gt;P=k\cdot 1+(n-k)\cdot (-1)=2k-n&gt;0\implies k&gt;n/2&lt;/script&gt;&lt;br /&gt;
-  Now the expected number of steps to get positive profit: (TODO, Possibly not taught yet)&lt;/li&gt;
-&lt;/ol&gt;
-</description>
-        <pubDate>Sat, 23 Sep 2017 22:43:00 +0000</pubDate>
-        <link>https://adityagupta1089.github.io/csl471/tutorial-2.html</link>
-        <guid isPermaLink="true">https://adityagupta1089.github.io/csl471/tutorial-2.html</guid>
         
         
         <category>CSL471</category>
