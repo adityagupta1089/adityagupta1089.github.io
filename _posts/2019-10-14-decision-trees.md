@@ -5,10 +5,11 @@ mathjax: true
 categories:
 - Notes
 - Machine Learning
+date: 2019-10-14 14:59 +0530
 ---
 # Entropy 2-class
 
-If $\cal I$ is the set of training examples, $p_+$ ratio of postitive examples in $\cal I$ and $p_-$ negative examples then entropy which measures impurity:
+If $\cal I$ is the set of training examples, $p_+$ ratio of posititive examples in $\cal I$ and $p_-$ negative examples then entropy which measures impurity:
 
 $$\text{Entropy}(I) = -p_+\log_2p_+ - p_-\log _2p_-$$
 
@@ -80,5 +81,13 @@ Strategies:
 
 # Random Forests
 
+##  Instane Bagging / Bootstrap aggregation
 
+- Generate $K$ different bootstrapped trainig datasets (sampling with replacement)
+- Learn a decision tree on each 
+- Final prediction is the majority/average vote of all.
 
+## Freature bagging
+
+- Improved than instance bagging
+- Build a decision tree using a subset of $m$ features rather than all $D$ features, typically $m\approx \sqrt D$
