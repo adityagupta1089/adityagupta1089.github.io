@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Haskell Notes"
-date: Friday, 7 June 2019 1:37 PM
+date: 2019-06-07 13:37 +0530
 categories: ["Notes"]
 ---
 These are the notes on Haskell which I wrote when I was studying it.

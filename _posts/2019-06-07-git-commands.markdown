@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Git Commands"
-date: Friday, 7 June 2019 1:33PM
+date: 2019-06-07 13:33 +0530
 mathjax: true
 categories: ["Notes"]
 ---

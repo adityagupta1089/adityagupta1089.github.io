@@ -2,9 +2,7 @@
 layout: post
 title: Decision Trees
 mathjax: true
-categories:
-- Notes
-- Machine Learning
+categories: ["Notes", "Data Structures"]
 date: 2019-10-14 14:59 +0530
 ---
 # Entropy 2-class
@@ -84,7 +82,7 @@ Strategies:
 ##  Instane Bagging / Bootstrap aggregation
 
 - Generate $K$ different bootstrapped trainig datasets (sampling with replacement)
-- Learn a decision tree on each 
+- Learn a decision tree on each
 - Final prediction is the majority/average vote of all.
 
 ## Freature bagging

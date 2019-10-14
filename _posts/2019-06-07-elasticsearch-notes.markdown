@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Elastic Search Notes"
-date: Friday, 7 June 2019 1:38 PM
+date: 2019-06-07 13:38 +0530
 categories: ["Notes"]
 ---
 These are the notes on Elastic Search which I wrote while studying it.

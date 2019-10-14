@@ -15,6 +15,7 @@ category_title_prefix: ''
 pagination:
   enabled: true
   per_page: 3
+  sort_reverse: true
   permalink: '/page/:num/'
   title: 'Page :num'
   trail:
