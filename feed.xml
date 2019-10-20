@@ -5,9 +5,40 @@
     <description></description>
     <link>https://adityagupta1089.github.io/</link>
     <atom:link href="https://adityagupta1089.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 14 Oct 2019 10:25:57 +0000</pubDate>
-    <lastBuildDate>Mon, 14 Oct 2019 10:25:57 +0000</lastBuildDate>
+    <pubDate>Sun, 20 Oct 2019 13:08:30 +0000</pubDate>
+    <lastBuildDate>Sun, 20 Oct 2019 13:08:30 +0000</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
+    
+      <item>
+        <title>Red Black Trees</title>
+        <description>&lt;h1 id=&quot;properties&quot;&gt;Properties&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Red/Black node&lt;/li&gt;
+  &lt;li&gt;Root and leaf black&lt;/li&gt;
+  &lt;li&gt;Children of red nodes are both black&lt;/li&gt;
+  &lt;li&gt;All paths to leaves contains same nubmer of black nodes.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Same as 2-3-4 tree (t=2) B-Tree.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Node with single value is same as a red node&lt;/li&gt;
+  &lt;li&gt;Node with two values is same as a red node with a black child.&lt;/li&gt;
+  &lt;li&gt;Node with three values is same as a red node with 2 black children.&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>Sun, 20 Oct 2019 12:59:00 +0000</pubDate>
+        <link>https://adityagupta1089.github.io/data%20structures/notes/red-black-trees.html</link>
+        <guid isPermaLink="true">https://adityagupta1089.github.io/data%20structures/notes/red-black-trees.html</guid>
+        
+        
+        <category>Data Structures</category>
+        
+        <category>Notes</category>
+        
+      </item>
     
       <item>
         <title>B-Trees</title>
@@ -360,32 +391,6 @@ Hence the probability with which we get the correct result is $1-1/{k^t}$ where 
         <pubDate>Sun, 24 Sep 2017 08:29:00 +0000</pubDate>
         <link>https://adityagupta1089.github.io/csl471/tutorial-4.html</link>
         <guid isPermaLink="true">https://adityagupta1089.github.io/csl471/tutorial-4.html</guid>
-        
-        
-        <category>CSL471</category>
-        
-      </item>
-    
-      <item>
-        <title>Tutorial 3</title>
-        <description>&lt;ol&gt;
-  &lt;li&gt;The prover generates an isomorphic graph to a given graph $H$ wherein he knows the Hamiltonian cycles of $G$ and hence for $H$ too. Multiple rounds of questioning either the isomorphism from $G$ to $H$ or hamiltonian cycle in $H$ ensures that the probability of fooling decreases exponentially.&lt;/li&gt;
-  &lt;li&gt;The prover provides the coloring for nodes on a particular edge asked by the verifier. For a valid coloring any such edge must be also valid hence ensuring that the prover cannot fool the verifier.&lt;/li&gt;
-  &lt;li&gt;
-    &lt;script type=&quot;math/tex; mode=display&quot;&gt;\sum_{i=1}^{n}\left(\frac12\right)^{2i}=\frac 14\frac{1-(1/2)^{2n}}{1-(1/2)^2}\sim \frac 13&lt;/script&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;script type=&quot;math/tex; mode=display&quot;&gt;\sum_{i=1}^{n}\left(\frac12\right)^{3i}=\frac18\frac{1-(1/2)^{3n}}{1-(1/2)^3}\sim\frac17&lt;/script&gt;
-  &lt;/li&gt;
-  &lt;li&gt;That would be same as two valid english sentences with each letter having fixed distance between corresponding letters, but since language is quite complex that would be very small.&lt;/li&gt;
-  &lt;li&gt;That would mean that we would have a substitution that transforms one valid english sentence to another, still very small.&lt;/li&gt;
-  &lt;li&gt;No, not perfectly secure because messages that are obtained by decoding cipher text using different key characters at $i$ at $n/2+i$ can not be obtained since the key has such a property, hence it is not truly random because some plain texts have greater probability.&lt;/li&gt;
-  &lt;li&gt;Total messages reachable are $k!\frac nk=n(k-1)!&amp;lt;n!$&lt;/li&gt;
-&lt;/ol&gt;
-</description>
-        <pubDate>Sun, 24 Sep 2017 08:03:00 +0000</pubDate>
-        <link>https://adityagupta1089.github.io/csl471/tutorial-3.html</link>
-        <guid isPermaLink="true">https://adityagupta1089.github.io/csl471/tutorial-3.html</guid>
         
         
         <category>CSL471</category>
