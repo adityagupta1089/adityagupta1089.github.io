@@ -5,9 +5,108 @@
     <description></description>
     <link>https://adityagupta1089.github.io/</link>
     <atom:link href="https://adityagupta1089.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 20 Oct 2019 13:08:30 +0000</pubDate>
-    <lastBuildDate>Sun, 20 Oct 2019 13:08:30 +0000</lastBuildDate>
+    <pubDate>Mon, 21 Oct 2019 11:44:59 +0000</pubDate>
+    <lastBuildDate>Mon, 21 Oct 2019 11:44:59 +0000</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
+    
+      <item>
+        <title>Interval Trees</title>
+        <description>&lt;h1 id=&quot;motivation&quot;&gt;Motivation&lt;/h1&gt;
+
+&lt;p&gt;Given a set of intervals $I$ on the real line and a query point $q_x$, find the intervals that contain $q_x$.&lt;/p&gt;
+
+&lt;p&gt;Let $I:={[x_1:x_1’],[x_2:x_2’],\ldots,[x_n:x_n’]}$. Let $x_{\rm mid}$ be the median of the $2n$ interval endpoints such that atmost half of them lie on the left and half of them lie on the right.&lt;/p&gt;
+
+&lt;h1 id=&quot;definition&quot;&gt;Definition&lt;/h1&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://adityagupta1089.github.io/images/intervaltree1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;If $I=\phi$ then interval tree is a leaf.&lt;/li&gt;
+  &lt;li&gt;Otherwise let $x_{\rm mid}$ be the median of the endpoints of the interval. Let
+    &lt;ul&gt;
+      &lt;li&gt;$I_{\rm left}:={[x_j:x_j’]\in I\mid x_j’&amp;lt;x_{\rm mid}}$&lt;/li&gt;
+      &lt;li&gt;$I_{\rm mid}:={[x_j:x_j’]\in I\mid x_j\le x_{\rm mid}\le x_j’}$.&lt;/li&gt;
+      &lt;li&gt;$I_{\rm right}:={[x_j:x_j’]\in I\mid x_j&amp;gt;x_{\rm mid}}$&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://adityagupta1089.github.io/images/intervaltree2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The Interval tree consists of a root node $v$ storing $x_{\rm mid}$.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;$I_{\rm mid}$ is stored twice:&lt;/p&gt;
+
+    &lt;ol&gt;
+      &lt;li&gt;
+        &lt;p&gt;${\cal L}_{\rm left}$ that is sorted on the left endpoints of $I_{\rm mid}$&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;${\cal L}_{\rm right}$ that is sorted on the right endpoints of  $I_{\rm mid}$&lt;/p&gt;
+      &lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Left subtree of $v$ is an interval tree for the set $I_{\rm left}$.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Right subtree of $v$ is an interval tree for the set $I_{\rm right}$.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;creation-onlog-n&quot;&gt;Creation $O(n\log n)$&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-pseudocode&quot;&gt;create(I)
+  if I = null
+    return empty leaf
+  else
+    create a node v
+    computer x_mid (linear time, constant if presorted)
+    store x_mid with v
+    compute I_mid, L_left, L_right
+    left_child(v) &amp;lt;- create(I_left)
+    right_child(v) &amp;lt;- create(I_right)
+    return v
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&quot;querying-olog-nk&quot;&gt;Querying $O(\log n+k)$&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;If $q_x &amp;lt; x_{\rm mid}(v)$ walk along $\cal L_{\rm left}$ reporting all intervals that contain $q_x$. Stop as soon as an interval doesn’t contain $q_x$. Query left subtree of $v$.&lt;/li&gt;
+  &lt;li&gt;Symmetrically do for $q_x&amp;gt;x_{\rm mid(v)}$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;$k$ = Number of reported intervals.&lt;/p&gt;
+
+&lt;h1 id=&quot;2-d-range-tree&quot;&gt;2-D Range Tree&lt;/h1&gt;
+
+&lt;p&gt;The data structure to store a a horizontal line segments is $\rm T$. If we want to create a 2-D range tree then instead of $\cal L_{\rm left}(v)$ and $\cal L_{\rm right}(v)$ we will store:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;A range tree $T_{\rm left}(v)$ on left endpoint segments in $I_{\rm mid}(v)$.&lt;/li&gt;
+  &lt;li&gt;A range tree $T_{\rm right}(v)$ on right endpoint segments in $I_{\rm mid}(v)$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;At time of querying instead of walking along $\cal L_{\rm left}(v)$ and $\cal L_{\rm right}(v)$ we will perform a query in the range trees $\rm T_{left}(v)$ and $\rm T_{right}(v)$.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Creation: $O(n\log n)$&lt;/li&gt;
+  &lt;li&gt;Querying: $O(\log^2n+k)$&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>Sun, 20 Oct 2019 13:07:00 +0000</pubDate>
+        <link>https://adityagupta1089.github.io/notes/data%20structures/interval-trees.html</link>
+        <guid isPermaLink="true">https://adityagupta1089.github.io/notes/data%20structures/interval-trees.html</guid>
+        
+        
+        <category>Notes</category>
+        
+        <category>Data Structures</category>
+        
+      </item>
     
       <item>
         <title>Red Black Trees</title>
@@ -44,6 +143,8 @@
         <title>B-Trees</title>
         <description>&lt;h1 id=&quot;definition&quot;&gt;Definition&lt;/h1&gt;
 
+&lt;p&gt;&lt;img src=&quot;https://adityagupta1089.github.io/images/btree1.png&quot; alt=&quot;B-Tree of height 3 containing minimum number of keys&quot; /&gt;&lt;/p&gt;
+
 &lt;ul&gt;
   &lt;li&gt;Every node $x$ has $x.n$ keys and $x.n+1$ children (possibly undefined).&lt;/li&gt;
   &lt;li&gt;The key $x.k_i$ separates the range of keys stores in children subtrees, say $l_i$ then $l_1\le x.k_1\le l_2\le x.k_2\le \ldots x.k_n \le l_{n+1}$&lt;/li&gt;
@@ -78,6 +179,8 @@
 &lt;p&gt;For single pass, split whenever you come across a full node while searching so as to be assured to no more split any nodes while shifting the median key upwards.&lt;/p&gt;
 
 &lt;h2 id=&quot;splitting&quot;&gt;Splitting&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://adityagupta1089.github.io/images/btree2.png&quot; alt=&quot;Splitting a node with $t=4$&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Make two nodes with keys less than and more than the median key respectively.&lt;/li&gt;
@@ -351,46 +454,6 @@ which becomes &lt;script type=&quot;math/tex&quot;&gt;\displaystyle\frac{n!^2((1
         <pubDate>Tue, 26 Sep 2017 07:20:00 +0000</pubDate>
         <link>https://adityagupta1089.github.io/csl471/tutorial-5.html</link>
         <guid isPermaLink="true">https://adityagupta1089.github.io/csl471/tutorial-5.html</guid>
-        
-        
-        <category>CSL471</category>
-        
-      </item>
-    
-      <item>
-        <title>Tutorial 4</title>
-        <description>&lt;ol&gt;
-  &lt;li&gt;Given a binary string, the total strings that have maximum length of zeroes as $k$ can be found out by defining $a(n;k)$ as the valid strings that end at $1$ and $b(n;k)$ as the valid strings that end at $0$. Then we have:&lt;br /&gt;
-    &lt;ul&gt;
-      &lt;li&gt;We can $1$ to end of any valid string:&lt;br /&gt;
-&lt;script type=&quot;math/tex&quot;&gt;a(n;k)=a(n-1;k)+b(n-1;k)&lt;/script&gt;&lt;/li&gt;
-      &lt;li&gt;We can add upto $k$ consecutive zeroes after a $1$:&lt;br /&gt;
-&lt;script type=&quot;math/tex&quot;&gt;b(n;k)=a(n-1;k)+a(n-2;k)+...a(n-k;k)&lt;/script&gt;&lt;br /&gt;
-Which can be written as:
-&lt;script type=&quot;math/tex&quot;&gt;a(n-1;k)+a(n-2;k)+..a(n-k;k)=b(n;k)=a(n+1;k)-a(n;k)\\\displaystyle
-\implies a(n+1;k)=\sum_{i=n-k}^na(i;k)&lt;/script&gt;
-Solve using generating functions, Define $T(n;k)=a(n;k)+b(n;k)$ and then the expected value is $\frac 1{2^n}\sum T(n;k)\cdot k$ (&lt;strong&gt;Note&lt;/strong&gt;: Calculation remaining.)&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Suppose $ai\equiv aj\pmod n\implies a(i-j)\equiv 0\pmod n\implies i-j\equiv 0\pmod n$ (since $(a,n)=1$) hence $i=j$&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle&quot;&gt;Fisher-Yates Shuffle&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;We check $AB=C$ by finding $ABv$ and $Cv$ which is computationally faster. Suppose $AB= C$ then $\forall v\in{\mathbb Z}_k^n$, $ABv=Cv$. However, if $AB\ne C\implies (AB-C)\ne {\bf 0}$ then we may find some vectors $v\in {\mathbb Z}_k^n$ such that $(AB-C)v={\bf 0}$. But for every $u$ such that $(AB-C)u\ne {\bf 0}$ (whose existence is easy to prove by inspecting the entries of $AB-C$) we have $(AB-C)(u+v)\ne {\bf 0}$, $(AB-C)(u+2v)\ne {\bf 0}$, till $(AB-C)(u+(k-1)v)\ne {\bf 0}$ hence&lt;br /&gt;
-&lt;script type=&quot;math/tex&quot;&gt;\displaystyle |\{u\in {\mathbb Z}_k^n|(AB-C)u= {\bf 0}\}|\le\frac 1{k}|{\mathbb Z_k^n}|=k^{n-1}&lt;/script&gt;&lt;br /&gt;
-Hence the probability with which we get the correct result is $1-1/{k^t}$ where we perform $t$ iterations. In the case $k\to\infty$, that becomes close to $1$.&lt;/li&gt;
-  &lt;li&gt;
-    &lt;script type=&quot;math/tex; mode=display&quot;&gt;\sum_{i=1}^{52}\left(\frac 1{52}\cdot 1 +\frac {51}{52}\cdot 0\right)=1&lt;/script&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;script type=&quot;math/tex; mode=display&quot;&gt;\sum_{i=1}^{52}\left(\frac 1{52-i+1}\cdot 1 +\frac {51}{52}\cdot 0\right)=\sum_{i=1}^{52}\frac 1i \approx 4.53&lt;/script&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac 1{n!}&lt;/script&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-</description>
-        <pubDate>Sun, 24 Sep 2017 08:29:00 +0000</pubDate>
-        <link>https://adityagupta1089.github.io/csl471/tutorial-4.html</link>
-        <guid isPermaLink="true">https://adityagupta1089.github.io/csl471/tutorial-4.html</guid>
         
         
         <category>CSL471</category>
