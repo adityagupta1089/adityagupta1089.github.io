@@ -6,13 +6,13 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Aditya Gupta - PAGE 2</title>
-  <meta name="description" content="">
+  <title>Aditya Gupta - RANGE TREES</title>
+  <meta name="description" content="Motivation">
   <link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic|Source+Sans+Pro:400,700,200,300|Josefin+Sans:400,600,700,300' rel='stylesheet' type='text/css'>
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
 
   <link rel="stylesheet" href="/css/style.css">
-  <link rel="canonical" href="https://adityagupta1089.github.io/category/notes/page/2/">
+  <link rel="canonical" href="https://adityagupta1089.github.io/notes/data%20structures/range-trees.html">
   <link rel="alternate" type="application/rss+xml" title="Aditya Gupta" href="https://adityagupta1089.github.io/feed.xml">
 </head>
 
@@ -162,108 +162,105 @@
 
     <div class="page-content">
       <div class="wrapper bottomround">
-        <div class="home">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline"><a class="post-title-link"  href="/notes/data%20structures/range-trees.html">Range Trees</a></h1>
+  <center>  <p class="post-meta"><time datetime="2019-10-20T15:54:00+00:00" itemprop="datePublished">Oct 20, 2019</time></p>
+    
+   </center>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <h1 id="motivation">Motivation</h1>
+
+<p>Given a set of $n$ points $P$ on a real line and a query interval $[x:x’]$ find all the points inside the interval.</p>
+
+<p>Construct a binary search tree from $P$ and perform the following query:</p>
+
+<p><img src="https://adityagupta1089.github.io/images/rangetree1.png" alt="" /></p>
+
+<p><strong>Figure: Example of searching in range tree</strong></p>
+
+<ul>
+  <li>Search for $x$ and $x’$ until we get to $v_{\rm split}$ where the search path splits.</li>
+  <li>From the left child of $v_{\rm split}$ we continue search with $x$ and at every node $v$ we where search path goes left we all points in right subtree of $v$.</li>
+  <li>Symmetrically we go right from $v_{\rm split}$ searching for $x’$ and taking left subtrees of $v$ respectively.</li>
+</ul>
+
+<h1 id="definition">Definition</h1>
+
+<p><strong>Canonical Subset of node</strong> $v$ (i.e. $P(v)$): subset of points stored in the leaves of the subtree at $v$.</p>
+
+<h1 id="2-d-range-trees">2-D Range Trees</h1>
+
+<ul>
+  <li>The main tree is a balanced binary search tree built $T$ built on the x-coordinates of $P$.</li>
+  <li>For any internal node / leaf node $v$ in $T$, the canonical subset $P(v)$ is stored in a balanced binary search tree $T_1(v)$ on the y-coordinates of the points. The node $v$ contains a pointer to the root of $T_1(v)$.</li>
+</ul>
+
+<h2 id="creation-onlog-n">Creation $O(n\log n)$</h2>
+
+<p><strong>Note</strong> Use presorted $P$</p>
+
+<ul>
+  <li>Create $T_1(v)$ binary search tree.</li>
+  <li>If $P$ has only one point then create leaf else split $P$ into two sets $P_{\rm left}$ and $P_{\rm right}$ using $x_{\rm mid}$ median point. Recursively create $v_{\rm left}$ and $v_{\rm right}$ from $P_{\rm left}$ and $P_{\rm right}$ respectively. Create a node with $x_{\rm mid}$ and $v_{\rm left}$ and $v_{\rm right}$ left and right children of this node. Make $T_1(v)$ the associated structure of $v$.</li>
+</ul>
+
+<h2 id="querying-olog-2n-k">Querying $O(\log ^2n +k)$</h2>
+
+<ul>
+  <li>Find $v_{\rm split}$</li>
+  <li>If $v_{\rm split}$ is a leaf check point inside it and report if necessary.</li>
+  <li>Else
+    <ul>
+      <li>Follow path to $x$ and perform 1-D range query on the subtrees right of the path. Also check if point stored at the final leaf node $v$ must be reported.</li>
+      <li>Similary do for $x’$ and perform 1-D range query on the subtrees left of the path from $v_{\rm split}$. Again check at the end for the point stored at $v$.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="fractional-cascading">Fractional Cascading</h2>
+
+<p>If two sets of objects $S_1$ and $S_2$ are stored int sorted arrays $A_1$ and $A_2$. To find keys in $[y:y’]$</p>
+
+<ul>
+  <li>We can binary search for ceil of  $y$ in $A_1$ and then walk along the array until the floor of $y’$. Similary for $S_2$. Total time will be $O(k)$ plus two binary searches ($k$ reported objects).</li>
+  <li>If $S_2\subseteq S_1$ we can maintain pointers from $A_1$ to $A_2$, i.e. we store the pointer to ceil key for every value in $A_1$. This will avoid the second binary search.</li>
+</ul>
+
+<p><img src="https://adityagupta1089.github.io/images/rangetree2.png" alt="" /></p>
+
+<p><strong>Figure: Layered Range Tree showing only x-coordinates. Full points are given below</strong></p>
+
+<p>Similarly $P(lc(v))\subseteq P(v)$ and $P(rc(v))\subseteq P(v)$. Instead of associated binary trees we will store an array sorted on the y-coordinates. Each value in the array will additionaly store two pointers to $A(lc(v))$ and $A(rc(v))$. This becomes the <strong>layered range tree</strong>. This makes the query time $O(\log n + k)$.</p>
+
+<p><img src="https://adityagupta1089.github.io/images/rangetree3.png" alt="" /></p>
+
+<p><strong>Figure: The associated arrays with the nodes.</strong></p>
+
+<p>While querying for $[x:x’]\times[y:y’]$:</p>
+
+<ul>
+  <li>We search for $x$, $x’$ and $v_{\rm split}$. At $A(v_{\rm split})$ we we find the ceil entry of $y$.</li>
+  <li>While searching in $x$ and $x’$ in main tree we keep track of ceil entry of $y$ by following pointers in constant time.</li>
+</ul>
 
 
-
-  
-  <div class="post postContent">
-    <div  class="postDate"><time datetime="2019-10-14T09:33:00+00:00" itemprop="datePublished">Oct 14, 2019</time>
-    </div>
-    <div class="postTag">
-      
-    </div>
-    <br>
-    <div class="postTitle">
-    <a class='postLink' href="https://adityagupta1089.github.io/notes/data%20structures/b-trees.html">B-Trees</a>
-    </div>
-    <div class="postExt">
-   Definition
-
-
-
-Figure: B-Tree of height 3 containing minimum number of keys
-
-
-  Every node $x$ has $x.n$ keys and $x.n+1$ children (possibly undefined).
-  The key $x.k_i$ separates the range of keys stores in children subtrees, say $l_i$ then $l_1\le x.k_1\le l_2\le x.k_2\...
-    </div>
   </div>
+
+  <footer class="postNavigation">
   
-  <div class="post postContent">
-    <div  class="postDate"><time datetime="2019-10-14T09:29:00+00:00" itemprop="datePublished">Oct 14, 2019</time>
-    </div>
-    <div class="postTag">
-      
-    </div>
-    <br>
-    <div class="postTitle">
-    <a class='postLink' href="https://adityagupta1089.github.io/notes/data%20structures/decision-trees.html">Decision Trees</a>
-    </div>
-    <div class="postExt">
-   Entropy 2-class
-
-If $\cal I$ is the set of training examples, $p_+$ ratio of posititive examples in $\cal I$ and $p_-$ negative examples then entropy which measures impurity:
-
-
-
-This represents expected number of bits to encode the class of a randomly drawn member of $\ca...
-    </div>
-  </div>
+    <a class="postPrev" href="/notes/data%20structures/interval-trees.html">
+        &laquo; Interval Trees
+    </a>
   
-  <div class="post postContent">
-    <div  class="postDate"><time datetime="2019-10-14T00:00:00+00:00" itemprop="datePublished">Oct 14, 2019</time>
-    </div>
-    <div class="postTag">
-      
-    </div>
-    <br>
-    <div class="postTitle">
-    <a class='postLink' href="https://adityagupta1089.github.io/notes/machine%20learning/Supervised-Learning.html">Supervised Learning</a>
-    </div>
-    <div class="postExt">
-   Given a set $(x,y)$ need to estimate $f(x)=y$ .
-
-Terms:
-
-
-  Feature $x_i$ - property of object to be classified
-  Instance $x=\begin{pmatrix}x_1&amp;x_2&amp;x_3&amp;\ldots\end{pmatrix}$ - features of an object
-  Instance Space $\cal I$ - space of all possible instances
-  ...
-    </div>
-  </div>
   
+  </footer>
 
-  
-    <nav class="pagination">
-      
-        <a class="paginationLink" href="/category/notes/">&laquo; Prev</a>
-      
 
-    
-      
-        
-          <a class="paginationLink" href="/category/notes/index.html">1</a>
-        
-      
-        
-          <em class="paginationLink paginationLinkCurrent">2</em>
-        
-      
-        
-          <a class="paginationLink" href="/category/notes/page/3/index.html">3</a>
-        
-      
-    
-
-    
-      <a class="paginationLink" href="/category/notes/page/3/">Next &raquo;</a>
-    
-    </nav>
-  
-
-</div>
+</article>
 
       </div>
     </div>

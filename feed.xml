@@ -5,9 +5,98 @@
     <description></description>
     <link>https://adityagupta1089.github.io/</link>
     <atom:link href="https://adityagupta1089.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 21 Oct 2019 11:44:59 +0000</pubDate>
-    <lastBuildDate>Mon, 21 Oct 2019 11:44:59 +0000</lastBuildDate>
+    <pubDate>Mon, 21 Oct 2019 16:36:15 +0000</pubDate>
+    <lastBuildDate>Mon, 21 Oct 2019 16:36:15 +0000</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
+    
+      <item>
+        <title>Range Trees</title>
+        <description>&lt;h1 id=&quot;motivation&quot;&gt;Motivation&lt;/h1&gt;
+
+&lt;p&gt;Given a set of $n$ points $P$ on a real line and a query interval $[x:x’]$ find all the points inside the interval.&lt;/p&gt;
+
+&lt;p&gt;Construct a binary search tree from $P$ and perform the following query:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://adityagupta1089.github.io/images/rangetree1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Figure: Example of searching in range tree&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Search for $x$ and $x’$ until we get to $v_{\rm split}$ where the search path splits.&lt;/li&gt;
+  &lt;li&gt;From the left child of $v_{\rm split}$ we continue search with $x$ and at every node $v$ we where search path goes left we all points in right subtree of $v$.&lt;/li&gt;
+  &lt;li&gt;Symmetrically we go right from $v_{\rm split}$ searching for $x’$ and taking left subtrees of $v$ respectively.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;definition&quot;&gt;Definition&lt;/h1&gt;
+
+&lt;p&gt;&lt;strong&gt;Canonical Subset of node&lt;/strong&gt; $v$ (i.e. $P(v)$): subset of points stored in the leaves of the subtree at $v$.&lt;/p&gt;
+
+&lt;h1 id=&quot;2-d-range-trees&quot;&gt;2-D Range Trees&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The main tree is a balanced binary search tree built $T$ built on the x-coordinates of $P$.&lt;/li&gt;
+  &lt;li&gt;For any internal node / leaf node $v$ in $T$, the canonical subset $P(v)$ is stored in a balanced binary search tree $T_1(v)$ on the y-coordinates of the points. The node $v$ contains a pointer to the root of $T_1(v)$.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;creation-onlog-n&quot;&gt;Creation $O(n\log n)$&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt; Use presorted $P$&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Create $T_1(v)$ binary search tree.&lt;/li&gt;
+  &lt;li&gt;If $P$ has only one point then create leaf else split $P$ into two sets $P_{\rm left}$ and $P_{\rm right}$ using $x_{\rm mid}$ median point. Recursively create $v_{\rm left}$ and $v_{\rm right}$ from $P_{\rm left}$ and $P_{\rm right}$ respectively. Create a node with $x_{\rm mid}$ and $v_{\rm left}$ and $v_{\rm right}$ left and right children of this node. Make $T_1(v)$ the associated structure of $v$.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;querying-olog-2n-k&quot;&gt;Querying $O(\log ^2n +k)$&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Find $v_{\rm split}$&lt;/li&gt;
+  &lt;li&gt;If $v_{\rm split}$ is a leaf check point inside it and report if necessary.&lt;/li&gt;
+  &lt;li&gt;Else
+    &lt;ul&gt;
+      &lt;li&gt;Follow path to $x$ and perform 1-D range query on the subtrees right of the path. Also check if point stored at the final leaf node $v$ must be reported.&lt;/li&gt;
+      &lt;li&gt;Similary do for $x’$ and perform 1-D range query on the subtrees left of the path from $v_{\rm split}$. Again check at the end for the point stored at $v$.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;fractional-cascading&quot;&gt;Fractional Cascading&lt;/h2&gt;
+
+&lt;p&gt;If two sets of objects $S_1$ and $S_2$ are stored int sorted arrays $A_1$ and $A_2$. To find keys in $[y:y’]$&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;We can binary search for ceil of  $y$ in $A_1$ and then walk along the array until the floor of $y’$. Similary for $S_2$. Total time will be $O(k)$ plus two binary searches ($k$ reported objects).&lt;/li&gt;
+  &lt;li&gt;If $S_2\subseteq S_1$ we can maintain pointers from $A_1$ to $A_2$, i.e. we store the pointer to ceil key for every value in $A_1$. This will avoid the second binary search.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://adityagupta1089.github.io/images/rangetree2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Figure: Layered Range Tree showing only x-coordinates. Full points are given below&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Similarly $P(lc(v))\subseteq P(v)$ and $P(rc(v))\subseteq P(v)$. Instead of associated binary trees we will store an array sorted on the y-coordinates. Each value in the array will additionaly store two pointers to $A(lc(v))$ and $A(rc(v))$. This becomes the &lt;strong&gt;layered range tree&lt;/strong&gt;. This makes the query time $O(\log n + k)$.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://adityagupta1089.github.io/images/rangetree3.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Figure: The associated arrays with the nodes.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;While querying for $[x:x’]\times[y:y’]$:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;We search for $x$, $x’$ and $v_{\rm split}$. At $A(v_{\rm split})$ we we find the ceil entry of $y$.&lt;/li&gt;
+  &lt;li&gt;While searching in $x$ and $x’$ in main tree we keep track of ceil entry of $y$ by following pointers in constant time.&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>Sun, 20 Oct 2019 15:54:00 +0000</pubDate>
+        <link>https://adityagupta1089.github.io/notes/data%20structures/range-trees.html</link>
+        <guid isPermaLink="true">https://adityagupta1089.github.io/notes/data%20structures/range-trees.html</guid>
+        
+        
+        <category>Notes</category>
+        
+        <category>Data Structures</category>
+        
+      </item>
     
       <item>
         <title>Interval Trees</title>
@@ -143,7 +232,9 @@
         <title>B-Trees</title>
         <description>&lt;h1 id=&quot;definition&quot;&gt;Definition&lt;/h1&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://adityagupta1089.github.io/images/btree1.png&quot; alt=&quot;B-Tree of height 3 containing minimum number of keys&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://adityagupta1089.github.io/images/btree1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Figure: B-Tree of height 3 containing minimum number of keys&lt;/strong&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Every node $x$ has $x.n$ keys and $x.n+1$ children (possibly undefined).&lt;/li&gt;
@@ -180,7 +271,9 @@
 
 &lt;h2 id=&quot;splitting&quot;&gt;Splitting&lt;/h2&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://adityagupta1089.github.io/images/btree2.png&quot; alt=&quot;Splitting a node with $t=4$&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://adityagupta1089.github.io/images/btree2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Figure: Splitting a node with $t=4$&lt;/strong&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Make two nodes with keys less than and more than the median key respectively.&lt;/li&gt;
@@ -430,30 +523,6 @@ _i)}\frac{|\cal I_v|}{|\cal I|}\text{Entropy}(\cal I_v)&lt;/script&gt;
         <pubDate>Tue, 26 Sep 2017 07:25:00 +0000</pubDate>
         <link>https://adityagupta1089.github.io/csl471/tutorial-6.html</link>
         <guid isPermaLink="true">https://adityagupta1089.github.io/csl471/tutorial-6.html</guid>
-        
-        
-        <category>CSL471</category>
-        
-      </item>
-    
-      <item>
-        <title>Tutorial 5</title>
-        <description>&lt;ol&gt;
-  &lt;li&gt;For a polynomial $p(x)$ of degree $d$, we had $p(x)=f(x)g(x)$, we concluded that $p(x)-f(x)g(x)$ is a polynomial of degree atmost $d$, hence can have atmost $d$ roots which are false-positives in this case. The probability that $n(&amp;gt;d)$ elements chosen out of &lt;script type=&quot;math/tex&quot;&gt;\{1,2,\ldots10^6d\}&lt;/script&gt; belong to these false-positives is
-&lt;script type=&quot;math/tex&quot;&gt;\displaystyle\le\frac{\binom n d\binom {10^6d-d}{n-d}}{\binom {10^6d}n}=\frac{n!((10^6-1)d)!}{d!(n-d)!(n-d)!(10^6d-n)!}\frac{n!(10^6d-n)!}{(10^6d)!}&lt;/script&gt;&lt;br /&gt;
-which becomes &lt;script type=&quot;math/tex&quot;&gt;\displaystyle\frac{n!^2((10^6-1)d)!}{d!(10^6d)!(n-d)!^2}=\frac{n^2(n-1)^2..1^2}{(n-d)^2(n-d-1)^2...1^2}\frac{1}{\binom {10^6d}d}\stackrel{n\to\infty}\longrightarrow\binom {10^6d}d^{-1}\\\displaystyle
-=\frac{d(d-1)...1}{(10^6d)(10^6d-1)..(10^6d-(d-1))}\stackrel{d\to\infty}\longrightarrow \frac1{10^{6d}}&lt;/script&gt; which is astronomically small.&lt;/li&gt;
-  &lt;li&gt;The determinant of the &lt;a href=&quot;https://en.wikipedia.org/wiki/Tutte_matrix&quot;&gt;Tutte Matrix&lt;/a&gt; which is a polynomial in $x_{ij}$’s $(i&amp;lt;j)$ is non-zero for a perfect-matching. Hence, we can use the polynomial verification algorithm to check if it is non-zero. Also see &lt;a href=&quot;http://www.imsc.res.in/~meena/matching/lecture7.pdf&quot;&gt;this&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Given $F:{\mathbb Z_n}\to{\mathbb Z_m}$ s.t. $F(x+y)=F(x)+F(y)$ which is a homomorphism. Given $n$ we can estimate $F(n)$ by writing $F(z)=F(k+(z-k))=F(k)+F(z-k)$ where the probability that this is right is $1-1/9=8/9$. If we can run this 5 times, that would mean trying different combinations of $k$ and $z-k$ and taking the majority which will be correct $1-\binom 53(1/9)^3(8/9)^2-\binom 54(1/9)^4(8/9)^1-\binom 55(1/9)^5(8/9)^0=19456/19683\approx98.8\%$&lt;/li&gt;
-  &lt;li&gt;Probability of getting a min-cut was calculated in class as &lt;script type=&quot;math/tex&quot;&gt;\displaystyle\prod_{k=3}^n\left(1-\frac 2k\right)=\binom n2^{-1}&lt;/script&gt;&lt;/li&gt;
-  &lt;li&gt;Probability of getting a min-cut after $\lambda$ operations: $1-\left(1-\binom n2^{-1}\right)^{\lambda}=1-\left(\frac{n(n-1)-2}{n(n-1)}\right)^{\lambda}\stackrel{\lambda \to\infty}\longrightarrow1$&lt;/li&gt;
-  &lt;li&gt;$O(n!)$&lt;/li&gt;
-  &lt;li&gt;TODO (Binary search on unsorted elements?)&lt;/li&gt;
-&lt;/ol&gt;
-</description>
-        <pubDate>Tue, 26 Sep 2017 07:20:00 +0000</pubDate>
-        <link>https://adityagupta1089.github.io/csl471/tutorial-5.html</link>
-        <guid isPermaLink="true">https://adityagupta1089.github.io/csl471/tutorial-5.html</guid>
         
         
         <category>CSL471</category>
