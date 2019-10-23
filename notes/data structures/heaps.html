@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Aditya Gupta - HEAPS - BINARY, BINOMIAL, FIBONACCI</title>
+  <meta name="description" content="            Procedure      Binary Heap      Binomial Heap (worst case)      Fibonacci Heap (amortized)                  Make Heap      $\Theta(1)$      $\The...">
+  <link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic|Source+Sans+Pro:400,700,200,300|Josefin+Sans:400,600,700,300' rel='stylesheet' type='text/css'>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="canonical" href="https://adityagupta1089.github.io/notes/data%20structures/heaps.html">
+  <link rel="alternate" type="application/rss+xml" title="Aditya Gupta" href="https://adityagupta1089.github.io/feed.xml">
+</head>
+
+
+  <body class=" light  ">
+
+    
+<div class="wrapper topround">
+  <center> <a href="/index.html"><div class="site-title">Aditya Gupta </div></a></center>
+</div>
+<div class="wrapper">
+  <div class="trigger site-navigation">
+    
+      
+        
+          <a class="page-link" href="/about/">
+            About
+          </a>
+            <span class="exclamationMark">/</span>
+        
+      
+    
+      
+    
+      
+    
+      
+        
+          <a class="page-link" href="/index.html">
+            Home
+          </a>
+            <span class="exclamationMark">/</span>
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+          <a class="page-link" href="/category/programming/index.html">
+            programming
+          </a>
+            <span class="exclamationMark">/</span>
+        
+      
+    
+      
+        
+          <a class="page-link" href="/category/music/index.html">
+            music
+          </a>
+            <span class="exclamationMark">/</span>
+        
+      
+    
+      
+        
+          <a class="page-link" href="/category/csl471/index.html">
+            csl471
+          </a>
+            <span class="exclamationMark">/</span>
+        
+      
+    
+      
+        
+      
+    
+      
+        
+          <a class="page-link" href="/category/notes/index.html">
+            notes
+          </a>
+            <span class="exclamationMark">/</span>
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+          <a class="page-link" href="/category/machine learning/index.html">
+            machine learning
+          </a>
+            <span class="exclamationMark">/</span>
+        
+      
+    
+      
+        
+          <a class="page-link" href="/category/data structures/index.html">
+            data structures
+          </a>
+            <span class="exclamationMark">/</span>
+        
+      
+    
+      
+        
+      
+    
+  </div>
+</div>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'] ],
+      displayMath: [ ['$$', '$$'] ],
+      processEscapes: true
+    },
+    CommonHTML: { linebreaks: { automatic: true , width: "30em"} }
+  });
+</script>
+<script
+  type="text/javascript"
+  charset="utf-8"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"
+>
+</script>
+</script>
+
+
+
+    <div class="page-content">
+      <div class="wrapper bottomround">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline"><a class="post-title-link"  href="/notes/data%20structures/heaps.html">Heaps - Binary, Binomial, Fibonacci</a></h1>
+  <center>  <p class="post-meta"><time datetime="2019-10-23T00:00:00+00:00" itemprop="datePublished">Oct 23, 2019</time></p>
+    
+   </center>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <table>
+  <thead>
+    <tr>
+      <th>Procedure</th>
+      <th>Binary Heap</th>
+      <th>Binomial Heap (worst case)</th>
+      <th>Fibonacci Heap (amortized)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Make Heap</td>
+      <td>$\Theta(1)$</td>
+      <td>$\Theta(1)$</td>
+      <td>$\Theta(1)$</td>
+    </tr>
+    <tr>
+      <td>Insert</td>
+      <td>$\Theta(\lg n)$</td>
+      <td>$O(\lg n)$</td>
+      <td>$\Theta(1)$</td>
+    </tr>
+    <tr>
+      <td>Minimum</td>
+      <td>$\Theta(1)$</td>
+      <td>$O(\lg n)$</td>
+      <td>$\Theta(1)$</td>
+    </tr>
+    <tr>
+      <td>Extract Min</td>
+      <td>$\Theta(\lg n)$</td>
+      <td>$\Theta(\lg n)$</td>
+      <td>$\Theta(\lg n)$</td>
+    </tr>
+    <tr>
+      <td>Union</td>
+      <td>$\Theta(n)$</td>
+      <td>$O(\lg n)$</td>
+      <td>$\Theta(1)$</td>
+    </tr>
+    <tr>
+      <td>Decrease Key</td>
+      <td>$\Theta(\lg n)$</td>
+      <td>$\Theta(\lg n)$</td>
+      <td>$\Theta(1)$</td>
+    </tr>
+    <tr>
+      <td>Delete</td>
+      <td>$\Theta(\lg n)$</td>
+      <td>$\Theta(\lg n)$</td>
+      <td>$\Theta(\lg n)$</td>
+    </tr>
+  </tbody>
+</table>
+
+<h1 id="binary-heap">Binary Heap</h1>
+
+<p><img src="https://adityagupta1089.github.io/images/heap1.png" alt="" /></p>
+
+<p>A binary heap is an array object which we can view as a nearly complete binary tree with pointers as follows:</p>
+
+<ul>
+  <li>Parent: $\lfloor i/2\rfloor$</li>
+  <li>Left child: $2i$</li>
+  <li>Right child: $2i+1$</li>
+</ul>
+
+<p>These satisfy the <strong>heap property,</strong> i.e. for max-heap $A[{\rm Parent}(i)]\ge A[i]$ or vice versa for min-heap. A heap of height $h$ can have nodes from $2^h$(1 node at last level) to $2^{h+1}-1$(full tree). So $h\le \lg n \le h+1$ so $h=\lfloor \lg n\rfloor$.</p>
+
+<h2 id="heapify-oholg-n">Heapify $O(h)=O(\lg n)$</h2>
+
+<p>If binary tree at ${\rm Left}(i)$ and ${\rm Right}(i)$ satisfy the heap property but $A[i]$ does not then we need to perform heapify operation. In max-heap we exchange $A[i]$ with the largest of ${\rm Right}(i)$ and ${\rm Left}(i)$ and recursively perform heapify operation at the exchanged node (the new parent).</p>
+
+<h2 id="building-on">Building $O(n)$</h2>
+
+<p>Elements from $\lfloor n/2\rfloor+1$ to $n$ are all leaves of the tree so each is a 1-element heap. We run heapify on rest of the elements in order from $\lfloor n/2\rfloor$ to $1$. Total time taken for height $i$ is $2^i\cdot O(h-i)$. Sum over all levels is 
+<script type="math/tex">O(\sum_{i=0}^{\lg n} 2^{h-i}.i) =O\left(\sum _{i=0}^{\lg n}2^h . \frac i{2^i}\right)=O\left(n\cdot\sum_{i=0}^{\lg n}\frac i{2^i}\right)=O(n)</script>
+Where $\sum_{x=0}^\infty x/2^x=x/(1-x)^2$ and we put $x=1/2$ to get $\sum i/2^i\le 2$.</p>
+
+<h2 id="extract-min-olg-n">Extract Min $O(\lg n)$</h2>
+
+<p>Replace min value with last element and perform heapify after removing the min element.</p>
+
+<h1 id="binomial-heap">Binomial Heap</h1>
+
+<p>A binomial tree $B_k$ is defined recursively consisting of two $B_{k-1}$ linked together.</p>
+
+<p><img src="https://adityagupta1089.github.io/images/heap2.gif" alt="" /></p>
+
+<p>A tree $B_k$</p>
+
+<ul>
+  <li>Contains $2^k$ nodes</li>
+  <li>has height $k$</li>
+  <li>there are $k \choose i$ nodes at depth $i$ (which gives it the name <strong>binomial heap</strong>)</li>
+  <li>root has degree $k$</li>
+</ul>
+
+<p>A binomial heap $H$:</p>
+
+<ul>
+  <li>Each binomial tree is heap ordered.</li>
+  <li>there is atmost 1 tree whose root has a given degree.</li>
+</ul>
+
+<p>So a binomial heap $H$ has atmost $\lfloor\lg n\rfloor+1$ binomial trees (from binary representation)</p>
+
+<h2 id="finding-min-olg-n">Finding Min $O(\lg n)$</h2>
+
+<p>See the roots of all $O(\lg n)$ trees.</p>
+
+<h2 id="uniting-two-binomial-heaps-olg-n">Uniting two binomial heaps $O(\lg n)$</h2>
+
+<p>For merging two binomial trees $B_{k-1}$ with roots $y$ and $z$ we would make $z$ parent of $y$ and make the child of $z$ sibling of $y$. This takes $O(1)$ time.</p>
+
+<p>For merging two heaps we would do the same as binary addition. This would take $O(\lg n)$ time as there are atmax $\lg n$ trees.</p>
+
+<h2 id="inserting-a-node-olg-n">Inserting a node $O(\lg n)$</h2>
+
+<p>Create $B_0$ with the node and perform heap union.</p>
+
+<h2 id="extracting-min-olg-n">Extracting Min $O(\lg n)$</h2>
+
+<p>Merge the children of the tree with minimunm key with the rest of the trees.</p>
+
+<h2 id="decreasing-a-key-olg-n">Decreasing a key $O(\lg n)$</h2>
+
+<p>Change key value and perform heapify operation.</p>
+
+<h2 id="deleting-a-key-olg-n">Deleting a key $O(\lg n)$</h2>
+
+<p>Decrease key to $-\infty$ and extract min.</p>
+
+<h1 id="fibonacci-heap">Fibonacci Heap</h1>
+
+<p>A Fibonacci heap is a collection of trees that are heap-ordered connected in a circular, doubly linked list. Each node may also be marked. We also store the minimum of the heap using a separate pointer.</p>
+
+<p>Suppose</p>
+
+<ol>
+  <li>At some time, $x$ was a root.</li>
+  <li>then $x$ was linked to (made child of) another node</li>
+  <li>then two children of $x$ were removed by cut operation</li>
+</ol>
+
+<p>As soon as second child has been lost we remove $x$ from it’s parents making it a new root. $x.{\rm mark}$ is true if steps $1$ and $2$ have occured and one child of $x$ has been cut.</p>
+
+<p><strong>Note</strong>: Maximum degree of a node is $D(n)\le \lfloor\log_{\phi}n\rfloor$ where $\phi$ is the golden ration $\phi=(1+\sqrt 5)/2$. Hence $D(n)\le O(\lg n)$</p>
+
+<h2 id="potential">Potential</h2>
+
+<p>$t(H)$ represents the number of trees in heap $H$ and $m(H)$ represents the number of marked nodes in $H$. We define the potential of $H$ as $\phi(H)=t(H)+2m(H)$</p>
+
+<h2 id="create-a-new-heap-o1">Create a new heap $O(1)$</h2>
+
+<p>Just allocate empty heap $H$ with $0$ trees and <code class="highlighter-rouge">NULL</code> min pointer $\phi(H)=0$</p>
+
+<h2 id="insert-a-node-o1">Insert a node $O(1)$</h2>
+
+<p>Just insert the node in the root list and update min-pointer if necessary. $\Delta\phi(H)=1$</p>
+
+<h2 id="finding-the-min-o1">Finding the min $O(1)$</h2>
+
+<p>Return the value pointed by min pointer. $\Delta \phi(H)=0$</p>
+
+<h2 id="uniting-two-fibonacci-heaps-o1">Uniting two fibonacci heaps $O(1)$</h2>
+
+<p>Concatenate two root lists and update min-pointer if necessary. 
+<script type="math/tex">% <![CDATA[
+\begin{align}\Delta\phi(H)&=\phi(H)-\phi(H_1)-\phi(H_2)\\&=(t(H)+2m(H))-((t(H_1)+2m(H_1))+(t(H_2)+2m(H_2)))
+\\&=0\end{align} %]]></script></p>
+
+<p>since $t(H)=t(H_1)+t(H_2)$ and $m(H)=m(H_1)+m(H_2)$</p>
+
+<h2 id="extracting-the-min-node-olg-n">Extracting the min node $O(\lg n)$</h2>
+
+<p>Add the children of tree whose root is pointer by min-pointer to the root list of $H$ and then remove it from the root list. Also update min pointer. This takes $O(D(n))$. Then consolidate the root list by linking roots of equal degrees until atmost one root remains of each degree. To link $y$ and $x$ remove $y$ from root list of $H$ and make $y$ child of $x$ and unmark $y$ is previously marked (step 2).</p>
+
+<p>The above operation will increate elements in root list to at most $D(n)+t(H)-1$, original $t(H)$ minus $1$ extracted node, new $D(n)$ children of extracted node. The total time taken for combining roots is therefore atmost $O(D(n)+t(H))$.</p>
+
+<p>The potential before is $t(H)+2m(H)$ and afterwards at most $(D(n)+1)+2m(H)$. Thus amortized cost is
+<script type="math/tex">% <![CDATA[
+\begin{align}
+&O(D(n)+t(H))+((D(n)+1)+2m(H))-(t(H)+2m(H))\\
+&=O(D(n))+O(t(H))-t(H))\\
+&=O(D(n))
+\end{align} %]]></script></p>
+
+<h2 id="decreasing-a-key-o1">Decreasing a key $O(1)$</h2>
+
+<p>Cut the link between the node $x$ with the key and it’s parent $y$, making $x$ the root (also unmark it if marked, step 1). This is a cut operation.  Then perform a cascading cut where:</p>
+
+<ul>
+  <li>If $y$ is unmarked then mark it (since it has lost it’s first child)</li>
+  <li>Else perform cut operation at $y$ and perform cascading cut at $y$’s parent.</li>
+</ul>
+
+<p>This goes on until a unmarked node or root is found. Finally we update the min-pointer. Total time taken is $O(1)$ for decreasing key, $O(c)$ for cascading cuts consisting of $c$ total cuts.</p>
+
+<p>For change in potential:</p>
+
+<ul>
+  <li>Cutting $x$ from $y$ creates a new tree rooted at $x$ and clears $x$’s mark bit.</li>
+  <li>Each call of the cascading cut except for the last one cuts a marked node and clears the mark bit. Finally fibonacci heap contains $t(H)+c$ trees ($t(H)$ original, $c-1$ from cascading cuts and $1$ from $x$) and at most $m(H)-c+2$ marked nodes ($m(H)$ original, $c-1$ unmarked from cascading cuts except last one which marked $1$ node).</li>
+</ul>
+
+<p>$((t(H)+c)+2(m(H)-c+2))-(t(H)+2m(H))=4-c$</p>
+
+<p>Thus total amortized time taken is $O(c)+4-c=O(1)$</p>
+
+<p>1 unit of potential pays for (i) cut and clearing the mark bit. (ii) decrease in potential due to node $y$ becoming a root.</p>
+
+<h2 id="deleting-a-key-olg-n-1">Deleting a key $O(\lg n)$</h2>
+
+<p>Decrease key to $-\infty$ and extract min.</p>
+
+
+  </div>
+
+  <footer class="postNavigation">
+  
+    <a class="postPrev" href="/notes/data%20structures/range-trees.html">
+        &laquo; Range Trees
+    </a>
+  
+  
+  </footer>
+
+
+</article>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper topround bottomround">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list footer-content">
+          <li>Forked & Modified from
+            <a href="http://github.com/hemangsk/Gravity">Gravity</a>
+          </li>
+          <li>Made with <i class="fa fa-heart"></i> on
+            <a href="http://jekyllrb.com"><span>{ { Jekyll } }</a></span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2 footer-content">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/adityagupta1089"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">adityagupta1089</span></a>
+
+          </li>
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3 footer-content">
+          <img src="https://adityagupta1089.github.io/images/rss-icon.png" style="filter: opacity(45%);width:16px;height:16px;">
+          <a href="https://adityagupta1089.github.io/feed.xml">RSS Feed</a>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

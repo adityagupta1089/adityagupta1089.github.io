@@ -5,9 +5,239 @@
     <description></description>
     <link>https://adityagupta1089.github.io/</link>
     <atom:link href="https://adityagupta1089.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 22 Oct 2019 17:27:22 +0000</pubDate>
-    <lastBuildDate>Tue, 22 Oct 2019 17:27:22 +0000</lastBuildDate>
+    <pubDate>Wed, 23 Oct 2019 19:55:15 +0000</pubDate>
+    <lastBuildDate>Wed, 23 Oct 2019 19:55:15 +0000</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
+    
+      <item>
+        <title>Heaps - Binary, Binomial, Fibonacci</title>
+        <description>&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Procedure&lt;/th&gt;
+      &lt;th&gt;Binary Heap&lt;/th&gt;
+      &lt;th&gt;Binomial Heap (worst case)&lt;/th&gt;
+      &lt;th&gt;Fibonacci Heap (amortized)&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Make Heap&lt;/td&gt;
+      &lt;td&gt;$\Theta(1)$&lt;/td&gt;
+      &lt;td&gt;$\Theta(1)$&lt;/td&gt;
+      &lt;td&gt;$\Theta(1)$&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Insert&lt;/td&gt;
+      &lt;td&gt;$\Theta(\lg n)$&lt;/td&gt;
+      &lt;td&gt;$O(\lg n)$&lt;/td&gt;
+      &lt;td&gt;$\Theta(1)$&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Minimum&lt;/td&gt;
+      &lt;td&gt;$\Theta(1)$&lt;/td&gt;
+      &lt;td&gt;$O(\lg n)$&lt;/td&gt;
+      &lt;td&gt;$\Theta(1)$&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Extract Min&lt;/td&gt;
+      &lt;td&gt;$\Theta(\lg n)$&lt;/td&gt;
+      &lt;td&gt;$\Theta(\lg n)$&lt;/td&gt;
+      &lt;td&gt;$\Theta(\lg n)$&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Union&lt;/td&gt;
+      &lt;td&gt;$\Theta(n)$&lt;/td&gt;
+      &lt;td&gt;$O(\lg n)$&lt;/td&gt;
+      &lt;td&gt;$\Theta(1)$&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Decrease Key&lt;/td&gt;
+      &lt;td&gt;$\Theta(\lg n)$&lt;/td&gt;
+      &lt;td&gt;$\Theta(\lg n)$&lt;/td&gt;
+      &lt;td&gt;$\Theta(1)$&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Delete&lt;/td&gt;
+      &lt;td&gt;$\Theta(\lg n)$&lt;/td&gt;
+      &lt;td&gt;$\Theta(\lg n)$&lt;/td&gt;
+      &lt;td&gt;$\Theta(\lg n)$&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h1 id=&quot;binary-heap&quot;&gt;Binary Heap&lt;/h1&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://adityagupta1089.github.io/images/heap1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;A binary heap is an array object which we can view as a nearly complete binary tree with pointers as follows:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Parent: $\lfloor i/2\rfloor$&lt;/li&gt;
+  &lt;li&gt;Left child: $2i$&lt;/li&gt;
+  &lt;li&gt;Right child: $2i+1$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;These satisfy the &lt;strong&gt;heap property,&lt;/strong&gt; i.e. for max-heap $A[{\rm Parent}(i)]\ge A[i]$ or vice versa for min-heap. A heap of height $h$ can have nodes from $2^h$(1 node at last level) to $2^{h+1}-1$(full tree). So $h\le \lg n \le h+1$ so $h=\lfloor \lg n\rfloor$.&lt;/p&gt;
+
+&lt;h2 id=&quot;heapify-oholg-n&quot;&gt;Heapify $O(h)=O(\lg n)$&lt;/h2&gt;
+
+&lt;p&gt;If binary tree at ${\rm Left}(i)$ and ${\rm Right}(i)$ satisfy the heap property but $A[i]$ does not then we need to perform heapify operation. In max-heap we exchange $A[i]$ with the largest of ${\rm Right}(i)$ and ${\rm Left}(i)$ and recursively perform heapify operation at the exchanged node (the new parent).&lt;/p&gt;
+
+&lt;h2 id=&quot;building-on&quot;&gt;Building $O(n)$&lt;/h2&gt;
+
+&lt;p&gt;Elements from $\lfloor n/2\rfloor+1$ to $n$ are all leaves of the tree so each is a 1-element heap. We run heapify on rest of the elements in order from $\lfloor n/2\rfloor$ to $1$. Total time taken for height $i$ is $2^i\cdot O(h-i)$. Sum over all levels is 
+&lt;script type=&quot;math/tex&quot;&gt;O(\sum_{i=0}^{\lg n} 2^{h-i}.i) =O\left(\sum _{i=0}^{\lg n}2^h . \frac i{2^i}\right)=O\left(n\cdot\sum_{i=0}^{\lg n}\frac i{2^i}\right)=O(n)&lt;/script&gt;
+Where $\sum_{x=0}^\infty x/2^x=x/(1-x)^2$ and we put $x=1/2$ to get $\sum i/2^i\le 2$.&lt;/p&gt;
+
+&lt;h2 id=&quot;extract-min-olg-n&quot;&gt;Extract Min $O(\lg n)$&lt;/h2&gt;
+
+&lt;p&gt;Replace min value with last element and perform heapify after removing the min element.&lt;/p&gt;
+
+&lt;h1 id=&quot;binomial-heap&quot;&gt;Binomial Heap&lt;/h1&gt;
+
+&lt;p&gt;A binomial tree $B_k$ is defined recursively consisting of two $B_{k-1}$ linked together.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://adityagupta1089.github.io/images/heap2.gif&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;A tree $B_k$&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Contains $2^k$ nodes&lt;/li&gt;
+  &lt;li&gt;has height $k$&lt;/li&gt;
+  &lt;li&gt;there are $k \choose i$ nodes at depth $i$ (which gives it the name &lt;strong&gt;binomial heap&lt;/strong&gt;)&lt;/li&gt;
+  &lt;li&gt;root has degree $k$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;A binomial heap $H$:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Each binomial tree is heap ordered.&lt;/li&gt;
+  &lt;li&gt;there is atmost 1 tree whose root has a given degree.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;So a binomial heap $H$ has atmost $\lfloor\lg n\rfloor+1$ binomial trees (from binary representation)&lt;/p&gt;
+
+&lt;h2 id=&quot;finding-min-olg-n&quot;&gt;Finding Min $O(\lg n)$&lt;/h2&gt;
+
+&lt;p&gt;See the roots of all $O(\lg n)$ trees.&lt;/p&gt;
+
+&lt;h2 id=&quot;uniting-two-binomial-heaps-olg-n&quot;&gt;Uniting two binomial heaps $O(\lg n)$&lt;/h2&gt;
+
+&lt;p&gt;For merging two binomial trees $B_{k-1}$ with roots $y$ and $z$ we would make $z$ parent of $y$ and make the child of $z$ sibling of $y$. This takes $O(1)$ time.&lt;/p&gt;
+
+&lt;p&gt;For merging two heaps we would do the same as binary addition. This would take $O(\lg n)$ time as there are atmax $\lg n$ trees.&lt;/p&gt;
+
+&lt;h2 id=&quot;inserting-a-node-olg-n&quot;&gt;Inserting a node $O(\lg n)$&lt;/h2&gt;
+
+&lt;p&gt;Create $B_0$ with the node and perform heap union.&lt;/p&gt;
+
+&lt;h2 id=&quot;extracting-min-olg-n&quot;&gt;Extracting Min $O(\lg n)$&lt;/h2&gt;
+
+&lt;p&gt;Merge the children of the tree with minimunm key with the rest of the trees.&lt;/p&gt;
+
+&lt;h2 id=&quot;decreasing-a-key-olg-n&quot;&gt;Decreasing a key $O(\lg n)$&lt;/h2&gt;
+
+&lt;p&gt;Change key value and perform heapify operation.&lt;/p&gt;
+
+&lt;h2 id=&quot;deleting-a-key-olg-n&quot;&gt;Deleting a key $O(\lg n)$&lt;/h2&gt;
+
+&lt;p&gt;Decrease key to $-\infty$ and extract min.&lt;/p&gt;
+
+&lt;h1 id=&quot;fibonacci-heap&quot;&gt;Fibonacci Heap&lt;/h1&gt;
+
+&lt;p&gt;A Fibonacci heap is a collection of trees that are heap-ordered connected in a circular, doubly linked list. Each node may also be marked. We also store the minimum of the heap using a separate pointer.&lt;/p&gt;
+
+&lt;p&gt;Suppose&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;At some time, $x$ was a root.&lt;/li&gt;
+  &lt;li&gt;then $x$ was linked to (made child of) another node&lt;/li&gt;
+  &lt;li&gt;then two children of $x$ were removed by cut operation&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;As soon as second child has been lost we remove $x$ from it’s parents making it a new root. $x.{\rm mark}$ is true if steps $1$ and $2$ have occured and one child of $x$ has been cut.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt;: Maximum degree of a node is $D(n)\le \lfloor\log_{\phi}n\rfloor$ where $\phi$ is the golden ration $\phi=(1+\sqrt 5)/2$. Hence $D(n)\le O(\lg n)$&lt;/p&gt;
+
+&lt;h2 id=&quot;potential&quot;&gt;Potential&lt;/h2&gt;
+
+&lt;p&gt;$t(H)$ represents the number of trees in heap $H$ and $m(H)$ represents the number of marked nodes in $H$. We define the potential of $H$ as $\phi(H)=t(H)+2m(H)$&lt;/p&gt;
+
+&lt;h2 id=&quot;create-a-new-heap-o1&quot;&gt;Create a new heap $O(1)$&lt;/h2&gt;
+
+&lt;p&gt;Just allocate empty heap $H$ with $0$ trees and &lt;code class=&quot;highlighter-rouge&quot;&gt;NULL&lt;/code&gt; min pointer $\phi(H)=0$&lt;/p&gt;
+
+&lt;h2 id=&quot;insert-a-node-o1&quot;&gt;Insert a node $O(1)$&lt;/h2&gt;
+
+&lt;p&gt;Just insert the node in the root list and update min-pointer if necessary. $\Delta\phi(H)=1$&lt;/p&gt;
+
+&lt;h2 id=&quot;finding-the-min-o1&quot;&gt;Finding the min $O(1)$&lt;/h2&gt;
+
+&lt;p&gt;Return the value pointed by min pointer. $\Delta \phi(H)=0$&lt;/p&gt;
+
+&lt;h2 id=&quot;uniting-two-fibonacci-heaps-o1&quot;&gt;Uniting two fibonacci heaps $O(1)$&lt;/h2&gt;
+
+&lt;p&gt;Concatenate two root lists and update min-pointer if necessary. 
+&lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
+\begin{align}\Delta\phi(H)&amp;=\phi(H)-\phi(H_1)-\phi(H_2)\\&amp;=(t(H)+2m(H))-((t(H_1)+2m(H_1))+(t(H_2)+2m(H_2)))
+\\&amp;=0\end{align} %]]&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;since $t(H)=t(H_1)+t(H_2)$ and $m(H)=m(H_1)+m(H_2)$&lt;/p&gt;
+
+&lt;h2 id=&quot;extracting-the-min-node-olg-n&quot;&gt;Extracting the min node $O(\lg n)$&lt;/h2&gt;
+
+&lt;p&gt;Add the children of tree whose root is pointer by min-pointer to the root list of $H$ and then remove it from the root list. Also update min pointer. This takes $O(D(n))$. Then consolidate the root list by linking roots of equal degrees until atmost one root remains of each degree. To link $y$ and $x$ remove $y$ from root list of $H$ and make $y$ child of $x$ and unmark $y$ is previously marked (step 2).&lt;/p&gt;
+
+&lt;p&gt;The above operation will increate elements in root list to at most $D(n)+t(H)-1$, original $t(H)$ minus $1$ extracted node, new $D(n)$ children of extracted node. The total time taken for combining roots is therefore atmost $O(D(n)+t(H))$.&lt;/p&gt;
+
+&lt;p&gt;The potential before is $t(H)+2m(H)$ and afterwards at most $(D(n)+1)+2m(H)$. Thus amortized cost is
+&lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
+\begin{align}
+&amp;O(D(n)+t(H))+((D(n)+1)+2m(H))-(t(H)+2m(H))\\
+&amp;=O(D(n))+O(t(H))-t(H))\\
+&amp;=O(D(n))
+\end{align} %]]&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;decreasing-a-key-o1&quot;&gt;Decreasing a key $O(1)$&lt;/h2&gt;
+
+&lt;p&gt;Cut the link between the node $x$ with the key and it’s parent $y$, making $x$ the root (also unmark it if marked, step 1). This is a cut operation.  Then perform a cascading cut where:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;If $y$ is unmarked then mark it (since it has lost it’s first child)&lt;/li&gt;
+  &lt;li&gt;Else perform cut operation at $y$ and perform cascading cut at $y$’s parent.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This goes on until a unmarked node or root is found. Finally we update the min-pointer. Total time taken is $O(1)$ for decreasing key, $O(c)$ for cascading cuts consisting of $c$ total cuts.&lt;/p&gt;
+
+&lt;p&gt;For change in potential:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Cutting $x$ from $y$ creates a new tree rooted at $x$ and clears $x$’s mark bit.&lt;/li&gt;
+  &lt;li&gt;Each call of the cascading cut except for the last one cuts a marked node and clears the mark bit. Finally fibonacci heap contains $t(H)+c$ trees ($t(H)$ original, $c-1$ from cascading cuts and $1$ from $x$) and at most $m(H)-c+2$ marked nodes ($m(H)$ original, $c-1$ unmarked from cascading cuts except last one which marked $1$ node).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;$((t(H)+c)+2(m(H)-c+2))-(t(H)+2m(H))=4-c$&lt;/p&gt;
+
+&lt;p&gt;Thus total amortized time taken is $O(c)+4-c=O(1)$&lt;/p&gt;
+
+&lt;p&gt;1 unit of potential pays for (i) cut and clearing the mark bit. (ii) decrease in potential due to node $y$ becoming a root.&lt;/p&gt;
+
+&lt;h2 id=&quot;deleting-a-key-olg-n-1&quot;&gt;Deleting a key $O(\lg n)$&lt;/h2&gt;
+
+&lt;p&gt;Decrease key to $-\infty$ and extract min.&lt;/p&gt;
+
+</description>
+        <pubDate>Wed, 23 Oct 2019 00:00:00 +0000</pubDate>
+        <link>https://adityagupta1089.github.io/notes/data%20structures/heaps.html</link>
+        <guid isPermaLink="true">https://adityagupta1089.github.io/notes/data%20structures/heaps.html</guid>
+        
+        
+        <category>Notes</category>
+        
+        <category>Data Structures</category>
+        
+      </item>
     
       <item>
         <title>Range Trees</title>
@@ -506,26 +736,6 @@ _i)}\frac{|\cal I_v|}{|\cal I|}\text{Entropy}(\cal I_v)&lt;/script&gt;
         
         
         <category>Notes</category>
-        
-      </item>
-    
-      <item>
-        <title>Tutorial 6</title>
-        <description>&lt;ol&gt;
-  &lt;li&gt;We know that $P(A)\ge 0$, so we assume the opposite, i.e. $P(X\ge \mu)=0$ so $X&amp;lt;\mu$ with 100% certainity, we get $\mu=\sum_{x}xp(x)=\sum_{x&amp;lt; \mu}xp(x)$ and $\displaystyle\sum_{x&amp;lt;\mu}xp(x)&amp;lt;\sum_{x&amp;lt;\mu}\mu p(x)=\mu\sum_{x&amp;lt;\mu}p(x)=\mu P(X&amp;lt;\mu)=\mu$, a contradiction $\mu&amp;lt;\mu$. Similarly for the opposite case [&lt;strong&gt;Reference&lt;/strong&gt;: &lt;em&gt;Probability and Computing: Randomized Algorithms and Probabilistic Analysis&lt;/em&gt; by &lt;em&gt;Michael Mitzenmacher, Eli Upfal&lt;/em&gt; (&lt;strong&gt;Lemma 6.2&lt;/strong&gt;)]&lt;/li&gt;
-  &lt;li&gt;TODO [&lt;strong&gt;Reference&lt;/strong&gt;: &lt;em&gt;Probability and Computing: Randomized Algorithms and Probabilistic Analysis&lt;/em&gt; by &lt;em&gt;Michael Mitzenmacher, Eli Upfal&lt;/em&gt; (&lt;strong&gt;Theorem 6.3&lt;/strong&gt;)]&lt;/li&gt;
-  &lt;li&gt;TODO (SAT not taught yet) [&lt;strong&gt;Reference&lt;/strong&gt;: &lt;em&gt;Probability and Computing: Randomized Algorithms and Probabilistic Analysis&lt;/em&gt; by &lt;em&gt;Michael Mitzenmacher, Eli Upfal&lt;/em&gt; (&lt;strong&gt;Theorem 6.4&lt;/strong&gt;)]&lt;/li&gt;
-  &lt;li&gt;&lt;script type=&quot;math/tex&quot;&gt;E[M]=\underbrace{\frac 26}_{1,2}\cdot 2+\underbrace{\frac 16}_{5}\cdot 10=2.\bar 3&lt;/script&gt; Unfair.&lt;/li&gt;
-  &lt;li&gt;&lt;script type=&quot;math/tex&quot;&gt;E[M]=\underbrace{\frac 1{13}}_{\text K}\cdot 4+\underbrace{\frac 2{13}}_{5,10}\cdot 3+\underbrace{\frac 3{13}}_{3,6,9}\cdot 2\approx 1.230&lt;/script&gt; Unfair.&lt;/li&gt;
-  &lt;li&gt;&lt;script type=&quot;math/tex&quot;&gt;E[M]=\underbrace{\left(\frac{2\cdot4}{36}\right)}_{(1,3),(2,4),(3,5),(4,6)}\times 2+\underbrace{\left(\frac{2\cdot1}{36}\right)}_{(1,6)}\times 5= 0.7\bar2&lt;/script&gt; Unfair.&lt;/li&gt;
-&lt;/ol&gt;
-</description>
-        <pubDate>Tue, 26 Sep 2017 07:25:00 +0000</pubDate>
-        <link>https://adityagupta1089.github.io/csl471/tutorial-6.html</link>
-        <guid isPermaLink="true">https://adityagupta1089.github.io/csl471/tutorial-6.html</guid>
-        
-        
-        <category>CSL471</category>
         
       </item>
     
