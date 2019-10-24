@@ -6,13 +6,13 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Aditya Gupta - B-TREES</title>
-  <meta name="description" content="Definition">
+  <title>Aditya Gupta - INTEGER MULTIPLICATION</title>
+  <meta name="description" content="To multiply $x$ and $y$, split them into left and right halves which are $n/2$ bits long.">
   <link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic|Source+Sans+Pro:400,700,200,300|Josefin+Sans:400,600,700,300' rel='stylesheet' type='text/css'>
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
 
   <link rel="stylesheet" href="/css/style.css">
-  <link rel="canonical" href="https://adityagupta1089.github.io/notes/data%20structures/b-trees.html">
+  <link rel="canonical" href="https://adityagupta1089.github.io/notes/data%20structures/integer-multiplication.html">
   <link rel="alternate" type="application/rss+xml" title="Aditya Gupta" href="https://adityagupta1089.github.io/feed.xml">
 </head>
 
@@ -177,90 +177,36 @@
         <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title" itemprop="name headline"><a class="post-title-link"  href="/notes/data%20structures/b-trees.html">B-Trees</a></h1>
-  <center>  <p class="post-meta"><time datetime="2019-10-14T09:33:00+00:00" itemprop="datePublished">Oct 14, 2019</time></p>
+    <h1 class="post-title" itemprop="name headline"><a class="post-title-link"  href="/notes/data%20structures/integer-multiplication.html">Integer Multiplication</a></h1>
+  <center>  <p class="post-meta"><time datetime="2019-10-24T15:02:00+00:00" itemprop="datePublished">Oct 24, 2019</time></p>
     
    </center>
   </header>
 
   <div class="post-content" itemprop="articleBody">
-    <h1 id="definition">Definition</h1>
+    <p>To multiply $x$ and $y$, split them into left and right halves which are $n/2$ bits long.</p>
 
-<p><img src="https://adityagupta1089.github.io/images/btree1.png" alt="" /></p>
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align}
+x&=2^{n/2}x_L+x_R\\
+y&=2^{n/2}y_L+y_R\\
+xy&=(2^{n/2}x_L+x_R)(2^{n/2}y_L+y_R)\\
+&=2^nx_Ly_L+2^{n/2}(x_Ly_R+x_Ry_L)+x_Ry_R\\
+x_Ly_R+x_Ry_R&=(x_L+x_R)(y_L+y_R)-x_Ly_L-x_Ry_R
+\end{align} %]]></script>
 
-<p><strong>Figure: B-Tree of height 3 containing minimum number of keys</strong></p>
+<p>Additional and multiplication by power of 2 takes linear time. We only need to calculate $x_Ly_L$, $x_Ry_R$ and $(x_L+x_R)(y_L+y_R)$ which we can calculate recursively.</p>
 
-<ul>
-  <li>Every node $x$ has $x.n$ keys and $x.n+1$ children (possibly undefined).</li>
-  <li>The key $x.k_i$ separates the range of keys stores in children subtrees, say $l_i$ then $l_1\le x.k_1\le l_2\le x.k_2\le \ldots x.k_n \le l_{n+1}$</li>
-  <li>All leaves have same depth</li>
-  <li>Each node except root has $t-1$ keys to $2t-1$ keys. Therefore $t$ to $2t$ children.</li>
-  <li>Height of tree $h=O(\log_tn)$</li>
-</ul>
-
-<h1 id="operations">Operations</h1>
-
-<h2 id="search-othotlog_tn">Search $O(th)=O(t\log_tn)$</h2>
-
-<ul>
-  <li>Find the subtree where given key exists using linear search</li>
-  <li>recurse in that tree</li>
-</ul>
-
-<h2 id="create-o1">Create $O(1)$</h2>
-
-<ul>
-  <li>Create a empty root node</li>
-  <li>Insert keys</li>
-</ul>
-
-<h2 id="insert-othotlog_tn">Insert $O(th)=O(t\log_tn)$</h2>
-
-<ul>
-  <li>Find the the leaf node by searching.</li>
-  <li>If node is full split on median key to make two children nodes and insert the meadian key into parent node.</li>
-</ul>
-
-<p>For single pass, split whenever you come across a full node while searching so as to be assured to no more split any nodes while shifting the median key upwards.</p>
-
-<h2 id="splitting">Splitting</h2>
-
-<p><img src="https://adityagupta1089.github.io/images/btree2.png" alt="" /></p>
-
-<p><strong>Figure: Splitting a node with $t=4$</strong></p>
-
-<ul>
-  <li>Make two nodes with keys less than and more than the median key respectively.</li>
-  <li>Move the children between the keys to respective trees.</li>
-  <li>Move the median key to parent node.</li>
-  <li>Move the children around the median key to the left and right new nodes respectively.</li>
-</ul>
-
-<h2 id="delete-othotlog_tn">Delete $O(th)=O(t\log_tn)$</h2>
-
-<ul>
-  <li>If key $k$ is in leaf node $x$ then delete $k$ from $x$.</li>
-  <li>If key $k$ is in internal node $x$ then
-    <ul>
-      <li>If left child $y$ of $k$ has $\ge t$ keys then find predecessor $k’$ of $k$ in $y$. Delete $k’$ from $y$ and replace $k$ by $k’$ in $x$.</li>
-      <li>Otherwise check for right child $z$ and do symmetrically.</li>
-      <li>Otherwise merge $y$ and $z$ along with $k$ into $y$. Recursively delete $k$ from $y$.</li>
-    </ul>
-  </li>
-</ul>
+<p>$T(n)=3T(n/2)+O(n)\implies T(n)=O(n^{\log_23})=O(n^{1.59})$</p>
 
   </div>
 
   <footer class="postNavigation">
   
-    <a class="postPrev" href="/notes/data%20structures/decision-trees.html">
-        &laquo; Decision Trees
+    <a class="postPrev" href="/notes/data%20structures/heaps.html">
+        &laquo; Heaps - Binary, Binomial, Fibonacci
     </a>
   
-  
-    <a class="postNext" href="/data%20structures/notes/red-black-trees.html">
-        Red Black Trees &raquo;
-    </a>
   
   </footer>
 
