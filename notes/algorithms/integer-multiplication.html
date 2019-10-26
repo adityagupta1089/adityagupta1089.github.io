@@ -6,13 +6,13 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Aditya Gupta - PAGE 3</title>
-  <meta name="description" content="">
+  <title>Aditya Gupta - INTEGER MULTIPLICATION</title>
+  <meta name="description" content="To multiply $x$ and $y$, split them into left and right halves which are $n/2$ bits long.">
   <link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic|Source+Sans+Pro:400,700,200,300|Josefin+Sans:400,600,700,300' rel='stylesheet' type='text/css'>
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
 
   <link rel="stylesheet" href="/css/style.css">
-  <link rel="canonical" href="https://adityagupta1089.github.io/category/data structures/page/3/">
+  <link rel="canonical" href="https://adityagupta1089.github.io/notes/algorithms/integer-multiplication.html">
   <link rel="alternate" type="application/rss+xml" title="Aditya Gupta" href="https://adityagupta1089.github.io/feed.xml">
 </head>
 
@@ -148,6 +148,11 @@
     
       
         
+          <a class="page-link" href="/category/algorithms/index.html">
+            algorithms
+          </a>
+            <span class="exclamationMark">/</span>
+        
       
     
   </div>
@@ -174,60 +179,48 @@
 
     <div class="page-content">
       <div class="wrapper bottomround">
-        <div class="home">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline"><a class="post-title-link"  href="/notes/algorithms/integer-multiplication.html">Integer Multiplication</a></h1>
+  <center>  <p class="post-meta"><time datetime="2019-10-24T15:02:00+00:00" itemprop="datePublished">Oct 24, 2019</time></p>
+    
+   </center>
+  </header>
 
+  <div class="post-content" itemprop="articleBody">
+    <p>To multiply $x$ and $y$, split them into left and right halves which are $n/2$ bits long.</p>
 
-  
-  <div class="post postContent">
-    <div  class="postDate"><time datetime="2019-10-14T09:29:00+00:00" itemprop="datePublished">Oct 14, 2019</time>
-    </div>
-    <div class="postTag">
-      
-    </div>
-    <br>
-    <div class="postTitle">
-    <a class='postLink' href="https://adityagupta1089.github.io/notes/data%20structures/decision-trees.html">Decision Trees</a>
-    </div>
-    <div class="postExt">
-   Entropy 2-class
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align}
+x&=2^{n/2}x_L+x_R\\
+y&=2^{n/2}y_L+y_R\\
+xy&=(2^{n/2}x_L+x_R)(2^{n/2}y_L+y_R)\\
+&=2^nx_Ly_L+2^{n/2}(x_Ly_R+x_Ry_L)+x_Ry_R\\
+x_Ly_R+x_Ry_R&=(x_L+x_R)(y_L+y_R)-x_Ly_L-x_Ry_R
+\end{align} %]]></script>
 
-If $\cal I$ is the set of training examples, $p_+$ ratio of posititive examples in $\cal I$ and $p_-$ negative examples then entropy which measures impurity:
+<p>Additional and multiplication by power of 2 takes linear time. We only need to calculate $x_Ly_L$, $x_Ry_R$ and $(x_L+x_R)(y_L+y_R)$ which we can calculate recursively.</p>
 
+<p>$T(n)=3T(n/2)+O(n)\implies T(n)=O(n^{\log_23})=O(n^{1.59})$</p>
 
-
-This represents expected number of bits to encode the class of a randomly drawn member of $\ca...
-    </div>
   </div>
+
+  <footer class="postNavigation">
   
-
+    <a class="postPrev" href="/notes/data%20structures/heaps.html">
+        &laquo; Heaps - Binary, Binomial, Fibonacci
+    </a>
   
-    <nav class="pagination">
-      
-        <a class="paginationLink" href="/category/data structures/page/2/">&laquo; Prev</a>
-      
-
-    
-      
-        
-          <a class="paginationLink" href="/category/data structures/index.html">1</a>
-        
-      
-        
-          <a class="paginationLink" href="/category/data structures/page/2/index.html">2</a>
-        
-      
-        
-          <em class="paginationLink paginationLinkCurrent">3</em>
-        
-      
-    
-
-    
-    </nav>
   
+    <a class="postNext" href="/notes/algorithms/master-s-theorem.html">
+        Master's Theorem &raquo;
+    </a>
+  
+  </footer>
 
-</div>
+
+</article>
 
       </div>
     </div>

@@ -5,9 +5,48 @@
     <description></description>
     <link>https://adityagupta1089.github.io/</link>
     <atom:link href="https://adityagupta1089.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 24 Oct 2019 15:08:01 +0000</pubDate>
-    <lastBuildDate>Thu, 24 Oct 2019 15:08:01 +0000</lastBuildDate>
+    <pubDate>Sat, 26 Oct 2019 17:58:40 +0000</pubDate>
+    <lastBuildDate>Sat, 26 Oct 2019 17:58:40 +0000</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
+    
+      <item>
+        <title>Master's Theorem</title>
+        <description>&lt;p&gt;&lt;strong&gt;Theorem&lt;/strong&gt;: $T(n)=aT(\lceil n/b\rceil)+O(n^d)$ for some constants $a&amp;gt;0,b&amp;gt;1,d\ge 0$ then
+&lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
+T(n)=\begin{cases}
+O(n^d)&amp;d&gt;\log_b a\\
+O(n^d\log n)&amp;d=\log_ba\\
+O(n^{\log_ba})&amp;d&lt;\log_ba
+\end{cases} %]]&gt;&lt;/script&gt;
+&lt;strong&gt;Proof&lt;/strong&gt;: &lt;img src=&quot;https://adityagupta1089.github.io/images/mastertheorem.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Each problem of size $n$ is divided into $a$ subproblems of size $n/b$. Each level has problem of size $n/b^k$ and work done is:
+&lt;script type=&quot;math/tex&quot;&gt;a^k\times O\left(\frac nb^k\right)^d=O(n^d)\times \left(\frac ab^d\right)^k&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;As $k$ goes from $0$ (root) to $\log_bn$ (the leaves), these form a geometric series with ratio $r=a/b^d$&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;$r&amp;lt;1$: Decreasing series, sum is first term $O(n^d)$&lt;/li&gt;
+  &lt;li&gt;$r&amp;gt;1$: Increasing series, sum is last term $O(n^{\log_ba})$&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;n^d\left(\frac a{b^d}\right)^{\log_bn}=n^d\left(\frac{a^{\log_bn}}{(b^{\log_bn})^d}\right)=a^{\log_bn}=a^{(\log_an)(\log_ba)}=n^{\log_ba}&lt;/script&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;$r=1$: All $O(\log n)$ terms are equal to $O(n^d)$&lt;/li&gt;
+&lt;/ol&gt;
+
+</description>
+        <pubDate>Sat, 26 Oct 2019 17:52:00 +0000</pubDate>
+        <link>https://adityagupta1089.github.io/notes/algorithms/master-s-theorem.html</link>
+        <guid isPermaLink="true">https://adityagupta1089.github.io/notes/algorithms/master-s-theorem.html</guid>
+        
+        
+        <category>Notes</category>
+        
+        <category>Algorithms</category>
+        
+      </item>
     
       <item>
         <title>Integer Multiplication</title>
@@ -27,13 +66,13 @@ x_Ly_R+x_Ry_R&amp;=(x_L+x_R)(y_L+y_R)-x_Ly_L-x_Ry_R
 &lt;p&gt;$T(n)=3T(n/2)+O(n)\implies T(n)=O(n^{\log_23})=O(n^{1.59})$&lt;/p&gt;
 </description>
         <pubDate>Thu, 24 Oct 2019 15:02:00 +0000</pubDate>
-        <link>https://adityagupta1089.github.io/notes/data%20structures/integer-multiplication.html</link>
-        <guid isPermaLink="true">https://adityagupta1089.github.io/notes/data%20structures/integer-multiplication.html</guid>
+        <link>https://adityagupta1089.github.io/notes/algorithms/integer-multiplication.html</link>
+        <guid isPermaLink="true">https://adityagupta1089.github.io/notes/algorithms/integer-multiplication.html</guid>
         
         
         <category>Notes</category>
         
-        <category>Data Structures</category>
+        <category>Algorithms</category>
         
       </item>
     
@@ -668,13 +707,13 @@ _i)}\frac{|\cal I_v|}{|\cal I|}\text{Entropy}(\cal I_v)&lt;/script&gt;
 &lt;/ul&gt;
 </description>
         <pubDate>Mon, 14 Oct 2019 09:29:00 +0000</pubDate>
-        <link>https://adityagupta1089.github.io/notes/data%20structures/decision-trees.html</link>
-        <guid isPermaLink="true">https://adityagupta1089.github.io/notes/data%20structures/decision-trees.html</guid>
+        <link>https://adityagupta1089.github.io/notes/machine%20learning/decision-trees.html</link>
+        <guid isPermaLink="true">https://adityagupta1089.github.io/notes/machine%20learning/decision-trees.html</guid>
         
         
         <category>Notes</category>
         
-        <category>Data Structures</category>
+        <category>Machine Learning</category>
         
       </item>
     
@@ -729,22 +768,6 @@ _i)}\frac{|\cal I_v|}{|\cal I|}\text{Entropy}(\cal I_v)&lt;/script&gt;
         <pubDate>Fri, 07 Jun 2019 08:08:00 +0000</pubDate>
         <link>https://adityagupta1089.github.io/notes/elasticsearch-notes.html</link>
         <guid isPermaLink="true">https://adityagupta1089.github.io/notes/elasticsearch-notes.html</guid>
-        
-        
-        <category>Notes</category>
-        
-      </item>
-    
-      <item>
-        <title>Haskell Notes</title>
-        <description>&lt;p&gt;These are the notes on Haskell which I wrote when I was studying it.&lt;/p&gt;
-
-&lt;script src=&quot;https://gist.github.com/adityagupta1089/0b7b7d332d37a1b1861bb79b76ee2b48.js&quot;&gt;&lt;/script&gt;
-
-</description>
-        <pubDate>Fri, 07 Jun 2019 08:07:00 +0000</pubDate>
-        <link>https://adityagupta1089.github.io/notes/haskell-notes.html</link>
-        <guid isPermaLink="true">https://adityagupta1089.github.io/notes/haskell-notes.html</guid>
         
         
         <category>Notes</category>

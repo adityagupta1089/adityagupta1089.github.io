@@ -148,6 +148,11 @@
     
       
         
+          <a class="page-link" href="/category/algorithms/index.html">
+            algorithms
+          </a>
+            <span class="exclamationMark">/</span>
+        
       
     
   </div>
@@ -180,6 +185,28 @@
 
   
   <div class="post postContent">
+    <div  class="postDate"><time datetime="2019-10-26T17:52:00+00:00" itemprop="datePublished">Oct 26, 2019</time>
+    </div>
+    <div class="postTag">
+      
+    </div>
+    <br>
+    <div class="postTitle">
+    <a class='postLink' href="https://adityagupta1089.github.io/notes/algorithms/master-s-theorem.html">Master's Theorem</a>
+    </div>
+    <div class="postExt">
+   Theorem: $T(n)=aT(\lceil n/b\rceil)+O(n^d)$ for some constants $a&gt;0,b&gt;1,d\ge 0$ then
+
+Proof: 
+
+Each problem of size $n$ is divided into $a$ subproblems of size $n/b$. Each level has problem of size $n/b^k$ and work done is:
+
+
+As $k$ goes from $0$ (root) to $\log_bn$...
+    </div>
+  </div>
+  
+  <div class="post postContent">
     <div  class="postDate"><time datetime="2019-10-24T15:02:00+00:00" itemprop="datePublished">Oct 24, 2019</time>
     </div>
     <div class="postTag">
@@ -187,7 +214,7 @@
     </div>
     <br>
     <div class="postTitle">
-    <a class='postLink' href="https://adityagupta1089.github.io/notes/data%20structures/integer-multiplication.html">Integer Multiplication</a>
+    <a class='postLink' href="https://adityagupta1089.github.io/notes/algorithms/integer-multiplication.html">Integer Multiplication</a>
     </div>
     <div class="postExt">
    To multiply $x$ and $y$, split them into left and right halves which are $n/2$ bits long.
@@ -232,32 +259,6 @@ $T(n)=3T(...
       $\Theta(\lg n)$
       $O(\lg n)$
       $\Theta(1...
-    </div>
-  </div>
-  
-  <div class="post postContent">
-    <div  class="postDate"><time datetime="2019-10-20T15:54:00+00:00" itemprop="datePublished">Oct 20, 2019</time>
-    </div>
-    <div class="postTag">
-      
-    </div>
-    <br>
-    <div class="postTitle">
-    <a class='postLink' href="https://adityagupta1089.github.io/notes/data%20structures/range-trees.html">Range Trees</a>
-    </div>
-    <div class="postExt">
-   Motivation
-
-Given a set of $n$ points $P$ on a real line and a query interval $[x:x’]$ find all the points inside the interval.
-
-Construct a binary search tree from $P$ and perform the following query:
-
-
-
-Figure: Example of searching in range tree
-
-
-  Search for $x$ and $...
     </div>
   </div>
   
