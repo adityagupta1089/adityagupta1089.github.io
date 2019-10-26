@@ -5,9 +5,95 @@
     <description></description>
     <link>https://adityagupta1089.github.io/</link>
     <atom:link href="https://adityagupta1089.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 26 Oct 2019 17:58:40 +0000</pubDate>
-    <lastBuildDate>Sat, 26 Oct 2019 17:58:40 +0000</lastBuildDate>
+    <pubDate>Sat, 26 Oct 2019 20:34:50 +0000</pubDate>
+    <lastBuildDate>Sat, 26 Oct 2019 20:34:50 +0000</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
+    
+      <item>
+        <title>Strassen Matrix Multiplication</title>
+        <description>&lt;p&gt;The product of two $n\times n$ matrices $X$ and $Y$ which takes $O(n^3)$&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+X=\begin{bmatrix}A&amp;B\\C&amp;D\end{bmatrix} %]]&gt;&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+Y=\begin{bmatrix}E&amp;F\\G&amp;H\end{bmatrix} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;is 
+&lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
+XY=\begin{bmatrix}A&amp;B\\C&amp;D\end{bmatrix}\begin{bmatrix}E&amp;F\\G&amp;H\end{bmatrix}=\begin{bmatrix}AE+BG&amp;AF+BH\\CE+DG&amp;CF+DH\end{bmatrix} %]]&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;here $T(n)=8T(n/2)+O(n^2)\implies O(n^3)$&lt;/p&gt;
+
+&lt;p&gt;Strassen gave:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+XY=\begin{bmatrix}P_5+P_4-P_2+P_6&amp;P_1+P_2\\P_3+P_4&amp;P_1+P_5-P_3-P_7\end{bmatrix}
+\ %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;where&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+P_1&amp;=A(F-H)&amp;P_5&amp;=(A+D)(E+H)\\
+P_2&amp;=(A+B)H&amp;P_6&amp;=(B-D)(G+H)\\
+P_3&amp;=(C+D)E&amp;P_7&amp;=(A-C)(E+F)\\
+P_4&amp;=D(G-E)\\
+\end{align} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;The new running time is $T(n)=7T(n/2)+O(n^2)$ which by the master theorem works out to be $O(n^{\log_27})\approx O(n^{2.81})$&lt;/p&gt;
+</description>
+        <pubDate>Sat, 26 Oct 2019 18:46:00 +0000</pubDate>
+        <link>https://adityagupta1089.github.io/notes/algorithms/matrix-multiplication.html</link>
+        <guid isPermaLink="true">https://adityagupta1089.github.io/notes/algorithms/matrix-multiplication.html</guid>
+        
+        
+        <category>Notes</category>
+        
+        <category>Algorithms</category>
+        
+      </item>
+    
+      <item>
+        <title>Mergesort, Quicksort and Quickselect</title>
+        <description>&lt;h1 id=&quot;mergesort&quot;&gt;Mergesort&lt;/h1&gt;
+
+&lt;p&gt;Split the list into 2 halves, recursively sort each half and then merge the two sorted sublists. For merging $x[1..k]$ and $y[1..l]$ into $z[1..k+l]$. The first element of $z$ is smaller of $x[1]$ and $y[1]$ and rest can be constrcuted recrusively.&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+\text{mergesort}(a[1..n]) =&amp;\text{merge}(\text{mergesort}(a[1..\lfloor n/2\rfloor]),\\&amp;\quad\text{mergesort}(a[\lfloor n/2\rfloor+1...n]))\\
+\text{merge}(x[1..k],y[1..l])=&amp;\begin{cases}x[1]\circ\text{merge}(x[2..k],y[1..l])&amp;x[1]\le y[1]\\y[1]\circ\text{merge}(x[1..k],y[2..l])&amp;\text{otherwise}\end{cases}
+\end{align} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;Time Complexity $T(n)=2T(n/2)+O(n)\implies O(n\log n)$&lt;/p&gt;
+
+&lt;h1 id=&quot;quicksort--quickselect&quot;&gt;Quicksort &amp;amp; Quickselect&lt;/h1&gt;
+
+&lt;p&gt;Select a pivot $v$ (pick randomly). Split the array into three categories: elements smaller than $v$, those equal to $v$ and those greater than $v$. Call these $S_L$, $S_v$, and $S_R$ respectively. Recursively sort the array.&lt;/p&gt;
+
+&lt;p&gt;Time complexity: $O(n^2)$ worst case. $O(n\log n)$ best and average case.&lt;/p&gt;
+
+&lt;p&gt;For selecting the $k^{\rm th}$ element:
+&lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
+\text{selection}=
+\begin{cases}
+\text{selection(S_L, k)}&amp;k\le |S_L|\\
+v &amp;|S_L|&lt;k\le|S_L|+|S_v|\\
+\text{selection}(S_R, k-|S_L|-|S_v|)&amp;k&gt;|S_L|+|S_v|
+\end{cases} %]]&gt;&lt;/script&gt;
+Time complexity: $T(n)=T(n/2)+O(n)\implies O(n)$&lt;/p&gt;
+</description>
+        <pubDate>Sat, 26 Oct 2019 18:35:00 +0000</pubDate>
+        <link>https://adityagupta1089.github.io/notes/algorithms/mergesort-quicksort-quickselect.html</link>
+        <guid isPermaLink="true">https://adityagupta1089.github.io/notes/algorithms/mergesort-quicksort-quickselect.html</guid>
+        
+        
+        <category>Notes</category>
+        
+        <category>Algorithms</category>
+        
+      </item>
     
       <item>
         <title>Master's Theorem</title>
@@ -17,8 +103,9 @@ T(n)=\begin{cases}
 O(n^d)&amp;d&gt;\log_b a\\
 O(n^d\log n)&amp;d=\log_ba\\
 O(n^{\log_ba})&amp;d&lt;\log_ba
-\end{cases} %]]&gt;&lt;/script&gt;
-&lt;strong&gt;Proof&lt;/strong&gt;: &lt;img src=&quot;https://adityagupta1089.github.io/images/mastertheorem.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+\end{cases} %]]&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Proof&lt;/strong&gt;: &lt;img src=&quot;https://adityagupta1089.github.io/images/mastertheorem.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Each problem of size $n$ is divided into $a$ subproblems of size $n/b$. Each level has problem of size $n/b^k$ and work done is:
 &lt;script type=&quot;math/tex&quot;&gt;a^k\times O\left(\frac nb^k\right)^d=O(n^d)\times \left(\frac ab^d\right)^k&lt;/script&gt;&lt;/p&gt;
@@ -714,63 +801,6 @@ _i)}\frac{|\cal I_v|}{|\cal I|}\text{Entropy}(\cal I_v)&lt;/script&gt;
         <category>Notes</category>
         
         <category>Machine Learning</category>
-        
-      </item>
-    
-      <item>
-        <title>Supervised Learning</title>
-        <description>&lt;p&gt;Given a set $(x,y)$ need to estimate $f(x)=y$ .&lt;/p&gt;
-
-&lt;p&gt;Terms:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Feature $x_i$ - property of object to be classified&lt;/li&gt;
-  &lt;li&gt;Instance $x=\begin{pmatrix}x_1&amp;amp;x_2&amp;amp;x_3&amp;amp;\ldots\end{pmatrix}$ - features of an object&lt;/li&gt;
-  &lt;li&gt;Instance Space $\cal I$ - space of all possible instances&lt;/li&gt;
-  &lt;li&gt;Class $\cal Y$ - categorical feature of an object&lt;/li&gt;
-  &lt;li&gt;Example $(x,y)$ - instance with membership&lt;/li&gt;
-  &lt;li&gt;Training Set $X = {}_{i=1}^N{x_i,y_i}$&lt;/li&gt;
-  &lt;li&gt;Target Concept $\cal C$ - correct expression of class.&lt;/li&gt;
-  &lt;li&gt;Concept Class - Space of all possible concepts&lt;/li&gt;
-  &lt;li&gt;Hypothesis $h :x\mapsto{0,1}$ - Approximation to target concept&lt;/li&gt;
-  &lt;li&gt;Hypothesis class $\cal H$ - Space of all possible hypothesis&lt;/li&gt;
-  &lt;li&gt;Learning Goal - Find $h\in\cal H$ that closely approximates $\cal C$ (possible $\cal C\not\in H$)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Errors:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Empirical: $E(h|X) = \frac 1N\sum_{t=1}^N 1(h(x_t)\ne y_t)$&lt;/li&gt;
-  &lt;li&gt;Generalization: instances not in $X$&lt;/li&gt;
-  &lt;li&gt;True: instances in $\cal I$&lt;/li&gt;
-  &lt;li&gt;Most specific and general hypothesis $\cal S$ and $\cal G$ covering fewest and most instances.&lt;/li&gt;
-  &lt;li&gt;Version space - between $\cal S$ and $\cal G$&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Mon, 14 Oct 2019 00:00:00 +0000</pubDate>
-        <link>https://adityagupta1089.github.io/notes/machine%20learning/Supervised-Learning.html</link>
-        <guid isPermaLink="true">https://adityagupta1089.github.io/notes/machine%20learning/Supervised-Learning.html</guid>
-        
-        
-        <category>Notes</category>
-        
-        <category>Machine Learning</category>
-        
-      </item>
-    
-      <item>
-        <title>Elastic Search Notes</title>
-        <description>&lt;p&gt;These are the notes on Elastic Search which I wrote while studying it.&lt;/p&gt;
-
-&lt;script src=&quot;https://gist.github.com/adityagupta1089/9e9af730f16384f54f53a1827cf1215e.js&quot;&gt;&lt;/script&gt;
-
-</description>
-        <pubDate>Fri, 07 Jun 2019 08:08:00 +0000</pubDate>
-        <link>https://adityagupta1089.github.io/notes/elasticsearch-notes.html</link>
-        <guid isPermaLink="true">https://adityagupta1089.github.io/notes/elasticsearch-notes.html</guid>
-        
-        
-        <category>Notes</category>
         
       </item>
     

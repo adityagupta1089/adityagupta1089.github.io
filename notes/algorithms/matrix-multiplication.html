@@ -6,13 +6,13 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Aditya Gupta - RED BLACK TREES</title>
-  <meta name="description" content="Properties">
+  <title>Aditya Gupta - STRASSEN MATRIX MULTIPLICATION</title>
+  <meta name="description" content="The product of two $n\times n$ matrices $X$ and $Y$ which takes $O(n^3)$">
   <link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic|Source+Sans+Pro:400,700,200,300|Josefin+Sans:400,600,700,300' rel='stylesheet' type='text/css'>
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
 
   <link rel="stylesheet" href="/css/style.css">
-  <link rel="canonical" href="https://adityagupta1089.github.io/data%20structures/notes/red-black-trees.html">
+  <link rel="canonical" href="https://adityagupta1089.github.io/notes/algorithms/matrix-multiplication.html">
   <link rel="alternate" type="application/rss+xml" title="Aditya Gupta" href="https://adityagupta1089.github.io/feed.xml">
 </head>
 
@@ -194,43 +194,53 @@
         <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title" itemprop="name headline"><a class="post-title-link"  href="/data%20structures/notes/red-black-trees.html">Red Black Trees</a></h1>
-  <center>  <p class="post-meta"><time datetime="2019-10-20T12:59:00+00:00" itemprop="datePublished">Oct 20, 2019</time></p>
+    <h1 class="post-title" itemprop="name headline"><a class="post-title-link"  href="/notes/algorithms/matrix-multiplication.html">Strassen Matrix Multiplication</a></h1>
+  <center>  <p class="post-meta"><time datetime="2019-10-26T18:46:00+00:00" itemprop="datePublished">Oct 26, 2019</time></p>
     
    </center>
   </header>
 
   <div class="post-content" itemprop="articleBody">
-    <h1 id="properties">Properties</h1>
+    <p>The product of two $n\times n$ matrices $X$ and $Y$ which takes $O(n^3)$</p>
 
-<ul>
-  <li>Red/Black node</li>
-  <li>Root and leaf black</li>
-  <li>Children of red nodes are both black</li>
-  <li>All paths to leaves contains same nubmer of black nodes.</li>
-</ul>
+<script type="math/tex; mode=display">% <![CDATA[
+X=\begin{bmatrix}A&B\\C&D\end{bmatrix} %]]></script>
 
-<p>Same as 2-3-4 tree (t=2) B-Tree.</p>
+<script type="math/tex; mode=display">% <![CDATA[
+Y=\begin{bmatrix}E&F\\G&H\end{bmatrix} %]]></script>
 
-<ul>
-  <li>Node with single value is same as a red node</li>
-  <li>Node with two values is same as a red node with a black child.</li>
-  <li>Node with three values is same as a red node with 2 black children.</li>
-</ul>
+<p>is 
+<script type="math/tex">% <![CDATA[
+XY=\begin{bmatrix}A&B\\C&D\end{bmatrix}\begin{bmatrix}E&F\\G&H\end{bmatrix}=\begin{bmatrix}AE+BG&AF+BH\\CE+DG&CF+DH\end{bmatrix} %]]></script></p>
 
+<p>here $T(n)=8T(n/2)+O(n^2)\implies O(n^3)$</p>
+
+<p>Strassen gave:</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+XY=\begin{bmatrix}P_5+P_4-P_2+P_6&P_1+P_2\\P_3+P_4&P_1+P_5-P_3-P_7\end{bmatrix}
+\ %]]></script>
+
+<p>where</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align}
+P_1&=A(F-H)&P_5&=(A+D)(E+H)\\
+P_2&=(A+B)H&P_6&=(B-D)(G+H)\\
+P_3&=(C+D)E&P_7&=(A-C)(E+F)\\
+P_4&=D(G-E)\\
+\end{align} %]]></script>
+
+<p>The new running time is $T(n)=7T(n/2)+O(n^2)$ which by the master theorem works out to be $O(n^{\log_27})\approx O(n^{2.81})$</p>
 
   </div>
 
   <footer class="postNavigation">
   
-    <a class="postPrev" href="/notes/data%20structures/b-trees.html">
-        &laquo; B-Trees
+    <a class="postPrev" href="/notes/algorithms/mergesort-quicksort-quickselect.html">
+        &laquo; Mergesort, Quicksort and Quickselect
     </a>
   
-  
-    <a class="postNext" href="/notes/data%20structures/interval-trees.html">
-        Interval Trees &raquo;
-    </a>
   
   </footer>
 
