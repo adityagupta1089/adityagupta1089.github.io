@@ -4,7 +4,7 @@ title: Master's Theorem
 categories:
 - Notes
 - Algorithms
-mathjax: true
+
 date: 2019-10-26 23:22 +0530
 ---
 **Theorem**: $T(n)=aT(\lceil n/b\rceil)+O(n^d)$ for some constants $a>0,b>1,d\ge 0$ then
@@ -15,6 +15,7 @@ O(n^d\log n)&d=\log_ba\\
 O(n^{\log_ba})&d<\log_ba
 \end{cases}
 $$
+
 **Proof**: ![]({{site.url}}{{site.baseurl}}/images/mastertheorem.png)
 
 Each problem of size $n$ is divided into $a$ subproblems of size $n/b$. Each level has problem of size $n/b^k$ and work done is:

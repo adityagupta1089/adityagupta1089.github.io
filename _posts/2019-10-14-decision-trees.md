@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Decision Trees
-mathjax: true
+
 categories: ["Notes", "Machine Learning"]
 date: 2019-10-14 14:59 +0530
 ---

@@ -4,7 +4,7 @@ title: Integer Multiplication
 categories:
 - Notes
 - Algorithms
-mathjax: true
+
 date: 2019-10-24 20:32 +0530
 ---
 To multiply $x$ and $y$, split them into left and right halves which are $n/2$ bits long.

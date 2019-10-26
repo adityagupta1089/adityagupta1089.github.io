@@ -2,7 +2,7 @@
 layout: post
 title: "Supervised Learning"
 date: Monday, 14 October 2019
-mathjax: true
+
 categories: ["Notes", "Machine Learning"]
 ---
 Given a set $(x,y)$ need to estimate $f(x)=y$ .

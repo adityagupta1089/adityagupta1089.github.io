@@ -2,7 +2,7 @@
 layout: post
 title: "Git Commands"
 date: 2019-06-07 13:33 +0530
-mathjax: true
+
 categories: ["Notes"]
 ---
 Some common git commands frequently used

@@ -2,7 +2,7 @@
 layout: post
 title: "Songs I use to identify Music Intervals"
 date: 2017-07-29 23:51 +0530
-mathjax: true
+
 
 categories: ["Music"]
 ---

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Splay Trees
-mathjax: true
+
 categories:
 - Notes
 - Data Structures

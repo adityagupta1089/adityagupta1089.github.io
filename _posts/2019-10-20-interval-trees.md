@@ -3,7 +3,7 @@ layout: post
 title: Interval Trees
 date: 2019-10-20 18:37 +0530
 categories: ["Notes", "Data Structures"]
-mathjax: true
+
 ---
 
 # Motivation

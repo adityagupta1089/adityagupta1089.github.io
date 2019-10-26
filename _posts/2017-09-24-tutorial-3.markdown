@@ -2,7 +2,7 @@
 layout: post
 title: "Tutorial 3"
 date: 2017-09-24 13:33 +0530
-mathjax: true
+
 
 categories: ["CSL471"]
 ---

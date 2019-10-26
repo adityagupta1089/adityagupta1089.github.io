@@ -2,7 +2,7 @@
 layout: post
 title: Range Trees
 date: 2019-10-20 21:24 +0530
-mathjax: true
+
 categories:
 - Notes
 - Data Structures
