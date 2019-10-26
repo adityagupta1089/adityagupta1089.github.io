@@ -2,7 +2,7 @@
 layout: post
 title: Decision Trees
 mathjax: true
-categories: ["Notes", "Data Structures"]
+categories: ["Notes", "Machine Learning"]
 date: 2019-10-14 14:59 +0530
 ---
 # Entropy 2-class

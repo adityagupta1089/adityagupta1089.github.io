@@ -3,7 +3,7 @@ layout: post
 title: Integer Multiplication
 categories:
 - Notes
-- Data Structures
+- Algorithms
 mathjax: true
 date: 2019-10-24 20:32 +0530
 ---
