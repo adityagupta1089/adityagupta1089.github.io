@@ -6,13 +6,13 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Aditya Gupta - MERGESORT, QUICKSORT AND QUICKSELECT</title>
-  <meta name="description" content="Mergesort">
+  <title>Aditya Gupta - BOBBY FISCHER TEACHES CHESS (BACK-RANK MATING)</title>
+  <meta name="description" content="This book talks about  Introduction: How to play chess          Description of the Board &amp; Pieces      Moving &amp; Capturing      Special Moves: Castlin...">
   <link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic|Source+Sans+Pro:400,700,200,300|Josefin+Sans:400,600,700,300' rel='stylesheet' type='text/css'>
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
 
   <link rel="stylesheet" href="/css/style.css">
-  <link rel="canonical" href="https://adityagupta1089.github.io/notes/algorithms/mergesort-quicksort-quickselect.html">
+  <link rel="canonical" href="https://adityagupta1089.github.io/chess/notes/bobby-fischer-teaches-chess.html">
   <link rel="alternate" type="application/rss+xml" title="Aditya Gupta" href="https://adityagupta1089.github.io/feed.xml">
 </head>
 
@@ -203,53 +203,104 @@
         <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title" itemprop="name headline"><a class="post-title-link"  href="/notes/algorithms/mergesort-quicksort-quickselect.html">Mergesort, Quicksort and Quickselect</a></h1>
-  <center>  <p class="post-meta"><time datetime="2019-10-26T18:35:00+00:00" itemprop="datePublished">Oct 26, 2019</time></p>
+    <h1 class="post-title" itemprop="name headline"><a class="post-title-link"  href="/chess/notes/bobby-fischer-teaches-chess.html">Bobby Fischer Teaches Chess (Back-Rank Mating)</a></h1>
+  <center>  <p class="post-meta"><time datetime="2019-10-28T14:15:00+00:00" itemprop="datePublished">Oct 28, 2019</time></p>
     
    </center>
   </header>
 
   <div class="post-content" itemprop="articleBody">
-    <h1 id="mergesort">Mergesort</h1>
+    <p>This book talks about</p>
+<ul>
+  <li>Introduction: How to play chess
+    <ul>
+      <li>Description of the Board &amp; Pieces</li>
+      <li>Moving &amp; Capturing</li>
+      <li>Special Moves: Castling, Pawn Promotion, Capturing En Passant</li>
+      <li>Piece Values: Pawn(1), Knight(3), Bishop(3.25), Rook(5), Queen(9), King(Infinity)</li>
+    </ul>
+  </li>
+  <li>Chapter 1: Elements of Checkmate
+    <ul>
+      <li>Conditions of checkmate</li>
+      <li>Defenses: capturing, fleeing, interposing</li>
+      <li>Pins</li>
+      <li>Discovered checks</li>
+      <li>Mate in 1</li>
+    </ul>
+  </li>
+  <li>Chapter 2: Back-Rank Mates
+    <ul>
+      <li>Useful/Useless Interposition</li>
+      <li>Amount of power needed to mate</li>
+    </ul>
+  </li>
+  <li>Chapter 3: Back-Rank Defenses and Variations
+    <ul>
+      <li>Removing/Capturing the defenders</li>
+      <li>disconnected rooks</li>
+    </ul>
 
-<p>Split the list into 2 halves, recursively sort each half and then merge the two sorted sublists. For merging $x[1..k]$ and $y[1..l]$ into $z[1..k+l]$. The first element of $z$ is smaller of $x[1]$ and $y[1]$ and rest can be constrcuted recrusively.</p>
+    <p><img src="https://adityagupta1089.github.io/images/fischer1.png" alt="" /></p>
+    <ul>
+      <li>sideways back-rank</li>
+    </ul>
+  </li>
+  <li>Chapter 4: Displacing Defenders
+    <ul>
+      <li>Drawing away defenders</li>
+      <li>Displacing the king</li>
+      <li>Displacing the king in 2 moves</li>
+      <li>Defense against displacement of king in 2 Moves</li>
+    </ul>
+  </li>
+  <li>Chapter 5: Attacks on the enemy pawn cover
+    <ul>
+      <li>Sacrifice leading to mate</li>
+    </ul>
+  </li>
+</ul>
 
-<script type="math/tex; mode=display">% <![CDATA[
-\begin{align}
-\text{mergesort}(a[1..n]) =&\text{merge}(\text{mergesort}(a[1..\lfloor n/2\rfloor]),\\&\quad\text{mergesort}(a[\lfloor n/2\rfloor+1...n]))\\
-\text{merge}(x[1..k],y[1..l])=&\begin{cases}x[1]\circ\text{merge}(x[2..k],y[1..l])&x[1]\le y[1]\\y[1]\circ\text{merge}(x[1..k],y[2..l])&\text{otherwise}\end{cases}
-\end{align} %]]></script>
-
-<p>Time Complexity $T(n)=2T(n/2)+O(n)\implies O(n\log n)$</p>
-
-<h1 id="quicksort--quickselect">Quicksort &amp; Quickselect</h1>
-
-<p>Select a pivot $v$ (pick randomly). Split the array into three categories: elements smaller than $v$, those equal to $v$ and those greater than $v$. Call these $S_L$, $S_v$, and $S_R$ respectively. Recursively sort the array.</p>
-
-<p>Time complexity: $O(n^2)$ worst case. $O(n\log n)$ best and average case.</p>
-
-<p>For selecting the $k^{\rm th}$ element:
-<script type="math/tex">% <![CDATA[
-\text{selection}=
-\begin{cases}
-\text{selection(S_L, k)}&k\le |S_L|\\
-v &|S_L|<k\le|S_L|+|S_v|\\
-\text{selection}(S_R, k-|S_L|-|S_v|)&k>|S_L|+|S_v|
-\end{cases} %]]></script>
-Time complexity: $T(n)=T(n/2)+O(n)\implies O(n)$</p>
+<h1 id="chapter-6-final-review">Chapter 6: <strong>Final Review</strong></h1>
+<h2 id="mating-themes">Mating Themes</h2>
+<ol>
+  <li>Elementary back-rank mate</li>
+  <li>Back-rank combination (more power)</li>
+  <li>Eliminating a back-rank defender, enemy recaptures using</li>
+  <li>Rook/Queen</li>
+  <li>King</li>
+  <li>Drawing away a defender</li>
+  <li>Driving away the enemy king</li>
+  <li>Queen</li>
+  <li>Bishop</li>
+  <li>Knight</li>
+  <li>Rook</li>
+  <li>Queen sacrifice</li>
+  <li>Rook mates</li>
+  <li>Rook checks
+    1. enemy rook interposes, bishop mates
+    2. enemy piece interposes, back-rank combination</li>
+  <li>Mating a hemmed-in King</li>
+  <li>Hemming the king, sacrificing and mating
+    <h2 id="the-defenses">The Defenses</h2>
+  </li>
+  <li>Capturing a checking piece with appropriate piece</li>
+  <li>Interposing</li>
+  <li>King fleeing
+    <h2 id="pins">Pins</h2>
+  </li>
+  <li>Pinned piece cannot capture</li>
+  <li>However it can support a checkmate</li>
+</ol>
 
   </div>
 
   <footer class="postNavigation">
   
-    <a class="postPrev" href="/notes/algorithms/master-s-theorem.html">
-        &laquo; Master's Theorem
+    <a class="postPrev" href="/notes/algorithms/matrix-multiplication.html">
+        &laquo; Strassen Matrix Multiplication
     </a>
   
-  
-    <a class="postNext" href="/notes/algorithms/matrix-multiplication.html">
-        Strassen Matrix Multiplication &raquo;
-    </a>
   
   </footer>
 
