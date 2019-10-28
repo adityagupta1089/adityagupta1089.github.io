@@ -5,9 +5,91 @@
     <description></description>
     <link>https://adityagupta1089.github.io/</link>
     <atom:link href="https://adityagupta1089.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 28 Oct 2019 14:49:57 +0000</pubDate>
-    <lastBuildDate>Mon, 28 Oct 2019 14:49:57 +0000</lastBuildDate>
+    <pubDate>Mon, 28 Oct 2019 17:34:20 +0000</pubDate>
+    <lastBuildDate>Mon, 28 Oct 2019 17:34:20 +0000</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
+    
+      <item>
+        <title>Chess &amp; Force</title>
+        <description>&lt;h1 id=&quot;basic-tactics&quot;&gt;Basic Tactics&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;The Pin&lt;/li&gt;
+  &lt;li&gt;The Fork&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;laying-traps&quot;&gt;Laying Traps&lt;/h1&gt;
+&lt;h2 id=&quot;a-pair-of-weaklings&quot;&gt;A Pair of Weaklings&lt;/h2&gt;
+
+&lt;div class=&quot;chess&quot;&gt;
+[Title &quot;Scholar's Mate&quot;]
+
+1. e4 e5
+2. Bc4 Nc6
+3. Qh5 Nf6??
+4. Qxf7#
+&lt;/div&gt;
+
+&lt;div class=&quot;chess&quot;&gt;
+[Title &quot;Legall's Mate&quot;]
+
+1. e4 e5
+2. Nf3 d6
+3. Nc3 g6
+4. Bc4 Bg4?
+{Black has tied down White's Knight on f3 with a pin. However, his Bishop is undefended on g4 and White's army is better developed. White can now launch a surprise attack against square f7.}
+5. Nxe5!!
+{Black should now limit his losses and play 5...dxe5 which White would respond with 6.Qxg4. However, instead of losing a pawn, Black eats White's Queen} Bxd1?
+{So Black captures a Queen. But now Black's pawn on f7 falls and White's attack crashes through}
+6. Bxf7+ Ke7
+7. Nd5#
+&lt;/div&gt;
+
+&lt;h2 id=&quot;the-case-of-undefended-piece&quot;&gt;The Case of Undefended Piece&lt;/h2&gt;
+
+&lt;div class=&quot;chess&quot;&gt;
+[Title &quot;The Excommunicated Bishop&quot;]
+
+1. e4 e5 2. Nf3 d6 3. Bc4 Nc6 4. Nc3 Bg4 5. O-O {The Legall's Mate move 5.Nxe5, would not work here because Black can play 5...Nxe5! to prevent the checkmate and defend the Bishop on g4} Nge7?? {He would do better to play 5...Nf6 simply defending the Bhisop on g4} 6. Bxf7+ Kxf7 7. Ng5+ {The knight checks, thereby uncovering a Queen attack on the Black Bishop} Ke8 8. Qxg4
+&lt;/div&gt;
+
+&lt;div class=&quot;chess&quot;&gt;
+[Title &quot;The Queen That Never Came Home&quot;]
+
+1. e4 d5 2. exd5 Qxd5 3. Nc3 Qd8 4. d4 e6 5. Bd3 Qxd4?? {Black thinks that White has overlooked a pawn but a surprise is in store} 6. Bb5+!
+&lt;/div&gt;
+
+&lt;h2 id=&quot;the-battering-ram&quot;&gt;The Battering Ram&lt;/h2&gt;
+
+&lt;div class=&quot;chess&quot;&gt;
+[Title &quot;Fool's Mate&quot;]
+
+1. f4 {This move is called the &lt;i&gt;Bird Opening&lt;/i&gt;} e6
+2. g4?? {For no reason whatsoever White has opened up his own King to attack on the e1-h4 diagonal} Qh4#
+(1...e5 2.fxe5 {With this second move, White avoids g3 leading to checkmate} (2. g3 exf4 3. gxf4?? Qh4#) d6 {Black is not tempted by Qh4+ which would be adequately countered by g3 when Black's Queen must retreat} (2...Qh4+ 3.g3) 3. exd6 Bxd6 {Black has sacrificed a pawn so that he can obtain a lead in development. This type of deliberate sacrifice in the opening is called a &lt;i&gt;gambit&lt;/i&gt;} 4. Nc3?? {Oops White didn't see the threat. He should have played Nf4 which would develop a piece and prevent ...Qh4+} Qh4+ 5. g3 Qxg3+!! 6. hxg3 Bxg3#)
+&lt;/div&gt;
+
+&lt;div class=&quot;chess&quot;&gt;
+[Title &quot;The Cheap Check&quot;]
+
+1. e4 c6 2. d4 d5 3. Nc3 dxe4 4. Nxe4 Nd7 5. Qe2 Ngf6 6. Nd6#
+&lt;/div&gt;
+
+&lt;h1 id=&quot;endgames&quot;&gt;Endgames&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;King &amp;amp; Queen vs. King&lt;/li&gt;
+  &lt;li&gt;King &amp;amp; Rook vs. King&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Mon, 28 Oct 2019 16:01:00 +0000</pubDate>
+        <link>https://adityagupta1089.github.io/chess/notes/chess-force.html</link>
+        <guid isPermaLink="true">https://adityagupta1089.github.io/chess/notes/chess-force.html</guid>
+        
+        
+        <category>Chess</category>
+        
+        <category>Notes</category>
+        
+      </item>
     
       <item>
         <title>Bobby Fischer Teaches Chess (Back-Rank Mating)</title>
@@ -705,84 +787,6 @@ Where $\sum_{x=0}^\infty x/2^x=x/(1-x)^2$ and we put $x=1/2$ to get $\sum i/2^i\
         <category>Data Structures</category>
         
         <category>Notes</category>
-        
-      </item>
-    
-      <item>
-        <title>B-Trees</title>
-        <description>&lt;h1 id=&quot;definition&quot;&gt;Definition&lt;/h1&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://adityagupta1089.github.io/images/btree1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Figure: B-Tree of height 3 containing minimum number of keys&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Every node $x$ has $x.n$ keys and $x.n+1$ children (possibly undefined).&lt;/li&gt;
-  &lt;li&gt;The key $x.k_i$ separates the range of keys stores in children subtrees, say $l_i$ then $l_1\le x.k_1\le l_2\le x.k_2\le \ldots x.k_n \le l_{n+1}$&lt;/li&gt;
-  &lt;li&gt;All leaves have same depth&lt;/li&gt;
-  &lt;li&gt;Each node except root has $t-1$ keys to $2t-1$ keys. Therefore $t$ to $2t$ children.&lt;/li&gt;
-  &lt;li&gt;Height of tree $h=O(\log_tn)$&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&quot;operations&quot;&gt;Operations&lt;/h1&gt;
-
-&lt;h2 id=&quot;search-othotlog_tn&quot;&gt;Search $O(th)=O(t\log_tn)$&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Find the subtree where given key exists using linear search&lt;/li&gt;
-  &lt;li&gt;recurse in that tree&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;create-o1&quot;&gt;Create $O(1)$&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Create a empty root node&lt;/li&gt;
-  &lt;li&gt;Insert keys&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;insert-othotlog_tn&quot;&gt;Insert $O(th)=O(t\log_tn)$&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Find the the leaf node by searching.&lt;/li&gt;
-  &lt;li&gt;If node is full split on median key to make two children nodes and insert the meadian key into parent node.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;For single pass, split whenever you come across a full node while searching so as to be assured to no more split any nodes while shifting the median key upwards.&lt;/p&gt;
-
-&lt;h2 id=&quot;splitting&quot;&gt;Splitting&lt;/h2&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://adityagupta1089.github.io/images/btree2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Figure: Splitting a node with $t=4$&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Make two nodes with keys less than and more than the median key respectively.&lt;/li&gt;
-  &lt;li&gt;Move the children between the keys to respective trees.&lt;/li&gt;
-  &lt;li&gt;Move the median key to parent node.&lt;/li&gt;
-  &lt;li&gt;Move the children around the median key to the left and right new nodes respectively.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;delete-othotlog_tn&quot;&gt;Delete $O(th)=O(t\log_tn)$&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;If key $k$ is in leaf node $x$ then delete $k$ from $x$.&lt;/li&gt;
-  &lt;li&gt;If key $k$ is in internal node $x$ then
-    &lt;ul&gt;
-      &lt;li&gt;If left child $y$ of $k$ has $\ge t$ keys then find predecessor $k’$ of $k$ in $y$. Delete $k’$ from $y$ and replace $k$ by $k’$ in $x$.&lt;/li&gt;
-      &lt;li&gt;Otherwise check for right child $z$ and do symmetrically.&lt;/li&gt;
-      &lt;li&gt;Otherwise merge $y$ and $z$ along with $k$ into $y$. Recursively delete $k$ from $y$.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Mon, 14 Oct 2019 09:33:00 +0000</pubDate>
-        <link>https://adityagupta1089.github.io/notes/data%20structures/b-trees.html</link>
-        <guid isPermaLink="true">https://adityagupta1089.github.io/notes/data%20structures/b-trees.html</guid>
-        
-        
-        <category>Notes</category>
-        
-        <category>Data Structures</category>
         
       </item>
     

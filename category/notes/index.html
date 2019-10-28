@@ -19,8 +19,7 @@
 
   <body class=" light  ">
 
-    
-<div class="wrapper topround">
+    <div class="wrapper topround">
   <center> <a href="/index.html"><div class="site-title">Aditya Gupta </div></a></center>
 </div>
 <div class="wrapper">
@@ -134,6 +133,10 @@
     
       
         
+      
+    
+      
+        
           <a class="page-link" href="/category/machine learning/index.html">
             machine learning
           </a>
@@ -178,6 +181,9 @@
     
   </div>
 </div>
+
+
+
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
     tex2jax: {
@@ -194,6 +200,18 @@
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"
 >
 </script>
+
+<link rel="stylesheet" type="text/css" href="https://adityagupta1089.github.io/css/chess-replayer.css" />
+<script type="text/javascript" src="https://adityagupta1089.github.io/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="https://adityagupta1089.github.io/js/jquery.chess-replayer.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function () {
+    $('.chess').replayer({
+        size: 'small',
+        lightColor: "#F0F0FF",
+        darkColor: "#00BB99",
+    });
+});
 </script>
 
 
@@ -204,6 +222,46 @@
 
 
 
+  
+  <div class="post postContent">
+    <div  class="postDate"><time datetime="2019-10-28T16:01:00+00:00" itemprop="datePublished">Oct 28, 2019</time>
+    </div>
+    <div class="postTag">
+      
+    </div>
+    <br>
+    <div class="postTitle">
+    <a class='postLink' href="https://adityagupta1089.github.io/chess/notes/chess-force.html">Chess & Force</a>
+    </div>
+    <div class="postExt">
+   Basic Tactics
+
+  The Pin
+  The Fork
+
+
+Laying Traps
+A Pair of Weaklings
+
+
+[Title "Scholar's Mate"]
+
+1. e4 e5
+2. Bc4 Nc6
+3. Qh5 Nf6??
+4. Qxf7#
+
+
+
+[Title "Legall's Mate"]
+
+1. e4 e5
+2. Nf3 d6
+3. Nc3 g6
+4. Bc4 Bg4?
+{Black has tied down White's Knight on f3 with a pin. However,...
+    </div>
+  </div>
   
   <div class="post postContent">
     <div  class="postDate"><time datetime="2019-10-28T14:15:00+00:00" itemprop="datePublished">Oct 28, 2019</time>
@@ -258,27 +316,6 @@ where
 
 
 The new running time is $T(n)=7T(n/2)+O(n^2)$ which by the master theorem works out to be $O(n^{\log_27})\approx O(n^{...
-    </div>
-  </div>
-  
-  <div class="post postContent">
-    <div  class="postDate"><time datetime="2019-10-26T18:35:00+00:00" itemprop="datePublished">Oct 26, 2019</time>
-    </div>
-    <div class="postTag">
-      
-    </div>
-    <br>
-    <div class="postTitle">
-    <a class='postLink' href="https://adityagupta1089.github.io/notes/algorithms/mergesort-quicksort-quickselect.html">Mergesort, Quicksort and Quickselect</a>
-    </div>
-    <div class="postExt">
-   Mergesort
-
-Split the list into 2 halves, recursively sort each half and then merge the two sorted sublists. For merging $x[1..k]$ and $y[1..l]$ into $z[1..k+l]$. The first element of $z$ is smaller of $x[1]$ and $y[1]$ and rest can be constrcuted recrusively.
-
-
-
-Time Comp...
     </div>
   </div>
   
