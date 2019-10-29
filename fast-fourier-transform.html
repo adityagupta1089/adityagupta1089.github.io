@@ -6,13 +6,13 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Aditya Gupta - PAGE 5</title>
-  <meta name="description" content="">
+  <title>Aditya Gupta - FAST FOURIER TRANSFORM</title>
+  <meta name="description" content="            variable      value                  site.url      https://adityagupta1089.github.io              site.baseurl             ">
   <link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic|Source+Sans+Pro:400,700,200,300|Josefin+Sans:400,600,700,300' rel='stylesheet' type='text/css'>
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
 
   <link rel="stylesheet" href="/css/style.css">
-  <link rel="canonical" href="https://adityagupta1089.github.io/category/notes/page/5/">
+  <link rel="canonical" href="https://adityagupta1089.github.io/fast-fourier-transform.html">
   <link rel="alternate" type="application/rss+xml" title="Aditya Gupta" href="https://adityagupta1089.github.io/feed.xml">
 </head>
 
@@ -222,110 +222,131 @@ $(document).ready(function () {
 
     <div class="page-content">
       <div class="wrapper bottomround">
-        <div class="home">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline"><a class="post-title-link"  href="/fast-fourier-transform.html">Fast Fourier Transform</a></h1>
+  <center>  <p class="post-meta"><time datetime="2019-10-29T00:00:00+00:00" itemprop="datePublished">Oct 29, 2019</time></p>
+    
+   </center>
+  </header>
 
+  <div class="post-content" itemprop="articleBody">
+    <table>
+  <thead>
+    <tr>
+      <th>variable</th>
+      <th>value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>site.url</td>
+      <td>https://adityagupta1089.github.io</td>
+    </tr>
+    <tr>
+      <td>site.baseurl</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
 
-  
-  <div class="post postContent">
-    <div  class="postDate"><time datetime="2019-10-14T00:00:00+00:00" itemprop="datePublished">Oct 14, 2019</time>
-    </div>
-    <div class="postTag">
-      
-    </div>
-    <br>
-    <div class="postTitle">
-    <a class='postLink' href="https://adityagupta1089.github.io/notes/machine%20learning/Supervised-Learning.html">Supervised Learning</a>
-    </div>
-    <div class="postExt">
-   Given a set $(x,y)$ need to estimate $f(x)=y$ .
+<h1 id="motivation">Motivation</h1>
 
-Terms:
+<p>The product of two $d$-degree polynomials is a polynomial of degree $2d$, i.e. if $A(x)=a_0+a_1x+a_2x^2+\ldots+a_dx^d$ and $B(x)=b_0+b_1+b_2x^2+\ldots+b_dx^d$ then</p>
 
+<script type="math/tex; mode=display">A(x)B(x)=a_0b_k+a_1b_{k-1}+\ldots+a_kb_0=\sum_{i=0}^{k}a_i b_{k-i}</script>
 
-  Feature $x_i$ - property of object to be classified
-  Instance $x=\begin{pmatrix}x_1&amp;x_2&amp;x_3&amp;\ldots\end{pmatrix}$ - features of an object
-  Instance Space $\cal I$ - space of all possible instances
-  ...
-    </div>
+<p>Computing $c_k$ from this formula takes $O(k)$ steps aand finding all $2d+1$ coefficients would therefore take $\Theta(d^2)$</p>
+
+<ul>
+  <li>A degree-$d$ polynomial is uniquely characterized by its values at any $d+1$ distinct points.</li>
+</ul>
+
+<p>We can represent a degree-$d$ polynomial $A(x)$ by either (i) it’s coefficients $a_0, a_1,\ldots a_d$ or (ii) the values $A(x_0), A(x_1),\ldots A(x_d)$</p>
+
+<p>In the second representation polynomial multiplication takes linear time.</p>
+
+<h1 id="evaluation-by-divide-and-conquer">Evaluation by divide-and-conquer</h1>
+
+<p>If we choose the $n$ points for evaluation of $A(x)$ as:</p>
+
+<script type="math/tex; mode=display">\pm x_0, \pm x_1, \ldots, \pm x_{n/2-1}</script>
+
+<p>then the computatin required for each $A(x_i)$ and $A(-x_i)$ overlap a lot because the even powers of $x_i$ coincide with those of $-x_i$.</p>
+
+<script type="math/tex; mode=display">A(x)=(a_0+a_2x^2+a_4x^4+\ldots)+x(a_1+a_3x^2+\ldots)
+A(x)=A_{\rm even}(x^2)+xA_{\rm odd}(x^2)</script>
+
+<p>hence</p>
+
+<script type="math/tex; mode=display">A(x_i)=A_e(x_i^2)+x_iA_o(x_i^2)
+A(-x_i)=A_e(x_i^2)-x_iA_o(x_i^2)</script>
+
+<p>Noew we need to evaluate $A_e(x)$ and $A_o(x)$ (which each have half the degree of $A(x)$) at just $n/2$ points, $x_0^2,\ldots x_{n/2-1}^2$.</p>
+
+<p>If we could recurse then time complexity would be $T(n)=2T(n/2)+O(n)\implies O(n\log n)$. The plus-minus trick only works at the top level of the recursion. To recurse at the next level, we need the $n/2$ evaluation points $x_0^2, x_1^2,\ldots x_{n/2-1}^2$ to be themselves plus-minus pairs. For this we take $n^{\rm th}$ roots of unity as the evaluation points.</p>
+
+<h1 id="interpolation">Interpolation</h1>
+
+<p>We have $\rm \langle values\rangle = FFT(\langle coefficients\rangle, \omega)$. where the complex roots of unity are ${1,\omega,\omega^2,\ldots,\omega^{n-1}}$</p>
+
+<p>We have:</p>
+
+<p><img src="https://adityagupta1089.github.io/images/fft1.png" alt="" /></p>
+
+<p>Call the matrix in the middle $M$. Its specialized format - a <em>Vandermonde</em> matrix gives its many remarkable properties</p>
+
+<ul>
+  <li>If $x_0, \ldots x_{n-1}$ are distinct numbers, then $M$ is invertible. Vandermonde matrices are quicker to invert than more general matrices in $O(n^2)$ instead of $O(n^3)$. However, this is still not fast enough so we turn to complex roots of unity.</li>
+</ul>
+
+<h2 id="interpolation-resolved">Interpolation resolved</h2>
+
+<p>The FFT multiplies an arbitary $n$-dimensional vector (<em>coefficient representation</em>) by the $n\times n$ matrix</p>
+
+<p><img src="https://adityagupta1089.github.io/images/fft2.png" alt="" /></p>
+
+<p>It’s $(j,k)^{\rm th}$ entry is $\omega^{jk}$. The columns of $M$ are orthogonal to each other and are called <em>Fourier basis</em>.</p>
+
+<p>Take $\omega=e^{2\pi i/n}$ and $\langle u, v\rangle = u_0\overline{v_0}+u_1\overline{v_1}+\ldots u_{n-1}\overline{v_{n-1}}$ where $\overline {re^{i\theta}}=re^{-i\theta}$.</p>
+
+<p>Multiplication of columns $j$ and $k$ of matrix $M$ gives</p>
+
+<script type="math/tex; mode=display">1+\omega^{j-k}+\omega^{2(j-k)}+\ldots+\omega^{(n-1)(j-k)}=\frac{(1-\omega^{n(j-k)})}{(1-\omega^{j-k})}</script>
+
+<p>which is a Geometric series which is $0$  except $j=k$ in which case all terms are $1$ and sum is $n$.</p>
+
+<p>Thus $M\overline {M}=nI$ or $M^{-1}=\frac 1n\overline {M}$. The $(j, k)^{\rm th}$ entry of $\overline M$ is the complex conjugate of the correspoding entry of $M$, i.e. $\omega ^{-jk}$. So $\overline {M}=M_n(\omega^{-1})$</p>
+
+<p>So we have $ \langle {\rm coefficient}\rangle = \frac 1n \rm FFT(\langle values\rangle, \omega^{-1})$</p>
+
   </div>
+
+  <footer class="postNavigation">
   
-  <div class="post postContent">
-    <div  class="postDate"><time datetime="2019-06-07T08:08:00+00:00" itemprop="datePublished">Jun 7, 2019</time>
-    </div>
-    <div class="postTag">
-      
-    </div>
-    <br>
-    <div class="postTitle">
-    <a class='postLink' href="https://adityagupta1089.github.io/notes/elasticsearch-notes.html">Elastic Search Notes</a>
-    </div>
-    <div class="postExt">
-   These are the notes on Elastic Search which I wrote while studying it.
-
-
-
-
-    </div>
-  </div>
+    <a class="postPrev" href="/chess/notes/chess-force.html">
+        &laquo; Chess & Force
+    </a>
   
-  <div class="post postContent">
-    <div  class="postDate"><time datetime="2019-06-07T08:07:00+00:00" itemprop="datePublished">Jun 7, 2019</time>
-    </div>
-    <div class="postTag">
-      
-    </div>
-    <br>
-    <div class="postTitle">
-    <a class='postLink' href="https://adityagupta1089.github.io/notes/haskell-notes.html">Haskell Notes</a>
-    </div>
-    <div class="postExt">
-   These are the notes on Haskell which I wrote when I was studying it.
-
-
-
-
-    </div>
-  </div>
   
+  </footer>
 
-  
-    <nav class="pagination">
-      
-        <a class="paginationLink" href="/category/notes/page/4/">&laquo; Prev</a>
-      
+  <div id="disqus_thread"></div>
 
-    
-      
-        
-          <a class="paginationLink" href="/category/notes/page/2/index.html">2</a>
-        
-      
-        
-          <a class="paginationLink" href="/category/notes/page/3/index.html">3</a>
-        
-      
-        
-          <a class="paginationLink" href="/category/notes/page/4/index.html">4</a>
-        
-      
-        
-          <em class="paginationLink paginationLinkCurrent">5</em>
-        
-      
-        
-          <a class="paginationLink" href="/category/notes/page/6/index.html">6</a>
-        
-      
-    
+<script>
+(function() {
+  var d = document, s = d.createElement('script');
+  s.src = 'https://adg1089blog.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', +new Date());
+  (d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
-    
-      <a class="paginationLink" href="/category/notes/page/6/">Next &raquo;</a>
-    
-    </nav>
-  
 
-</div>
+
+</article>
 
       </div>
     </div>
