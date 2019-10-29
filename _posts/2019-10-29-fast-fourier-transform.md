@@ -1,15 +1,10 @@
 ---
 layout: post
 title: Fast Fourier Transform
-Categories:
+categories:
 - Notes
 - Algorithms
 ---
-
-| variable | value |
-| -- | -- |
-| site.url | {{site.url}} |
-| site.baseurl | {{site.baseurl}} |
 
 # Motivation
 
@@ -59,7 +54,7 @@ We have $\rm \langle values\rangle = FFT(\langle coefficients\rangle, \omega)$. 
 
 We have:
 
-![]({{site.url}}{{site.baseurl}}/images/fft1.png)
+![]({{site.url}}/images/fft1.png)
 
 Call the matrix in the middle $M$. Its specialized format - a _Vandermonde_ matrix gives its many remarkable properties
 
@@ -69,18 +64,18 @@ Call the matrix in the middle $M$. Its specialized format - a _Vandermonde_ matr
 
 The FFT multiplies an arbitary $n$-dimensional vector (_coefficient representation_) by the $n\times n$ matrix
 
-![]({{site.url}}{{site.baseurl}}/images/fft2.png)
+![]({{site.url}}/images/fft2.png)
 
-It's $(j,k)^{\rm th}$ entry is $\omega^{jk}$. The columns of $M$ are orthogonal to each other and are called _Fourier basis_. 
+It's $(j,k)^{\rm th}$ entry is $\omega^{jk}$. The columns of $M$ are orthogonal to each other and are called _Fourier basis_.
 
 Take $\omega=e^{2\pi i/n}$ and $\langle u, v\rangle = u_0\overline{v_0}+u_1\overline{v_1}+\ldots u_{n-1}\overline{v_{n-1}}$ where $\overline {re^{i\theta}}=re^{-i\theta}$.
 
-Multiplication of columns $j$ and $k$ of matrix $M$ gives 
+Multiplication of columns $j$ and $k$ of matrix $M$ gives
 
 $$1+\omega^{j-k}+\omega^{2(j-k)}+\ldots+\omega^{(n-1)(j-k)}=\frac{(1-\omega^{n(j-k)})}{(1-\omega^{j-k})}$$
 
- which is a Geometric series which is $0$  except $j=k$ in which case all terms are $1$ and sum is $n$. 
- 
+ which is a Geometric series which is $0$  except $j=k$ in which case all terms are $1$ and sum is $n$.
+
  Thus $M\overline {M}=nI$ or $M^{-1}=\frac 1n\overline {M}$. The $(j, k)^{\rm th}$ entry of $\overline M$ is the complex conjugate of the correspoding entry of $M$, i.e. $\omega ^{-jk}$. So $\overline {M}=M_n(\omega^{-1})$
 
 So we have $ \langle {\rm coefficient}\rangle = \frac 1n \rm FFT(\langle values\rangle, \omega^{-1})$

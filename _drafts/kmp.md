@@ -1,4 +1,7 @@
 ---
 layout: post
-title: KMP
+title: Knuth-Morris-Pratt algorithm
+categories:
+- Notes
+- Algorithms
 ---

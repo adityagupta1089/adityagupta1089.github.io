@@ -14,7 +14,7 @@ Let $I:=\{[x_1:x_1'],[x_2:x_2'],\ldots,[x_n:x_n']\}$. Let $x_{\rm mid}$ be the m
 
 # Definition
 
-![]({{site.url}}{{site.baseurl}}/images/intervaltree1.png)
+![]({{site.url}}/images/intervaltree1.png)
 
 - If $I=\phi$ then interval tree is a leaf.
 - Otherwise let $x_{\rm mid}$ be the median of the endpoints of the interval. Let
@@ -22,7 +22,7 @@ Let $I:=\{[x_1:x_1'],[x_2:x_2'],\ldots,[x_n:x_n']\}$. Let $x_{\rm mid}$ be the m
   - $I_{\rm mid}:=\{[x_j:x_j']\in I\mid x_j\le x_{\rm mid}\le x_j'\}$. 
   - $I_{\rm right}:=\{[x_j:x_j']\in I\mid x_j>x_{\rm mid}\}$ 
 
-![]({{site.url}}{{site.baseurl}}/images/intervaltree2.png)
+![]({{site.url}}/images/intervaltree2.png)
 
 The Interval tree consists of a root node $v$ storing $x_{\rm mid}$.
 - $I_{\rm mid}$ is stored twice:

@@ -25,7 +25,7 @@ This book talks about
   - Removing/Capturing the defenders
   - disconnected rooks
 
-  ![]({{site.url}}{{site.baseurl}}/images/fischer1.png)
+  ![]({{site.url}}/images/fischer1.png)
   - sideways back-rank
 - Chapter 4: Displacing Defenders
   - Drawing away defenders

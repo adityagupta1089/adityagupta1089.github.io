@@ -16,7 +16,7 @@ O(n^{\log_ba})&d<\log_ba
 \end{cases}
 $$
 
-**Proof**: ![]({{site.url}}{{site.baseurl}}/images/mastertheorem.png)
+**Proof**: ![]({{site.url}}/images/mastertheorem.png)
 
 Each problem of size $n$ is divided into $a$ subproblems of size $n/b$. Each level has problem of size $n/b^k$ and work done is:
 $$

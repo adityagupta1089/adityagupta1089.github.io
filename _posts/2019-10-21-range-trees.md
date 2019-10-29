@@ -13,7 +13,7 @@ Given a set of $n$ points $P$ on a real line and a query interval $[x:x']$ find 
 
 Construct a binary search tree from $P$ and perform the following query:
 
-![]({{site.url}}{{site.baseurl}}/images/rangetree1.png)
+![]({{site.url}}/images/rangetree1.png)
 
 **Figure: Example of searching in range tree**
 
@@ -52,13 +52,13 @@ If two sets of objects $S_1$ and $S_2$ are stored int sorted arrays $A_1$ and $A
 - We can binary search for ceil of  $y$ in $A_1$ and then walk along the array until the floor of $y'$. Similary for $S_2$. Total time will be $O(k)$ plus two binary searches ($k$ reported objects).
 - If $S_2\subseteq S_1$ we can maintain pointers from $A_1$ to $A_2$, i.e. we store the pointer to ceil key for every value in $A_1$. This will avoid the second binary search.
 
-![]({{site.url}}{{site.baseurl}}/images/rangetree2.png)
+![]({{site.url}}/images/rangetree2.png)
 
 **Figure: Layered Range Tree showing only x-coordinates. Full points are given below**
 
 Similarly $P(lc(v))\subseteq P(v)$ and $P(rc(v))\subseteq P(v)$. Instead of associated binary trees we will store an array sorted on the y-coordinates. Each value in the array will additionaly store two pointers to $A(lc(v))$ and $A(rc(v))$. This becomes the **layered range tree**. This makes the query time $O(\log n + k)$.
 
-![]({{site.url}}{{site.baseurl}}/images/rangetree3.png)
+![]({{site.url}}/images/rangetree3.png)
 
 **Figure: The associated arrays with the nodes.**
 
