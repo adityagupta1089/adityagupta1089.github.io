@@ -1,20 +1,15 @@
 <div class="wrapper topround">
-  <center> <a href="/index.html"><div class="site-title">{{site.title}} </div></a></center>
+  <center> <a href="/index.html"><div class="site-title">{{site.title }} </div></a></center>
 </div>
 <div class="wrapper">
   <div class="trigger site-navigation">
     <table>
-      <style>
-        td {
-          text-align: center;
-        }
-      </style>
     <tr>
     {% assign i = 0 %}
     {% for sitePage in site.pages %}
       {% if sitePage.title %}
         {% unless sitePage.url contains "page" %}
-          <td>
+          <td style="text-align: center;">
             <a class="page-link" href="{{sitePage.url | prepend: site.baseurl }}">
               {{sitePage.title}}
             </a>

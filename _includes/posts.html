@@ -1,0 +1,18 @@
+<table>
+  {% for post in paginator.posts %}
+    <tr class="post">
+    <td nowrap>
+      <a class="postTitle postLink" href="{{site.url}}{{post.url}}">{{post.title | upcase}}</a>
+      <br>
+      <span class="hint">{{ post.categories | join: ", " }}</span>
+      <br>
+      <time class="postDate"datetime="{{ post.date | date_to_xmlschema }}" itemprop="datePublished">
+        [{{ post.date | date: "%B %-d, %Y" }}]
+      </time>
+
+
+      <br>
+    </td>
+    </tr>
+  {% endfor %}
+</table>
