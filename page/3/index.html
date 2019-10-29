@@ -25,17 +25,12 @@
 <div class="wrapper">
   <div class="trigger site-navigation">
     <table>
-      <style>
-        td {
-          text-align: center;
-        }
-      </style>
     <tr>
     
     
       
         
-          <td>
+          <td style="text-align: center;">
             <a class="page-link" href="/about/">
               About
             </a>
@@ -55,7 +50,7 @@
     
       
         
-          <td>
+          <td style="text-align: center;">
             <a class="page-link" href="/index.html">
               Home
             </a>
@@ -79,31 +74,7 @@
     
       
         
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-          <td>
+          <td style="text-align: center;">
             <a class="page-link" href="/category/programming/index.html">
               programming
             </a>
@@ -119,7 +90,7 @@
     
       
         
-          <td>
+          <td style="text-align: center;">
             <a class="page-link" href="/category/music/index.html">
               music
             </a>
@@ -135,7 +106,7 @@
     
       
         
-          <td>
+          <td style="text-align: center;">
             <a class="page-link" href="/category/csl471/index.html">
               csl471
             </a>
@@ -149,11 +120,7 @@
     
       
         
-      
-    
-      
-        
-          <td>
+          <td style="text-align: center;">
             <a class="page-link" href="/category/notes/index.html">
               notes
             </a>
@@ -173,23 +140,7 @@
     
       
         
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-          <td>
+          <td style="text-align: center;">
             <a class="page-link" href="/category/machine learning/index.html">
               machine learning
             </a>
@@ -205,7 +156,7 @@
     
       
         
-          <td>
+          <td style="text-align: center;">
             <a class="page-link" href="/category/data structures/index.html">
               data structures
             </a>
@@ -221,11 +172,7 @@
     
       
         
-      
-    
-      
-        
-          <td>
+          <td style="text-align: center;">
             <a class="page-link" href="/category/algorithms/index.html">
               algorithms
             </a>
@@ -241,11 +188,7 @@
     
       
         
-      
-    
-      
-        
-          <td>
+          <td style="text-align: center;">
             <a class="page-link" href="/category/chess/index.html">
               chess
             </a>
@@ -300,87 +243,100 @@ $(document).ready(function () {
       <div class="wrapper bottomround">
         <div class="home">
 
-
+  <table>
   
-  <div class="post postContent">
-    <div  class="postDate"><time datetime="2019-10-26T17:52:00+00:00" itemprop="datePublished">Oct 26, 2019</time>
-    </div>
-    <div class="postTag">
-      
-    </div>
-    <br>
-    <div class="postTitle">
-    <a class='postLink' href="https://adityagupta1089.github.io/notes/algorithms/master-s-theorem.html">Master's Theorem</a>
-    </div>
-    <div class="postExt">
-   Theorem: $T(n)=aT(\lceil n/b\rceil)+O(n^d)$ for some constants $a&gt;0,b&gt;1,d\ge 0$ then
+    <tr class="post">
+    <td nowrap>
+      <a class="postTitle postLink" href="https://adityagupta1089.github.io/csl471/tutorial-4.html">TUTORIAL 4</a>
+      <br>
+      <span class="hint">CSL471</span>
+      <br>
+      <time class="postDate"datetime="2017-09-24T08:29:00+00:00" itemprop="datePublished">
+        [September 24, 2017]
+      </time>
 
 
-Proof: 
-
-Each problem of size $n$ is divided into $a$ subproblems of size $n/b$. Each level has problem of size $n/b^k$ and work done is:
-
-
-As $k$ goes from $0$ (root) to $\log_bn...
-    </div>
-  </div>
+      <br>
+    </td>
+    </tr>
   
-  <div class="post postContent">
-    <div  class="postDate"><time datetime="2019-10-24T15:02:00+00:00" itemprop="datePublished">Oct 24, 2019</time>
-    </div>
-    <div class="postTag">
-      
-    </div>
-    <br>
-    <div class="postTitle">
-    <a class='postLink' href="https://adityagupta1089.github.io/notes/algorithms/integer-multiplication.html">Integer Multiplication</a>
-    </div>
-    <div class="postExt">
-   To multiply $x$ and $y$, split them into left and right halves which are $n/2$ bits long.
+    <tr class="post">
+    <td nowrap>
+      <a class="postTitle postLink" href="https://adityagupta1089.github.io/csl471/tutorial-3.html">TUTORIAL 3</a>
+      <br>
+      <span class="hint">CSL471</span>
+      <br>
+      <time class="postDate"datetime="2017-09-24T08:03:00+00:00" itemprop="datePublished">
+        [September 24, 2017]
+      </time>
 
 
+      <br>
+    </td>
+    </tr>
+  
+    <tr class="post">
+    <td nowrap>
+      <a class="postTitle postLink" href="https://adityagupta1089.github.io/csl471/tutorial-2.html">TUTORIAL 2</a>
+      <br>
+      <span class="hint">CSL471</span>
+      <br>
+      <time class="postDate"datetime="2017-09-23T17:13:00+00:00" itemprop="datePublished">
+        [September 23, 2017]
+      </time>
 
-Additional and multiplication by power of 2 takes linear time. We only need to calculate $x_Ly_L$, $x_Ry_R$ and $(x_L+x_R)(y_L+y_R)$ which we can calculate recursively.
 
-$T(n)=3T(...
-    </div>
-  </div>
+      <br>
+    </td>
+    </tr>
   
-  <div class="post postContent">
-    <div  class="postDate"><time datetime="2019-10-23T00:00:00+00:00" itemprop="datePublished">Oct 23, 2019</time>
-    </div>
-    <div class="postTag">
-      
-    </div>
-    <br>
-    <div class="postTitle">
-    <a class='postLink' href="https://adityagupta1089.github.io/notes/data%20structures/heaps.html">Heaps - Binary, Binomial, Fibonacci</a>
-    </div>
-    <div class="postExt">
-   
+    <tr class="post">
+    <td nowrap>
+      <a class="postTitle postLink" href="https://adityagupta1089.github.io/csl471/tutorial-1.html">TUTORIAL 1</a>
+      <br>
+      <span class="hint">CSL471</span>
+      <br>
+      <time class="postDate"datetime="2017-09-22T16:33:00+00:00" itemprop="datePublished">
+        [September 22, 2017]
+      </time>
+
+
+      <br>
+    </td>
+    </tr>
   
-    
-      Procedure
-      Binary Heap
-      Binomial Heap (worst case)
-      Fibonacci Heap (amortized)
-    
+    <tr class="post">
+    <td nowrap>
+      <a class="postTitle postLink" href="https://adityagupta1089.github.io/music/intervals.html">SONGS I USE TO IDENTIFY MUSIC INTERVALS</a>
+      <br>
+      <span class="hint">Music</span>
+      <br>
+      <time class="postDate"datetime="2017-07-29T18:21:00+00:00" itemprop="datePublished">
+        [July 29, 2017]
+      </time>
+
+
+      <br>
+    </td>
+    </tr>
   
+    <tr class="post">
+    <td nowrap>
+      <a class="postTitle postLink" href="https://adityagupta1089.github.io/programming/exptree.html">HOW I SOLVED TREE EXPECTANCY (EXPTREE)</a>
+      <br>
+      <span class="hint">Programming</span>
+      <br>
+      <time class="postDate"datetime="2017-07-20T18:21:00+00:00" itemprop="datePublished">
+        [July 20, 2017]
+      </time>
+
+
+      <br>
+    </td>
+    </tr>
   
-    
-      Make Heap
-      $\Theta(1)$
-      $\Theta(1)$
-      $\Theta(1)$
-    
-    
-      Insert
-      $\Theta(\lg n)$
-      $O(\lg n)$
-      $\Theta(1...
-    </div>
-  </div>
-  
+</table>
+
 
   
     <nav class="pagination">
@@ -401,33 +357,7 @@ $T(n)=3T(...
         <em class="paginationLink paginationLinkCurrent">3</em>
       
     
-      
-        <a class="paginationLink" href="/page/4">4</a>
-      
-    
-      
-        <a class="paginationLink" href="/page/5">5</a>
-      
-    
-      
-        <a class="paginationLink" href="/page/6">6</a>
-      
-    
-      
-        <a class="paginationLink" href="/page/7">7</a>
-      
-    
-      
-        <a class="paginationLink" href="/page/8">8</a>
-      
-    
-      
-        <a class="paginationLink" href="/page/9">9</a>
-      
-    
 
-    
-      <a class="paginationLink" href="/page/4/">Next &raquo;</a>
     
     </nav>
   
