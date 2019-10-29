@@ -19,5 +19,5 @@ cd _site
 git config user.email "adityagupta1089@gmail.com"
 git config user.name "Aditya Gupta"
 git add --all
-git commit -a -m "Travis #$TRAVIS_BUILD_NUMBER"
+git commit -a -m "Travis Build no.$TRAVIS_BUILD_NUMBER"
 git push --force origin master
