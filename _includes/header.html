@@ -3,16 +3,35 @@
 </div>
 <div class="wrapper">
   <div class="trigger site-navigation">
+    <table>
+      <style>
+        td {
+          text-align: center;
+        }
+      </style>
+    <tr>
+    {% assign i = 0 %}
     {% for sitePage in site.pages %}
       {% if sitePage.title %}
         {% unless sitePage.url contains "page" %}
-          <a class="page-link" href="{{sitePage.url | prepend: site.baseurl }}">
-            {{sitePage.title}}
-          </a>
-            <span class="exclamationMark">/</span>
+          <td>
+            <a class="page-link" href="{{sitePage.url | prepend: site.baseurl }}">
+              {{sitePage.title}}
+            </a>
+          </td>
+          {% if i == 4 %}
+            </tr><tr>
+          {% else %}
+            <td>
+              <span class="exclamationMark">/</span>
+            </td>
+          {% endif %}
+          {% assign i = i | plus: 1 | modulo: 5 %}
         {% endunless %}
       {% endif %}
     {% endfor %}
+    </tr>
+    </table>
   </div>
 </div>
 
