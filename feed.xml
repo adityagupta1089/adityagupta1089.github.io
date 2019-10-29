@@ -5,9 +5,94 @@
     <description></description>
     <link>https://adityagupta1089.github.io/</link>
     <atom:link href="https://adityagupta1089.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 29 Oct 2019 08:53:03 +0000</pubDate>
-    <lastBuildDate>Tue, 29 Oct 2019 08:53:03 +0000</lastBuildDate>
+    <pubDate>Tue, 29 Oct 2019 20:22:33 +0000</pubDate>
+    <lastBuildDate>Tue, 29 Oct 2019 20:22:33 +0000</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
+    
+      <item>
+        <title>Splay Trees</title>
+        <description>&lt;p&gt;Self-adjusting binary trees that work in $O(\log n)$ amortized time bound. The operation performed is the &lt;em&gt;splay&lt;/em&gt; operation.&lt;/p&gt;
+
+&lt;p&gt;For a splay operation at node x: ($p(x)$ is the parent of $x$)&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Case (a):&lt;/strong&gt; If $x$ has a parent but no grandparent we rotate at $p(x)$.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Case (b):&lt;/strong&gt; If $x$ has a grandparent and both $x$ and $p(x)$ are both left or right childrenn, we rotate at $p^2(x)$ and then at $p(x)$.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Case (c):&lt;/strong&gt; If $x$ has a grandparent and $x$ is a left and $p(x)$ is a right child, or vice versa, we rotate at $p(x)$ and then at the new parent of $x$.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://adityagupta1089.github.io/images/splaytree1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;This moves $x$ to the root of the tree while rearranging the rest of the original path to $x$.&lt;/p&gt;
+
+&lt;p&gt;We perform a splay operation during each access or update operation. Using amortized time analysis for $m$ operations total time taken is $O(m\log n)$ or $O(\log n)$ amortized time per operation.&lt;/p&gt;
+
+&lt;h1 id=&quot;amortized-time-analysis&quot;&gt;Amortized Time Analysis&lt;/h1&gt;
+
+&lt;p&gt;Let $T$ be a tree of $n$ nodes. For node $v\in T$ let $n_T(v)$ ve the number of nodes in the subtree of $v$ including $v$.&lt;/p&gt;
+
+&lt;p&gt;We define the potential function $\phi(T)=\sum_{v\in T}r_T(v)$ where $r_{T}(v)=\log &lt;em&gt;{2}\lfloor n&lt;/em&gt;{T}(v)\rfloor$.&lt;/p&gt;
+
+&lt;p&gt;For a completely skewed tree it will be $\log_2n+\log_2(n-1)+\ldots \log_21=O(n\log n)$.&lt;/p&gt;
+
+&lt;p&gt;For a completely balanced tree of height $h$ it will be $\sum_{i=0}^h2^i\log_2(2^{h-i+1})=\sum_{i=0}^h2^i(h-i+1)=O(n)$&lt;/p&gt;
+
+&lt;p&gt;Suppose the tree undergoes $m$ searches for keys $k_{i_1},k_{i_2},\ldots k_{i_m}$ starting from tree $T_0$ and after searching for $k_{i_1}$ to $T_1$ and so on until $T_m$.&lt;/p&gt;
+
+&lt;p&gt;Let actual cost of $i^{\rm th}$ search be $c_i$ and amortized cost of $i^{\rm th}$ search be $\hat c_i=c_i+\phi(T_i)-\phi(T_{i-1})$. We claim that $\hat{c}_{i} \leqslant 3 \log _{2} n$. Hence actual cost becomes
+&lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
+\begin{align}
+\sum_{i=1}^mc_i&amp;=\sum_{i=1}^m[\hat c_i+\phi(T_{i-1})-\phi(T_i)]\\
+&amp;=\sum_{i=1}^m\hat c_i+\sum_{i=1}^m(\phi(T_{i-1}-\phi(T_i)))\\
+&amp;=\sum_{i=1}^m\hat c_i+[\phi(T_0)-\phi(T_m)]\\
+&amp;=\sum_{i=1}^m\hat c_i+n\log n\\
+&amp;\le3m\log n+n\log n\\
+&amp;\le 4m\log n\tag{$m\ge n$}
+\end{align} %]]&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;Now we prove $\hat{c}_{i} \leqslant 3 \log _{2} n$ for various cases. $r’$ represents the rank after rotation.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Lemma&lt;/strong&gt; If $a+b\le c$ then $\log a+\log b\le 2\log c-2$ since $ab\le c^2/4$  where $c^2\ge (a+b)^2\ge 4ab$ using AM-GM inequality.&lt;/p&gt;
+
+&lt;h2 id=&quot;case-a-zig&quot;&gt;Case (a) (zig)&lt;/h2&gt;
+
+&lt;p&gt;Total cost involves 1 rotation and potential change. We have $r’(x)=r(y)$ so $\Delta \phi=(r’(x)+r’(y))-(r(x)+r(y))=r’(y)-r(x)\le r’(x)-r(x)$ as $y$ has less nodes afterwards and less rank. So $\hat c_i\le 1+(r’(x)-r(x))\le 1+3(r’(x)-r(x))$&lt;/p&gt;
+
+&lt;h2 id=&quot;case-c-zig-zag&quot;&gt;Case (c) (zig-zag)&lt;/h2&gt;
+
+&lt;p&gt;Total cost involves 2 rotation and potential change $\Delta \phi=r’(x)+r’(y)+r’(z)-r(x)-r(y)-r(z)$&lt;/p&gt;
+
+&lt;p&gt;Here $\hat c_i=2+(r’(x)-r(x))+r’(y)+r’(z)-r(y)-r(z)$&lt;/p&gt;
+
+&lt;p&gt;Also $n’(y)+n’(z)= n’(x)-1\le n’(x)$. Using the lemma $\log (n’(y)) + \log (n’(z))\le 2\log (n’(x))-2$ or $r’(y)+r’(z)\le 2r’(x)-2$.&lt;/p&gt;
+
+&lt;p&gt;So we have $\hat c_i\le 2+ (r’(x)-r(x))+(2r’(x)-2)-r(y)-r(z)$ or $\hat c_i\le (3r’(x)-r(x)-r(y)-r(z)$. Also we have $r(z)=r(x)$ and $r(y)\ge  r(x)$ so $\hat c_i\le 3(r’(x)-r(x))$&lt;/p&gt;
+
+&lt;h2 id=&quot;case-b-zig-zig&quot;&gt;Case (b) (zig-zig)&lt;/h2&gt;
+
+&lt;p&gt;Total cost involves 2 rotation and potential change&lt;/p&gt;
+
+&lt;p&gt;Similar to &lt;strong&gt;case (c)&lt;/strong&gt; we have $\hat c_i=2+(r’(x)-r(x))+r’(y)+r’(z)-r(y)-r(z)$ and $n(x)+n’(z)+1=n’(x)$ giving $r(x)+r’(z)\le 2r’(x)-2$ or $r’(z)\le 2r’(x)-r(x)-2$&lt;/p&gt;
+
+&lt;p&gt;So we have $\hat c_i\le 2+(r’(x)-r(x))+r’(y)+(2r’(x)-r(x)-2)-r(y)-r(z)$ or $\hat c_i\le (3r’(x)-2r(x))+r’(y)-r(y)-r(z)$. Also we have $r(z)=r’(x)$ and  $r(y)\ge r(x) $ giving $\hat c_i\le 3(r’(x)-r(x))-\underbrace{(r(z)-r’(y))}_{&amp;gt;0}\ge 3(r’(x)-r(x))$&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;If we have $d$ splays then $\hat c=\sum_{i=1}^d\hat c_i\le \sum_{i=1}^d3(r_i(x)-r_{i-1}(x))=3(r_d(x)-r_0(x))$&lt;/p&gt;
+
+&lt;p&gt;The maximum change in rank can be $\log n$ giving $\hat c\le 3\log n$&lt;/p&gt;
+
+</description>
+        <pubDate>Tue, 29 Oct 2019 18:42:00 +0000</pubDate>
+        <link>https://adityagupta1089.github.io/notes/data%20structures/splay-trees.html</link>
+        <guid isPermaLink="true">https://adityagupta1089.github.io/notes/data%20structures/splay-trees.html</guid>
+        
+        
+        <category>Notes</category>
+        
+        <category>Data Structures</category>
+        
+      </item>
     
       <item>
         <title>Fast Fourier Transform</title>
@@ -735,105 +820,6 @@ Where $\sum_{x=0}^\infty x/2^x=x/(1-x)^2$ and we put $x=1/2$ to get $\sum i/2^i\
         <pubDate>Sun, 20 Oct 2019 15:54:00 +0000</pubDate>
         <link>https://adityagupta1089.github.io/notes/data%20structures/range-trees.html</link>
         <guid isPermaLink="true">https://adityagupta1089.github.io/notes/data%20structures/range-trees.html</guid>
-        
-        
-        <category>Notes</category>
-        
-        <category>Data Structures</category>
-        
-      </item>
-    
-      <item>
-        <title>Interval Trees</title>
-        <description>&lt;h1 id=&quot;motivation&quot;&gt;Motivation&lt;/h1&gt;
-
-&lt;p&gt;Given a set of intervals $I$ on the real line and a query point $q_x$, find the intervals that contain $q_x$.&lt;/p&gt;
-
-&lt;p&gt;Let $I:={[x_1:x_1’],[x_2:x_2’],\ldots,[x_n:x_n’]}$. Let $x_{\rm mid}$ be the median of the $2n$ interval endpoints such that atmost half of them lie on the left and half of them lie on the right.&lt;/p&gt;
-
-&lt;h1 id=&quot;definition&quot;&gt;Definition&lt;/h1&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://adityagupta1089.github.io/images/intervaltree1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;If $I=\phi$ then interval tree is a leaf.&lt;/li&gt;
-  &lt;li&gt;Otherwise let $x_{\rm mid}$ be the median of the endpoints of the interval. Let
-    &lt;ul&gt;
-      &lt;li&gt;$I_{\rm left}:={[x_j:x_j’]\in I\mid x_j’&amp;lt;x_{\rm mid}}$&lt;/li&gt;
-      &lt;li&gt;$I_{\rm mid}:={[x_j:x_j’]\in I\mid x_j\le x_{\rm mid}\le x_j’}$.&lt;/li&gt;
-      &lt;li&gt;$I_{\rm right}:={[x_j:x_j’]\in I\mid x_j&amp;gt;x_{\rm mid}}$&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://adityagupta1089.github.io/images/intervaltree2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;The Interval tree consists of a root node $v$ storing $x_{\rm mid}$.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;$I_{\rm mid}$ is stored twice:&lt;/p&gt;
-
-    &lt;ol&gt;
-      &lt;li&gt;
-        &lt;p&gt;${\cal L}_{\rm left}$ that is sorted on the left endpoints of $I_{\rm mid}$&lt;/p&gt;
-      &lt;/li&gt;
-      &lt;li&gt;
-        &lt;p&gt;${\cal L}_{\rm right}$ that is sorted on the right endpoints of  $I_{\rm mid}$&lt;/p&gt;
-      &lt;/li&gt;
-    &lt;/ol&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Left subtree of $v$ is an interval tree for the set $I_{\rm left}$.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Right subtree of $v$ is an interval tree for the set $I_{\rm right}$.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&quot;creation-onlog-n&quot;&gt;Creation $O(n\log n)$&lt;/h1&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-pseudocode&quot;&gt;create(I)
-  if I = null
-    return empty leaf
-  else
-    create a node v
-    computer x_mid (linear time, constant if presorted)
-    store x_mid with v
-    compute I_mid, L_left, L_right
-    left_child(v) &amp;lt;- create(I_left)
-    right_child(v) &amp;lt;- create(I_right)
-    return v
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&quot;querying-olog-nk&quot;&gt;Querying $O(\log n+k)$&lt;/h1&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;If $q_x &amp;lt; x_{\rm mid}(v)$ walk along $\cal L_{\rm left}$ reporting all intervals that contain $q_x$. Stop as soon as an interval doesn’t contain $q_x$. Query left subtree of $v$.&lt;/li&gt;
-  &lt;li&gt;Symmetrically do for $q_x&amp;gt;x_{\rm mid(v)}$&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;$k$ = Number of reported intervals.&lt;/p&gt;
-
-&lt;h1 id=&quot;2-d-range-tree&quot;&gt;2-D Range Tree&lt;/h1&gt;
-
-&lt;p&gt;The data structure to store a a horizontal line segments is $\rm T$. If we want to create a 2-D range tree then instead of $\cal L_{\rm left}(v)$ and $\cal L_{\rm right}(v)$ we will store:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;A range tree $T_{\rm left}(v)$ on left endpoint segments in $I_{\rm mid}(v)$.&lt;/li&gt;
-  &lt;li&gt;A range tree $T_{\rm right}(v)$ on right endpoint segments in $I_{\rm mid}(v)$&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;At time of querying instead of walking along $\cal L_{\rm left}(v)$ and $\cal L_{\rm right}(v)$ we will perform a query in the range trees $\rm T_{left}(v)$ and $\rm T_{right}(v)$.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Creation: $O(n\log n)$&lt;/li&gt;
-  &lt;li&gt;Querying: $O(\log^2n+k)$&lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-        <pubDate>Sun, 20 Oct 2019 13:07:00 +0000</pubDate>
-        <link>https://adityagupta1089.github.io/notes/data%20structures/interval-trees.html</link>
-        <guid isPermaLink="true">https://adityagupta1089.github.io/notes/data%20structures/interval-trees.html</guid>
         
         
         <category>Notes</category>
