@@ -228,6 +228,27 @@ $(document).ready(function () {
 
   
   <div class="post postContent">
+    <div  class="postDate"><time datetime="2019-10-29T00:00:00+00:00" itemprop="datePublished">Oct 29, 2019</time>
+    </div>
+    <div class="postTag">
+      
+    </div>
+    <br>
+    <div class="postTitle">
+    <a class='postLink' href="https://adityagupta1089.github.io/notes/algorithms/fast-fourier-transform.html">Fast Fourier Transform</a>
+    </div>
+    <div class="postExt">
+   Motivation
+
+The product of two $d$-degree polynomials is a polynomial of degree $2d$, i.e. if $A(x)=a_0+a_1x+a_2x^2+\ldots+a_dx^d$ and $B(x)=b_0+b_1+b_2x^2+\ldots+b_dx^d$ then
+
+
+
+Computing $c_k$ from this formula takes $O(k)$ steps aand finding all $2d+1$ coefficients wou...
+    </div>
+  </div>
+  
+  <div class="post postContent">
     <div  class="postDate"><time datetime="2019-10-28T16:01:00+00:00" itemprop="datePublished">Oct 28, 2019</time>
     </div>
     <div class="postTag">
@@ -286,40 +307,6 @@ A Pair of Weaklings
       Moving &amp; Capturing
       Special Moves: Castling, Pawn Promotion, Capturing En Passant
       Piece Values: Pawn(1), Knight(3), Bishop(3.25), Rook(5), Queen(...
-    </div>
-  </div>
-  
-  <div class="post postContent">
-    <div  class="postDate"><time datetime="2019-10-26T18:46:00+00:00" itemprop="datePublished">Oct 26, 2019</time>
-    </div>
-    <div class="postTag">
-      
-    </div>
-    <br>
-    <div class="postTitle">
-    <a class='postLink' href="https://adityagupta1089.github.io/notes/algorithms/matrix-multiplication.html">Strassen Matrix Multiplication</a>
-    </div>
-    <div class="postExt">
-   The product of two $n\times n$ matrices $X$ and $Y$ which takes $O(n^3)$
-
-
-
-
-
-is 
-
-
-here $T(n)=8T(n/2)+O(n^2)\implies O(n^3)$
-
-Strassen gave:
-
-
-
-where
-
-
-
-The new running time is $T(n)=7T(n/2)+O(n^2)$ which by the master theorem works out to be $O(n^{\log_27})\approx O(n^{...
     </div>
   </div>
   
