@@ -5,9 +5,217 @@
     <description></description>
     <link>https://adityagupta1089.github.io/</link>
     <atom:link href="https://adityagupta1089.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 29 Oct 2019 22:03:03 +0000</pubDate>
-    <lastBuildDate>Tue, 29 Oct 2019 22:03:03 +0000</lastBuildDate>
+    <pubDate>Wed, 30 Oct 2019 19:14:18 +0000</pubDate>
+    <lastBuildDate>Wed, 30 Oct 2019 19:14:18 +0000</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
+    
+      <item>
+        <title>String Matching</title>
+        <description>&lt;h1 id=&quot;formalization&quot;&gt;Formalization:&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Text: $T[1..n]$&lt;/li&gt;
+  &lt;li&gt;Pattern: $P[1..m]$ ($m\le n$)&lt;/li&gt;
+  &lt;li&gt;elements of $P$ and $T$ are characters drawn from a finite alphabet $\Sigma$.&lt;/li&gt;
+  &lt;li&gt;$\Sigma^*$ denotes the set of all finite-length string using $\Sigma$&lt;/li&gt;
+  &lt;li&gt;$\varepsilon\in \Sigma ^*$ emptry string&lt;/li&gt;
+  &lt;li&gt;$x y$ denotes concatenation of $x$ and $y$&lt;/li&gt;
+  &lt;li&gt;$w\sqsubset x$: $w$ is a prefix of $x$, i.e. $x=wy$ for some $y\in \Sigma^*$&lt;/li&gt;
+  &lt;li&gt;$w\sqsupset x$: $w$ is a suffix of $x$, i.e. $x=yw$ for some $y\in \Sigma^*$&lt;/li&gt;
+  &lt;li&gt;$P_k$ is the $k$-character prefix $P[q..k]$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;comparison-of-algorithms&quot;&gt;Comparison of Algorithms:&lt;/h1&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Algorithm&lt;/th&gt;
+      &lt;th&gt;Preprocessing time&lt;/th&gt;
+      &lt;th&gt;Matching Time&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Naive&lt;/td&gt;
+      &lt;td&gt;0&lt;/td&gt;
+      &lt;td&gt;$O((n-m+1)m)$&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Rabin-Karp&lt;/td&gt;
+      &lt;td&gt;$\Theta(m)$&lt;/td&gt;
+      &lt;td&gt;$O((n-m+1)m)$&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Finite Automaton&lt;/td&gt;
+      &lt;td&gt;$O(m\vert \Sigma\vert)$&lt;/td&gt;
+      &lt;td&gt;$\Theta(n)$&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Knuth-Morris-Pratt&lt;/td&gt;
+      &lt;td&gt;$\Theta(m)$&lt;/td&gt;
+      &lt;td&gt;$\Theta(n)$&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Z-Algorithm&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h1 id=&quot;rabin-karp-algorithm&quot;&gt;Rabin-Karp algorithm&lt;/h1&gt;
+&lt;p&gt;Based on certain assumptions its average-case running time is better.&lt;/p&gt;
+
+&lt;p&gt;Let us assume $\Sigma={0,1,2,\ldots,d}$. Let $p$ denote the interpretation of $P[1..m]$ as a radix-d number. Similarly let $t_s$ denote the interpretatin of $T[s+1\ldots s+m]$ for $s\in {0,1,\dots n-m}$. Now $t_s=p\iff T[s+1\ldots s+m]=P[1..m]$.&lt;/p&gt;
+
+&lt;p&gt;We can compute $p$ in $\Theta(m)$ using Horner’s rule&lt;/p&gt;
+
+&lt;p&gt;$p=P[m]+10(P[m-1]+10(P[m-2]+\ldots))$&lt;/p&gt;
+
+&lt;p&gt;Similarly&lt;/p&gt;
+
+&lt;p&gt;$t_{s+1}=10(t_s-10^{m-1}T[s+1])+T[s+m+1]$&lt;/p&gt;
+
+&lt;p&gt;where we can calculate $10^{m-1}$ in $O(\lg m)$.&lt;/p&gt;
+
+&lt;p&gt;For string matching we work with $\mathbb Z_q$ where $q$ is a prime such that $dq$ fits inside a computer word. However $t_{s} \equiv p\pmod q$ doesn’t imply that $t_s=p$, but $t_s\not\equiv p\mod q\implies t_s\neq p$. So we additionaly check explicity string equality.&lt;/p&gt;
+
+&lt;p&gt;In worst case it could be $\Theta((n-m+1)m)$ when all shifts are valid.&lt;/p&gt;
+
+&lt;p&gt;In average case we expect only $c$ shifts to be valid, then matching time is $O((n-m+1)+cm)=O(n+m)$ plus time required to process spurious hits. We can expect the number of spurious hits to be $O(n/q)$ since $t_s\equiv p\pmod q$ with probability $1/q$. This makes the expected matching time to be $O(n)+O(m(\nu+n/q))$ where $\nu$ is number of valid shifts. This is $O(n)$ if $\nu=O(1)$ (expected number of valid shifts is small) and $q\ge m$ ($q$ larger than the length of pattern)&lt;/p&gt;
+
+&lt;h1 id=&quot;finite-automata&quot;&gt;Finite Automata&lt;/h1&gt;
+
+&lt;h2 id=&quot;definition&quot;&gt;Definition&lt;/h2&gt;
+
+&lt;p&gt;A finite automaton $M(Q, q_0, A, \Sigma, \delta)$ where&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;$Q$: states,&lt;/li&gt;
+  &lt;li&gt;$q_0\in Q$: start state,&lt;/li&gt;
+  &lt;li&gt;$A\subseteq Q$: accepting states,&lt;/li&gt;
+  &lt;li&gt;$\Sigma$: input alphabet&lt;/li&gt;
+  &lt;li&gt;$\delta:Q\times \Sigma\mapsto Q$: transition function&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;$M$ induces a function $\phi:\Sigma^*\mapsto Q$ (final-state function) such that $\phi(w)$ is the state $M$ ends up in after scanning the string $w$. $M$ accepts a string $w$ iff $\phi(w)\in A$.&lt;/p&gt;
+
+&lt;p&gt;$\phi(\varepsilon)=q_0$&lt;/p&gt;
+
+&lt;p&gt;$\phi(wa)=\delta(\phi(w), a)\text{ for }w\in\Sigma^*, a\in \Sigma$&lt;/p&gt;
+
+&lt;h2 id=&quot;string-matching-automata&quot;&gt;String-matching automata&lt;/h2&gt;
+
+&lt;p&gt;For $P$ we generate a string-matching automaton in a preprocessing step.&lt;/p&gt;
+
+&lt;p&gt;For this we define an auxilary function $\sigma:\Sigma^*\mapsto{0,1,\ldots,m}$, the suffix function corresponding to $P$. $\sigma(x)$ is the length of the longest prefix of $P$ that is also a suffix of $x$.&lt;/p&gt;
+
+&lt;p&gt;$\sigma(x)=\max{k: P_k \sqsupset x}$&lt;/p&gt;
+
+&lt;p&gt;We have $\sigma(x)=m\iff P\sqsupset x$, also $x\sqsubset y\implies \sigma(x)\le \sigma(y)$ from definition.&lt;/p&gt;
+
+&lt;p&gt;We define &lt;strong&gt;string-matching automaton&lt;/strong&gt; as:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;$Q={0,1,\ldots,m}$, $q_0=0$, $A={m}$&lt;/li&gt;
+  &lt;li&gt;$\delta(q, a)=\sigma(P_qa)$ is the longest prefix of pattern $P$ that has matched the text string $T$ so far.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;We consider most recently read characters of $T$. For $T_i=P_j$, $P_j\sqsupset T_i$.&lt;/p&gt;
+
+&lt;p&gt;Let $q=\phi(T_i)$. We design $\delta$ such that at $q$, $P_q\sqsupset T_i$ and $q=\sigma(T_i)$. Therefore $\phi(T_i)=\sigma(T_i)$.&lt;/p&gt;
+
+&lt;p&gt;If the automaton is in state $q$ and reads the next characters $T[i+1]=a$, then we want the transition to lead to the state corresponding to the longest prefix of $P$ that is a suffix of $T_ia$, i.e. $\sigma(T_ia)$.&lt;/p&gt;
+
+&lt;p&gt;Because $P_q$ is the longest prefix of $P$ that is a suffix of $T_i$ , i.e. $P_q=\sigma(T_i)$ we also have the longest prefix of $P$ that is a suffix of $T_ia$ is not only $\sigma(T_ia)$ but also $\sigma(P_qa)$.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;If $a=P[q+1]$, $\delta(q, a)=q+1$.&lt;/li&gt;
+  &lt;li&gt;If $a\neq P[q+1]$ we find a smaller prefix of $P$ that is also a suffix of $T_i$.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;kunth-morris-pratt-algorithm&quot;&gt;Kunth-Morris-Pratt Algorithm&lt;/h1&gt;
+
+&lt;p&gt;Given a pattern $P[1..m]$, the &lt;strong&gt;prefix function&lt;/strong&gt; for the pattern $P$ is the function $\pi:{1,2,\ldots, m}\mapsto{0,1,\ldots, m-1}$ such that&lt;/p&gt;
+
+&lt;p&gt;$\pi[q]=\max{k:k&amp;lt;q\wedge P_k\sqsupset P_q}$&lt;/p&gt;
+
+&lt;p&gt;i.e. $\pi[q]$ is the length of the longest prefix of $P$ that is a proper suffix of $P_q$.&lt;/p&gt;
+
+&lt;p&gt;For matching:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Scan the text $T$ from left to right starting with $q=0$ (number of characters matched is $0$ initially):
+    &lt;ul&gt;
+      &lt;li&gt;If next character doesn’t match, i.e. $P[q+1]\neq T[i]$, then $q\leftarrow\pi[q]$&lt;/li&gt;
+      &lt;li&gt;If next character matches, i.e. $P[q+1]=T[i]$, then $q\leftarrow q+1$&lt;/li&gt;
+      &lt;li&gt;If $q=m$, pattern is found, and set $q\leftarrow\pi[q]$&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;For computing prefix-function:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;$\pi[1]\leftarrow0$ by definition&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Scan the pattern $P$ from left to right starting from $q=2$:&lt;/p&gt;
+    &lt;ul&gt;
+      &lt;li&gt;If next character doesn’t match, i.e. $P[k+1]\ne P[q]$, then $k\leftarrow\pi[k]$&lt;/li&gt;
+      &lt;li&gt;If next character matches, i.e. $P[k+1]=P[q]$, then $k\leftarrow k+1$.&lt;/li&gt;
+      &lt;li&gt;Set $\pi[q]\leftarrow k$&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;z-algorithm&quot;&gt;Z-Algorithm&lt;/h1&gt;
+
+&lt;p&gt;The algorithm produces an array $Z$  where $Z[i]$ denotes the length of the longest substring starting from $S[i]$ which is also a prefix of $S$. We refer to prefix-substrings as substrings which are also prefix.&lt;/p&gt;
+
+&lt;p&gt;As we iterate over the letters in the string we maintain an interval $[L, R]$ which is the interval with maximum $R$ such that $1\le L\le i\le R$ and $S[L\ldots R]$is a prefix-substring (if no such inteval exists $L=R=-1$)&lt;/p&gt;
+
+&lt;p&gt;Now suppose we have correct interval $[L, R]$ for $i-1$ and for all values of $Z$ upto $i-1$, we will compute  $Z[i]$ and new $[L, R]$ by following steps:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;$i&amp;gt;R$:
+    &lt;ul&gt;
+      &lt;li&gt;there is not a prefix-substring of $S$ that starts before $i$ and ends at $\ge i$. We would have taken that interval instead.&lt;/li&gt;
+      &lt;li&gt;Set $[L,R]$ to $[i,i]$ and start comparing $S[0…]$ to $S[i…]$ and $Z[i]=R-L+1$.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;$i\le R$:
+    &lt;ul&gt;
+      &lt;li&gt;Let $k=i-L$. We know that $Z[i]\ge \min (Z[k], R-i+1)$&lt;/li&gt;
+      &lt;li&gt;$Z[k]&amp;lt;R-i+1$:
+        &lt;ul&gt;
+          &lt;li&gt;$Z[i]=Z[k]$&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;$Z[k]\ge R-i+1$:
+        &lt;ul&gt;
+          &lt;li&gt;Update $[L,R]$ to $[i,R]$ and start comparing $S[R+1…]$ to $S[k+1…]$&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;For pattern matching we use Z-algorithm on string $P\Phi T$ where $\Phi$ matches nothing Then indices with $Z[i]=m$ correspond to matches in $T$ of $P$.&lt;/p&gt;
+
+</description>
+        <pubDate>Wed, 30 Oct 2019 19:12:00 +0000</pubDate>
+        <link>https://adityagupta1089.github.io/notes/algorithms/string-matching.html</link>
+        <guid isPermaLink="true">https://adityagupta1089.github.io/notes/algorithms/string-matching.html</guid>
+        
+        
+        <category>Notes</category>
+        
+        <category>Algorithms</category>
+        
+      </item>
     
       <item>
         <title>Splay Trees</title>
@@ -731,95 +939,6 @@ Where $\sum_{x=0}^\infty x/2^x=x/(1-x)^2$ and we put $x=1/2$ to get $\sum i/2^i\
         <pubDate>Wed, 23 Oct 2019 00:00:00 +0000</pubDate>
         <link>https://adityagupta1089.github.io/notes/data%20structures/heaps.html</link>
         <guid isPermaLink="true">https://adityagupta1089.github.io/notes/data%20structures/heaps.html</guid>
-        
-        
-        <category>Notes</category>
-        
-        <category>Data Structures</category>
-        
-      </item>
-    
-      <item>
-        <title>Range Trees</title>
-        <description>&lt;h1 id=&quot;motivation&quot;&gt;Motivation&lt;/h1&gt;
-
-&lt;p&gt;Given a set of $n$ points $P$ on a real line and a query interval $[x:x’]$ find all the points inside the interval.&lt;/p&gt;
-
-&lt;p&gt;Construct a binary search tree from $P$ and perform the following query:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://adityagupta1089.github.io/images/rangetree1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Figure: Example of searching in range tree&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Search for $x$ and $x’$ until we get to $v_{\rm split}$ where the search path splits.&lt;/li&gt;
-  &lt;li&gt;From the left child of $v_{\rm split}$ we continue search with $x$ and at every node $v$ we where search path goes left we all points in right subtree of $v$.&lt;/li&gt;
-  &lt;li&gt;Symmetrically we go right from $v_{\rm split}$ searching for $x’$ and taking left subtrees of $v$ respectively.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&quot;definition&quot;&gt;Definition&lt;/h1&gt;
-
-&lt;p&gt;&lt;strong&gt;Canonical Subset of node&lt;/strong&gt; $v$ (i.e. $P(v)$): subset of points stored in the leaves of the subtree at $v$.&lt;/p&gt;
-
-&lt;h1 id=&quot;2-d-range-trees&quot;&gt;2-D Range Trees&lt;/h1&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;The main tree is a balanced binary search tree built $T$ built on the x-coordinates of $P$.&lt;/li&gt;
-  &lt;li&gt;For any internal node / leaf node $v$ in $T$, the canonical subset $P(v)$ is stored in a balanced binary search tree $T_1(v)$ on the y-coordinates of the points. The node $v$ contains a pointer to the root of $T_1(v)$.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;creation-onlog-n&quot;&gt;Creation $O(n\log n)$&lt;/h2&gt;
-
-&lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt; Use presorted $P$&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Create $T_1(v)$ binary search tree.&lt;/li&gt;
-  &lt;li&gt;If $P$ has only one point then create leaf else split $P$ into two sets $P_{\rm left}$ and $P_{\rm right}$ using $x_{\rm mid}$ median point. Recursively create $v_{\rm left}$ and $v_{\rm right}$ from $P_{\rm left}$ and $P_{\rm right}$ respectively. Create a node with $x_{\rm mid}$ and $v_{\rm left}$ and $v_{\rm right}$ left and right children of this node. Make $T_1(v)$ the associated structure of $v$.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;querying-olog-2n-k&quot;&gt;Querying $O(\log ^2n +k)$&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Find $v_{\rm split}$&lt;/li&gt;
-  &lt;li&gt;If $v_{\rm split}$ is a leaf check point inside it and report if necessary.&lt;/li&gt;
-  &lt;li&gt;Else
-    &lt;ul&gt;
-      &lt;li&gt;Follow path to $x$ and perform 1-D range query on the subtrees right of the path. Also check if point stored at the final leaf node $v$ must be reported.&lt;/li&gt;
-      &lt;li&gt;Similary do for $x’$ and perform 1-D range query on the subtrees left of the path from $v_{\rm split}$. Again check at the end for the point stored at $v$.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;fractional-cascading&quot;&gt;Fractional Cascading&lt;/h2&gt;
-
-&lt;p&gt;If two sets of objects $S_1$ and $S_2$ are stored int sorted arrays $A_1$ and $A_2$. To find keys in $[y:y’]$&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;We can binary search for ceil of  $y$ in $A_1$ and then walk along the array until the floor of $y’$. Similary for $S_2$. Total time will be $O(k)$ plus two binary searches ($k$ reported objects).&lt;/li&gt;
-  &lt;li&gt;If $S_2\subseteq S_1$ we can maintain pointers from $A_1$ to $A_2$, i.e. we store the pointer to ceil key for every value in $A_1$. This will avoid the second binary search.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://adityagupta1089.github.io/images/rangetree2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Figure: Layered Range Tree showing only x-coordinates. Full points are given below&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Similarly $P(lc(v))\subseteq P(v)$ and $P(rc(v))\subseteq P(v)$. Instead of associated binary trees we will store an array sorted on the y-coordinates. Each value in the array will additionaly store two pointers to $A(lc(v))$ and $A(rc(v))$. This becomes the &lt;strong&gt;layered range tree&lt;/strong&gt;. This makes the query time $O(\log n + k)$.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://adityagupta1089.github.io/images/rangetree3.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Figure: The associated arrays with the nodes.&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;While querying for $[x:x’]\times[y:y’]$:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;We search for $x$, $x’$ and $v_{\rm split}$. At $A(v_{\rm split})$ we we find the ceil entry of $y$.&lt;/li&gt;
-  &lt;li&gt;While searching in $x$ and $x’$ in main tree we keep track of ceil entry of $y$ by following pointers in constant time.&lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-        <pubDate>Sun, 20 Oct 2019 15:54:00 +0000</pubDate>
-        <link>https://adityagupta1089.github.io/notes/data%20structures/range-trees.html</link>
-        <guid isPermaLink="true">https://adityagupta1089.github.io/notes/data%20structures/range-trees.html</guid>
         
         
         <category>Notes</category>

@@ -6,13 +6,13 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Aditya Gupta&#39;s Blog | Fast Fourier Transform</title>
-  <meta name="description" content="Motivation">
+  <title>Aditya Gupta&#39;s Blog | String Matching</title>
+  <meta name="description" content="Formalization:">
   <link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic|Source+Sans+Pro:400,700,200,300|Josefin+Sans:400,600,700,300' rel='stylesheet' type='text/css'>
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
 
   <link rel="stylesheet" href="/css/style.css">
-  <link rel="canonical" href="https://adityagupta1089.github.io/notes/algorithms/fast-fourier-transform.html">
+  <link rel="canonical" href="https://adityagupta1089.github.io/notes/algorithms/string-matching.html">
   <link rel="alternate" type="application/rss+xml" title="Aditya Gupta's Blog" href="https://adityagupta1089.github.io/feed.xml">
 </head>
 
@@ -245,12 +245,12 @@ $(document).ready(function () {
 
   <header class="post-header">
     <h1 class="post-title" itemprop="name headline">
-      <a class="post-title-link"  href="/notes/algorithms/fast-fourier-transform.html">Fast Fourier Transform
+      <a class="post-title-link"  href="/notes/algorithms/string-matching.html">String Matching
       </a>
     </h1>
     <center>
       <p class="post-meta" style="letter-spacing: 3px !important;">
-        <time datetime="2019-10-29T00:00:00+00:00" itemprop="datePublished">Oct 29, 2019
+        <time datetime="2019-10-30T19:12:00+00:00" itemprop="datePublished">Oct 30, 2019
         </time><br>
         Categories: <span style="text-transform: uppercase !important">Notes, Algorithms</span>
       </p>
@@ -259,88 +259,209 @@ $(document).ready(function () {
   </header>
 
   <div class="post-content" itemprop="articleBody">
-    <h1 id="motivation">Motivation</h1>
-
-<p>The product of two $d$-degree polynomials is a polynomial of degree $2d$, i.e. if $A(x)=a_0+a_1x+a_2x^2+\ldots+a_dx^d$ and $B(x)=b_0+b_1+b_2x^2+\ldots+b_dx^d$ then</p>
-
-<script type="math/tex; mode=display">A(x)B(x)=a_0b_k+a_1b_{k-1}+\ldots+a_kb_0=\sum_{i=0}^{k}a_i b_{k-i}</script>
-
-<p>Computing $c_k$ from this formula takes $O(k)$ steps aand finding all $2d+1$ coefficients would therefore take $\Theta(d^2)$</p>
+    <h1 id="formalization">Formalization:</h1>
 
 <ul>
-  <li>A degree-$d$ polynomial is uniquely characterized by its values at any $d+1$ distinct points.</li>
+  <li>Text: $T[1..n]$</li>
+  <li>Pattern: $P[1..m]$ ($m\le n$)</li>
+  <li>elements of $P$ and $T$ are characters drawn from a finite alphabet $\Sigma$.</li>
+  <li>$\Sigma^*$ denotes the set of all finite-length string using $\Sigma$</li>
+  <li>$\varepsilon\in \Sigma ^*$ emptry string</li>
+  <li>$x y$ denotes concatenation of $x$ and $y$</li>
+  <li>$w\sqsubset x$: $w$ is a prefix of $x$, i.e. $x=wy$ for some $y\in \Sigma^*$</li>
+  <li>$w\sqsupset x$: $w$ is a suffix of $x$, i.e. $x=yw$ for some $y\in \Sigma^*$</li>
+  <li>$P_k$ is the $k$-character prefix $P[q..k]$</li>
 </ul>
 
-<p>We can represent a degree-$d$ polynomial $A(x)$ by either (i) it’s coefficients $a_0, a_1,\ldots a_d$ or (ii) the values $A(x_0), A(x_1),\ldots A(x_d)$</p>
+<h1 id="comparison-of-algorithms">Comparison of Algorithms:</h1>
 
-<p>In the second representation polynomial multiplication takes linear time.</p>
+<table>
+  <thead>
+    <tr>
+      <th>Algorithm</th>
+      <th>Preprocessing time</th>
+      <th>Matching Time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Naive</td>
+      <td>0</td>
+      <td>$O((n-m+1)m)$</td>
+    </tr>
+    <tr>
+      <td>Rabin-Karp</td>
+      <td>$\Theta(m)$</td>
+      <td>$O((n-m+1)m)$</td>
+    </tr>
+    <tr>
+      <td>Finite Automaton</td>
+      <td>$O(m\vert \Sigma\vert)$</td>
+      <td>$\Theta(n)$</td>
+    </tr>
+    <tr>
+      <td>Knuth-Morris-Pratt</td>
+      <td>$\Theta(m)$</td>
+      <td>$\Theta(n)$</td>
+    </tr>
+    <tr>
+      <td>Z-Algorithm</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
 
-<h1 id="evaluation-by-divide-and-conquer">Evaluation by divide-and-conquer</h1>
+<h1 id="rabin-karp-algorithm">Rabin-Karp algorithm</h1>
+<p>Based on certain assumptions its average-case running time is better.</p>
 
-<p>If we choose the $n$ points for evaluation of $A(x)$ as:</p>
+<p>Let us assume $\Sigma={0,1,2,\ldots,d}$. Let $p$ denote the interpretation of $P[1..m]$ as a radix-d number. Similarly let $t_s$ denote the interpretatin of $T[s+1\ldots s+m]$ for $s\in {0,1,\dots n-m}$. Now $t_s=p\iff T[s+1\ldots s+m]=P[1..m]$.</p>
 
-<script type="math/tex; mode=display">\pm x_0, \pm x_1, \ldots, \pm x_{n/2-1}</script>
+<p>We can compute $p$ in $\Theta(m)$ using Horner’s rule</p>
 
-<p>then the computatin required for each $A(x_i)$ and $A(-x_i)$ overlap a lot because the even powers of $x_i$ coincide with those of $-x_i$.</p>
+<p>$p=P[m]+10(P[m-1]+10(P[m-2]+\ldots))$</p>
 
-<script type="math/tex; mode=display">A(x)=(a_0+a_2x^2+a_4x^4+\ldots)+x(a_1+a_3x^2+\ldots)
-A(x)=A_{\rm even}(x^2)+xA_{\rm odd}(x^2)</script>
+<p>Similarly</p>
 
-<p>hence</p>
+<p>$t_{s+1}=10(t_s-10^{m-1}T[s+1])+T[s+m+1]$</p>
 
-<script type="math/tex; mode=display">A(x_i)=A_e(x_i^2)+x_iA_o(x_i^2)
-A(-x_i)=A_e(x_i^2)-x_iA_o(x_i^2)</script>
+<p>where we can calculate $10^{m-1}$ in $O(\lg m)$.</p>
 
-<p>Noew we need to evaluate $A_e(x)$ and $A_o(x)$ (which each have half the degree of $A(x)$) at just $n/2$ points, $x_0^2,\ldots x_{n/2-1}^2$.</p>
+<p>For string matching we work with $\mathbb Z_q$ where $q$ is a prime such that $dq$ fits inside a computer word. However $t_{s} \equiv p\pmod q$ doesn’t imply that $t_s=p$, but $t_s\not\equiv p\mod q\implies t_s\neq p$. So we additionaly check explicity string equality.</p>
 
-<p>If we could recurse then time complexity would be $T(n)=2T(n/2)+O(n)\implies O(n\log n)$. The plus-minus trick only works at the top level of the recursion. To recurse at the next level, we need the $n/2$ evaluation points $x_0^2, x_1^2,\ldots x_{n/2-1}^2$ to be themselves plus-minus pairs. For this we take $n^{\rm th}$ roots of unity as the evaluation points.</p>
+<p>In worst case it could be $\Theta((n-m+1)m)$ when all shifts are valid.</p>
 
-<h1 id="interpolation">Interpolation</h1>
+<p>In average case we expect only $c$ shifts to be valid, then matching time is $O((n-m+1)+cm)=O(n+m)$ plus time required to process spurious hits. We can expect the number of spurious hits to be $O(n/q)$ since $t_s\equiv p\pmod q$ with probability $1/q$. This makes the expected matching time to be $O(n)+O(m(\nu+n/q))$ where $\nu$ is number of valid shifts. This is $O(n)$ if $\nu=O(1)$ (expected number of valid shifts is small) and $q\ge m$ ($q$ larger than the length of pattern)</p>
 
-<p>We have $\rm \langle values\rangle = FFT(\langle coefficients\rangle, \omega)$. where the complex roots of unity are ${1,\omega,\omega^2,\ldots,\omega^{n-1}}$</p>
+<h1 id="finite-automata">Finite Automata</h1>
 
-<p>We have:</p>
+<h2 id="definition">Definition</h2>
 
-<p><img src="https://adityagupta1089.github.io/images/fft1.png" alt="" /></p>
-
-<p>Call the matrix in the middle $M$. Its specialized format - a <em>Vandermonde</em> matrix gives its many remarkable properties</p>
+<p>A finite automaton $M(Q, q_0, A, \Sigma, \delta)$ where</p>
 
 <ul>
-  <li>If $x_0, \ldots x_{n-1}$ are distinct numbers, then $M$ is invertible. Vandermonde matrices are quicker to invert than more general matrices in $O(n^2)$ instead of $O(n^3)$. However, this is still not fast enough so we turn to complex roots of unity.</li>
+  <li>$Q$: states,</li>
+  <li>$q_0\in Q$: start state,</li>
+  <li>$A\subseteq Q$: accepting states,</li>
+  <li>$\Sigma$: input alphabet</li>
+  <li>$\delta:Q\times \Sigma\mapsto Q$: transition function</li>
 </ul>
 
-<h2 id="interpolation-resolved">Interpolation resolved</h2>
+<p>$M$ induces a function $\phi:\Sigma^*\mapsto Q$ (final-state function) such that $\phi(w)$ is the state $M$ ends up in after scanning the string $w$. $M$ accepts a string $w$ iff $\phi(w)\in A$.</p>
 
-<p>The FFT multiplies an arbitary $n$-dimensional vector (<em>coefficient representation</em>) by the $n\times n$ matrix</p>
+<p>$\phi(\varepsilon)=q_0$</p>
 
-<p><img src="https://adityagupta1089.github.io/images/fft2.png" alt="" /></p>
+<p>$\phi(wa)=\delta(\phi(w), a)\text{ for }w\in\Sigma^*, a\in \Sigma$</p>
 
-<p>It’s $(j,k)^{\rm th}$ entry is $\omega^{jk}$. The columns of $M$ are orthogonal to each other and are called <em>Fourier basis</em>.</p>
+<h2 id="string-matching-automata">String-matching automata</h2>
 
-<p>Take $\omega=e^{2\pi i/n}$ and $\langle u, v\rangle = u_0\overline{v_0}+u_1\overline{v_1}+\ldots u_{n-1}\overline{v_{n-1}}$ where $\overline {re^{i\theta}}=re^{-i\theta}$.</p>
+<p>For $P$ we generate a string-matching automaton in a preprocessing step.</p>
 
-<p>Multiplication of columns $j$ and $k$ of matrix $M$ gives</p>
+<p>For this we define an auxilary function $\sigma:\Sigma^*\mapsto{0,1,\ldots,m}$, the suffix function corresponding to $P$. $\sigma(x)$ is the length of the longest prefix of $P$ that is also a suffix of $x$.</p>
 
-<script type="math/tex; mode=display">1+\omega^{j-k}+\omega^{2(j-k)}+\ldots+\omega^{(n-1)(j-k)}=\frac{(1-\omega^{n(j-k)})}{(1-\omega^{j-k})}</script>
+<p>$\sigma(x)=\max{k: P_k \sqsupset x}$</p>
 
-<p>which is a Geometric series which is $0$  except $j=k$ in which case all terms are $1$ and sum is $n$.</p>
+<p>We have $\sigma(x)=m\iff P\sqsupset x$, also $x\sqsubset y\implies \sigma(x)\le \sigma(y)$ from definition.</p>
 
-<p>Thus $M\overline {M}=nI$ or $M^{-1}=\frac 1n\overline {M}$. The $(j, k)^{\rm th}$ entry of $\overline M$ is the complex conjugate of the correspoding entry of $M$, i.e. $\omega ^{-jk}$. So $\overline {M}=M_n(\omega^{-1})$</p>
+<p>We define <strong>string-matching automaton</strong> as:</p>
 
-<p>So we have $ \langle {\rm coefficient}\rangle = \frac 1n \rm FFT(\langle values\rangle, \omega^{-1})$</p>
+<ul>
+  <li>$Q={0,1,\ldots,m}$, $q_0=0$, $A={m}$</li>
+  <li>$\delta(q, a)=\sigma(P_qa)$ is the longest prefix of pattern $P$ that has matched the text string $T$ so far.</li>
+</ul>
+
+<p>We consider most recently read characters of $T$. For $T_i=P_j$, $P_j\sqsupset T_i$.</p>
+
+<p>Let $q=\phi(T_i)$. We design $\delta$ such that at $q$, $P_q\sqsupset T_i$ and $q=\sigma(T_i)$. Therefore $\phi(T_i)=\sigma(T_i)$.</p>
+
+<p>If the automaton is in state $q$ and reads the next characters $T[i+1]=a$, then we want the transition to lead to the state corresponding to the longest prefix of $P$ that is a suffix of $T_ia$, i.e. $\sigma(T_ia)$.</p>
+
+<p>Because $P_q$ is the longest prefix of $P$ that is a suffix of $T_i$ , i.e. $P_q=\sigma(T_i)$ we also have the longest prefix of $P$ that is a suffix of $T_ia$ is not only $\sigma(T_ia)$ but also $\sigma(P_qa)$.</p>
+
+<ul>
+  <li>If $a=P[q+1]$, $\delta(q, a)=q+1$.</li>
+  <li>If $a\neq P[q+1]$ we find a smaller prefix of $P$ that is also a suffix of $T_i$.</li>
+</ul>
+
+<h1 id="kunth-morris-pratt-algorithm">Kunth-Morris-Pratt Algorithm</h1>
+
+<p>Given a pattern $P[1..m]$, the <strong>prefix function</strong> for the pattern $P$ is the function $\pi:{1,2,\ldots, m}\mapsto{0,1,\ldots, m-1}$ such that</p>
+
+<p>$\pi[q]=\max{k:k&lt;q\wedge P_k\sqsupset P_q}$</p>
+
+<p>i.e. $\pi[q]$ is the length of the longest prefix of $P$ that is a proper suffix of $P_q$.</p>
+
+<p>For matching:</p>
+
+<ul>
+  <li>Scan the text $T$ from left to right starting with $q=0$ (number of characters matched is $0$ initially):
+    <ul>
+      <li>If next character doesn’t match, i.e. $P[q+1]\neq T[i]$, then $q\leftarrow\pi[q]$</li>
+      <li>If next character matches, i.e. $P[q+1]=T[i]$, then $q\leftarrow q+1$</li>
+      <li>If $q=m$, pattern is found, and set $q\leftarrow\pi[q]$</li>
+    </ul>
+  </li>
+</ul>
+
+<p>For computing prefix-function:</p>
+
+<ul>
+  <li>
+    <p>$\pi[1]\leftarrow0$ by definition</p>
+  </li>
+  <li>
+    <p>Scan the pattern $P$ from left to right starting from $q=2$:</p>
+    <ul>
+      <li>If next character doesn’t match, i.e. $P[k+1]\ne P[q]$, then $k\leftarrow\pi[k]$</li>
+      <li>If next character matches, i.e. $P[k+1]=P[q]$, then $k\leftarrow k+1$.</li>
+      <li>Set $\pi[q]\leftarrow k$</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="z-algorithm">Z-Algorithm</h1>
+
+<p>The algorithm produces an array $Z$  where $Z[i]$ denotes the length of the longest substring starting from $S[i]$ which is also a prefix of $S$. We refer to prefix-substrings as substrings which are also prefix.</p>
+
+<p>As we iterate over the letters in the string we maintain an interval $[L, R]$ which is the interval with maximum $R$ such that $1\le L\le i\le R$ and $S[L\ldots R]$is a prefix-substring (if no such inteval exists $L=R=-1$)</p>
+
+<p>Now suppose we have correct interval $[L, R]$ for $i-1$ and for all values of $Z$ upto $i-1$, we will compute  $Z[i]$ and new $[L, R]$ by following steps:</p>
+
+<ul>
+  <li>$i&gt;R$:
+    <ul>
+      <li>there is not a prefix-substring of $S$ that starts before $i$ and ends at $\ge i$. We would have taken that interval instead.</li>
+      <li>Set $[L,R]$ to $[i,i]$ and start comparing $S[0…]$ to $S[i…]$ and $Z[i]=R-L+1$.</li>
+    </ul>
+  </li>
+  <li>$i\le R$:
+    <ul>
+      <li>Let $k=i-L$. We know that $Z[i]\ge \min (Z[k], R-i+1)$</li>
+      <li>$Z[k]&lt;R-i+1$:
+        <ul>
+          <li>$Z[i]=Z[k]$</li>
+        </ul>
+      </li>
+      <li>$Z[k]\ge R-i+1$:
+        <ul>
+          <li>Update $[L,R]$ to $[i,R]$ and start comparing $S[R+1…]$ to $S[k+1…]$</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p>For pattern matching we use Z-algorithm on string $P\Phi T$ where $\Phi$ matches nothing Then indices with $Z[i]=m$ correspond to matches in $T$ of $P$.</p>
+
 
   </div>
 
   <footer class="postNavigation">
   
-    <a class="postPrev" href="/chess/notes/chess-force.html">
-        &laquo; Chess & Force
+    <a class="postPrev" href="/notes/data%20structures/splay-trees.html">
+        &laquo; Splay Trees
     </a>
   
-  
-    <a class="postNext" href="/notes/data%20structures/splay-trees.html">
-        Splay Trees &raquo;
-    </a>
   
   </footer>
 

@@ -237,9 +237,11 @@ figcaption {
 ul, ol {
   margin-left: 30px; }
 
-li > ul,
-li > ol {
-  margin-bottom: 0; }
+li {
+  font-size: 1.5rem; }
+  li > ul,
+  li > ol {
+    margin-bottom: 0; }
 
 /**
  * Headings
@@ -580,6 +582,11 @@ pre {
   padding-bottom: 3em !important; }
   .post-content p {
     font-size: 1.5rem; }
+  .post-content h1 {
+    font-size: 38px; }
+    @media screen and (max-width: 800px) {
+      .post-content h1 {
+        font-size: 32px; } }
   .post-content h2 {
     font-size: 32px; }
     @media screen and (max-width: 800px) {
