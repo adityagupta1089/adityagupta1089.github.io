@@ -119,6 +119,7 @@ li {
     > ol {
          margin-bottom: 0;
     }
+    font-size: 1.5rem;
 }
 
 
@@ -519,6 +520,12 @@ pre {
   padding-bottom: 3em !important;
   p {
     font-size: 1.5rem;
+  }
+  h1 {
+    font-size: 38px;
+    @include media-query($on-laptop) {
+      font-size: 32px;
+    }
   }
   h2 {
     font-size: 32px;
