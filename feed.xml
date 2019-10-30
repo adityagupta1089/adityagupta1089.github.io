@@ -5,8 +5,8 @@
     <description></description>
     <link>https://adityagupta1089.github.io/</link>
     <atom:link href="https://adityagupta1089.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 30 Oct 2019 19:22:22 +0000</pubDate>
-    <lastBuildDate>Wed, 30 Oct 2019 19:22:22 +0000</lastBuildDate>
+    <pubDate>Wed, 30 Oct 2019 21:50:01 +0000</pubDate>
+    <lastBuildDate>Wed, 30 Oct 2019 21:50:01 +0000</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
     
       <item>
@@ -387,14 +387,24 @@ A(-x_i)=A_e(x_i^2)-x_iA_o(x_i^2)&lt;/script&gt;
     
       <item>
         <title>Chess &amp; Force</title>
-        <description>&lt;h1 id=&quot;basic-tactics&quot;&gt;Basic Tactics&lt;/h1&gt;
+        <description>&lt;h1 id=&quot;the-first-principle-force&quot;&gt;The First Principle: Force&lt;/h1&gt;
+
 &lt;ul&gt;
-  &lt;li&gt;The Pin&lt;/li&gt;
-  &lt;li&gt;The Fork&lt;/li&gt;
+  &lt;li&gt;Try to have more pieces overall. (Use piece values)&lt;/li&gt;
+  &lt;li&gt;Try to have more pieces ina particular area of the board.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&quot;laying-traps&quot;&gt;Laying Traps&lt;/h1&gt;
-&lt;h2 id=&quot;a-pair-of-weaklings&quot;&gt;A Pair of Weaklings&lt;/h2&gt;
+&lt;h2 id=&quot;basic-tactics&quot;&gt;Basic Tactics&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The Pin - prevent enemy piece from moving&lt;/li&gt;
+  &lt;li&gt;The Fork - simultaneous attack on two or more pieces&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;laying-traps&quot;&gt;Laying Traps&lt;/h2&gt;
+&lt;h3 id=&quot;a-pair-of-weaklings&quot;&gt;A Pair of Weaklings&lt;/h3&gt;
+
+&lt;p&gt;This type of trap is based on the weakness of the pawns on squares f7 and f2.&lt;/p&gt;
 
 &lt;div class=&quot;chess&quot;&gt;
 [Title &quot;Scholar's Mate&quot;]
@@ -420,7 +430,9 @@ A(-x_i)=A_e(x_i^2)-x_iA_o(x_i^2)&lt;/script&gt;
 7. Nd5#
 &lt;/div&gt;
 
-&lt;h2 id=&quot;the-case-of-undefended-piece&quot;&gt;The Case of Undefended Piece&lt;/h2&gt;
+&lt;h3 id=&quot;the-case-of-undefended-piece-discovery-attack&quot;&gt;The Case of Undefended Piece (discovery attack)&lt;/h3&gt;
+
+&lt;p&gt;Discovered attacks are usually directed at undefended pieces.&lt;/p&gt;
 
 &lt;div class=&quot;chess&quot;&gt;
 [Title &quot;The Excommunicated Bishop&quot;]
@@ -434,7 +446,9 @@ A(-x_i)=A_e(x_i^2)-x_iA_o(x_i^2)&lt;/script&gt;
 1. e4 d5 2. exd5 Qxd5 3. Nc3 Qd8 4. d4 e6 5. Bd3 Qxd4?? {Black thinks that White has overlooked a pawn but a surprise is in store} 6. Bb5+!
 &lt;/div&gt;
 
-&lt;h2 id=&quot;the-battering-ram&quot;&gt;The Battering Ram&lt;/h2&gt;
+&lt;h3 id=&quot;the-battering-ram&quot;&gt;The Battering Ram&lt;/h3&gt;
+
+&lt;p&gt;This type of trap is based on dimantling the enemy king’s cover.&lt;/p&gt;
 
 &lt;div class=&quot;chess&quot;&gt;
 [Title &quot;Fool's Mate&quot;]
@@ -450,10 +464,29 @@ A(-x_i)=A_e(x_i^2)-x_iA_o(x_i^2)&lt;/script&gt;
 1. e4 c6 2. d4 d5 3. Nc3 dxe4 4. Nxe4 Nd7 5. Qe2 Ngf6 6. Nd6#
 &lt;/div&gt;
 
-&lt;h1 id=&quot;endgames&quot;&gt;Endgames&lt;/h1&gt;
+&lt;h2 id=&quot;king-plays-in-the-endgame&quot;&gt;King Plays in the endgame&lt;/h2&gt;
+
 &lt;ul&gt;
-  &lt;li&gt;King &amp;amp; Queen vs. King&lt;/li&gt;
-  &lt;li&gt;King &amp;amp; Rook vs. King&lt;/li&gt;
+  &lt;li&gt;king is a powerful piece and should be brought out into the play in the endgame.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;endgames&quot;&gt;Endgames&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;King &amp;amp; Queen vs. King - trapping in a box&lt;/li&gt;
+  &lt;li&gt;King &amp;amp; Rook vs. King - move king as close to enemy king and then use rook&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;preference-or-principle&quot;&gt;Preference or Principle&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Do not take pieces directly for their piece values.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;when-less-is-more&quot;&gt;When less is more&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Weaker pieces may be stronger in certain situations.&lt;/li&gt;
 &lt;/ul&gt;
 </description>
         <pubDate>Mon, 28 Oct 2019 16:01:00 +0000</pubDate>
