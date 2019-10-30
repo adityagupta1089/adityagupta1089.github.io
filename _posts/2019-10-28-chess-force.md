@@ -6,12 +6,20 @@ categories:
 - Notes
 date: 2019-10-28 21:31 +0530
 ---
-# Basic Tactics
-- The Pin
-- The Fork
+# The First Principle: Force
 
-# Laying Traps
-## A Pair of Weaklings
+- Try to have more pieces overall. (Use piece values)
+- Try to have more pieces ina particular area of the board.
+
+## Basic Tactics
+
+- The Pin - prevent enemy piece from moving
+- The Fork - simultaneous attack on two or more pieces
+
+## Laying Traps
+### A Pair of Weaklings
+
+This type of trap is based on the weakness of the pawns on squares f7 and f2.
 
 <div class="chess">
 [Title "Scholar's Mate"]
@@ -37,7 +45,9 @@ date: 2019-10-28 21:31 +0530
 7. Nd5#
 </div>
 
-## The Case of Undefended Piece
+### The Case of Undefended Piece (discovery attack)
+
+Discovered attacks are usually directed at undefended pieces.
 
 <div class="chess">
 [Title "The Excommunicated Bishop"]
@@ -51,7 +61,9 @@ date: 2019-10-28 21:31 +0530
 1. e4 d5 2. exd5 Qxd5 3. Nc3 Qd8 4. d4 e6 5. Bd3 Qxd4?? {Black thinks that White has overlooked a pawn but a surprise is in store} 6. Bb5+!
 </div>
 
-## The Battering Ram
+### The Battering Ram
+
+This type of trap is based on dimantling the enemy king's cover.
 
 <div class="chess">
 [Title "Fool's Mate"]
@@ -67,6 +79,19 @@ date: 2019-10-28 21:31 +0530
 1. e4 c6 2. d4 d5 3. Nc3 dxe4 4. Nxe4 Nd7 5. Qe2 Ngf6 6. Nd6#
 </div>
 
-# Endgames
-- King & Queen vs. King
-- King & Rook vs. King
+## King Plays in the endgame
+
+- king is a powerful piece and should be brought out into the play in the endgame.
+
+## Endgames
+
+- King & Queen vs. King - trapping in a box
+- King & Rook vs. King - move king as close to enemy king and then use rook 
+
+## Preference or Principle
+
+- Do not take pieces directly for their piece values.
+
+## When less is more
+
+- Weaker pieces may be stronger in certain situations.
