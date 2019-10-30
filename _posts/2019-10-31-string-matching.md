@@ -26,7 +26,7 @@ date: 2019-10-31 00:42 +0530
 | Rabin-Karp         | $\Theta(m)$        | $O((n-m+1)m)$ |
 | Finite Automaton   | $O(m\vert \Sigma\vert)$     | $\Theta(n)$   |
 | Knuth-Morris-Pratt | $\Theta(m)$        | $\Theta(n)$   |
-| Z-Algorithm |  |  |
+| Z-Algorithm | 0 | $\Theta(m+n)$ |
 
 # Rabin-Karp algorithm
 Based on certain assumptions its average-case running time is better.
