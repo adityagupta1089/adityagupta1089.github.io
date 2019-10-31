@@ -104,18 +104,44 @@ i.e. $\pi[q]$ is the length of the longest prefix of $P$ that is a proper suffix
 For matching:
 
 - Scan the text $T$ from left to right starting with $q=0$ (number of characters matched is $0$ initially):
-    - If next character doesn't match, i.e. $P[q+1]\neq T[i]$, then $q\leftarrow\pi[q]$
+    - While $q>0$ and next character doesn't match, i.e. $P[q+1]\neq T[i]$, keep doing $q\leftarrow\pi[q]$
     - If next character matches, i.e. $P[q+1]=T[i]$, then $q\leftarrow q+1$
     - If $q=m$, pattern is found, and set $q\leftarrow\pi[q]$
+    ```pseudocode
+    q = 0
+    for i = 0 to n - 1:
+    	while (k > 0 && T[i] != P[q]):
+    		q = pi[q-1]
+    	if (T[i] == P[q]):
+    		q++
+    	if (q == m):
+    		# Pattern Found
+    		q = pi[q - 1]
+    	pi[q] = k
+    ```
+    
 
 For computing prefix-function:
 
 - $\pi[1]\leftarrow0$ by definition
 
-- Scan the pattern $P$ from left to right starting from $q=2$:
-    - If next character doesn't match, i.e. $P[k+1]\ne P[q]$, then $k\leftarrow\pi[k]$
+- Scan the pattern $P$ from left to right starting from $q=2$ 2 (loop starts from 2nd character, 1-indexed) and $k=0$ (number of characters matched in 0 initially):
+    - While $k>0$ and next character doesn't match, i.e. $P[k+1]\ne P[q]$, keep doing $k\leftarrow\pi[k]$
     - If next character matches, i.e. $P[k+1]=P[q]$, then $k\leftarrow k+1$.
     - Set $\pi[q]\leftarrow k$
+    
+    ```pseudocode
+    pi[1] = 0
+    k = 0
+    for q = 1 to m - 1:
+    	while (k > 0 && P[k] != P[q]):
+    		k = pi[k-1]
+    	if (P[k] == P[q]):
+    		k++
+    	pi[q] = k
+    ```
+    
+    
 
 # Z-Algorithm
 
@@ -128,12 +154,38 @@ Now suppose we have correct interval $[L, R]$ for $i-1$ and for all values of $Z
 - $i>R$: 
     - there is not a prefix-substring of $S$ that starts before $i$ and ends at $\ge i$. We would have taken that interval instead.
     - Set $[L,R]$ to $[i,i]$ and start comparing $S[0...]$ to $S[i...]$ and $Z[i]=R-L+1$.
+    
 - $i\le R$:
     - Let $k=i-L$. We know that $Z[i]\ge \min (Z[k], R-i+1)$
     - $Z[k]<R-i+1$:
         - $Z[i]=Z[k]$
     - $Z[k]\ge R-i+1$:
         - Update $[L,R]$ to $[i,R]$ and start comparing $S[R+1...]$ to $S[k+1...]$
+    
+    ```pseudocode
+    L = 0
+    R = 0
+    for i = 1 to n:
+    	if (i > R):
+    		L = i
+    		R = i
+    		while (R < n && s[R - L] == s[R]):
+    			R++
+    		Z[i] = R - L
+    		R--
+    	else:
+    		k = i - L
+    		if (Z[k] < R - i + 1):
+    			Z[i] = Z[k]
+    		else:
+    			L = i
+    			while (R < n && s[R-L] == s[R]):
+    				R++
+    			Z[i] = R - L
+    			R--
+    ```
+    
+    
 
 For pattern matching we use Z-algorithm on string $P\Phi T$ where $\Phi$ matches nothing Then indices with $Z[i]=m$ correspond to matches in $T$ of $P$.
 
