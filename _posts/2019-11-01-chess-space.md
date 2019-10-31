@@ -3,7 +3,7 @@ layout: post
 title: Chess & Space
 categories:
 - Chess
-- Space
+- Notes
 date: 2019-11-01 00:01 +0530
 ---
 # The Third Principle: Space
@@ -50,4 +50,3 @@ date: 2019-11-01 00:01 +0530
 ## How to defend against a space advantage
 
 - The player with less space should try to trade some pieces.
-
