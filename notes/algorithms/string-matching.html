@@ -200,6 +200,22 @@
         
       
     
+      
+        
+          <td style="text-align: center;">
+            <a class="page-link" href="/category/space/index.html">
+              space
+            </a>
+          </td>
+          
+            <td>
+              <span class="exclamationMark">/</span>
+            </td>
+          
+          
+        
+      
+    
     </tr>
     </table>
   </div>
@@ -396,9 +412,21 @@ $(document).ready(function () {
 <ul>
   <li>Scan the text $T$ from left to right starting with $q=0$ (number of characters matched is $0$ initially):
     <ul>
-      <li>If next character doesn’t match, i.e. $P[q+1]\neq T[i]$, then $q\leftarrow\pi[q]$</li>
+      <li>While $q&gt;0$ and next character doesn’t match, i.e. $P[q+1]\neq T[i]$, keep doing $q\leftarrow\pi[q]$</li>
       <li>If next character matches, i.e. $P[q+1]=T[i]$, then $q\leftarrow q+1$</li>
-      <li>If $q=m$, pattern is found, and set $q\leftarrow\pi[q]$</li>
+      <li>If $q=m$, pattern is found, and set $q\leftarrow\pi[q]$
+        <pre><code class="language-pseudocode">  q = 0
+  for i = 0 to n - 1:
+  	while (k &gt; 0 &amp;&amp; T[i] != P[q]):
+  		q = pi[q-1]
+  	if (T[i] == P[q]):
+  		q++
+  	if (q == m):
+  		# Pattern Found
+  		q = pi[q - 1]
+  	pi[q] = k
+</code></pre>
+      </li>
     </ul>
   </li>
 </ul>
@@ -410,12 +438,22 @@ $(document).ready(function () {
     <p>$\pi[1]\leftarrow0$ by definition</p>
   </li>
   <li>
-    <p>Scan the pattern $P$ from left to right starting from $q=2$:</p>
+    <p>Scan the pattern $P$ from left to right starting from $q=2$ 2 (loop starts from 2nd character, 1-indexed) and $k=0$ (number of characters matched in 0 initially):</p>
     <ul>
-      <li>If next character doesn’t match, i.e. $P[k+1]\ne P[q]$, then $k\leftarrow\pi[k]$</li>
+      <li>While $k&gt;0$ and next character doesn’t match, i.e. $P[k+1]\ne P[q]$, keep doing $k\leftarrow\pi[k]$</li>
       <li>If next character matches, i.e. $P[k+1]=P[q]$, then $k\leftarrow k+1$.</li>
       <li>Set $\pi[q]\leftarrow k$</li>
     </ul>
+
+    <pre><code class="language-pseudocode">  pi[1] = 0
+  k = 0
+  for q = 1 to m - 1:
+  	while (k &gt; 0 &amp;&amp; P[k] != P[q]):
+  		k = pi[k-1]
+  	if (P[k] == P[q]):
+  		k++
+  	pi[q] = k
+</code></pre>
   </li>
 </ul>
 
@@ -448,6 +486,28 @@ $(document).ready(function () {
         </ul>
       </li>
     </ul>
+
+    <pre><code class="language-pseudocode">  L = 0
+  R = 0
+  for i = 1 to n:
+  	if (i &gt; R):
+  		L = i
+  		R = i
+  		while (R &lt; n &amp;&amp; s[R - L] == s[R]):
+  			R++
+  		Z[i] = R - L
+  		R--
+  	else:
+  		k = i - L
+  		if (Z[k] &lt; R - i + 1):
+  			Z[i] = Z[k]
+  		else:
+  			L = i
+  			while (R &lt; n &amp;&amp; s[R-L] == s[R]):
+  				R++
+  			Z[i] = R - L
+  			R--
+</code></pre>
   </li>
 </ul>
 
@@ -462,6 +522,10 @@ $(document).ready(function () {
         &laquo; Splay Trees
     </a>
   
+  
+    <a class="postNext" href="/chess/notes/chess-time.html">
+        Chess & Time &raquo;
+    </a>
   
   </footer>
 

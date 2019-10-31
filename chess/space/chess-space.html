@@ -6,13 +6,13 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Aditya Gupta&#39;s Blog | Interval Trees</title>
-  <meta name="description" content="Motivation">
+  <title>Aditya Gupta&#39;s Blog | Chess &amp; Space</title>
+  <meta name="description" content="The Third Principle: Space">
   <link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic|Source+Sans+Pro:400,700,200,300|Josefin+Sans:400,600,700,300' rel='stylesheet' type='text/css'>
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
 
   <link rel="stylesheet" href="/css/style.css">
-  <link rel="canonical" href="https://adityagupta1089.github.io/notes/data%20structures/interval-trees.html">
+  <link rel="canonical" href="https://adityagupta1089.github.io/chess/space/chess-space.html">
   <link rel="alternate" type="application/rss+xml" title="Aditya Gupta's Blog" href="https://adityagupta1089.github.io/feed.xml">
 </head>
 
@@ -261,103 +261,82 @@ $(document).ready(function () {
 
   <header class="post-header">
     <h1 class="post-title" itemprop="name headline">
-      <a class="post-title-link"  href="/notes/data%20structures/interval-trees.html">Interval Trees
+      <a class="post-title-link"  href="/chess/space/chess-space.html">Chess & Space
       </a>
     </h1>
     <center>
       <p class="post-meta" style="letter-spacing: 3px !important;">
-        <time datetime="2019-10-20T13:07:00+00:00" itemprop="datePublished">Oct 20, 2019
+        <time datetime="2019-10-31T18:31:00+00:00" itemprop="datePublished">Oct 31, 2019
         </time><br>
-        Categories: <span style="text-transform: uppercase !important">Notes, Data Structures</span>
+        Categories: <span style="text-transform: uppercase !important">Chess, Space</span>
       </p>
 
      </center>
   </header>
 
   <div class="post-content" itemprop="articleBody">
-    <h1 id="motivation">Motivation</h1>
-
-<p>Given a set of intervals $I$ on the real line and a query point $q_x$, find the intervals that contain $q_x$.</p>
-
-<p>Let $I:={[x_1:x_1’],[x_2:x_2’],\ldots,[x_n:x_n’]}$. Let $x_{\rm mid}$ be the median of the $2n$ interval endpoints such that atmost half of them lie on the left and half of them lie on the right.</p>
-
-<h1 id="definition">Definition</h1>
-
-<p><img src="https://adityagupta1089.github.io/images/intervaltree1.png" alt="" /></p>
+    <h1 id="the-third-principle-space">The Third Principle: Space</h1>
 
 <ul>
-  <li>If $I=\phi$ then interval tree is a leaf.</li>
-  <li>Otherwise let $x_{\rm mid}$ be the median of the endpoints of the interval. Let
+  <li>When you have advantage in space, you control more trritory than your opponent</li>
+  <li>Your pieces have more sqaures to choose from than the enemy pieces, which are severely restricted in their movements.</li>
+</ul>
+
+<h2 id="the-space-count-system">The Space Count System</h2>
+
+<ul>
+  <li>White owns the ranks from 1 to 4, while black owns the ranks from 5 to 8.</li>
+  <li>Anything controlled beyond these personal squares in the enemey domain is accounted in space count system.</li>
+  <li>Other factors to consider are:
     <ul>
-      <li>$I_{\rm left}:={[x_j:x_j’]\in I\mid x_j’&lt;x_{\rm mid}}$</li>
-      <li>$I_{\rm mid}:={[x_j:x_j’]\in I\mid x_j\le x_{\rm mid}\le x_j’}$.</li>
-      <li>$I_{\rm right}:={[x_j:x_j’]\in I\mid x_j&gt;x_{\rm mid}}$</li>
+      <li>Can king castle?</li>
+      <li>Pawn/Piece advantage</li>
+      <li>Pawn islands?</li>
+      <li>Rook on active files</li>
+      <li>etc.</li>
     </ul>
   </li>
 </ul>
 
-<p><img src="https://adityagupta1089.github.io/images/intervaltree2.png" alt="" /></p>
+<h2 id="how-to-use-a-space-advantage">How to use a space advantage</h2>
 
-<p>The Interval tree consists of a root node $v$ storing $x_{\rm mid}$.</p>
+<h3 id="rooks-and-open-files">Rooks and Open Files</h3>
+
 <ul>
-  <li>
-    <p>$I_{\rm mid}$ is stored twice:</p>
-
-    <ol>
-      <li>
-        <p>${\cal L}_{\rm left}$ that is sorted on the left endpoints of $I_{\rm mid}$</p>
-      </li>
-      <li>
-        <p>${\cal L}_{\rm right}$ that is sorted on the right endpoints of  $I_{\rm mid}$</p>
-      </li>
-    </ol>
-  </li>
-  <li>
-    <p>Left subtree of $v$ is an interval tree for the set $I_{\rm left}$.</p>
-  </li>
-  <li>
-    <p>Right subtree of $v$ is an interval tree for the set $I_{\rm right}$.</p>
-  </li>
+  <li>Rooks need open files to be effective.</li>
 </ul>
 
-<h1 id="creation-onlog-n">Creation $O(n\log n)$</h1>
-
-<pre><code class="language-pseudocode">create(I)
-  if I = null
-    return empty leaf
-  else
-    create a node v
-    computer x_mid (linear time, constant if presorted)
-    store x_mid with v
-    compute I_mid, L_left, L_right
-    left_child(v) &lt;- create(I_left)
-    right_child(v) &lt;- create(I_right)
-    return v
-</code></pre>
-
-<h1 id="querying-olog-nk">Querying $O(\log n+k)$</h1>
+<h3 id="bishops-and-open-diagonals">Bishops and Open Diagonals</h3>
 
 <ul>
-  <li>If $q_x &lt; x_{\rm mid}(v)$ walk along $\cal L_{\rm left}$ reporting all intervals that contain $q_x$. Stop as soon as an interval doesn’t contain $q_x$. Query left subtree of $v$.</li>
-  <li>Symmetrically do for $q_x&gt;x_{\rm mid(v)}$</li>
+  <li>Bishops need open diagonals if they are to reach their full potential.</li>
 </ul>
 
-<p>$k$ = Number of reported intervals.</p>
-
-<h1 id="2-d-range-tree">2-D Range Tree</h1>
-
-<p>The data structure to store a a horizontal line segments is $\rm T$. If we want to create a 2-D range tree then instead of $\cal L_{\rm left}(v)$ and $\cal L_{\rm right}(v)$ we will store:</p>
+<h4 id="the-fianchettoed-bishop">The Fianchettoed Bishop</h4>
 
 <ul>
-  <li>A range tree $T_{\rm left}(v)$ on left endpoint segments in $I_{\rm mid}(v)$.</li>
-  <li>A range tree $T_{\rm right}(v)$ on right endpoint segments in $I_{\rm mid}(v)$</li>
+  <li>To place a bishop on the longest possible diagona is to fianchetto it.</li>
 </ul>
 
-<p>At time of querying instead of walking along $\cal L_{\rm left}(v)$ and $\cal L_{\rm right}(v)$ we will perform a query in the range trees $\rm T_{left}(v)$ and $\rm T_{right}(v)$.</p>
+<h3 id="the-knight-as-advance-scout">The Knight as Advance Scout</h3>
 
 <ul>
-  <li>Creation: $O(n\log n)$</li>
-  <li>Querying: $O(\log^2n+k)$</li>
+  <li>Don’t keep knight in corner and try to advance knight for more space.</li>
+</ul>
+
+<h2 id="how-to-gain-a-space-advantage-in-the-openeing">How to gain a space advantage in the openeing</h2>
+
+<ul>
+  <li>Acquiring superior force in some part of the board</li>
+  <li>Gaining a lead in development</li>
+  <li>Improving your paawn structure</li>
+  <li>Gaining space</li>
+</ul>
+
+<h2 id="how-to-defend-against-a-space-advantage">How to defend against a space advantage</h2>
+
+<ul>
+  <li>The player with less space should try to trade some pieces.</li>
 </ul>
 
 
@@ -365,14 +344,10 @@ $(document).ready(function () {
 
   <footer class="postNavigation">
   
-    <a class="postPrev" href="/data%20structures/notes/red-black-trees.html">
-        &laquo; Red Black Trees
+    <a class="postPrev" href="/chess/notes/chess-time.html">
+        &laquo; Chess & Time
     </a>
   
-  
-    <a class="postNext" href="/notes/data%20structures/range-trees.html">
-        Range Trees &raquo;
-    </a>
   
   </footer>
 
