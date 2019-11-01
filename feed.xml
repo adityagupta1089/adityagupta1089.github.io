@@ -5,9 +5,54 @@
     <description></description>
     <link>https://adityagupta1089.github.io/</link>
     <atom:link href="https://adityagupta1089.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 31 Oct 2019 18:41:02 +0000</pubDate>
-    <lastBuildDate>Thu, 31 Oct 2019 18:41:02 +0000</lastBuildDate>
+    <pubDate>Fri, 01 Nov 2019 14:44:53 +0000</pubDate>
+    <lastBuildDate>Fri, 01 Nov 2019 14:44:53 +0000</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
+    
+      <item>
+        <title>Convex Hull</title>
+        <description>&lt;h1 id=&quot;notation&quot;&gt;Notation&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;${\rm CH(Q)}$ represents convex hull&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;grahams-scan-onlg-n&quot;&gt;Graham’s Scan $O(n\lg n)$&lt;/h1&gt;
+
+&lt;p&gt;It solves convex-hull problem by maintaining a stack $S$ of candidate points. It pushes each point of the input set $Q$ onto the stack one time, and it eventually pops from the stack each point that is not a vertex of ${\rm CH}(Q)$.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;$p_0$ is the point in $Q$ with th eminimum $y$-coordinate (leftmost in case of tie)&lt;/li&gt;
+  &lt;li&gt;$\langle p_1, p_2,…p_m\rangle$ remaining points in $Q$ sorted by polar angle in counterclockwise order around $p_0$, (take farthest in case of tie.)&lt;/li&gt;
+  &lt;li&gt;$S=\langle p_0, p_1, p_2\rangle$ (pop from right side, $p_2$ first)&lt;/li&gt;
+  &lt;li&gt;For point $p_i=p_3$ to $p_m$
+    &lt;ul&gt;
+      &lt;li&gt;While angle formed by points second and first element of $S$ make a nonleft turn: Remove top elemnt.&lt;/li&gt;
+      &lt;li&gt;push $p_i$ to $S$&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Finally, $S={\rm CH(Q)}$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;jarvis-march-onh&quot;&gt;Jarvis’ March $O(nh)$&lt;/h1&gt;
+
+&lt;p&gt;[Here $h$ is the number of vertices in ${\rm CH(Q)}$, where $h$ is $o(\lg n)$]&lt;/p&gt;
+
+&lt;p&gt;We start from lowest point $p_0$ and take the point with smallest polar angle wrt $p_1$. Then we take $p_2$ with the smallest poisitive angle wrt $p_1$ and so on until we reach the highest point $p_k$, then we do the same but we calculate the angle from negative x-axis. Finally we reach back at $p_0$.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://adityagupta1089.github.io/images/jarvis.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+</description>
+        <pubDate>Fri, 01 Nov 2019 14:42:00 +0000</pubDate>
+        <link>https://adityagupta1089.github.io/notes/algorithms/convex-hull.html</link>
+        <guid isPermaLink="true">https://adityagupta1089.github.io/notes/algorithms/convex-hull.html</guid>
+        
+        
+        <category>Notes</category>
+        
+        <category>Algorithms</category>
+        
+      </item>
     
       <item>
         <title>Chess &amp; Space</title>
@@ -822,46 +867,6 @@ Time complexity: $T(n)=T(n/2)+O(n)\implies O(n)$&lt;/p&gt;
         <pubDate>Sat, 26 Oct 2019 18:35:00 +0000</pubDate>
         <link>https://adityagupta1089.github.io/notes/algorithms/mergesort-quicksort-quickselect.html</link>
         <guid isPermaLink="true">https://adityagupta1089.github.io/notes/algorithms/mergesort-quicksort-quickselect.html</guid>
-        
-        
-        <category>Notes</category>
-        
-        <category>Algorithms</category>
-        
-      </item>
-    
-      <item>
-        <title>Master's Theorem</title>
-        <description>&lt;p&gt;&lt;strong&gt;Theorem&lt;/strong&gt;: $T(n)=aT(\lceil n/b\rceil)+O(n^d)$ for some constants $a&amp;gt;0,b&amp;gt;1,d\ge 0$ then
-&lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
-T(n)=\begin{cases}
-O(n^d)&amp;d&gt;\log_b a\\
-O(n^d\log n)&amp;d=\log_ba\\
-O(n^{\log_ba})&amp;d&lt;\log_ba
-\end{cases} %]]&gt;&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Proof&lt;/strong&gt;: &lt;img src=&quot;https://adityagupta1089.github.io/images/mastertheorem.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Each problem of size $n$ is divided into $a$ subproblems of size $n/b$. Each level has problem of size $n/b^k$ and work done is:
-&lt;script type=&quot;math/tex&quot;&gt;a^k\times O\left(\frac nb^k\right)^d=O(n^d)\times \left(\frac ab^d\right)^k&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;As $k$ goes from $0$ (root) to $\log_bn$ (the leaves), these form a geometric series with ratio $r=a/b^d$&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;$r&amp;lt;1$: Decreasing series, sum is first term $O(n^d)$&lt;/li&gt;
-  &lt;li&gt;$r&amp;gt;1$: Increasing series, sum is last term $O(n^{\log_ba})$&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;n^d\left(\frac a{b^d}\right)^{\log_bn}=n^d\left(\frac{a^{\log_bn}}{(b^{\log_bn})^d}\right)=a^{\log_bn}=a^{(\log_an)(\log_ba)}=n^{\log_ba}&lt;/script&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;$r=1$: All $O(\log n)$ terms are equal to $O(n^d)$&lt;/li&gt;
-&lt;/ol&gt;
-
-</description>
-        <pubDate>Sat, 26 Oct 2019 17:52:00 +0000</pubDate>
-        <link>https://adityagupta1089.github.io/notes/algorithms/master-s-theorem.html</link>
-        <guid isPermaLink="true">https://adityagupta1089.github.io/notes/algorithms/master-s-theorem.html</guid>
         
         
         <category>Notes</category>
