@@ -6,13 +6,13 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Aditya Gupta&#39;s Blog | Tutorial 4</title>
-  <meta name="description" content="  Given a binary string, the total strings that have maximum length of zeroes as $k$ can be found out by defining $a(n;k)$ as the valid strings that end at $...">
+  <title>Aditya Gupta&#39;s Blog | Page 4</title>
+  <meta name="description" content="">
   <link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic|Source+Sans+Pro:400,700,200,300|Josefin+Sans:400,600,700,300' rel='stylesheet' type='text/css'>
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
 
   <link rel="stylesheet" href="/css/style.css">
-  <link rel="canonical" href="https://adityagupta1089.github.io/csl471/tutorial-4.html">
+  <link rel="canonical" href="https://adityagupta1089.github.io/page/4/">
   <link rel="alternate" type="application/rss+xml" title="Aditya Gupta's Blog" href="https://adityagupta1089.github.io/feed.xml">
 </head>
 
@@ -249,83 +249,56 @@ $(document).ready(function () {
 
     <div class="page-content">
       <div class="wrapper bottomround">
-        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+        <div class="home">
 
-  <header class="post-header">
-    <h1 class="post-title" itemprop="name headline">
-      <a class="post-title-link"  href="/csl471/tutorial-4.html">Tutorial 4
-      </a>
-    </h1>
-    <center>
-      <p class="post-meta" style="letter-spacing: 3px !important;">
-        <time datetime="2017-09-24T08:29:00+00:00" itemprop="datePublished">Sep 24, 2017
-        </time><br>
-        Categories: <span style="text-transform: uppercase !important">CSL471</span>
-      </p>
-
-     </center>
-  </header>
-
-  <div class="post-content" itemprop="articleBody">
-    <ol>
-  <li>Given a binary string, the total strings that have maximum length of zeroes as $k$ can be found out by defining $a(n;k)$ as the valid strings that end at $1$ and $b(n;k)$ as the valid strings that end at $0$. Then we have:<br />
-    <ul>
-      <li>We can $1$ to end of any valid string:<br />
-<script type="math/tex">a(n;k)=a(n-1;k)+b(n-1;k)</script></li>
-      <li>We can add upto $k$ consecutive zeroes after a $1$:<br />
-<script type="math/tex">b(n;k)=a(n-1;k)+a(n-2;k)+...a(n-k;k)</script><br />
-Which can be written as:
-<script type="math/tex">a(n-1;k)+a(n-2;k)+..a(n-k;k)=b(n;k)=a(n+1;k)-a(n;k)\\\displaystyle
-\implies a(n+1;k)=\sum_{i=n-k}^na(i;k)</script>
-Solve using generating functions, Define $T(n;k)=a(n;k)+b(n;k)$ and then the expected value is $\frac 1{2^n}\sum T(n;k)\cdot k$ (<strong>Note</strong>: Calculation remaining.)</li>
-    </ul>
-  </li>
-  <li>Suppose $ai\equiv aj\pmod n\implies a(i-j)\equiv 0\pmod n\implies i-j\equiv 0\pmod n$ (since $(a,n)=1$) hence $i=j$</li>
-  <li><a href="https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle">Fisher-Yates Shuffle</a></li>
-  <li>We check $AB=C$ by finding $ABv$ and $Cv$ which is computationally faster. Suppose $AB= C$ then $\forall v\in{\mathbb Z}_k^n$, $ABv=Cv$. However, if $AB\ne C\implies (AB-C)\ne {\bf 0}$ then we may find some vectors $v\in {\mathbb Z}_k^n$ such that $(AB-C)v={\bf 0}$. But for every $u$ such that $(AB-C)u\ne {\bf 0}$ (whose existence is easy to prove by inspecting the entries of $AB-C$) we have $(AB-C)(u+v)\ne {\bf 0}$, $(AB-C)(u+2v)\ne {\bf 0}$, till $(AB-C)(u+(k-1)v)\ne {\bf 0}$ hence<br />
-<script type="math/tex">\displaystyle |\{u\in {\mathbb Z}_k^n|(AB-C)u= {\bf 0}\}|\le\frac 1{k}|{\mathbb Z_k^n}|=k^{n-1}</script><br />
-Hence the probability with which we get the correct result is $1-1/{k^t}$ where we perform $t$ iterations. In the case $k\to\infty$, that becomes close to $1$.</li>
-  <li>
-    <script type="math/tex; mode=display">\sum_{i=1}^{52}\left(\frac 1{52}\cdot 1 +\frac {51}{52}\cdot 0\right)=1</script>
-  </li>
-  <li>
-    <script type="math/tex; mode=display">\sum_{i=1}^{52}\left(\frac 1{52-i+1}\cdot 1 +\frac {51}{52}\cdot 0\right)=\sum_{i=1}^{52}\frac 1i \approx 4.53</script>
-  </li>
-  <li>
-    <script type="math/tex; mode=display">\frac 1{n!}</script>
-  </li>
-</ol>
-
-  </div>
-
-  <footer class="postNavigation">
+  <table>
   
-    <a class="postPrev" href="/csl471/tutorial-3.html">
-        &laquo; Tutorial 3
-    </a>
+    <tr class="post">
+    <td nowrap>
+      <a class="postTitle postLink" href="https://adityagupta1089.github.io/programming/exptree.html"> ~ HOW I SOLVED TREE EXPECTANCY (EXPTREE)</a>
+      <br>
+      <span class="hint">Programming</span>
+      <br>
+      <time class="postDate"datetime="2017-07-20T18:21:00+00:00" itemprop="datePublished">
+      July 20, 2017
+      </time>
+    </td>
+    </tr>
   
+</table>
+
+
   
-    <a class="postNext" href="/csl471/tutorial-5.html">
-        Tutorial 5 &raquo;
-    </a>
+    <nav class="pagination">
+      
+        <a class="paginationLink" href="/page/3/">&laquo; Prev</a>
+      
+
+    
+      
+        <a class="paginationLink" href="/">1</a>
+      
+    
+      
+        <a class="paginationLink" href="/page/2">2</a>
+      
+    
+      
+        <a class="paginationLink" href="/page/3">3</a>
+      
+    
+      
+        <em class="paginationLink paginationLinkCurrent">4</em>
+      
+    
+
+    
+    </nav>
   
-  </footer>
-
-  <div id="disqus_thread"></div>
-
-<script>
-(function() {
-  var d = document, s = d.createElement('script');
-  s.src = 'https://adg1089blog.disqus.com/embed.js';
-  s.setAttribute('data-timestamp', +new Date());
-  (d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
 
 
-</article>
+</div>
 
       </div>
     </div>

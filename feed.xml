@@ -5,9 +5,57 @@
     <description></description>
     <link>https://adityagupta1089.github.io/</link>
     <atom:link href="https://adityagupta1089.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 01 Nov 2019 14:44:53 +0000</pubDate>
-    <lastBuildDate>Fri, 01 Nov 2019 14:44:53 +0000</lastBuildDate>
+    <pubDate>Sat, 02 Nov 2019 15:06:22 +0000</pubDate>
+    <lastBuildDate>Sat, 02 Nov 2019 15:06:22 +0000</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
+    
+      <item>
+        <title>Closest Pair of Points</title>
+        <description>&lt;h1 id=&quot;the-divide-and-conquer-algorithm&quot;&gt;The divide-and-conquer algorithm&lt;/h1&gt;
+
+&lt;p&gt;We need to find the closest pair of points in a set $Q$ of $n\ge 2$ points. Brute force will take $\Theta(n^2)$ time.&lt;/p&gt;
+
+&lt;p&gt;Each recursive call takes as input a subset $P\subseteq Q$ and arrays $Z$ and $Y$ each of which contains all the points o fhte input subset $P$. Points in $X$ are sorted on their $x$-coordinates monotonically increasing and $Y$ is sorted on monotonically increasing $y$-coordindate.&lt;/p&gt;
+
+&lt;p&gt;If $\vert P\vert\le 3$ we use brute force method otherwise:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Divide&lt;/strong&gt;: Find a vertical line $l$ that bisects the point set $P$ intro two sets $P_L$ and $P_R$ such that $\vert P_L\vert =\lceil \vert P\vert /2\rceil$, $\vert P_R\vert =\lfloor \vert P\vert /2\rfloor$. Divide $X$ into $X_L$ and $X_R$. Similarly $Y$ into $Y_L$ and $Y_R$.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Conquer&lt;/strong&gt;: Make two recursive calls one in $P_L$ and other one $P_R$ for closest pair of point. Let the closest-pair distances returned be $\delta_L$ and $\delta_R$ respectively and let $\delta=\min(\delta_L, \delta_R)$&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Combine&lt;/strong&gt;: The closest pair is either (i) the pair with $\delta$ or   (ii) a pair of point with one in $P_L$ and one in $P_R$ whose distance is less than $\delta$
+    &lt;ul&gt;
+      &lt;li&gt;Create $Y’$ which is the array $Y$ with all points in $2\delta$-wide vertical strip around $l$&lt;/li&gt;
+      &lt;li&gt;For each point $p$ in $Y’$ try to find points in $Y’$ that are withing $\delta$ units of $p$. Only $7$ points in $Y’$ that follow $p$ need to be considered. Compute distance from $p$ to each of these 7 points and keep track of the closest-pair distance $\delta’$ found over all pairs of points in $Y’$.&lt;/li&gt;
+      &lt;li&gt;Return pair of point with smallest distance $\delta’$ or $\delta$.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;why-only-7-points&quot;&gt;Why only 7 points?&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/closestpair.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Suppose $p_L\in P_L$ and $p_R\in P_R$ have distance less than $\delta$. $p_L$ and $p_R$ should be individually less than $\delta$ distance from $l$. They are also within $\delta$ distance of each other vertically. So they must be in $\delta\times 2\delta$ rectangle as shown.&lt;/p&gt;
+
+&lt;p&gt;Consider a $\delta\times\delta$ square forming the left half of a $\delta\times 2\delta$ rectangle, since all points withing $P_L$ are atleast $\delta$ apart, atmost 4 points in $P_R$ can reside withing the $\delta\times \delta$ square. Similarly 4 for right side and total 8 points.&lt;/p&gt;
+
+&lt;p&gt;Therefore we need to only check next 7 points.&lt;/p&gt;
+
+&lt;h2 id=&quot;time-complexity&quot;&gt;Time Complexity&lt;/h2&gt;
+
+&lt;p&gt;$T(n)=2T(n/2)+O(n)\implies O(n\log n)$&lt;/p&gt;
+
+</description>
+        <pubDate>Sat, 02 Nov 2019 15:04:00 +0000</pubDate>
+        <link>https://adityagupta1089.github.io/notes/algorithms/closest-pair-of-points.html</link>
+        <guid isPermaLink="true">https://adityagupta1089.github.io/notes/algorithms/closest-pair-of-points.html</guid>
+        
+        
+        <category>Notes</category>
+        
+        <category>Algorithms</category>
+        
+      </item>
     
       <item>
         <title>Convex Hull</title>
@@ -826,47 +874,6 @@ P_4&amp;=D(G-E)\\
         <pubDate>Sat, 26 Oct 2019 18:46:00 +0000</pubDate>
         <link>https://adityagupta1089.github.io/notes/algorithms/matrix-multiplication.html</link>
         <guid isPermaLink="true">https://adityagupta1089.github.io/notes/algorithms/matrix-multiplication.html</guid>
-        
-        
-        <category>Notes</category>
-        
-        <category>Algorithms</category>
-        
-      </item>
-    
-      <item>
-        <title>Mergesort, Quicksort and Quickselect</title>
-        <description>&lt;h1 id=&quot;mergesort&quot;&gt;Mergesort&lt;/h1&gt;
-
-&lt;p&gt;Split the list into 2 halves, recursively sort each half and then merge the two sorted sublists. For merging $x[1..k]$ and $y[1..l]$ into $z[1..k+l]$. The first element of $z$ is smaller of $x[1]$ and $y[1]$ and rest can be constrcuted recrusively.&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align}
-\text{mergesort}(a[1..n]) =&amp;\text{merge}(\text{mergesort}(a[1..\lfloor n/2\rfloor]),\\&amp;\quad\text{mergesort}(a[\lfloor n/2\rfloor+1...n]))\\
-\text{merge}(x[1..k],y[1..l])=&amp;\begin{cases}x[1]\circ\text{merge}(x[2..k],y[1..l])&amp;x[1]\le y[1]\\y[1]\circ\text{merge}(x[1..k],y[2..l])&amp;\text{otherwise}\end{cases}
-\end{align} %]]&gt;&lt;/script&gt;
-
-&lt;p&gt;Time Complexity $T(n)=2T(n/2)+O(n)\implies O(n\log n)$&lt;/p&gt;
-
-&lt;h1 id=&quot;quicksort--quickselect&quot;&gt;Quicksort &amp;amp; Quickselect&lt;/h1&gt;
-
-&lt;p&gt;Select a pivot $v$ (pick randomly). Split the array into three categories: elements smaller than $v$, those equal to $v$ and those greater than $v$. Call these $S_L$, $S_v$, and $S_R$ respectively. Recursively sort the array.&lt;/p&gt;
-
-&lt;p&gt;Time complexity: $O(n^2)$ worst case. $O(n\log n)$ best and average case.&lt;/p&gt;
-
-&lt;p&gt;For selecting the $k^{\rm th}$ element:
-&lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
-\text{selection}=
-\begin{cases}
-\text{selection(S_L, k)}&amp;k\le |S_L|\\
-v &amp;|S_L|&lt;k\le|S_L|+|S_v|\\
-\text{selection}(S_R, k-|S_L|-|S_v|)&amp;k&gt;|S_L|+|S_v|
-\end{cases} %]]&gt;&lt;/script&gt;
-Time complexity: $T(n)=T(n/2)+O(n)\implies O(n)$&lt;/p&gt;
-</description>
-        <pubDate>Sat, 26 Oct 2019 18:35:00 +0000</pubDate>
-        <link>https://adityagupta1089.github.io/notes/algorithms/mergesort-quicksort-quickselect.html</link>
-        <guid isPermaLink="true">https://adityagupta1089.github.io/notes/algorithms/mergesort-quicksort-quickselect.html</guid>
         
         
         <category>Notes</category>

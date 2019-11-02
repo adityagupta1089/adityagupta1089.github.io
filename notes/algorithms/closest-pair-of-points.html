@@ -6,13 +6,13 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Aditya Gupta&#39;s Blog | Tutorial 4</title>
-  <meta name="description" content="  Given a binary string, the total strings that have maximum length of zeroes as $k$ can be found out by defining $a(n;k)$ as the valid strings that end at $...">
+  <title>Aditya Gupta&#39;s Blog | Closest Pair of Points</title>
+  <meta name="description" content="The divide-and-conquer algorithm">
   <link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic|Source+Sans+Pro:400,700,200,300|Josefin+Sans:400,600,700,300' rel='stylesheet' type='text/css'>
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
 
   <link rel="stylesheet" href="/css/style.css">
-  <link rel="canonical" href="https://adityagupta1089.github.io/csl471/tutorial-4.html">
+  <link rel="canonical" href="https://adityagupta1089.github.io/notes/algorithms/closest-pair-of-points.html">
   <link rel="alternate" type="application/rss+xml" title="Aditya Gupta's Blog" href="https://adityagupta1089.github.io/feed.xml">
 </head>
 
@@ -253,61 +253,63 @@ $(document).ready(function () {
 
   <header class="post-header">
     <h1 class="post-title" itemprop="name headline">
-      <a class="post-title-link"  href="/csl471/tutorial-4.html">Tutorial 4
+      <a class="post-title-link"  href="/notes/algorithms/closest-pair-of-points.html">Closest Pair of Points
       </a>
     </h1>
     <center>
       <p class="post-meta" style="letter-spacing: 3px !important;">
-        <time datetime="2017-09-24T08:29:00+00:00" itemprop="datePublished">Sep 24, 2017
+        <time datetime="2019-11-02T15:04:00+00:00" itemprop="datePublished">Nov 2, 2019
         </time><br>
-        Categories: <span style="text-transform: uppercase !important">CSL471</span>
+        Categories: <span style="text-transform: uppercase !important">Notes, Algorithms</span>
       </p>
 
      </center>
   </header>
 
   <div class="post-content" itemprop="articleBody">
-    <ol>
-  <li>Given a binary string, the total strings that have maximum length of zeroes as $k$ can be found out by defining $a(n;k)$ as the valid strings that end at $1$ and $b(n;k)$ as the valid strings that end at $0$. Then we have:<br />
+    <h1 id="the-divide-and-conquer-algorithm">The divide-and-conquer algorithm</h1>
+
+<p>We need to find the closest pair of points in a set $Q$ of $n\ge 2$ points. Brute force will take $\Theta(n^2)$ time.</p>
+
+<p>Each recursive call takes as input a subset $P\subseteq Q$ and arrays $Z$ and $Y$ each of which contains all the points o fhte input subset $P$. Points in $X$ are sorted on their $x$-coordinates monotonically increasing and $Y$ is sorted on monotonically increasing $y$-coordindate.</p>
+
+<p>If $\vert P\vert\le 3$ we use brute force method otherwise:</p>
+
+<ul>
+  <li><strong>Divide</strong>: Find a vertical line $l$ that bisects the point set $P$ intro two sets $P_L$ and $P_R$ such that $\vert P_L\vert =\lceil \vert P\vert /2\rceil$, $\vert P_R\vert =\lfloor \vert P\vert /2\rfloor$. Divide $X$ into $X_L$ and $X_R$. Similarly $Y$ into $Y_L$ and $Y_R$.</li>
+  <li><strong>Conquer</strong>: Make two recursive calls one in $P_L$ and other one $P_R$ for closest pair of point. Let the closest-pair distances returned be $\delta_L$ and $\delta_R$ respectively and let $\delta=\min(\delta_L, \delta_R)$</li>
+  <li><strong>Combine</strong>: The closest pair is either (i) the pair with $\delta$ or   (ii) a pair of point with one in $P_L$ and one in $P_R$ whose distance is less than $\delta$
     <ul>
-      <li>We can $1$ to end of any valid string:<br />
-<script type="math/tex">a(n;k)=a(n-1;k)+b(n-1;k)</script></li>
-      <li>We can add upto $k$ consecutive zeroes after a $1$:<br />
-<script type="math/tex">b(n;k)=a(n-1;k)+a(n-2;k)+...a(n-k;k)</script><br />
-Which can be written as:
-<script type="math/tex">a(n-1;k)+a(n-2;k)+..a(n-k;k)=b(n;k)=a(n+1;k)-a(n;k)\\\displaystyle
-\implies a(n+1;k)=\sum_{i=n-k}^na(i;k)</script>
-Solve using generating functions, Define $T(n;k)=a(n;k)+b(n;k)$ and then the expected value is $\frac 1{2^n}\sum T(n;k)\cdot k$ (<strong>Note</strong>: Calculation remaining.)</li>
+      <li>Create $Y’$ which is the array $Y$ with all points in $2\delta$-wide vertical strip around $l$</li>
+      <li>For each point $p$ in $Y’$ try to find points in $Y’$ that are withing $\delta$ units of $p$. Only $7$ points in $Y’$ that follow $p$ need to be considered. Compute distance from $p$ to each of these 7 points and keep track of the closest-pair distance $\delta’$ found over all pairs of points in $Y’$.</li>
+      <li>Return pair of point with smallest distance $\delta’$ or $\delta$.</li>
     </ul>
   </li>
-  <li>Suppose $ai\equiv aj\pmod n\implies a(i-j)\equiv 0\pmod n\implies i-j\equiv 0\pmod n$ (since $(a,n)=1$) hence $i=j$</li>
-  <li><a href="https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle">Fisher-Yates Shuffle</a></li>
-  <li>We check $AB=C$ by finding $ABv$ and $Cv$ which is computationally faster. Suppose $AB= C$ then $\forall v\in{\mathbb Z}_k^n$, $ABv=Cv$. However, if $AB\ne C\implies (AB-C)\ne {\bf 0}$ then we may find some vectors $v\in {\mathbb Z}_k^n$ such that $(AB-C)v={\bf 0}$. But for every $u$ such that $(AB-C)u\ne {\bf 0}$ (whose existence is easy to prove by inspecting the entries of $AB-C$) we have $(AB-C)(u+v)\ne {\bf 0}$, $(AB-C)(u+2v)\ne {\bf 0}$, till $(AB-C)(u+(k-1)v)\ne {\bf 0}$ hence<br />
-<script type="math/tex">\displaystyle |\{u\in {\mathbb Z}_k^n|(AB-C)u= {\bf 0}\}|\le\frac 1{k}|{\mathbb Z_k^n}|=k^{n-1}</script><br />
-Hence the probability with which we get the correct result is $1-1/{k^t}$ where we perform $t$ iterations. In the case $k\to\infty$, that becomes close to $1$.</li>
-  <li>
-    <script type="math/tex; mode=display">\sum_{i=1}^{52}\left(\frac 1{52}\cdot 1 +\frac {51}{52}\cdot 0\right)=1</script>
-  </li>
-  <li>
-    <script type="math/tex; mode=display">\sum_{i=1}^{52}\left(\frac 1{52-i+1}\cdot 1 +\frac {51}{52}\cdot 0\right)=\sum_{i=1}^{52}\frac 1i \approx 4.53</script>
-  </li>
-  <li>
-    <script type="math/tex; mode=display">\frac 1{n!}</script>
-  </li>
-</ol>
+</ul>
+
+<h2 id="why-only-7-points">Why only 7 points?</h2>
+
+<p><img src="/images/closestpair.png" alt="" /></p>
+
+<p>Suppose $p_L\in P_L$ and $p_R\in P_R$ have distance less than $\delta$. $p_L$ and $p_R$ should be individually less than $\delta$ distance from $l$. They are also within $\delta$ distance of each other vertically. So they must be in $\delta\times 2\delta$ rectangle as shown.</p>
+
+<p>Consider a $\delta\times\delta$ square forming the left half of a $\delta\times 2\delta$ rectangle, since all points withing $P_L$ are atleast $\delta$ apart, atmost 4 points in $P_R$ can reside withing the $\delta\times \delta$ square. Similarly 4 for right side and total 8 points.</p>
+
+<p>Therefore we need to only check next 7 points.</p>
+
+<h2 id="time-complexity">Time Complexity</h2>
+
+<p>$T(n)=2T(n/2)+O(n)\implies O(n\log n)$</p>
+
 
   </div>
 
   <footer class="postNavigation">
   
-    <a class="postPrev" href="/csl471/tutorial-3.html">
-        &laquo; Tutorial 3
+    <a class="postPrev" href="/notes/algorithms/convex-hull.html">
+        &laquo; Convex Hull
     </a>
   
-  
-    <a class="postNext" href="/csl471/tutorial-5.html">
-        Tutorial 5 &raquo;
-    </a>
   
   </footer>
 
