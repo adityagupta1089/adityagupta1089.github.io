@@ -1,7 +1,7 @@
 <table>
   {% for post in paginator.posts %}
     <tr class="post">
-    <td nowrap>
+    <td>
       <a class="postTitle postLink" href="{{site.url}}{{post.url}}"> ~ {{post.title | upcase}}</a>
       <br>
       <span class="hint">{{ post.categories | join: ", " }}</span>
