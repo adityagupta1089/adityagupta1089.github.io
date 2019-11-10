@@ -5,9 +5,63 @@
     <description></description>
     <link>https://adityagupta1089.github.io/</link>
     <atom:link href="https://adityagupta1089.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 03 Nov 2019 08:54:59 +0000</pubDate>
-    <lastBuildDate>Sun, 03 Nov 2019 08:54:59 +0000</lastBuildDate>
+    <pubDate>Sun, 10 Nov 2019 11:36:09 +0000</pubDate>
+    <lastBuildDate>Sun, 10 Nov 2019 11:36:09 +0000</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
+    
+      <item>
+        <title>Linear time deterministic median finding</title>
+        <description>&lt;p&gt;Selection algorithm SELECT for finding the $i^{\rm th}$ smallest element:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Divide the array into $\lfloor n/5\rfloor$ groups of 5 elements each (last one has $n\mod 5$).  $O(n)$&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Find the median of each of the groups by insertion-sorting the elements of each group and picking the median from the sorted list of group elements. $O(n)$&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Use SELECT recursively to find the median $x$ of the $\lceil n/5\rceil$ medians found. $T(\lceil n/5\rceil)$&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Partition the array into $L$ &amp;amp; $R$ based on $x$. Let $k=\vert L\vert  + 1$. Note that $x$ is $k^{\rm th}$ smallest element and there are $n-k$ elements in $R$. $O(n)$&lt;/li&gt;
+  &lt;li&gt;Based on $i$:
+    &lt;ol&gt;
+      &lt;li&gt;$i=k$, return $x$.&lt;/li&gt;
+      &lt;li&gt;$i&amp;lt;k$, recurse SELECT on $L$ for $i$&lt;/li&gt;
+      &lt;li&gt;$i&amp;gt;k$, recurse SELECT on R for $i-k$&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/mom.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;We see that atleast $1/2$ of the medians found in 2 are greater than or equal to medians-of-medians $x$. Thus atleast half of the $\lceil n/5\rceil$ groups contribute atleast 3 elements that are greater than $x$, except for the last one and the group containing $x$ itself.Thus number of elements greater than $x$ is at least:&lt;/p&gt;
+
+&lt;p&gt;$\displaystyle 3\left(\left\lceil\frac 12\left\lceil\frac n5\right\rceil\right\rceil-2\right)\ge \frac {3n}{10}-6$&lt;/p&gt;
+
+&lt;p&gt;Thus in worst case step 5 calls SELECT recursively on atmost $7n/10+6$ elements.  &lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
+\begin{align}
+T(n)&amp;\le cn+T(n/5)+T(7n/10)\\
+&amp;\le cn + \left(c\frac n5+T(n/5^2)+T(7n/50)\right)+\left(c\frac {7n}{10}+T(7n/50)+T(7^2n/10^2)\right)\\
+&amp;= cn + 9\frac {cn}{10} + T(n/5^2) + 2T(7n/50) + T(7^2n/10^2)\\
+&amp;\le \ldots\\
+&amp;\le \sum_{i=0^h}\left(\frac {9}{10}\right)^icn+\ldots\\
+&amp;\le cn\frac 1{1-9/10} = O(n)
+\end{align} %]]&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;Max height of tree is $(7/10)^h\le 1\implies h\ge \log_{10/7}n$.&lt;/p&gt;
+
+</description>
+        <pubDate>Sun, 10 Nov 2019 11:34:00 +0000</pubDate>
+        <link>https://adityagupta1089.github.io/notes/algorithms/linear-time-deterministic-median-finding.html</link>
+        <guid isPermaLink="true">https://adityagupta1089.github.io/notes/algorithms/linear-time-deterministic-median-finding.html</guid>
+        
+        
+        <category>Notes</category>
+        
+        <category>Algorithms</category>
+        
+      </item>
     
       <item>
         <title>Closest Pair of Points</title>
@@ -834,51 +888,6 @@ A(-x_i)=A_e(x_i^2)-x_iA_o(x_i^2)&lt;/script&gt;
         <category>Chess</category>
         
         <category>Notes</category>
-        
-      </item>
-    
-      <item>
-        <title>Strassen Matrix Multiplication</title>
-        <description>&lt;p&gt;The product of two $n\times n$ matrices $X$ and $Y$ which takes $O(n^3)$&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-X=\begin{bmatrix}A&amp;B\\C&amp;D\end{bmatrix} %]]&gt;&lt;/script&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-Y=\begin{bmatrix}E&amp;F\\G&amp;H\end{bmatrix} %]]&gt;&lt;/script&gt;
-
-&lt;p&gt;is 
-&lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
-XY=\begin{bmatrix}A&amp;B\\C&amp;D\end{bmatrix}\begin{bmatrix}E&amp;F\\G&amp;H\end{bmatrix}=\begin{bmatrix}AE+BG&amp;AF+BH\\CE+DG&amp;CF+DH\end{bmatrix} %]]&gt;&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;here $T(n)=8T(n/2)+O(n^2)\implies O(n^3)$&lt;/p&gt;
-
-&lt;p&gt;Strassen gave:&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-XY=\begin{bmatrix}P_5+P_4-P_2+P_6&amp;P_1+P_2\\P_3+P_4&amp;P_1+P_5-P_3-P_7\end{bmatrix}
-\ %]]&gt;&lt;/script&gt;
-
-&lt;p&gt;where&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align}
-P_1&amp;=A(F-H)&amp;P_5&amp;=(A+D)(E+H)\\
-P_2&amp;=(A+B)H&amp;P_6&amp;=(B-D)(G+H)\\
-P_3&amp;=(C+D)E&amp;P_7&amp;=(A-C)(E+F)\\
-P_4&amp;=D(G-E)\\
-\end{align} %]]&gt;&lt;/script&gt;
-
-&lt;p&gt;The new running time is $T(n)=7T(n/2)+O(n^2)$ which by the master theorem works out to be $O(n^{\log_27})\approx O(n^{2.81})$&lt;/p&gt;
-</description>
-        <pubDate>Sat, 26 Oct 2019 18:46:00 +0000</pubDate>
-        <link>https://adityagupta1089.github.io/notes/algorithms/matrix-multiplication.html</link>
-        <guid isPermaLink="true">https://adityagupta1089.github.io/notes/algorithms/matrix-multiplication.html</guid>
-        
-        
-        <category>Notes</category>
-        
-        <category>Algorithms</category>
         
       </item>
     
