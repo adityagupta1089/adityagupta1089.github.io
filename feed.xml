@@ -5,9 +5,91 @@
     <description></description>
     <link>https://adityagupta1089.github.io/</link>
     <atom:link href="https://adityagupta1089.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 10 Nov 2019 11:36:09 +0000</pubDate>
-    <lastBuildDate>Sun, 10 Nov 2019 11:36:09 +0000</lastBuildDate>
+    <pubDate>Sun, 10 Nov 2019 13:30:05 +0000</pubDate>
+    <lastBuildDate>Sun, 10 Nov 2019 13:30:05 +0000</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
+    
+      <item>
+        <title>Chess &amp; Pawn Structure</title>
+        <description>&lt;h1 id=&quot;when-you-leave-pawns-at-home&quot;&gt;When you leave pawns at home&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Moving one or two pawns does not lose time, because the opponenet must also move his pawns. If he doesn’t, his prematurely advanced pieces will be chased backward, resulting in a gain of time for the opponent’s pawns.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;pawn-structure&quot;&gt;Pawn Structure&lt;/h1&gt;
+
+&lt;h2 id=&quot;pawn-islands&quot;&gt;Pawn islands&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Single pawns or groups of pawns that are separated from other pawns by atleast one file are called pawn islands.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;doubled-pawns&quot;&gt;Doubled Pawns&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;A pawn that makes a capture nad ends up on the same file but in front of another pawn of the same color is said to be doubled.&lt;/li&gt;
+  &lt;li&gt;The are considered weak, because they do not have the mobility of normal pawns.&lt;/li&gt;
+  &lt;li&gt;Doublec pawns are not a liability as long as the front one is defended by a pawn.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;tripled-pawns&quot;&gt;Tripled Pawns&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Tripled pawns are always completely a liability.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;isolated-pawns&quot;&gt;Isolated Pawns&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;An isolated pawn is considered weak because it has no protecting pawns on either side to give it the support it often needs.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;backward-pawns&quot;&gt;Backward Pawns&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;A backward pawn is one that has fallen behind the other pawns of its own persuasion and can no longer be supported or guarded by them.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;how-to-cure-a-weak-pawn&quot;&gt;How to cure a weak pawn&lt;/h1&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;First defense against weak pawns is to avoid exposing them.&lt;/li&gt;
+  &lt;li&gt;We can often trade the weak pawn or move it to a sqaure where it is no longer vulnerable.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&quot;good-pawns-and-pigs-on-the-7th&quot;&gt;Good pawns and pigs on the 7th&lt;/h1&gt;
+
+&lt;p&gt;A good pawn is any pawn that exerts a cramping pressure on the opponent and is safe from attack. One type of pawn that first this description is known as passed pawn, because it has no enemy pawn in front or on either side. Such a pawn is free to advance unless the opponent assigne one of his pieces the pasive task of setting up a roadblock in front of it.&lt;/p&gt;
+
+&lt;h1 id=&quot;pawn-chain&quot;&gt;Pawn chain&lt;/h1&gt;
+
+&lt;p&gt;A pawn chain is neither bad nor good. It is simply a group of pawns lined up on a diagonal.&lt;/p&gt;
+
+&lt;p&gt;You must attack it at its base. The base is the pawn that is not protected by any other pawn - the end of the chain.&lt;/p&gt;
+
+&lt;h1 id=&quot;open-positions-and-closed-positions&quot;&gt;Open positions and closed positions&lt;/h1&gt;
+
+&lt;h2 id=&quot;open-positions&quot;&gt;Open positions&lt;/h2&gt;
+
+&lt;p&gt;An open position has a minimum number of pawns sitting in the center.&lt;/p&gt;
+
+&lt;h2 id=&quot;closed-positions&quot;&gt;Closed positions&lt;/h2&gt;
+
+&lt;p&gt;A closed position is one in which the center is filled with pawns, which block the pieces and force both sides to slowly maneuver around the pawn walls to get their armies out.&lt;/p&gt;
+
+&lt;p&gt;Knights are better in closed positions. Bishops are better in open positions.&lt;/p&gt;
+</description>
+        <pubDate>Sun, 10 Nov 2019 13:28:00 +0000</pubDate>
+        <link>https://adityagupta1089.github.io/notes/chess/chess-pawn-structure.html</link>
+        <guid isPermaLink="true">https://adityagupta1089.github.io/notes/chess/chess-pawn-structure.html</guid>
+        
+        
+        <category>Notes</category>
+        
+        <category>Chess</category>
+        
+      </item>
     
       <item>
         <title>Linear time deterministic median finding</title>
@@ -787,102 +869,6 @@ A(-x_i)=A_e(x_i^2)-x_iA_o(x_i^2)&lt;/script&gt;
         <pubDate>Mon, 28 Oct 2019 16:01:00 +0000</pubDate>
         <link>https://adityagupta1089.github.io/chess/notes/chess-force.html</link>
         <guid isPermaLink="true">https://adityagupta1089.github.io/chess/notes/chess-force.html</guid>
-        
-        
-        <category>Chess</category>
-        
-        <category>Notes</category>
-        
-      </item>
-    
-      <item>
-        <title>Bobby Fischer Teaches Chess (Back-Rank Mating)</title>
-        <description>&lt;p&gt;This book talks about&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Introduction: How to play chess
-    &lt;ul&gt;
-      &lt;li&gt;Description of the Board &amp;amp; Pieces&lt;/li&gt;
-      &lt;li&gt;Moving &amp;amp; Capturing&lt;/li&gt;
-      &lt;li&gt;Special Moves: Castling, Pawn Promotion, Capturing En Passant&lt;/li&gt;
-      &lt;li&gt;Piece Values: Pawn(1), Knight(3), Bishop(3.25), Rook(5), Queen(9), King(Infinity)&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Chapter 1: Elements of Checkmate
-    &lt;ul&gt;
-      &lt;li&gt;Conditions of checkmate&lt;/li&gt;
-      &lt;li&gt;Defenses: capturing, fleeing, interposing&lt;/li&gt;
-      &lt;li&gt;Pins&lt;/li&gt;
-      &lt;li&gt;Discovered checks&lt;/li&gt;
-      &lt;li&gt;Mate in 1&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Chapter 2: Back-Rank Mates
-    &lt;ul&gt;
-      &lt;li&gt;Useful/Useless Interposition&lt;/li&gt;
-      &lt;li&gt;Amount of power needed to mate&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Chapter 3: Back-Rank Defenses and Variations
-    &lt;ul&gt;
-      &lt;li&gt;Removing/Capturing the defenders&lt;/li&gt;
-      &lt;li&gt;disconnected rooks&lt;/li&gt;
-    &lt;/ul&gt;
-
-    &lt;p&gt;&lt;img src=&quot;https://adityagupta1089.github.io/images/fischer1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-    &lt;ul&gt;
-      &lt;li&gt;sideways back-rank&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Chapter 4: Displacing Defenders
-    &lt;ul&gt;
-      &lt;li&gt;Drawing away defenders&lt;/li&gt;
-      &lt;li&gt;Displacing the king&lt;/li&gt;
-      &lt;li&gt;Displacing the king in 2 moves&lt;/li&gt;
-      &lt;li&gt;Defense against displacement of king in 2 Moves&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Chapter 5: Attacks on the enemy pawn cover
-    &lt;ul&gt;
-      &lt;li&gt;Sacrifice leading to mate&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&quot;chapter-6-final-review&quot;&gt;Chapter 6: &lt;strong&gt;Final Review&lt;/strong&gt;&lt;/h1&gt;
-&lt;h2 id=&quot;mating-themes&quot;&gt;Mating Themes&lt;/h2&gt;
-&lt;ol&gt;
-  &lt;li&gt;Elementary back-rank mate&lt;/li&gt;
-  &lt;li&gt;Back-rank combination (more power)&lt;/li&gt;
-  &lt;li&gt;Eliminating a back-rank defender, enemy recaptures using&lt;/li&gt;
-  &lt;li&gt;Rook/Queen&lt;/li&gt;
-  &lt;li&gt;King&lt;/li&gt;
-  &lt;li&gt;Drawing away a defender&lt;/li&gt;
-  &lt;li&gt;Driving away the enemy king&lt;/li&gt;
-  &lt;li&gt;Queen&lt;/li&gt;
-  &lt;li&gt;Bishop&lt;/li&gt;
-  &lt;li&gt;Knight&lt;/li&gt;
-  &lt;li&gt;Rook&lt;/li&gt;
-  &lt;li&gt;Queen sacrifice&lt;/li&gt;
-  &lt;li&gt;Rook mates&lt;/li&gt;
-  &lt;li&gt;Rook checks
-    1. enemy rook interposes, bishop mates
-    2. enemy piece interposes, back-rank combination&lt;/li&gt;
-  &lt;li&gt;Mating a hemmed-in King&lt;/li&gt;
-  &lt;li&gt;Hemming the king, sacrificing and mating
-    &lt;h2 id=&quot;the-defenses&quot;&gt;The Defenses&lt;/h2&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Capturing a checking piece with appropriate piece&lt;/li&gt;
-  &lt;li&gt;Interposing&lt;/li&gt;
-  &lt;li&gt;King fleeing
-    &lt;h2 id=&quot;pins&quot;&gt;Pins&lt;/h2&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Pinned piece cannot capture&lt;/li&gt;
-  &lt;li&gt;However it can support a checkmate&lt;/li&gt;
-&lt;/ol&gt;
-</description>
-        <pubDate>Mon, 28 Oct 2019 14:15:00 +0000</pubDate>
-        <link>https://adityagupta1089.github.io/chess/notes/bobby-fischer-teaches-chess.html</link>
-        <guid isPermaLink="true">https://adityagupta1089.github.io/chess/notes/bobby-fischer-teaches-chess.html</guid>
         
         
         <category>Chess</category>
