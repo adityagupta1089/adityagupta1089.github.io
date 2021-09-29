@@ -6,13 +6,13 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Aditya Gupta&#39;s Blog | Haskell Notes</title>
-  <meta name="description" content="These are the notes on Haskell which I wrote when I was studying it.">
+  <title>Aditya Gupta&#39;s Blog | Types and Programming Languages`:` Introduction</title>
+  <meta name="description" content="Types in Computer Science  powerful frameworks: Hoare logic, algebraic specification lagnauges, modal logics and denotational semantics  modest power: model ...">
   <link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic|Source+Sans+Pro:400,700,200,300|Josefin+Sans:400,600,700,300' rel='stylesheet' type='text/css'>
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
 
   <link rel="stylesheet" href="/css/style.css">
-  <link rel="canonical" href="https://adityagupta1089.github.io/notes/haskell-notes.html">
+  <link rel="canonical" href="https://adityagupta1089.github.io/types%20and%20programming%20languages/notes/2021-09-29-tapl-introduction.html">
   <link rel="alternate" type="application/rss+xml" title="Aditya Gupta's Blog" href="https://adityagupta1089.github.io/feed.xml">
 </head>
 
@@ -269,37 +269,125 @@ $(document).ready(function () {
 
   <header class="post-header">
     <h1 class="post-title" itemprop="name headline">
-      <a class="post-title-link"  href="/notes/haskell-notes.html">Haskell Notes
+      <a class="post-title-link"  href="/types%20and%20programming%20languages/notes/2021-09-29-tapl-introduction.html">Types and Programming Languages`:` Introduction
       </a>
     </h1>
     <center>
       <p class="post-meta" style="letter-spacing: 3px !important;">
-        <time datetime="2019-06-07T08:07:00+00:00" itemprop="datePublished">Jun 7, 2019
+        <time datetime="2021-09-29T06:05:00+00:00" itemprop="datePublished">Sep 29, 2021
         </time><br>
-        Categories: <span style="text-transform: uppercase !important">Notes</span>
+        Categories: <span style="text-transform: uppercase !important">Types and Programming Languages, Notes</span>
       </p>
 
      </center>
   </header>
 
   <div class="post-content" itemprop="articleBody">
-    <p>These are the notes on Haskell which I wrote when I was studying it.</p>
+    <h1 id="types-in-computer-science">Types in Computer Science</h1>
+<ul>
+  <li>powerful frameworks: Hoare logic, algebraic specification lagnauges, modal logics and denotational semantics</li>
+  <li>modest power: model checkers, run-time monitoring, <strong>type systems</strong>(most popular, best established lightweight formal method)</li>
+</ul>
 
-<script src="https://gist.github.com/adityagupta1089/0b7b7d332d37a1b1861bb79b76ee2b48.js"></script>
+<h2 id="definition-of-type-system">Definition of type system:</h2>
+<ul>
+  <li>tractable syntatic method
+    <ul>
+      <li>typecheckers (compilers + linkers) should be able to do their job automatically, with no manual intervention (though require type annotations)</li>
+    </ul>
+  </li>
+  <li>for proving the absence of certain program behaviors
+    <ul>
+      <li>being static, type systems are conservative, they can categorically prove the absence of some bad program behaviors</li>
+    </ul>
+  </li>
+  <li>by classifying phrases according to the kinds of values they compute
+    <ul>
+      <li>type system can be regarded as a static approximation to the run-time behaviors of the terms in a program.</li>
+    </ul>
+  </li>
+</ul>
 
+<h3 id="comments">Comments:</h3>
+<ul>
+  <li>type system as tool for reasoning about programs.</li>
+</ul>
+
+<h2 id="branches-of-type-systems">Branches of type systems</h2>
+<ul>
+  <li>more practical branch concerned with programming languages (focus of book)
+    <ul>
+      <li>sacrifice termination propterties for the sake of features like recursive function definitions</li>
+    </ul>
+  </li>
+  <li>abstract focused on connections between various “pure typed lambda-calculi” and varities of logic, via the Curry-Howard correspondence
+    <ul>
+      <li>every well-typed computation is guranteed to terminate</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="what-type-systems-are-good-for">What type systems are good for</h1>
+
+<ul>
+  <li>Detecting Errors
+    <ul>
+      <li>early detection of programming errors</li>
+    </ul>
+  </li>
+  <li>Abstraction
+    <ul>
+      <li>module languages: types show up in the interfaces of modules (and related structures, e.g. classes)</li>
+    </ul>
+  </li>
+  <li>Documentation
+    <ul>
+      <li>Type useful when reading programs</li>
+    </ul>
+  </li>
+  <li>Language Safety
+    <ul>
+      <li>protects its own abstractions</li>
+      <li>untrapped errors</li>
+      <li>portabilities</li>
+    </ul>
+  </li>
+  <li>Efficiency
+    <ul>
+      <li>High performance due to information collected by typechecker</li>
+    </ul>
+  </li>
+  <li>Futher Applications
+    <ul>
+      <li>Computer &amp; Network Security</li>
+      <li>Program analysis tools (other than compilers)</li>
+      <li>Alias Analysis</li>
+      <li>Exception Analysis</li>
+      <li>Automated Theorem Proving</li>
+      <li>Databases: e.g. new languages for querying and manipulating XML</li>
+      <li>Computational Linguistics</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="type-system-and-language-design">Type System and Language Design</h1>
+<ul>
+  <li>Retrofitting type system onto a language not designed with typechecking can be tricky
+    <ul>
+      <li>offer features/encourage programming idioms that make typehchecking difficult/infeasible.</li>
+      <li>concrete syntax of typed languages more complicated than untyped languages.</li>
+    </ul>
+  </li>
+</ul>
 
   </div>
 
   <footer class="postNavigation">
   
-    <a class="postPrev" href="/notes/git-commands.html">
-        &laquo; Git Commands
+    <a class="postPrev" href="/notes/chess/chess-pawn-structure.html">
+        &laquo; Chess & Pawn Structure
     </a>
   
-  
-    <a class="postNext" href="/notes/elasticsearch-notes.html">
-        Elastic Search Notes &raquo;
-    </a>
   
   </footer>
 

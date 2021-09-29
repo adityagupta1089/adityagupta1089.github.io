@@ -208,6 +208,22 @@
         
       
     
+      
+        
+          <td style="text-align: center;">
+            <a class="page-link" href="/category/types and programming languages/index.html">
+              types and programming languages
+            </a>
+          </td>
+          
+            <td>
+              <span class="exclamationMark">/</span>
+            </td>
+          
+          
+        
+      
+    
     </tr>
     </table>
   </div>
@@ -271,11 +287,10 @@ $(document).ready(function () {
 
 <p>Split the list into 2 halves, recursively sort each half and then merge the two sorted sublists. For merging $x[1..k]$ and $y[1..l]$ into $z[1..k+l]$. The first element of $z$ is smaller of $x[1]$ and $y[1]$ and rest can be constrcuted recrusively.</p>
 
-<script type="math/tex; mode=display">% <![CDATA[
-\begin{align}
-\text{mergesort}(a[1..n]) =&\text{merge}(\text{mergesort}(a[1..\lfloor n/2\rfloor]),\\&\quad\text{mergesort}(a[\lfloor n/2\rfloor+1...n]))\\
-\text{merge}(x[1..k],y[1..l])=&\begin{cases}x[1]\circ\text{merge}(x[2..k],y[1..l])&x[1]\le y[1]\\y[1]\circ\text{merge}(x[1..k],y[2..l])&\text{otherwise}\end{cases}
-\end{align} %]]></script>
+\[\begin{align}
+\text{mergesort}(a[1..n]) =&amp;\text{merge}(\text{mergesort}(a[1..\lfloor n/2\rfloor]),\\&amp;\quad\text{mergesort}(a[\lfloor n/2\rfloor+1...n]))\\
+\text{merge}(x[1..k],y[1..l])=&amp;\begin{cases}x[1]\circ\text{merge}(x[2..k],y[1..l])&amp;x[1]\le y[1]\\y[1]\circ\text{merge}(x[1..k],y[2..l])&amp;\text{otherwise}\end{cases}
+\end{align}\]
 
 <p>Time Complexity $T(n)=2T(n/2)+O(n)\implies O(n\log n)$</p>
 
@@ -286,13 +301,12 @@ $(document).ready(function () {
 <p>Time complexity: $O(n^2)$ worst case. $O(n\log n)$ best and average case.</p>
 
 <p>For selecting the $k^{\rm th}$ element:
-<script type="math/tex">% <![CDATA[
-\text{selection}=
+\(\text{selection}=
 \begin{cases}
-\text{selection(S_L, k)}&k\le |S_L|\\
-v &|S_L|<k\le|S_L|+|S_v|\\
-\text{selection}(S_R, k-|S_L|-|S_v|)&k>|S_L|+|S_v|
-\end{cases} %]]></script>
+\text{selection(S_L, k)}&amp;k\le |S_L|\\
+v &amp;|S_L|&lt;k\le|S_L|+|S_v|\\
+\text{selection}(S_R, k-|S_L|-|S_v|)&amp;k&gt;|S_L|+|S_v|
+\end{cases}\)
 Time complexity: $T(n)=T(n/2)+O(n)\implies O(n)$</p>
 
   </div>
@@ -309,20 +323,6 @@ Time complexity: $T(n)=T(n/2)+O(n)\implies O(n)$</p>
     </a>
   
   </footer>
-
-  <div id="disqus_thread"></div>
-
-<script>
-(function() {
-  var d = document, s = d.createElement('script');
-  s.src = 'https://adg1089blog.disqus.com/embed.js';
-  s.setAttribute('data-timestamp', +new Date());
-  (d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-
-
 
 </article>
 

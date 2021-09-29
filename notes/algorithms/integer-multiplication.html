@@ -208,6 +208,22 @@
         
       
     
+      
+        
+          <td style="text-align: center;">
+            <a class="page-link" href="/category/types and programming languages/index.html">
+              types and programming languages
+            </a>
+          </td>
+          
+            <td>
+              <span class="exclamationMark">/</span>
+            </td>
+          
+          
+        
+      
+    
     </tr>
     </table>
   </div>
@@ -269,14 +285,13 @@ $(document).ready(function () {
   <div class="post-content" itemprop="articleBody">
     <p>To multiply $x$ and $y$, split them into left and right halves which are $n/2$ bits long.</p>
 
-<script type="math/tex; mode=display">% <![CDATA[
-\begin{align}
-x&=2^{n/2}x_L+x_R\\
-y&=2^{n/2}y_L+y_R\\
-xy&=(2^{n/2}x_L+x_R)(2^{n/2}y_L+y_R)\\
-&=2^nx_Ly_L+2^{n/2}(x_Ly_R+x_Ry_L)+x_Ry_R\\
-x_Ly_R+x_Ry_R&=(x_L+x_R)(y_L+y_R)-x_Ly_L-x_Ry_R
-\end{align} %]]></script>
+\[\begin{align}
+x&amp;=2^{n/2}x_L+x_R\\
+y&amp;=2^{n/2}y_L+y_R\\
+xy&amp;=(2^{n/2}x_L+x_R)(2^{n/2}y_L+y_R)\\
+&amp;=2^nx_Ly_L+2^{n/2}(x_Ly_R+x_Ry_L)+x_Ry_R\\
+x_Ly_R+x_Ry_R&amp;=(x_L+x_R)(y_L+y_R)-x_Ly_L-x_Ry_R
+\end{align}\]
 
 <p>Additional and multiplication by power of 2 takes linear time. We only need to calculate $x_Ly_L$, $x_Ry_R$ and $(x_L+x_R)(y_L+y_R)$ which we can calculate recursively.</p>
 
@@ -296,20 +311,6 @@ x_Ly_R+x_Ry_R&=(x_L+x_R)(y_L+y_R)-x_Ly_L-x_Ry_R
     </a>
   
   </footer>
-
-  <div id="disqus_thread"></div>
-
-<script>
-(function() {
-  var d = document, s = d.createElement('script');
-  s.src = 'https://adg1089blog.disqus.com/embed.js';
-  s.setAttribute('data-timestamp', +new Date());
-  (d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-
-
 
 </article>
 

@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Aditya Gupta&#39;s Blog | Master&#39;s Theorem</title>
-  <meta name="description" content="Theorem: $T(n)=aT(\lceil n/b\rceil)+O(n^d)$ for some constants $a&gt;0,b&gt;1,d\ge 0$ then">
+  <meta name="description" content="Theorem: $T(n)=aT(\lceil n/b\rceil)+O(n^d)$ for some constants $a&gt;0,b&gt;1,d\ge 0$ then\(T(n)=\begin{cases}O(n^d)&amp;d&gt;\log_b a\\O(n^d\log n)&amp;d=\l...">
   <link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic|Source+Sans+Pro:400,700,200,300|Josefin+Sans:400,600,700,300' rel='stylesheet' type='text/css'>
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
 
@@ -208,6 +208,22 @@
         
       
     
+      
+        
+          <td style="text-align: center;">
+            <a class="page-link" href="/category/types and programming languages/index.html">
+              types and programming languages
+            </a>
+          </td>
+          
+            <td>
+              <span class="exclamationMark">/</span>
+            </td>
+          
+          
+        
+      
+    
     </tr>
     </table>
   </div>
@@ -268,17 +284,16 @@ $(document).ready(function () {
 
   <div class="post-content" itemprop="articleBody">
     <p><strong>Theorem</strong>: $T(n)=aT(\lceil n/b\rceil)+O(n^d)$ for some constants $a&gt;0,b&gt;1,d\ge 0$ then
-<script type="math/tex">% <![CDATA[
-T(n)=\begin{cases}
-O(n^d)&d>\log_b a\\
-O(n^d\log n)&d=\log_ba\\
-O(n^{\log_ba})&d<\log_ba
-\end{cases} %]]></script></p>
+\(T(n)=\begin{cases}
+O(n^d)&amp;d&gt;\log_b a\\
+O(n^d\log n)&amp;d=\log_ba\\
+O(n^{\log_ba})&amp;d&lt;\log_ba
+\end{cases}\)</p>
 
 <p><strong>Proof</strong>: <img src="https://adityagupta1089.github.io/images/mastertheorem.png" alt="" /></p>
 
 <p>Each problem of size $n$ is divided into $a$ subproblems of size $n/b$. Each level has problem of size $n/b^k$ and work done is:
-<script type="math/tex">a^k\times O\left(\frac nb^k\right)^d=O(n^d)\times \left(\frac ab^d\right)^k</script></p>
+\(a^k\times O\left(\frac nb^k\right)^d=O(n^d)\times \left(\frac ab^d\right)^k\)</p>
 
 <p>As $k$ goes from $0$ (root) to $\log_bn$ (the leaves), these form a geometric series with ratio $r=a/b^d$</p>
 
@@ -287,7 +302,7 @@ O(n^{\log_ba})&d<\log_ba
   <li>$r&gt;1$: Increasing series, sum is last term $O(n^{\log_ba})$</li>
 </ol>
 
-<script type="math/tex; mode=display">n^d\left(\frac a{b^d}\right)^{\log_bn}=n^d\left(\frac{a^{\log_bn}}{(b^{\log_bn})^d}\right)=a^{\log_bn}=a^{(\log_an)(\log_ba)}=n^{\log_ba}</script>
+\[n^d\left(\frac a{b^d}\right)^{\log_bn}=n^d\left(\frac{a^{\log_bn}}{(b^{\log_bn})^d}\right)=a^{\log_bn}=a^{(\log_an)(\log_ba)}=n^{\log_ba}\]
 
 <ol>
   <li>$r=1$: All $O(\log n)$ terms are equal to $O(n^d)$</li>
@@ -308,20 +323,6 @@ O(n^{\log_ba})&d<\log_ba
     </a>
   
   </footer>
-
-  <div id="disqus_thread"></div>
-
-<script>
-(function() {
-  var d = document, s = d.createElement('script');
-  s.src = 'https://adg1089blog.disqus.com/embed.js';
-  s.setAttribute('data-timestamp', +new Date());
-  (d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-
-
 
 </article>
 

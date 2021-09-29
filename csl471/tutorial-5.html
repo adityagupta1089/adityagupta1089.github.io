@@ -208,6 +208,22 @@
         
       
     
+      
+        
+          <td style="text-align: center;">
+            <a class="page-link" href="/category/types and programming languages/index.html">
+              types and programming languages
+            </a>
+          </td>
+          
+            <td>
+              <span class="exclamationMark">/</span>
+            </td>
+          
+          
+        
+      
+    
     </tr>
     </table>
   </div>
@@ -268,13 +284,13 @@ $(document).ready(function () {
 
   <div class="post-content" itemprop="articleBody">
     <ol>
-  <li>For a polynomial $p(x)$ of degree $d$, we had $p(x)=f(x)g(x)$, we concluded that $p(x)-f(x)g(x)$ is a polynomial of degree atmost $d$, hence can have atmost $d$ roots which are false-positives in this case. The probability that $n(&gt;d)$ elements chosen out of <script type="math/tex">\{1,2,\ldots10^6d\}</script> belong to these false-positives is
-<script type="math/tex">\displaystyle\le\frac{\binom n d\binom {10^6d-d}{n-d}}{\binom {10^6d}n}=\frac{n!((10^6-1)d)!}{d!(n-d)!(n-d)!(10^6d-n)!}\frac{n!(10^6d-n)!}{(10^6d)!}</script><br />
-which becomes <script type="math/tex">\displaystyle\frac{n!^2((10^6-1)d)!}{d!(10^6d)!(n-d)!^2}=\frac{n^2(n-1)^2..1^2}{(n-d)^2(n-d-1)^2...1^2}\frac{1}{\binom {10^6d}d}\stackrel{n\to\infty}\longrightarrow\binom {10^6d}d^{-1}\\\displaystyle
-=\frac{d(d-1)...1}{(10^6d)(10^6d-1)..(10^6d-(d-1))}\stackrel{d\to\infty}\longrightarrow \frac1{10^{6d}}</script> which is astronomically small.</li>
+  <li>For a polynomial $p(x)$ of degree $d$, we had $p(x)=f(x)g(x)$, we concluded that $p(x)-f(x)g(x)$ is a polynomial of degree atmost $d$, hence can have atmost $d$ roots which are false-positives in this case. The probability that $n(&gt;d)$ elements chosen out of \(\{1,2,\ldots10^6d\}\) belong to these false-positives is
+\(\displaystyle\le\frac{\binom n d\binom {10^6d-d}{n-d}}{\binom {10^6d}n}=\frac{n!((10^6-1)d)!}{d!(n-d)!(n-d)!(10^6d-n)!}\frac{n!(10^6d-n)!}{(10^6d)!}\)<br />
+which becomes \(\displaystyle\frac{n!^2((10^6-1)d)!}{d!(10^6d)!(n-d)!^2}=\frac{n^2(n-1)^2..1^2}{(n-d)^2(n-d-1)^2...1^2}\frac{1}{\binom {10^6d}d}\stackrel{n\to\infty}\longrightarrow\binom {10^6d}d^{-1}\\\displaystyle
+=\frac{d(d-1)...1}{(10^6d)(10^6d-1)..(10^6d-(d-1))}\stackrel{d\to\infty}\longrightarrow \frac1{10^{6d}}\) which is astronomically small.</li>
   <li>The determinant of the <a href="https://en.wikipedia.org/wiki/Tutte_matrix">Tutte Matrix</a> which is a polynomial in $x_{ij}$’s $(i&lt;j)$ is non-zero for a perfect-matching. Hence, we can use the polynomial verification algorithm to check if it is non-zero. Also see <a href="http://www.imsc.res.in/~meena/matching/lecture7.pdf">this</a></li>
   <li>Given $F:{\mathbb Z_n}\to{\mathbb Z_m}$ s.t. $F(x+y)=F(x)+F(y)$ which is a homomorphism. Given $n$ we can estimate $F(n)$ by writing $F(z)=F(k+(z-k))=F(k)+F(z-k)$ where the probability that this is right is $1-1/9=8/9$. If we can run this 5 times, that would mean trying different combinations of $k$ and $z-k$ and taking the majority which will be correct $1-\binom 53(1/9)^3(8/9)^2-\binom 54(1/9)^4(8/9)^1-\binom 55(1/9)^5(8/9)^0=19456/19683\approx98.8\%$</li>
-  <li>Probability of getting a min-cut was calculated in class as <script type="math/tex">\displaystyle\prod_{k=3}^n\left(1-\frac 2k\right)=\binom n2^{-1}</script></li>
+  <li>Probability of getting a min-cut was calculated in class as \(\displaystyle\prod_{k=3}^n\left(1-\frac 2k\right)=\binom n2^{-1}\)</li>
   <li>Probability of getting a min-cut after $\lambda$ operations: $1-\left(1-\binom n2^{-1}\right)^{\lambda}=1-\left(\frac{n(n-1)-2}{n(n-1)}\right)^{\lambda}\stackrel{\lambda \to\infty}\longrightarrow1$</li>
   <li>$O(n!)$</li>
   <li>TODO (Binary search on unsorted elements?)</li>
@@ -294,20 +310,6 @@ which becomes <script type="math/tex">\displaystyle\frac{n!^2((10^6-1)d)!}{d!(10
     </a>
   
   </footer>
-
-  <div id="disqus_thread"></div>
-
-<script>
-(function() {
-  var d = document, s = d.createElement('script');
-  s.src = 'https://adg1089blog.disqus.com/embed.js';
-  s.setAttribute('data-timestamp', +new Date());
-  (d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-
-
 
 </article>
 

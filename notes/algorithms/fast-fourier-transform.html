@@ -208,6 +208,22 @@
         
       
     
+      
+        
+          <td style="text-align: center;">
+            <a class="page-link" href="/category/types and programming languages/index.html">
+              types and programming languages
+            </a>
+          </td>
+          
+            <td>
+              <span class="exclamationMark">/</span>
+            </td>
+          
+          
+        
+      
+    
     </tr>
     </table>
   </div>
@@ -271,7 +287,7 @@ $(document).ready(function () {
 
 <p>The product of two $d$-degree polynomials is a polynomial of degree $2d$, i.e. if $A(x)=a_0+a_1x+a_2x^2+\ldots+a_dx^d$ and $B(x)=b_0+b_1+b_2x^2+\ldots+b_dx^d$ then</p>
 
-<script type="math/tex; mode=display">A(x)B(x)=a_0b_k+a_1b_{k-1}+\ldots+a_kb_0=\sum_{i=0}^{k}a_i b_{k-i}</script>
+\[A(x)B(x)=a_0b_k+a_1b_{k-1}+\ldots+a_kb_0=\sum_{i=0}^{k}a_i b_{k-i}\]
 
 <p>Computing $c_k$ from this formula takes $O(k)$ steps aand finding all $2d+1$ coefficients would therefore take $\Theta(d^2)$</p>
 
@@ -287,17 +303,17 @@ $(document).ready(function () {
 
 <p>If we choose the $n$ points for evaluation of $A(x)$ as:</p>
 
-<script type="math/tex; mode=display">\pm x_0, \pm x_1, \ldots, \pm x_{n/2-1}</script>
+\[\pm x_0, \pm x_1, \ldots, \pm x_{n/2-1}\]
 
 <p>then the computatin required for each $A(x_i)$ and $A(-x_i)$ overlap a lot because the even powers of $x_i$ coincide with those of $-x_i$.</p>
 
-<script type="math/tex; mode=display">A(x)=(a_0+a_2x^2+a_4x^4+\ldots)+x(a_1+a_3x^2+\ldots)
-A(x)=A_{\rm even}(x^2)+xA_{\rm odd}(x^2)</script>
+\[A(x)=(a_0+a_2x^2+a_4x^4+\ldots)+x(a_1+a_3x^2+\ldots)
+A(x)=A_{\rm even}(x^2)+xA_{\rm odd}(x^2)\]
 
 <p>hence</p>
 
-<script type="math/tex; mode=display">A(x_i)=A_e(x_i^2)+x_iA_o(x_i^2)
-A(-x_i)=A_e(x_i^2)-x_iA_o(x_i^2)</script>
+\[A(x_i)=A_e(x_i^2)+x_iA_o(x_i^2)
+A(-x_i)=A_e(x_i^2)-x_iA_o(x_i^2)\]
 
 <p>Noew we need to evaluate $A_e(x)$ and $A_o(x)$ (which each have half the degree of $A(x)$) at just $n/2$ points, $x_0^2,\ldots x_{n/2-1}^2$.</p>
 
@@ -329,7 +345,7 @@ A(-x_i)=A_e(x_i^2)-x_iA_o(x_i^2)</script>
 
 <p>Multiplication of columns $j$ and $k$ of matrix $M$ gives</p>
 
-<script type="math/tex; mode=display">1+\omega^{j-k}+\omega^{2(j-k)}+\ldots+\omega^{(n-1)(j-k)}=\frac{(1-\omega^{n(j-k)})}{(1-\omega^{j-k})}</script>
+\[1+\omega^{j-k}+\omega^{2(j-k)}+\ldots+\omega^{(n-1)(j-k)}=\frac{(1-\omega^{n(j-k)})}{(1-\omega^{j-k})}\]
 
 <p>which is a Geometric series which is $0$  except $j=k$ in which case all terms are $1$ and sum is $n$.</p>
 
@@ -351,20 +367,6 @@ A(-x_i)=A_e(x_i^2)-x_iA_o(x_i^2)</script>
     </a>
   
   </footer>
-
-  <div id="disqus_thread"></div>
-
-<script>
-(function() {
-  var d = document, s = d.createElement('script');
-  s.src = 'https://adg1089blog.disqus.com/embed.js';
-  s.setAttribute('data-timestamp', +new Date());
-  (d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-
-
 
 </article>
 

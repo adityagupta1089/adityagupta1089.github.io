@@ -5,9 +5,119 @@
     <description></description>
     <link>https://adityagupta1089.github.io/</link>
     <atom:link href="https://adityagupta1089.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 10 Nov 2019 13:30:05 +0000</pubDate>
-    <lastBuildDate>Sun, 10 Nov 2019 13:30:05 +0000</lastBuildDate>
-    <generator>Jekyll v3.8.6</generator>
+    <pubDate>Wed, 29 Sep 2021 19:53:56 +0000</pubDate>
+    <lastBuildDate>Wed, 29 Sep 2021 19:53:56 +0000</lastBuildDate>
+    <generator>Jekyll v3.9.1</generator>
+    
+      <item>
+        <title>Types and Programming Languages`:` Introduction</title>
+        <description>&lt;h1 id=&quot;types-in-computer-science&quot;&gt;Types in Computer Science&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;powerful frameworks: Hoare logic, algebraic specification lagnauges, modal logics and denotational semantics&lt;/li&gt;
+  &lt;li&gt;modest power: model checkers, run-time monitoring, &lt;strong&gt;type systems&lt;/strong&gt;(most popular, best established lightweight formal method)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;definition-of-type-system&quot;&gt;Definition of type system:&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;tractable syntatic method
+    &lt;ul&gt;
+      &lt;li&gt;typecheckers (compilers + linkers) should be able to do their job automatically, with no manual intervention (though require type annotations)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;for proving the absence of certain program behaviors
+    &lt;ul&gt;
+      &lt;li&gt;being static, type systems are conservative, they can categorically prove the absence of some bad program behaviors&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;by classifying phrases according to the kinds of values they compute
+    &lt;ul&gt;
+      &lt;li&gt;type system can be regarded as a static approximation to the run-time behaviors of the terms in a program.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;comments&quot;&gt;Comments:&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;type system as tool for reasoning about programs.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;branches-of-type-systems&quot;&gt;Branches of type systems&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;more practical branch concerned with programming languages (focus of book)
+    &lt;ul&gt;
+      &lt;li&gt;sacrifice termination propterties for the sake of features like recursive function definitions&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;abstract focused on connections between various “pure typed lambda-calculi” and varities of logic, via the Curry-Howard correspondence
+    &lt;ul&gt;
+      &lt;li&gt;every well-typed computation is guranteed to terminate&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;what-type-systems-are-good-for&quot;&gt;What type systems are good for&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Detecting Errors
+    &lt;ul&gt;
+      &lt;li&gt;early detection of programming errors&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Abstraction
+    &lt;ul&gt;
+      &lt;li&gt;module languages: types show up in the interfaces of modules (and related structures, e.g. classes)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Documentation
+    &lt;ul&gt;
+      &lt;li&gt;Type useful when reading programs&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Language Safety
+    &lt;ul&gt;
+      &lt;li&gt;protects its own abstractions&lt;/li&gt;
+      &lt;li&gt;untrapped errors&lt;/li&gt;
+      &lt;li&gt;portabilities&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Efficiency
+    &lt;ul&gt;
+      &lt;li&gt;High performance due to information collected by typechecker&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Futher Applications
+    &lt;ul&gt;
+      &lt;li&gt;Computer &amp;amp; Network Security&lt;/li&gt;
+      &lt;li&gt;Program analysis tools (other than compilers)&lt;/li&gt;
+      &lt;li&gt;Alias Analysis&lt;/li&gt;
+      &lt;li&gt;Exception Analysis&lt;/li&gt;
+      &lt;li&gt;Automated Theorem Proving&lt;/li&gt;
+      &lt;li&gt;Databases: e.g. new languages for querying and manipulating XML&lt;/li&gt;
+      &lt;li&gt;Computational Linguistics&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;type-system-and-language-design&quot;&gt;Type System and Language Design&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;Retrofitting type system onto a language not designed with typechecking can be tricky
+    &lt;ul&gt;
+      &lt;li&gt;offer features/encourage programming idioms that make typehchecking difficult/infeasible.&lt;/li&gt;
+      &lt;li&gt;concrete syntax of typed languages more complicated than untyped languages.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Wed, 29 Sep 2021 06:05:00 +0000</pubDate>
+        <link>https://adityagupta1089.github.io/types%20and%20programming%20languages/notes/2021-09-29-tapl-introduction.html</link>
+        <guid isPermaLink="true">https://adityagupta1089.github.io/types%20and%20programming%20languages/notes/2021-09-29-tapl-introduction.html</guid>
+        
+        
+        <category>Types and Programming Languages</category>
+        
+        <category>Notes</category>
+        
+      </item>
     
       <item>
         <title>Chess &amp; Pawn Structure</title>
@@ -121,15 +231,14 @@
 
 &lt;p&gt;$\displaystyle 3\left(\left\lceil\frac 12\left\lceil\frac n5\right\rceil\right\rceil-2\right)\ge \frac {3n}{10}-6$&lt;/p&gt;
 
-&lt;p&gt;Thus in worst case step 5 calls SELECT recursively on atmost $7n/10+6$ elements.  &lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
-\begin{align}
-T(n)&amp;\le cn+T(n/5)+T(7n/10)\\
-&amp;\le cn + \left(c\frac n5+T(n/5^2)+T(7n/50)\right)+\left(c\frac {7n}{10}+T(7n/50)+T(7^2n/10^2)\right)\\
-&amp;= cn + 9\frac {cn}{10} + T(n/5^2) + 2T(7n/50) + T(7^2n/10^2)\\
-&amp;\le \ldots\\
-&amp;\le \sum_{i=0^h}\left(\frac {9}{10}\right)^icn+\ldots\\
-&amp;\le cn\frac 1{1-9/10} = O(n)
-\end{align} %]]&gt;&lt;/script&gt;&lt;/p&gt;
+&lt;p&gt;Thus in worst case step 5 calls SELECT recursively on atmost $7n/10+6$ elements.  \(\begin{align}
+T(n)&amp;amp;\le cn+T(n/5)+T(7n/10)\\
+&amp;amp;\le cn + \left(c\frac n5+T(n/5^2)+T(7n/50)\right)+\left(c\frac {7n}{10}+T(7n/50)+T(7^2n/10^2)\right)\\
+&amp;amp;= cn + 9\frac {cn}{10} + T(n/5^2) + 2T(7n/50) + T(7^2n/10^2)\\
+&amp;amp;\le \ldots\\
+&amp;amp;\le \sum_{i=0^h}\left(\frac {9}{10}\right)^icn+\ldots\\
+&amp;amp;\le cn\frac 1{1-9/10} = O(n)
+\end{align}\)&lt;/p&gt;
 
 &lt;p&gt;Max height of tree is $(7/10)^h\le 1\implies h\ge \log_{10/7}n$.&lt;/p&gt;
 
@@ -625,15 +734,14 @@ T(n)&amp;\le cn+T(n/5)+T(7n/10)\\
 &lt;p&gt;Suppose the tree undergoes $m$ searches for keys $k_{i_1},k_{i_2},\ldots k_{i_m}$ starting from tree $T_0$ and after searching for $k_{i_1}$ to $T_1$ and so on until $T_m$.&lt;/p&gt;
 
 &lt;p&gt;Let actual cost of $i^{\rm th}$ search be $c_i$ and amortized cost of $i^{\rm th}$ search be $\hat c_i=c_i+\phi(T_i)-\phi(T_{i-1})$. We claim that $\hat{c}_{i} \leqslant 3 \log _{2} n$. Hence actual cost becomes
-&lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
-\begin{align}
-\sum_{i=1}^mc_i&amp;=\sum_{i=1}^m[\hat c_i+\phi(T_{i-1})-\phi(T_i)]\\
-&amp;=\sum_{i=1}^m\hat c_i+\sum_{i=1}^m(\phi(T_{i-1}-\phi(T_i)))\\
-&amp;=\sum_{i=1}^m\hat c_i+[\phi(T_0)-\phi(T_m)]\\
-&amp;=\sum_{i=1}^m\hat c_i+n\log n\\
-&amp;\le3m\log n+n\log n\\
-&amp;\le 4m\log n\tag{$m\ge n$}
-\end{align} %]]&gt;&lt;/script&gt;&lt;/p&gt;
+\(\begin{align}
+\sum_{i=1}^mc_i&amp;amp;=\sum_{i=1}^m[\hat c_i+\phi(T_{i-1})-\phi(T_i)]\\
+&amp;amp;=\sum_{i=1}^m\hat c_i+\sum_{i=1}^m(\phi(T_{i-1}-\phi(T_i)))\\
+&amp;amp;=\sum_{i=1}^m\hat c_i+[\phi(T_0)-\phi(T_m)]\\
+&amp;amp;=\sum_{i=1}^m\hat c_i+n\log n\\
+&amp;amp;\le3m\log n+n\log n\\
+&amp;amp;\le 4m\log n\tag{$m\ge n$}
+\end{align}\)&lt;/p&gt;
 
 &lt;p&gt;Now we prove $\hat{c}_{i} \leqslant 3 \log _{2} n$ for various cases. $r’$ represents the rank after rotation.&lt;/p&gt;
 
@@ -685,7 +793,7 @@ T(n)&amp;\le cn+T(n/5)+T(7n/10)\\
 
 &lt;p&gt;The product of two $d$-degree polynomials is a polynomial of degree $2d$, i.e. if $A(x)=a_0+a_1x+a_2x^2+\ldots+a_dx^d$ and $B(x)=b_0+b_1+b_2x^2+\ldots+b_dx^d$ then&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;A(x)B(x)=a_0b_k+a_1b_{k-1}+\ldots+a_kb_0=\sum_{i=0}^{k}a_i b_{k-i}&lt;/script&gt;
+\[A(x)B(x)=a_0b_k+a_1b_{k-1}+\ldots+a_kb_0=\sum_{i=0}^{k}a_i b_{k-i}\]
 
 &lt;p&gt;Computing $c_k$ from this formula takes $O(k)$ steps aand finding all $2d+1$ coefficients would therefore take $\Theta(d^2)$&lt;/p&gt;
 
@@ -701,17 +809,17 @@ T(n)&amp;\le cn+T(n/5)+T(7n/10)\\
 
 &lt;p&gt;If we choose the $n$ points for evaluation of $A(x)$ as:&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\pm x_0, \pm x_1, \ldots, \pm x_{n/2-1}&lt;/script&gt;
+\[\pm x_0, \pm x_1, \ldots, \pm x_{n/2-1}\]
 
 &lt;p&gt;then the computatin required for each $A(x_i)$ and $A(-x_i)$ overlap a lot because the even powers of $x_i$ coincide with those of $-x_i$.&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;A(x)=(a_0+a_2x^2+a_4x^4+\ldots)+x(a_1+a_3x^2+\ldots)
-A(x)=A_{\rm even}(x^2)+xA_{\rm odd}(x^2)&lt;/script&gt;
+\[A(x)=(a_0+a_2x^2+a_4x^4+\ldots)+x(a_1+a_3x^2+\ldots)
+A(x)=A_{\rm even}(x^2)+xA_{\rm odd}(x^2)\]
 
 &lt;p&gt;hence&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;A(x_i)=A_e(x_i^2)+x_iA_o(x_i^2)
-A(-x_i)=A_e(x_i^2)-x_iA_o(x_i^2)&lt;/script&gt;
+\[A(x_i)=A_e(x_i^2)+x_iA_o(x_i^2)
+A(-x_i)=A_e(x_i^2)-x_iA_o(x_i^2)\]
 
 &lt;p&gt;Noew we need to evaluate $A_e(x)$ and $A_o(x)$ (which each have half the degree of $A(x)$) at just $n/2$ points, $x_0^2,\ldots x_{n/2-1}^2$.&lt;/p&gt;
 
@@ -743,7 +851,7 @@ A(-x_i)=A_e(x_i^2)-x_iA_o(x_i^2)&lt;/script&gt;
 
 &lt;p&gt;Multiplication of columns $j$ and $k$ of matrix $M$ gives&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;1+\omega^{j-k}+\omega^{2(j-k)}+\ldots+\omega^{(n-1)(j-k)}=\frac{(1-\omega^{n(j-k)})}{(1-\omega^{j-k})}&lt;/script&gt;
+\[1+\omega^{j-k}+\omega^{2(j-k)}+\ldots+\omega^{(n-1)(j-k)}=\frac{(1-\omega^{n(j-k)})}{(1-\omega^{j-k})}\]
 
 &lt;p&gt;which is a Geometric series which is $0$  except $j=k$ in which case all terms are $1$ and sum is $n$.&lt;/p&gt;
 
@@ -759,121 +867,6 @@ A(-x_i)=A_e(x_i^2)-x_iA_o(x_i^2)&lt;/script&gt;
         <category>Notes</category>
         
         <category>Algorithms</category>
-        
-      </item>
-    
-      <item>
-        <title>Chess &amp; Force</title>
-        <description>&lt;h1 id=&quot;the-first-principle-force&quot;&gt;The First Principle: Force&lt;/h1&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Try to have more pieces overall. (Use piece values)&lt;/li&gt;
-  &lt;li&gt;Try to have more pieces ina particular area of the board.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;basic-tactics&quot;&gt;Basic Tactics&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;The Pin - prevent enemy piece from moving&lt;/li&gt;
-  &lt;li&gt;The Fork - simultaneous attack on two or more pieces&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;laying-traps&quot;&gt;Laying Traps&lt;/h2&gt;
-&lt;h3 id=&quot;a-pair-of-weaklings&quot;&gt;A Pair of Weaklings&lt;/h3&gt;
-
-&lt;p&gt;This type of trap is based on the weakness of the pawns on squares f7 and f2.&lt;/p&gt;
-
-&lt;div class=&quot;chess&quot;&gt;
-[Title &quot;Scholar's Mate&quot;]
-
-1. e4 e5
-2. Bc4 Nc6
-3. Qh5 Nf6??
-4. Qxf7#
-&lt;/div&gt;
-
-&lt;div class=&quot;chess&quot;&gt;
-[Title &quot;Legall's Mate&quot;]
-
-1. e4 e5
-2. Nf3 d6
-3. Nc3 g6
-4. Bc4 Bg4?
-{Black has tied down White's Knight on f3 with a pin. However, his Bishop is undefended on g4 and White's army is better developed. White can now launch a surprise attack against square f7.}
-5. Nxe5!!
-{Black should now limit his losses and play 5...dxe5 which White would respond with 6.Qxg4. However, instead of losing a pawn, Black eats White's Queen} Bxd1?
-{So Black captures a Queen. But now Black's pawn on f7 falls and White's attack crashes through}
-6. Bxf7+ Ke7
-7. Nd5#
-&lt;/div&gt;
-
-&lt;h3 id=&quot;the-case-of-undefended-piece-discovery-attack&quot;&gt;The Case of Undefended Piece (discovery attack)&lt;/h3&gt;
-
-&lt;p&gt;Discovered attacks are usually directed at undefended pieces.&lt;/p&gt;
-
-&lt;div class=&quot;chess&quot;&gt;
-[Title &quot;The Excommunicated Bishop&quot;]
-
-1. e4 e5 2. Nf3 d6 3. Bc4 Nc6 4. Nc3 Bg4 5. O-O {The Legall's Mate move 5.Nxe5, would not work here because Black can play 5...Nxe5! to prevent the checkmate and defend the Bishop on g4} Nge7?? {He would do better to play 5...Nf6 simply defending the Bhisop on g4} 6. Bxf7+ Kxf7 7. Ng5+ {The knight checks, thereby uncovering a Queen attack on the Black Bishop} Ke8 8. Qxg4
-&lt;/div&gt;
-
-&lt;div class=&quot;chess&quot;&gt;
-[Title &quot;The Queen That Never Came Home&quot;]
-
-1. e4 d5 2. exd5 Qxd5 3. Nc3 Qd8 4. d4 e6 5. Bd3 Qxd4?? {Black thinks that White has overlooked a pawn but a surprise is in store} 6. Bb5+!
-&lt;/div&gt;
-
-&lt;h3 id=&quot;the-battering-ram&quot;&gt;The Battering Ram&lt;/h3&gt;
-
-&lt;p&gt;This type of trap is based on dimantling the enemy king’s cover.&lt;/p&gt;
-
-&lt;div class=&quot;chess&quot;&gt;
-[Title &quot;Fool's Mate&quot;]
-
-1. f4 {This move is called the &lt;i&gt;Bird Opening&lt;/i&gt;} e6
-2. g4?? {For no reason whatsoever White has opened up his own King to attack on the e1-h4 diagonal} Qh4#
-(1...e5 2.fxe5 {With this second move, White avoids g3 leading to checkmate} (2. g3 exf4 3. gxf4?? Qh4#) d6 {Black is not tempted by Qh4+ which would be adequately countered by g3 when Black's Queen must retreat} (2...Qh4+ 3.g3) 3. exd6 Bxd6 {Black has sacrificed a pawn so that he can obtain a lead in development. This type of deliberate sacrifice in the opening is called a &lt;i&gt;gambit&lt;/i&gt;} 4. Nc3?? {Oops White didn't see the threat. He should have played Nf4 which would develop a piece and prevent ...Qh4+} Qh4+ 5. g3 Qxg3+!! 6. hxg3 Bxg3#)
-&lt;/div&gt;
-
-&lt;div class=&quot;chess&quot;&gt;
-[Title &quot;The Cheap Check&quot;]
-
-1. e4 c6 2. d4 d5 3. Nc3 dxe4 4. Nxe4 Nd7 5. Qe2 Ngf6 6. Nd6#
-&lt;/div&gt;
-
-&lt;h2 id=&quot;king-plays-in-the-endgame&quot;&gt;King Plays in the endgame&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;king is a powerful piece and should be brought out into the play in the endgame.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;endgames&quot;&gt;Endgames&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;King &amp;amp; Queen vs. King - trapping in a box&lt;/li&gt;
-  &lt;li&gt;King &amp;amp; Rook vs. King - move king as close to enemy king and then use rook&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;preference-or-principle&quot;&gt;Preference or Principle&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Do not take pieces directly for their piece values.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;when-less-is-more&quot;&gt;When less is more&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Weaker pieces may be stronger in certain situations.&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Mon, 28 Oct 2019 16:01:00 +0000</pubDate>
-        <link>https://adityagupta1089.github.io/chess/notes/chess-force.html</link>
-        <guid isPermaLink="true">https://adityagupta1089.github.io/chess/notes/chess-force.html</guid>
-        
-        
-        <category>Chess</category>
-        
-        <category>Notes</category>
         
       </item>
     

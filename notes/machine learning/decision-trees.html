@@ -208,6 +208,22 @@
         
       
     
+      
+        
+          <td style="text-align: center;">
+            <a class="page-link" href="/category/types and programming languages/index.html">
+              types and programming languages
+            </a>
+          </td>
+          
+            <td>
+              <span class="exclamationMark">/</span>
+            </td>
+          
+          
+        
+      
+    
     </tr>
     </table>
   </div>
@@ -271,7 +287,7 @@ $(document).ready(function () {
 
 <p>If $\cal I$ is the set of training examples, $p_+$ ratio of posititive examples in $\cal I$ and $p_-$ negative examples then entropy which measures impurity:</p>
 
-<script type="math/tex; mode=display">\text{Entropy}(I) = -p_+\log_2p_+ - p_-\log _2p_-</script>
+\[\text{Entropy}(I) = -p_+\log_2p_+ - p_-\log _2p_-\]
 
 <p>This represents expected number of bits to encode the class of a randomly drawn member of $\cal I$</p>
 
@@ -279,8 +295,8 @@ $(document).ready(function () {
 
 <p>Expected reduction in entropy due to sorting on attribute $x_i$</p>
 
-<script type="math/tex; mode=display">\text{Gain}({\cal I}, x_i)=\text{Entropy}(I)-\sum_{v\in\text{values}(x
-_i)}\frac{|\cal I_v|}{|\cal I|}\text{Entropy}(\cal I_v)</script>
+\[\text{Gain}({\cal I}, x_i)=\text{Entropy}(I)-\sum_{v\in\text{values}(x
+_i)}\frac{|\cal I_v|}{|\cal I|}\text{Entropy}(\cal I_v)\]
 
 <ul>
   <li>$\text{values}(x_i)$: all possible values of $x_i$</li>
@@ -293,11 +309,11 @@ _i)}\frac{|\cal I_v|}{|\cal I|}\text{Entropy}(\cal I_v)</script>
 
 <p>Mutual information gain for two random variables $X$ and $Y$ is:</p>
 
-<script type="math/tex; mode=display">I(X;Y)=\sum_{y\in Y}\sum_{x\in X}p(x, y)\log\left(\frac{p(x,y)}{p(x)p(y)}\right)</script>
+\[I(X;Y)=\sum_{y\in Y}\sum_{x\in X}p(x, y)\log\left(\frac{p(x,y)}{p(x)p(y)}\right)\]
 
 <p>In decision trees mutual information gain and information gain are synonymous:</p>
 
-<script type="math/tex; mode=display">I(X;Y)=H(Y)-H(Y|X)</script>
+\[I(X;Y)=H(Y)-H(Y|X)\]
 
 <h1 id="id3-algorithm">ID3 Algorithm</h1>
 
@@ -382,20 +398,6 @@ _i)}\frac{|\cal I_v|}{|\cal I|}\text{Entropy}(\cal I_v)</script>
     </a>
   
   </footer>
-
-  <div id="disqus_thread"></div>
-
-<script>
-(function() {
-  var d = document, s = d.createElement('script');
-  s.src = 'https://adg1089blog.disqus.com/embed.js';
-  s.setAttribute('data-timestamp', +new Date());
-  (d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-
-
 
 </article>
 

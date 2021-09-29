@@ -208,6 +208,22 @@
         
       
     
+      
+        
+          <td style="text-align: center;">
+            <a class="page-link" href="/category/types and programming languages/index.html">
+              types and programming languages
+            </a>
+          </td>
+          
+            <td>
+              <span class="exclamationMark">/</span>
+            </td>
+          
+          
+        
+      
+    
     </tr>
     </table>
   </div>
@@ -269,33 +285,28 @@ $(document).ready(function () {
   <div class="post-content" itemprop="articleBody">
     <p>The product of two $n\times n$ matrices $X$ and $Y$ which takes $O(n^3)$</p>
 
-<script type="math/tex; mode=display">% <![CDATA[
-X=\begin{bmatrix}A&B\\C&D\end{bmatrix} %]]></script>
+\[X=\begin{bmatrix}A&amp;B\\C&amp;D\end{bmatrix}\]
 
-<script type="math/tex; mode=display">% <![CDATA[
-Y=\begin{bmatrix}E&F\\G&H\end{bmatrix} %]]></script>
+\[Y=\begin{bmatrix}E&amp;F\\G&amp;H\end{bmatrix}\]
 
 <p>is 
-<script type="math/tex">% <![CDATA[
-XY=\begin{bmatrix}A&B\\C&D\end{bmatrix}\begin{bmatrix}E&F\\G&H\end{bmatrix}=\begin{bmatrix}AE+BG&AF+BH\\CE+DG&CF+DH\end{bmatrix} %]]></script></p>
+\(XY=\begin{bmatrix}A&amp;B\\C&amp;D\end{bmatrix}\begin{bmatrix}E&amp;F\\G&amp;H\end{bmatrix}=\begin{bmatrix}AE+BG&amp;AF+BH\\CE+DG&amp;CF+DH\end{bmatrix}\)</p>
 
 <p>here $T(n)=8T(n/2)+O(n^2)\implies O(n^3)$</p>
 
 <p>Strassen gave:</p>
 
-<script type="math/tex; mode=display">% <![CDATA[
-XY=\begin{bmatrix}P_5+P_4-P_2+P_6&P_1+P_2\\P_3+P_4&P_1+P_5-P_3-P_7\end{bmatrix}
-\ %]]></script>
+\[XY=\begin{bmatrix}P_5+P_4-P_2+P_6&amp;P_1+P_2\\P_3+P_4&amp;P_1+P_5-P_3-P_7\end{bmatrix}
+\\]
 
 <p>where</p>
 
-<script type="math/tex; mode=display">% <![CDATA[
-\begin{align}
-P_1&=A(F-H)&P_5&=(A+D)(E+H)\\
-P_2&=(A+B)H&P_6&=(B-D)(G+H)\\
-P_3&=(C+D)E&P_7&=(A-C)(E+F)\\
-P_4&=D(G-E)\\
-\end{align} %]]></script>
+\[\begin{align}
+P_1&amp;=A(F-H)&amp;P_5&amp;=(A+D)(E+H)\\
+P_2&amp;=(A+B)H&amp;P_6&amp;=(B-D)(G+H)\\
+P_3&amp;=(C+D)E&amp;P_7&amp;=(A-C)(E+F)\\
+P_4&amp;=D(G-E)\\
+\end{align}\]
 
 <p>The new running time is $T(n)=7T(n/2)+O(n^2)$ which by the master theorem works out to be $O(n^{\log_27})\approx O(n^{2.81})$</p>
 
@@ -313,20 +324,6 @@ P_4&=D(G-E)\\
     </a>
   
   </footer>
-
-  <div id="disqus_thread"></div>
-
-<script>
-(function() {
-  var d = document, s = d.createElement('script');
-  s.src = 'https://adg1089blog.disqus.com/embed.js';
-  s.setAttribute('data-timestamp', +new Date());
-  (d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-
-
 
 </article>
 

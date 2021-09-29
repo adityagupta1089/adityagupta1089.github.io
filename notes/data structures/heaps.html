@@ -208,6 +208,22 @@
         
       
     
+      
+        
+          <td style="text-align: center;">
+            <a class="page-link" href="/category/types and programming languages/index.html">
+              types and programming languages
+            </a>
+          </td>
+          
+            <td>
+              <span class="exclamationMark">/</span>
+            </td>
+          
+          
+        
+      
+    
     </tr>
     </table>
   </div>
@@ -343,7 +359,7 @@ $(document).ready(function () {
 <h2 id="building-on">Building $O(n)$</h2>
 
 <p>Elements from $\lfloor n/2\rfloor+1$ to $n$ are all leaves of the tree so each is a 1-element heap. We run heapify on rest of the elements in order from $\lfloor n/2\rfloor$ to $1$. Total time taken for height $i$ is $2^i\cdot O(h-i)$. Sum over all levels is 
-<script type="math/tex">O(\sum_{i=0}^{\lg n} 2^{h-i}.i) =O\left(\sum _{i=0}^{\lg n}2^h . \frac i{2^i}\right)=O\left(n\cdot\sum_{i=0}^{\lg n}\frac i{2^i}\right)=O(n)</script>
+\(O(\sum_{i=0}^{\lg n} 2^{h-i}.i) =O\left(\sum _{i=0}^{\lg n}2^h . \frac i{2^i}\right)=O\left(n\cdot\sum_{i=0}^{\lg n}\frac i{2^i}\right)=O(n)\)
 Where $\sum_{x=0}^\infty x/2^x=x/(1-x)^2$ and we put $x=1/2$ to get $\sum i/2^i\le 2$.</p>
 
 <h2 id="extract-min-olg-n">Extract Min $O(\lg n)$</h2>
@@ -422,7 +438,7 @@ Where $\sum_{x=0}^\infty x/2^x=x/(1-x)^2$ and we put $x=1/2$ to get $\sum i/2^i\
 
 <h2 id="create-a-new-heap-o1">Create a new heap $O(1)$</h2>
 
-<p>Just allocate empty heap $H$ with $0$ trees and <code class="highlighter-rouge">NULL</code> min pointer $\phi(H)=0$</p>
+<p>Just allocate empty heap $H$ with $0$ trees and <code class="language-plaintext highlighter-rouge">NULL</code> min pointer $\phi(H)=0$</p>
 
 <h2 id="insert-a-node-o1">Insert a node $O(1)$</h2>
 
@@ -435,9 +451,8 @@ Where $\sum_{x=0}^\infty x/2^x=x/(1-x)^2$ and we put $x=1/2$ to get $\sum i/2^i\
 <h2 id="uniting-two-fibonacci-heaps-o1">Uniting two fibonacci heaps $O(1)$</h2>
 
 <p>Concatenate two root lists and update min-pointer if necessary. 
-<script type="math/tex">% <![CDATA[
-\begin{align}\Delta\phi(H)&=\phi(H)-\phi(H_1)-\phi(H_2)\\&=(t(H)+2m(H))-((t(H_1)+2m(H_1))+(t(H_2)+2m(H_2)))
-\\&=0\end{align} %]]></script></p>
+\(\begin{align}\Delta\phi(H)&amp;=\phi(H)-\phi(H_1)-\phi(H_2)\\&amp;=(t(H)+2m(H))-((t(H_1)+2m(H_1))+(t(H_2)+2m(H_2)))
+\\&amp;=0\end{align}\)</p>
 
 <p>since $t(H)=t(H_1)+t(H_2)$ and $m(H)=m(H_1)+m(H_2)$</p>
 
@@ -448,12 +463,11 @@ Where $\sum_{x=0}^\infty x/2^x=x/(1-x)^2$ and we put $x=1/2$ to get $\sum i/2^i\
 <p>The above operation will increate elements in root list to at most $D(n)+t(H)-1$, original $t(H)$ minus $1$ extracted node, new $D(n)$ children of extracted node. The total time taken for combining roots is therefore atmost $O(D(n)+t(H))$.</p>
 
 <p>The potential before is $t(H)+2m(H)$ and afterwards at most $(D(n)+1)+2m(H)$. Thus amortized cost is
-<script type="math/tex">% <![CDATA[
-\begin{align}
-&O(D(n)+t(H))+((D(n)+1)+2m(H))-(t(H)+2m(H))\\
-&=O(D(n))+O(t(H))-t(H))\\
-&=O(D(n))
-\end{align} %]]></script></p>
+\(\begin{align}
+&amp;O(D(n)+t(H))+((D(n)+1)+2m(H))-(t(H)+2m(H))\\
+&amp;=O(D(n))+O(t(H))-t(H))\\
+&amp;=O(D(n))
+\end{align}\)</p>
 
 <h2 id="decreasing-a-key-o1">Decreasing a key $O(1)$</h2>
 
@@ -498,20 +512,6 @@ Where $\sum_{x=0}^\infty x/2^x=x/(1-x)^2$ and we put $x=1/2$ to get $\sum i/2^i\
     </a>
   
   </footer>
-
-  <div id="disqus_thread"></div>
-
-<script>
-(function() {
-  var d = document, s = d.createElement('script');
-  s.src = 'https://adg1089blog.disqus.com/embed.js';
-  s.setAttribute('data-timestamp', +new Date());
-  (d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-
-
 
 </article>
 

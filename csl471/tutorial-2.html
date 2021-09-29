@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Aditya Gupta&#39;s Blog | Tutorial 2</title>
-  <meta name="description" content="  See proof of   The probability of $a_k$ is given by:    And therefore    And hence    Fisher-Yates Shuffle  $F$ is whether the coin is faulty, $H$ is heads...">
+  <meta name="description" content="  See proof of \(\displaystyle\lim_{n\to\infty}(H_n-\ln n)=\gamma\)  The probability of $a_k$ is given by:  \(\displaystyle P(a_k=i)=\frac{\binom {i-1}{k-1}}...">
   <link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic|Source+Sans+Pro:400,700,200,300|Josefin+Sans:400,600,700,300' rel='stylesheet' type='text/css'>
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
 
@@ -208,6 +208,22 @@
         
       
     
+      
+        
+          <td style="text-align: center;">
+            <a class="page-link" href="/category/types and programming languages/index.html">
+              types and programming languages
+            </a>
+          </td>
+          
+            <td>
+              <span class="exclamationMark">/</span>
+            </td>
+          
+          
+        
+      
+    
     </tr>
     </table>
   </div>
@@ -268,16 +284,15 @@ $(document).ready(function () {
 
   <div class="post-content" itemprop="articleBody">
     <ol>
-  <li>See proof of <script type="math/tex">\displaystyle\lim_{n\to\infty}(H_n-\ln n)=\gamma</script></li>
+  <li>See proof of \(\displaystyle\lim_{n\to\infty}(H_n-\ln n)=\gamma\)</li>
   <li>The probability of $a_k$ is given by:<br />
-  <script type="math/tex">\displaystyle P(a_k=i)=\frac{\binom {i-1}{k-1}}{\binom nk}</script><br />
+  \(\displaystyle P(a_k=i)=\frac{\binom {i-1}{k-1}}{\binom nk}\)<br />
   And therefore<br />
-  <script type="math/tex">% <![CDATA[
-\displaystyle \begin{align}E[a_k^2]&=\sum_{i=k}^n\frac{\binom {i-1}{k-1}}{\binom nk}i^2=\frac 1{\binom nk}\sum_{i=k}^{n}ki\binom ik=\frac 1{\binom nk}\sum_{i=k}^{n}\left(k(k+1)\binom {i+1}{k+1}-k\binom ik\right)\\&=\frac1{\binom nk}\left(k(k+1)\binom {n+2}{k+2}-k\binom {n+1}{k+1}\right)\\
-  &=\frac{k(k+1)(n+k+nk)}{(k+1)(k+2)}
-  \end{align} %]]></script><br />
+  \(\displaystyle \begin{align}E[a_k^2]&amp;=\sum_{i=k}^n\frac{\binom {i-1}{k-1}}{\binom nk}i^2=\frac 1{\binom nk}\sum_{i=k}^{n}ki\binom ik=\frac 1{\binom nk}\sum_{i=k}^{n}\left(k(k+1)\binom {i+1}{k+1}-k\binom ik\right)\\&amp;=\frac1{\binom nk}\left(k(k+1)\binom {n+2}{k+2}-k\binom {n+1}{k+1}\right)\\
+  &amp;=\frac{k(k+1)(n+k+nk)}{(k+1)(k+2)}
+  \end{align}\)<br />
   And hence<br />
-  <script type="math/tex">\sigma(a_k)=\sqrt{\frac{k(k+1)(n+k+nk)}{(k+1)(k+2)}-\frac {k^2(n+1)^2}{(k+1)^2}}=\frac 1{k+1}\sqrt{\frac{k(k-n)(k^2+(k+2)nk+k-1)}{k+2}}</script></li>
+  \(\sigma(a_k)=\sqrt{\frac{k(k+1)(n+k+nk)}{(k+1)(k+2)}-\frac {k^2(n+1)^2}{(k+1)^2}}=\frac 1{k+1}\sqrt{\frac{k(k-n)(k^2+(k+2)nk+k-1)}{k+2}}\)</li>
   <li><a href="https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle">Fisher-Yates Shuffle</a></li>
   <li>$F$ is whether the coin is faulty, $H$ is heads. We are given:
     <ul>
@@ -301,8 +316,8 @@ $P(G=1|C=0)=0.0001\implies P(G=1|C=0)=0.9999$</li>
       <li>10% of the students in the class actually cheated in the mid semester exams.<br />
 $P(C=1)=0.1\implies P(C=0)=0.9$</li>
       <li>Now we have:<br />
-<script type="math/tex">P(G=1)=P(G=1|C=0)P(C=0)+P(G=1|C=1)P(C=1)\\=0.0001\cdot 0.9+0.2\cdot 0.1\\=0.02009</script>
-<script type="math/tex">P(C=1|G=1)=\frac{P(G=1|C=1)P(C=1)}{P(G=1)}=\frac{0.2\cdot 0.1}{0.02009}\approx 99.95\%</script></li>
+\(P(G=1)=P(G=1|C=0)P(C=0)+P(G=1|C=1)P(C=1)\\=0.0001\cdot 0.9+0.2\cdot 0.1\\=0.02009\)
+\(P(C=1|G=1)=\frac{P(G=1|C=1)P(C=1)}{P(G=1)}=\frac{0.2\cdot 0.1}{0.02009}\approx 99.95\%\)</li>
     </ul>
   </li>
   <li>Examples:
@@ -313,7 +328,7 @@ $P(C=1)=0.1\implies P(C=0)=0.9$</li>
     </ul>
   </li>
   <li>Every subset $\displaystyle {x_1,x_2…x_k}$ has an attached probability:<br />
-  <script type="math/tex">\displaystyle \left(\frac12\right)^{k}\left(1-\frac 12\right)^{n-k}=\frac 1{2^n}</script><br />
+  \(\displaystyle \left(\frac12\right)^{k}\left(1-\frac 12\right)^{n-k}=\frac 1{2^n}\)<br />
     <ul>
       <li>(i) $S$ is partitioned by 3 sets - $X$, $Y\setminus X$, $S\setminus Y$ hence $(3/4)^n$</li>
       <li>(ii) symmetric - $(3/4)^n$</li>
@@ -333,13 +348,12 @@ $P(C=1)=0.1\implies P(C=0)=0.9$</li>
       <li><strong>Total</strong>: $8+48+98+82+36+9+1=282$ hence $282/512=141/256$, Note that in the below enumeration, both can win $21/64$ which is also counted here, giving: $99/256+21/128=141/256$
   <script src="https://gist.github.com/adityagupta1089/4cb318cb8fc38ff7d6d323813cf2b727.js"></script></li>
       <li>We get the following (where $X$ is 1 if crosses win and $Y$ is 1 if circles win):
-  <script type="math/tex">% <![CDATA[
-P_{X,Y}(x,y)=\begin{cases}
-  \frac{1}{16}&x=0,y=0\\
-  \frac{99}{256}&x=0,y=1\\
-  \frac{99}{256}&x=1,y=0\\
-  \frac{21}{128}&x=1,y=1
-  \end{cases} %]]></script>\</li>
+  \(P_{X,Y}(x,y)=\begin{cases}
+  \frac{1}{16}&amp;x=0,y=0\\
+  \frac{99}{256}&amp;x=0,y=1\\
+  \frac{99}{256}&amp;x=1,y=0\\
+  \frac{21}{128}&amp;x=1,y=1
+  \end{cases}\)\</li>
     </ul>
 
     <p><strong>Case b:</strong> We perform an enumeration:</p>
@@ -348,10 +362,10 @@ P_{X,Y}(x,y)=\begin{cases}
     </ul>
   </li>
   <li>
-    <script type="math/tex; mode=display">\frac {70000}{100000}\frac {999}{1000}+\frac {30000}{100000}\frac{1}{1000}=\frac{1749}{2500}\approx 69.96\%</script>
+\[\frac {70000}{100000}\frac {999}{1000}+\frac {30000}{100000}\frac{1}{1000}=\frac{1749}{2500}\approx 69.96\%\]
   </li>
   <li>Let her win $k$ rounds and loose $n-k$ rounds then:<br />
-  <script type="math/tex">P=k\cdot 1+(n-k)\cdot (-1)=2k-n>0\implies k>n/2</script><br />
+  \(P=k\cdot 1+(n-k)\cdot (-1)=2k-n&gt;0\implies k&gt;n/2\)<br />
   Now the expected number of steps to get positive profit: (TODO, Possibly not taught yet)</li>
 </ol>
 
@@ -369,20 +383,6 @@ P_{X,Y}(x,y)=\begin{cases}
     </a>
   
   </footer>
-
-  <div id="disqus_thread"></div>
-
-<script>
-(function() {
-  var d = document, s = d.createElement('script');
-  s.src = 'https://adg1089blog.disqus.com/embed.js';
-  s.setAttribute('data-timestamp', +new Date());
-  (d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-
-
 
 </article>
 
