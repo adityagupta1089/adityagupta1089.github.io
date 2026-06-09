@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Aditya Gupta's Blog</title>
-    <description></description>
+    <title>Aditya Gupta</title>
+    <description>Software engineer at Verily. Notes on algorithms, chess, music, and whatever else.</description>
     <link>https://adityagupta1089.github.io/</link>
     <atom:link href="https://adityagupta1089.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 29 Sep 2021 19:53:56 +0000</pubDate>
-    <lastBuildDate>Wed, 29 Sep 2021 19:53:56 +0000</lastBuildDate>
-    <generator>Jekyll v3.9.1</generator>
+    <pubDate>Tue, 09 Jun 2026 05:01:15 +0000</pubDate>
+    <lastBuildDate>Tue, 09 Jun 2026 05:01:15 +0000</lastBuildDate>
+    <generator>Jekyll v4.4.1</generator>
     
       <item>
         <title>Types and Programming Languages`:` Introduction</title>
