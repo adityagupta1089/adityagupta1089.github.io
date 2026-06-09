@@ -1,11 +1,32 @@
-title: Aditya Gupta's Blog
+title: Aditya Gupta
+description: Software engineer at Verily. Notes on algorithms, chess, music, and whatever else.
 email: adityagupta1089@gmail.com
 baseurl: ""
 url: "https://adityagupta1089.github.io"
-github_username:  adityagupta1089
+
+github_username: adityagupta1089
+linkedin_username: aaditya-gupta
+strava_id: 107970902
+
 theme-dark: false
-plugins: [jekyll-paginate-v2, kramdown]
+
+plugins:
+  - jekyll-paginate-v2
+  - jekyll-feed
+  - jekyll-compose
+  - jekyll-seo-tag
+
 markdown: kramdown
+kramdown:
+  input: GFM
+
+sass:
+  style: compressed
+  silence_deprecations:
+    - import
+    - global-builtin
+    - color-functions
+    - slash-div
 
 permalink: none
 

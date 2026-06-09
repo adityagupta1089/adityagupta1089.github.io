@@ -1,26 +1,23 @@
 ---
 layout: page
-title : About
+title: About
 permalink: /about/
-categories: [General]
 ---
-Hi! I am Aditya Gupta.
 
-You can find me at these places:
+Hi, I'm Aditya Gupta — a software engineer at [Verily Life Sciences](https://verily.com) (an Alphabet company), working on health and life sciences technology.
 
-<style type="text/css">
-img {
-	padding-right: 5px;
-	width: 16px;
-	height: 16px;
-}
-</style>
+I studied computer science at IIT Roorkee. These days I write code professionally, run recreationally, and play the keyboard when I find the time.
 
+This blog is a place for notes, writeups, and occasional deep-dives — mostly on algorithms, chess, and whatever I'm exploring at the time.
 
-| Site                                                         | Description                          |
-| ------------------------------------------------------------ | ------------------------------------ |
-| ![]({{site.url}}/images/github-icon.png)[Github](https://github.com/adityagupta1089/) | Coding Projects                      |
-| ![]({{site.url}}/images/googleplay-icon.png)[Google Play](https://play.google.com/store/apps/developer?id=Aditya+Gupta) | Android Apps that I created long ago |
-| ![]({{site.url}}/images/mse-icon.png)[Mathematics Stack Exchange](https://math.stackexchange.com/users/67609/re60k) | Mathematics Q&A                      |
-| ![]({{site.url}}/images/cse-icon.png) [Chemistry Stack Exchange](https://chemistry.stackexchange.com/users/5531/re60k) | Chemistry Q&A                        |
-| ![]({{site.url}}/images/soundcloud-icon.png)[SoundCloud](https://soundcloud.com/aditya-gupta-580893073) | Electronic Keyboard Performances     |
+---
+
+### Find me elsewhere
+
+| | |
+|---|---|
+| <i class="fa-brands fa-github"></i> [GitHub](https://github.com/adityagupta1089) | Code and projects |
+| <i class="fa-brands fa-linkedin"></i> [LinkedIn](https://linkedin.com/in/aaditya-gupta) | Professional profile |
+| <i class="fa-brands fa-strava"></i> [Strava](https://www.strava.com/athletes/107970902) | Running logs |
+| <i class="fa-brands fa-soundcloud"></i> [SoundCloud](https://soundcloud.com/aditya-gupta-580893073) | Keyboard performances |
+| <i class="fa-solid fa-square-root-variable"></i> [Math SE](https://math.stackexchange.com/users/67609/re60k) | Mathematics Q&A |

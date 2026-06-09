@@ -5,11 +5,11 @@
     <div class="footer-col-wrapper">
       <div class="footer-col footer-col-1">
         <ul class="contact-list footer-content">
-          <li>Forked & Modified from
-            <a href="http://github.com/hemangsk/Gravity">Gravity</a>
+          <li>Forked &amp; modified from
+            <a href="https://github.com/hemangsk/Gravity">Gravity</a>
           </li>
-          <li>Made with <i class="fa fa-heart"></i> on
-            <a href="http://jekyllrb.com"><span>{ { Jekyll } }</a></span>
+          <li>Made with <i class="fa-solid fa-heart"></i> using
+            <a href="https://jekyllrb.com">Jekyll</a>
           </li>
         </ul>
       </div>
@@ -18,15 +18,32 @@
         <ul class="social-media-list">
           {% if site.github_username %}
           <li>
-            {% include icon-github.html username=site.github_username %}
+            <a href="https://github.com/{{ site.github_username }}">
+              <i class="fa-brands fa-github"></i> {{ site.github_username }}
+            </a>
+          </li>
+          {% endif %}
+          {% if site.linkedin_username %}
+          <li>
+            <a href="https://linkedin.com/in/{{ site.linkedin_username }}">
+              <i class="fa-brands fa-linkedin"></i> {{ site.linkedin_username }}
+            </a>
+          </li>
+          {% endif %}
+          {% if site.strava_id %}
+          <li>
+            <a href="https://www.strava.com/athletes/{{ site.strava_id }}">
+              <i class="fa-brands fa-strava"></i> Strava
+            </a>
           </li>
           {% endif %}
         </ul>
       </div>
 
       <div class="footer-col footer-col-3 footer-content">
-          <img src="{{site.url}}/images/rss-icon.png" style="filter: opacity(45%);width:16px;height:16px;">
-          <a href="{{site.url}}/feed.xml">RSS Feed</a>
+        <a href="{{ site.url }}/feed.xml">
+          <i class="fa-solid fa-rss"></i> RSS Feed
+        </a>
       </div>
     </div>
 
