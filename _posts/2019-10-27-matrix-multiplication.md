@@ -6,7 +6,7 @@ categories:
 - Algorithms
 date: 2019-10-27 00:16 +0530
 ---
-The product of two $n\times n$ matrices $X$ and $Y$ which takes $O(n^3)$
+The product of two \(n\times n\) matrices \(X\) and \(Y\) which takes \(O(n^3)\)
 
 $$X=\begin{bmatrix}A&B\\C&D\end{bmatrix}$$
 
@@ -18,7 +18,7 @@ XY=\begin{bmatrix}A&B\\C&D\end{bmatrix}\begin{bmatrix}E&F\\G&H\end{bmatrix}=\beg
 $$
 
 
-here $T(n)=8T(n/2)+O(n^2)\implies O(n^3)$
+here \(T(n)=8T(n/2)+O(n^2)\implies O(n^3)\)
 
 Strassen gave:
 
@@ -36,4 +36,4 @@ P_4&=D(G-E)\\
 \end{align}
 $$
 
-The new running time is $T(n)=7T(n/2)+O(n^2)$ which by the master theorem works out to be $O(n^{\log_27})\approx O(n^{2.81})$
+The new running time is \(T(n)=7T(n/2)+O(n^2)\) which by the master theorem works out to be \(O(n^{\log_27})\approx O(n^{2.81})\)
