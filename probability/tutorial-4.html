@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Aditya Gupta&#39;s Blog | Tutorial 4</title>
-  <meta name="description" content="  Given a binary string, the total strings that have maximum length of zeroes as $k$ can be found out by defining $a(n;k)$ as the valid strings that end at $...">
+  <meta name="description" content="  Given a binary string, the total strings that have maximum length of zeroes as (k) can be found out by defining (a(n;k)) as the valid strings that end at (...">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,8 +23,8 @@
 <meta name="generator" content="Jekyll v4.4.1" />
 <meta property="og:title" content="Tutorial 4" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Given a binary string, the total strings that have maximum length of zeroes as $k$ can be found out by defining $a(n;k)$ as the valid strings that end at $1$ and $b(n;k)$ as the valid strings that end at $0$. Then we have: We can $1$ to end of any valid string: \(a(n;k)=a(n-1;k)+b(n-1;k)\) We can add upto $k$ consecutive zeroes after a $1$: \(b(n;k)=a(n-1;k)+a(n-2;k)+...a(n-k;k)\) Which can be written as: \(a(n-1;k)+a(n-2;k)+..a(n-k;k)=b(n;k)=a(n+1;k)-a(n;k)\\\displaystyle \implies a(n+1;k)=\sum_{i=n-k}^na(i;k)\) Solve using generating functions, Define $T(n;k)=a(n;k)+b(n;k)$ and then the expected value is $\frac 1{2^n}\sum T(n;k)\cdot k$ (Note: Calculation remaining.) Suppose $ai\equiv aj\pmod n\implies a(i-j)\equiv 0\pmod n\implies i-j\equiv 0\pmod…" />
-<meta name="twitter:description" property="og:description" content="Given a binary string, the total strings that have maximum length of zeroes as $k$ can be found out by defining $a(n;k)$ as the valid strings that end at $1$ and $b(n;k)$ as the valid strings that end at $0$. Then we have: We can $1$ to end of any valid string: \(a(n;k)=a(n-1;k)+b(n-1;k)\) We can add upto $k$ consecutive zeroes after a $1$: \(b(n;k)=a(n-1;k)+a(n-2;k)+...a(n-k;k)\) Which can be written as: \(a(n-1;k)+a(n-2;k)+..a(n-k;k)=b(n;k)=a(n+1;k)-a(n;k)\\\displaystyle \implies a(n+1;k)=\sum_{i=n-k}^na(i;k)\) Solve using generating functions, Define $T(n;k)=a(n;k)+b(n;k)$ and then the expected value is $\frac 1{2^n}\sum T(n;k)\cdot k$ (Note: Calculation remaining.) Suppose $ai\equiv aj\pmod n\implies a(i-j)\equiv 0\pmod n\implies i-j\equiv 0\pmod…" />
+<meta name="description" content="Given a binary string, the total strings that have maximum length of zeroes as (k) can be found out by defining (a(n;k)) as the valid strings that end at (1) and (b(n;k)) as the valid strings that end at (0). Then we have: We can (1) to end of any valid string: \(a(n;k)=a(n-1;k)+b(n-1;k)\) We can add upto (k) consecutive zeroes after a (1): \(b(n;k)=a(n-1;k)+a(n-2;k)+...a(n-k;k)\) Which can be written as: \(a(n-1;k)+a(n-2;k)+..a(n-k;k)=b(n;k)=a(n+1;k)-a(n;k)\\\displaystyle \implies a(n+1;k)=\sum_{i=n-k}^na(i;k)\) Solve using generating functions, Define (T(n;k)=a(n;k)+b(n;k)) and then the expected value is (\frac 1{2^n}\sum T(n;k)\cdot k) (Note: Calculation remaining.) Suppose (ai\equiv aj\pmod n\implies a(i-j)\equiv 0\pmod n\implies i-j\equiv 0\pmod…" />
+<meta name="twitter:description" property="og:description" content="Given a binary string, the total strings that have maximum length of zeroes as (k) can be found out by defining (a(n;k)) as the valid strings that end at (1) and (b(n;k)) as the valid strings that end at (0). Then we have: We can (1) to end of any valid string: \(a(n;k)=a(n-1;k)+b(n-1;k)\) We can add upto (k) consecutive zeroes after a (1): \(b(n;k)=a(n-1;k)+a(n-2;k)+...a(n-k;k)\) Which can be written as: \(a(n-1;k)+a(n-2;k)+..a(n-k;k)=b(n;k)=a(n+1;k)-a(n;k)\\\displaystyle \implies a(n+1;k)=\sum_{i=n-k}^na(i;k)\) Solve using generating functions, Define (T(n;k)=a(n;k)+b(n;k)) and then the expected value is (\frac 1{2^n}\sum T(n;k)\cdot k) (Note: Calculation remaining.) Suppose (ai\equiv aj\pmod n\implies a(i-j)\equiv 0\pmod n\implies i-j\equiv 0\pmod…" />
 <link rel="canonical" href="https://adityagupta1089.github.io/probability/tutorial-4.html" />
 <meta property="og:url" content="https://adityagupta1089.github.io/probability/tutorial-4.html" />
 <meta property="og:site_name" content="Aditya Gupta’s Blog" />
@@ -34,7 +34,7 @@
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="Tutorial 4" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2017-09-24T08:29:00+00:00","datePublished":"2017-09-24T08:29:00+00:00","description":"Given a binary string, the total strings that have maximum length of zeroes as $k$ can be found out by defining $a(n;k)$ as the valid strings that end at $1$ and $b(n;k)$ as the valid strings that end at $0$. Then we have: We can $1$ to end of any valid string: \\(a(n;k)=a(n-1;k)+b(n-1;k)\\) We can add upto $k$ consecutive zeroes after a $1$: \\(b(n;k)=a(n-1;k)+a(n-2;k)+...a(n-k;k)\\) Which can be written as: \\(a(n-1;k)+a(n-2;k)+..a(n-k;k)=b(n;k)=a(n+1;k)-a(n;k)\\\\\\displaystyle \\implies a(n+1;k)=\\sum_{i=n-k}^na(i;k)\\) Solve using generating functions, Define $T(n;k)=a(n;k)+b(n;k)$ and then the expected value is $\\frac 1{2^n}\\sum T(n;k)\\cdot k$ (Note: Calculation remaining.) Suppose $ai\\equiv aj\\pmod n\\implies a(i-j)\\equiv 0\\pmod n\\implies i-j\\equiv 0\\pmod…","headline":"Tutorial 4","mainEntityOfPage":{"@type":"WebPage","@id":"https://adityagupta1089.github.io/probability/tutorial-4.html"},"url":"https://adityagupta1089.github.io/probability/tutorial-4.html"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2017-09-24T08:29:00+00:00","datePublished":"2017-09-24T08:29:00+00:00","description":"Given a binary string, the total strings that have maximum length of zeroes as (k) can be found out by defining (a(n;k)) as the valid strings that end at (1) and (b(n;k)) as the valid strings that end at (0). Then we have: We can (1) to end of any valid string: \\(a(n;k)=a(n-1;k)+b(n-1;k)\\) We can add upto (k) consecutive zeroes after a (1): \\(b(n;k)=a(n-1;k)+a(n-2;k)+...a(n-k;k)\\) Which can be written as: \\(a(n-1;k)+a(n-2;k)+..a(n-k;k)=b(n;k)=a(n+1;k)-a(n;k)\\\\\\displaystyle \\implies a(n+1;k)=\\sum_{i=n-k}^na(i;k)\\) Solve using generating functions, Define (T(n;k)=a(n;k)+b(n;k)) and then the expected value is (\\frac 1{2^n}\\sum T(n;k)\\cdot k) (Note: Calculation remaining.) Suppose (ai\\equiv aj\\pmod n\\implies a(i-j)\\equiv 0\\pmod n\\implies i-j\\equiv 0\\pmod…","headline":"Tutorial 4","mainEntityOfPage":{"@type":"WebPage","@id":"https://adityagupta1089.github.io/probability/tutorial-4.html"},"url":"https://adityagupta1089.github.io/probability/tutorial-4.html"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -158,7 +158,7 @@
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
     tex2jax: {
-      inlineMath: [ ['$','$'], ['\\(','\\)'] ],
+      inlineMath: [ ['\\(','\\)'] ],
       displayMath: [ ['$$', '$$'], ['\\[','\\]'] ],
       processEscapes: true
     },
@@ -208,23 +208,23 @@ $(document).ready(function () {
 
   <div class="post-content" itemprop="articleBody">
     <ol>
-  <li>Given a binary string, the total strings that have maximum length of zeroes as $k$ can be found out by defining $a(n;k)$ as the valid strings that end at $1$ and $b(n;k)$ as the valid strings that end at $0$. Then we have:<br />
+  <li>Given a binary string, the total strings that have maximum length of zeroes as (k) can be found out by defining (a(n;k)) as the valid strings that end at (1) and (b(n;k)) as the valid strings that end at (0). Then we have:<br />
     <ul>
-      <li>We can $1$ to end of any valid string:<br />
+      <li>We can (1) to end of any valid string:<br />
 \(a(n;k)=a(n-1;k)+b(n-1;k)\)</li>
-      <li>We can add upto $k$ consecutive zeroes after a $1$:<br />
+      <li>We can add upto (k) consecutive zeroes after a (1):<br />
 \(b(n;k)=a(n-1;k)+a(n-2;k)+...a(n-k;k)\)<br />
 Which can be written as:
 \(a(n-1;k)+a(n-2;k)+..a(n-k;k)=b(n;k)=a(n+1;k)-a(n;k)\\\displaystyle
 \implies a(n+1;k)=\sum_{i=n-k}^na(i;k)\)
-Solve using generating functions, Define $T(n;k)=a(n;k)+b(n;k)$ and then the expected value is $\frac 1{2^n}\sum T(n;k)\cdot k$ (<strong>Note</strong>: Calculation remaining.)</li>
+Solve using generating functions, Define (T(n;k)=a(n;k)+b(n;k)) and then the expected value is (\frac 1{2^n}\sum T(n;k)\cdot k) (<strong>Note</strong>: Calculation remaining.)</li>
     </ul>
   </li>
-  <li>Suppose $ai\equiv aj\pmod n\implies a(i-j)\equiv 0\pmod n\implies i-j\equiv 0\pmod n$ (since $(a,n)=1$) hence $i=j$</li>
+  <li>Suppose (ai\equiv aj\pmod n\implies a(i-j)\equiv 0\pmod n\implies i-j\equiv 0\pmod n) (since ((a,n)=1)) hence (i=j)</li>
   <li><a href="https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle">Fisher-Yates Shuffle</a></li>
-  <li>We check $AB=C$ by finding $ABv$ and $Cv$ which is computationally faster. Suppose $AB= C$ then $\forall v\in{\mathbb Z}_k^n$, $ABv=Cv$. However, if $AB\ne C\implies (AB-C)\ne {\bf 0}$ then we may find some vectors $v\in {\mathbb Z}_k^n$ such that $(AB-C)v={\bf 0}$. But for every $u$ such that $(AB-C)u\ne {\bf 0}$ (whose existence is easy to prove by inspecting the entries of $AB-C$) we have $(AB-C)(u+v)\ne {\bf 0}$, $(AB-C)(u+2v)\ne {\bf 0}$, till $(AB-C)(u+(k-1)v)\ne {\bf 0}$ hence<br />
+  <li>We check (AB=C) by finding (ABv) and (Cv) which is computationally faster. Suppose (AB= C) then (\forall v\in{\mathbb Z}_k^n), (ABv=Cv). However, if (AB\ne C\implies (AB-C)\ne {\bf 0}) then we may find some vectors (v\in {\mathbb Z}_k^n) such that ((AB-C)v={\bf 0}). But for every (u) such that ((AB-C)u\ne {\bf 0}) (whose existence is easy to prove by inspecting the entries of (AB-C)) we have ((AB-C)(u+v)\ne {\bf 0}), ((AB-C)(u+2v)\ne {\bf 0}), till ((AB-C)(u+(k-1)v)\ne {\bf 0}) hence<br />
 \(\displaystyle |\{u\in {\mathbb Z}_k^n|(AB-C)u= {\bf 0}\}|\le\frac 1{k}|{\mathbb Z_k^n}|=k^{n-1}\)<br />
-Hence the probability with which we get the correct result is $1-1/{k^t}$ where we perform $t$ iterations. In the case $k\to\infty$, that becomes close to $1$.</li>
+Hence the probability with which we get the correct result is (1-1/{k^t}) where we perform (t) iterations. In the case (k\to\infty), that becomes close to (1).</li>
   <li>
 \[\sum_{i=1}^{52}\left(\frac 1{52}\cdot 1 +\frac {51}{52}\cdot 0\right)=1\]
   </li>

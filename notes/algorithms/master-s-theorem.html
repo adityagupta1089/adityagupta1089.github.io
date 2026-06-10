@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Aditya Gupta&#39;s Blog | Master&#39;s Theorem</title>
-  <meta name="description" content="Theorem: $T(n)=aT(\lceil n/b\rceil)+O(n^d)$ for some constants $a&gt;0,b&gt;1,d\ge 0$ then\(T(n)=\begin{cases}O(n^d)&amp;d&gt;\log_b a\\O(n^d\log n)&amp;d=\l...">
+  <meta name="description" content="Theorem: (T(n)=aT(\lceil n/b\rceil)+O(n^d)) for some constants (a&gt;0,b&gt;1,d\ge 0) then\(T(n)=\begin{cases}O(n^d)&amp;d&gt;\log_b a\\O(n^d\log n)&amp;d=\l...">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,8 +23,8 @@
 <meta name="generator" content="Jekyll v4.4.1" />
 <meta property="og:title" content="Master’s Theorem" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Theorem: $T(n)=aT(\lceil n/b\rceil)+O(n^d)$ for some constants $a&gt;0,b&gt;1,d\ge 0$ then \(T(n)=\begin{cases} O(n^d)&amp;d&gt;\log_b a\\ O(n^d\log n)&amp;d=\log_ba\\ O(n^{\log_ba})&amp;d&lt;\log_ba \end{cases}\)" />
-<meta name="twitter:description" property="og:description" content="Theorem: $T(n)=aT(\lceil n/b\rceil)+O(n^d)$ for some constants $a&gt;0,b&gt;1,d\ge 0$ then \(T(n)=\begin{cases} O(n^d)&amp;d&gt;\log_b a\\ O(n^d\log n)&amp;d=\log_ba\\ O(n^{\log_ba})&amp;d&lt;\log_ba \end{cases}\)" />
+<meta name="description" content="Theorem: (T(n)=aT(\lceil n/b\rceil)+O(n^d)) for some constants (a&gt;0,b&gt;1,d\ge 0) then \(T(n)=\begin{cases} O(n^d)&amp;d&gt;\log_b a\\ O(n^d\log n)&amp;d=\log_ba\\ O(n^{\log_ba})&amp;d&lt;\log_ba \end{cases}\)" />
+<meta name="twitter:description" property="og:description" content="Theorem: (T(n)=aT(\lceil n/b\rceil)+O(n^d)) for some constants (a&gt;0,b&gt;1,d\ge 0) then \(T(n)=\begin{cases} O(n^d)&amp;d&gt;\log_b a\\ O(n^d\log n)&amp;d=\log_ba\\ O(n^{\log_ba})&amp;d&lt;\log_ba \end{cases}\)" />
 <link rel="canonical" href="https://adityagupta1089.github.io/notes/algorithms/master-s-theorem.html" />
 <meta property="og:url" content="https://adityagupta1089.github.io/notes/algorithms/master-s-theorem.html" />
 <meta property="og:site_name" content="Aditya Gupta’s Blog" />
@@ -34,7 +34,7 @@
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="Master’s Theorem" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2019-10-26T17:52:00+00:00","datePublished":"2019-10-26T17:52:00+00:00","description":"Theorem: $T(n)=aT(\\lceil n/b\\rceil)+O(n^d)$ for some constants $a&gt;0,b&gt;1,d\\ge 0$ then \\(T(n)=\\begin{cases} O(n^d)&amp;d&gt;\\log_b a\\\\ O(n^d\\log n)&amp;d=\\log_ba\\\\ O(n^{\\log_ba})&amp;d&lt;\\log_ba \\end{cases}\\)","headline":"Master’s Theorem","mainEntityOfPage":{"@type":"WebPage","@id":"https://adityagupta1089.github.io/notes/algorithms/master-s-theorem.html"},"url":"https://adityagupta1089.github.io/notes/algorithms/master-s-theorem.html"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2019-10-26T17:52:00+00:00","datePublished":"2019-10-26T17:52:00+00:00","description":"Theorem: (T(n)=aT(\\lceil n/b\\rceil)+O(n^d)) for some constants (a&gt;0,b&gt;1,d\\ge 0) then \\(T(n)=\\begin{cases} O(n^d)&amp;d&gt;\\log_b a\\\\ O(n^d\\log n)&amp;d=\\log_ba\\\\ O(n^{\\log_ba})&amp;d&lt;\\log_ba \\end{cases}\\)","headline":"Master’s Theorem","mainEntityOfPage":{"@type":"WebPage","@id":"https://adityagupta1089.github.io/notes/algorithms/master-s-theorem.html"},"url":"https://adityagupta1089.github.io/notes/algorithms/master-s-theorem.html"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -158,7 +158,7 @@
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
     tex2jax: {
-      inlineMath: [ ['$','$'], ['\\(','\\)'] ],
+      inlineMath: [ ['\\(','\\)'] ],
       displayMath: [ ['$$', '$$'], ['\\[','\\]'] ],
       processEscapes: true
     },
@@ -207,7 +207,7 @@ $(document).ready(function () {
   </header>
 
   <div class="post-content" itemprop="articleBody">
-    <p><strong>Theorem</strong>: $T(n)=aT(\lceil n/b\rceil)+O(n^d)$ for some constants $a&gt;0,b&gt;1,d\ge 0$ then
+    <p><strong>Theorem</strong>: (T(n)=aT(\lceil n/b\rceil)+O(n^d)) for some constants (a&gt;0,b&gt;1,d\ge 0) then
 \(T(n)=\begin{cases}
 O(n^d)&amp;d&gt;\log_b a\\
 O(n^d\log n)&amp;d=\log_ba\\
@@ -216,20 +216,20 @@ O(n^{\log_ba})&amp;d&lt;\log_ba
 
 <p><strong>Proof</strong>: <img src="https://adityagupta1089.github.io/images/mastertheorem.png" alt="" /></p>
 
-<p>Each problem of size $n$ is divided into $a$ subproblems of size $n/b$. Each level has problem of size $n/b^k$ and work done is:
+<p>Each problem of size (n) is divided into (a) subproblems of size (n/b). Each level has problem of size (n/b^k) and work done is:
 \(a^k\times O\left(\frac nb^k\right)^d=O(n^d)\times \left(\frac ab^d\right)^k\)</p>
 
-<p>As $k$ goes from $0$ (root) to $\log_bn$ (the leaves), these form a geometric series with ratio $r=a/b^d$</p>
+<p>As (k) goes from (0) (root) to (\log_bn) (the leaves), these form a geometric series with ratio (r=a/b^d)</p>
 
 <ol>
-  <li>$r&lt;1$: Decreasing series, sum is first term $O(n^d)$</li>
-  <li>$r&gt;1$: Increasing series, sum is last term $O(n^{\log_ba})$</li>
+  <li>(r&lt;1): Decreasing series, sum is first term (O(n^d))</li>
+  <li>(r&gt;1): Increasing series, sum is last term (O(n^{\log_ba}))</li>
 </ol>
 
 \[n^d\left(\frac a{b^d}\right)^{\log_bn}=n^d\left(\frac{a^{\log_bn}}{(b^{\log_bn})^d}\right)=a^{\log_bn}=a^{(\log_an)(\log_ba)}=n^{\log_ba}\]
 
 <ol>
-  <li>$r=1$: All $O(\log n)$ terms are equal to $O(n^d)$</li>
+  <li>(r=1): All (O(\log n)) terms are equal to (O(n^d))</li>
 </ol>
 
 

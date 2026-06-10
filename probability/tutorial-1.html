@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Aditya Gupta&#39;s Blog | Tutorial 1</title>
-  <meta name="description" content="  Here $M$ is the total money, we use Law of total expectation in the first step, i.e. $E[M]=E[E[M|Y]]$ where $Y$ is the die throw and $E[M|Y=y] = y+ E[M]$ f...">
+  <meta name="description" content="  Here (M) is the total money, we use Law of total expectation in the first step, i.e. (E[M]=E[E[M|Y]]) where (Y) is the die throw and (E[M|Y=y] = y+ E[M]) f...">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,8 +23,8 @@
 <meta name="generator" content="Jekyll v4.4.1" />
 <meta property="og:title" content="Tutorial 1" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Here $M$ is the total money, we use Law of total expectation in the first step, i.e. $E[M]=E[E[M|Y]]$ where $Y$ is the die throw and $E[M|Y=y] = y+ E[M]$ for $1\le y \le 5$ and $6$ for $Y=6$. \(\begin{align}E[M]&amp;=\frac 16((1+E[M])+(2+E[M])+(3+E[M])+(4+E[M])+(5+E[M])+6)\\ E[M]&amp;=\frac 16(21 + 5E[M])\\ E[M]&amp;=21 \end{align}\) Method 1: For standard deviation this particular form seems useful \(\begin{align} \sigma(M)&amp;=\sqrt{E[M^2]-E^2[m])]}\\ E[M^2]&amp;=\frac 166^2+\left(\frac 16\right)^2((1+6)^2+(2+6)^2+..(5+6)^2)+\left(\frac 16\right)^3(\sum_{1\le y_1\le 5\\1\le y_2\le 5}(y_1+y_2+6)^2)+... \end{align}\) Now let’s define (here \(y_1,y_2...y_k\in\{1,2,..5\}\)) \(\begin{align}V_k&amp;=\sum_{y_1}\sum_{y_2}...\sum_{y_k}(y_1+y_2+...y_k+6)^2\\ &amp;=\sum_{y_1}\sum_{y_2}..\sum_{y_k}(y_1+y_2+..y_{k-1}+6)^2+\sum_{y_1}\sum_{y_2}..\sum_{y_k}y_k^2+2\underbrace{\sum_{y_1}\sum_{y_2}..\sum_{y_{k-1}}(y_1+y_2+..y_{k-1}+6)}_{T_{k-1}}\sum_{y_k}y_k\\ &amp;=5V_{k-1}+55\cdot 5^{k-1}+2\cdot T_{k-1} \cdot 15\\ T_k&amp;=\sum_{y_1}\sum_{y_2}..\sum_{y_k}(y_1+y_2+..y_k+6)\\ &amp;=\sum_{y_1}\sum_{y_2}..\sum_{y_{k-1}}(5y_1+5y_2+..5y_{k-1}+15+5\cdot 6)\\ &amp;=\underbrace{5^{k-1}\cdot 15+5^{k-1}\cdot 15+..}_{k\text{ times}}+6\cdot 5^k\\ &amp;=3(k+2)\cdot 5^k \\ V_k&amp;=5V_{k-1}+55\cdot 5^{k-1}+90(k+1)\cdot 5^{k-1}\\ &amp;=5V_{k-1}+5^k(18k+29)\\ &amp;=5^2V_{k-2}+5^k((18k+29)+(18(k-1)+29))\\ &amp;=5^{k-1}V_1+5^k\left(\sum _{j=2}^k(18j+29)\right)\\ &amp;=5^{k-1}\cdot 415 +…" />
-<meta name="twitter:description" property="og:description" content="Here $M$ is the total money, we use Law of total expectation in the first step, i.e. $E[M]=E[E[M|Y]]$ where $Y$ is the die throw and $E[M|Y=y] = y+ E[M]$ for $1\le y \le 5$ and $6$ for $Y=6$. \(\begin{align}E[M]&amp;=\frac 16((1+E[M])+(2+E[M])+(3+E[M])+(4+E[M])+(5+E[M])+6)\\ E[M]&amp;=\frac 16(21 + 5E[M])\\ E[M]&amp;=21 \end{align}\) Method 1: For standard deviation this particular form seems useful \(\begin{align} \sigma(M)&amp;=\sqrt{E[M^2]-E^2[m])]}\\ E[M^2]&amp;=\frac 166^2+\left(\frac 16\right)^2((1+6)^2+(2+6)^2+..(5+6)^2)+\left(\frac 16\right)^3(\sum_{1\le y_1\le 5\\1\le y_2\le 5}(y_1+y_2+6)^2)+... \end{align}\) Now let’s define (here \(y_1,y_2...y_k\in\{1,2,..5\}\)) \(\begin{align}V_k&amp;=\sum_{y_1}\sum_{y_2}...\sum_{y_k}(y_1+y_2+...y_k+6)^2\\ &amp;=\sum_{y_1}\sum_{y_2}..\sum_{y_k}(y_1+y_2+..y_{k-1}+6)^2+\sum_{y_1}\sum_{y_2}..\sum_{y_k}y_k^2+2\underbrace{\sum_{y_1}\sum_{y_2}..\sum_{y_{k-1}}(y_1+y_2+..y_{k-1}+6)}_{T_{k-1}}\sum_{y_k}y_k\\ &amp;=5V_{k-1}+55\cdot 5^{k-1}+2\cdot T_{k-1} \cdot 15\\ T_k&amp;=\sum_{y_1}\sum_{y_2}..\sum_{y_k}(y_1+y_2+..y_k+6)\\ &amp;=\sum_{y_1}\sum_{y_2}..\sum_{y_{k-1}}(5y_1+5y_2+..5y_{k-1}+15+5\cdot 6)\\ &amp;=\underbrace{5^{k-1}\cdot 15+5^{k-1}\cdot 15+..}_{k\text{ times}}+6\cdot 5^k\\ &amp;=3(k+2)\cdot 5^k \\ V_k&amp;=5V_{k-1}+55\cdot 5^{k-1}+90(k+1)\cdot 5^{k-1}\\ &amp;=5V_{k-1}+5^k(18k+29)\\ &amp;=5^2V_{k-2}+5^k((18k+29)+(18(k-1)+29))\\ &amp;=5^{k-1}V_1+5^k\left(\sum _{j=2}^k(18j+29)\right)\\ &amp;=5^{k-1}\cdot 415 +…" />
+<meta name="description" content="Here (M) is the total money, we use Law of total expectation in the first step, i.e. (E[M]=E[E[M|Y]]) where (Y) is the die throw and (E[M|Y=y] = y+ E[M]) for (1\le y \le 5) and (6) for (Y=6). \(\begin{align}E[M]&amp;=\frac 16((1+E[M])+(2+E[M])+(3+E[M])+(4+E[M])+(5+E[M])+6)\\ E[M]&amp;=\frac 16(21 + 5E[M])\\ E[M]&amp;=21 \end{align}\) Method 1: For standard deviation this particular form seems useful \(\begin{align} \sigma(M)&amp;=\sqrt{E[M^2]-E^2[m])]}\\ E[M^2]&amp;=\frac 166^2+\left(\frac 16\right)^2((1+6)^2+(2+6)^2+..(5+6)^2)+\left(\frac 16\right)^3(\sum_{1\le y_1\le 5\\1\le y_2\le 5}(y_1+y_2+6)^2)+... \end{align}\) Now let’s define (here \(y_1,y_2...y_k\in\{1,2,..5\}\)) \(\begin{align}V_k&amp;=\sum_{y_1}\sum_{y_2}...\sum_{y_k}(y_1+y_2+...y_k+6)^2\\ &amp;=\sum_{y_1}\sum_{y_2}..\sum_{y_k}(y_1+y_2+..y_{k-1}+6)^2+\sum_{y_1}\sum_{y_2}..\sum_{y_k}y_k^2+2\underbrace{\sum_{y_1}\sum_{y_2}..\sum_{y_{k-1}}(y_1+y_2+..y_{k-1}+6)}_{T_{k-1}}\sum_{y_k}y_k\\ &amp;=5V_{k-1}+55\cdot 5^{k-1}+2\cdot T_{k-1} \cdot 15\\ T_k&amp;=\sum_{y_1}\sum_{y_2}..\sum_{y_k}(y_1+y_2+..y_k+6)\\ &amp;=\sum_{y_1}\sum_{y_2}..\sum_{y_{k-1}}(5y_1+5y_2+..5y_{k-1}+15+5\cdot 6)\\ &amp;=\underbrace{5^{k-1}\cdot 15+5^{k-1}\cdot 15+..}_{k\text{ times}}+6\cdot 5^k\\ &amp;=3(k+2)\cdot 5^k \\ V_k&amp;=5V_{k-1}+55\cdot 5^{k-1}+90(k+1)\cdot 5^{k-1}\\ &amp;=5V_{k-1}+5^k(18k+29)\\ &amp;=5^2V_{k-2}+5^k((18k+29)+(18(k-1)+29))\\ &amp;=5^{k-1}V_1+5^k\left(\sum _{j=2}^k(18j+29)\right)\\ &amp;=5^{k-1}\cdot 415 +…" />
+<meta name="twitter:description" property="og:description" content="Here (M) is the total money, we use Law of total expectation in the first step, i.e. (E[M]=E[E[M|Y]]) where (Y) is the die throw and (E[M|Y=y] = y+ E[M]) for (1\le y \le 5) and (6) for (Y=6). \(\begin{align}E[M]&amp;=\frac 16((1+E[M])+(2+E[M])+(3+E[M])+(4+E[M])+(5+E[M])+6)\\ E[M]&amp;=\frac 16(21 + 5E[M])\\ E[M]&amp;=21 \end{align}\) Method 1: For standard deviation this particular form seems useful \(\begin{align} \sigma(M)&amp;=\sqrt{E[M^2]-E^2[m])]}\\ E[M^2]&amp;=\frac 166^2+\left(\frac 16\right)^2((1+6)^2+(2+6)^2+..(5+6)^2)+\left(\frac 16\right)^3(\sum_{1\le y_1\le 5\\1\le y_2\le 5}(y_1+y_2+6)^2)+... \end{align}\) Now let’s define (here \(y_1,y_2...y_k\in\{1,2,..5\}\)) \(\begin{align}V_k&amp;=\sum_{y_1}\sum_{y_2}...\sum_{y_k}(y_1+y_2+...y_k+6)^2\\ &amp;=\sum_{y_1}\sum_{y_2}..\sum_{y_k}(y_1+y_2+..y_{k-1}+6)^2+\sum_{y_1}\sum_{y_2}..\sum_{y_k}y_k^2+2\underbrace{\sum_{y_1}\sum_{y_2}..\sum_{y_{k-1}}(y_1+y_2+..y_{k-1}+6)}_{T_{k-1}}\sum_{y_k}y_k\\ &amp;=5V_{k-1}+55\cdot 5^{k-1}+2\cdot T_{k-1} \cdot 15\\ T_k&amp;=\sum_{y_1}\sum_{y_2}..\sum_{y_k}(y_1+y_2+..y_k+6)\\ &amp;=\sum_{y_1}\sum_{y_2}..\sum_{y_{k-1}}(5y_1+5y_2+..5y_{k-1}+15+5\cdot 6)\\ &amp;=\underbrace{5^{k-1}\cdot 15+5^{k-1}\cdot 15+..}_{k\text{ times}}+6\cdot 5^k\\ &amp;=3(k+2)\cdot 5^k \\ V_k&amp;=5V_{k-1}+55\cdot 5^{k-1}+90(k+1)\cdot 5^{k-1}\\ &amp;=5V_{k-1}+5^k(18k+29)\\ &amp;=5^2V_{k-2}+5^k((18k+29)+(18(k-1)+29))\\ &amp;=5^{k-1}V_1+5^k\left(\sum _{j=2}^k(18j+29)\right)\\ &amp;=5^{k-1}\cdot 415 +…" />
 <link rel="canonical" href="https://adityagupta1089.github.io/probability/tutorial-1.html" />
 <meta property="og:url" content="https://adityagupta1089.github.io/probability/tutorial-1.html" />
 <meta property="og:site_name" content="Aditya Gupta’s Blog" />
@@ -34,7 +34,7 @@
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="Tutorial 1" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2017-09-22T16:33:00+00:00","datePublished":"2017-09-22T16:33:00+00:00","description":"Here $M$ is the total money, we use Law of total expectation in the first step, i.e. $E[M]=E[E[M|Y]]$ where $Y$ is the die throw and $E[M|Y=y] = y+ E[M]$ for $1\\le y \\le 5$ and $6$ for $Y=6$. \\(\\begin{align}E[M]&amp;=\\frac 16((1+E[M])+(2+E[M])+(3+E[M])+(4+E[M])+(5+E[M])+6)\\\\ E[M]&amp;=\\frac 16(21 + 5E[M])\\\\ E[M]&amp;=21 \\end{align}\\) Method 1: For standard deviation this particular form seems useful \\(\\begin{align} \\sigma(M)&amp;=\\sqrt{E[M^2]-E^2[m])]}\\\\ E[M^2]&amp;=\\frac 166^2+\\left(\\frac 16\\right)^2((1+6)^2+(2+6)^2+..(5+6)^2)+\\left(\\frac 16\\right)^3(\\sum_{1\\le y_1\\le 5\\\\1\\le y_2\\le 5}(y_1+y_2+6)^2)+... \\end{align}\\) Now let’s define (here \\(y_1,y_2...y_k\\in\\{1,2,..5\\}\\)) \\(\\begin{align}V_k&amp;=\\sum_{y_1}\\sum_{y_2}...\\sum_{y_k}(y_1+y_2+...y_k+6)^2\\\\ &amp;=\\sum_{y_1}\\sum_{y_2}..\\sum_{y_k}(y_1+y_2+..y_{k-1}+6)^2+\\sum_{y_1}\\sum_{y_2}..\\sum_{y_k}y_k^2+2\\underbrace{\\sum_{y_1}\\sum_{y_2}..\\sum_{y_{k-1}}(y_1+y_2+..y_{k-1}+6)}_{T_{k-1}}\\sum_{y_k}y_k\\\\ &amp;=5V_{k-1}+55\\cdot 5^{k-1}+2\\cdot T_{k-1} \\cdot 15\\\\ T_k&amp;=\\sum_{y_1}\\sum_{y_2}..\\sum_{y_k}(y_1+y_2+..y_k+6)\\\\ &amp;=\\sum_{y_1}\\sum_{y_2}..\\sum_{y_{k-1}}(5y_1+5y_2+..5y_{k-1}+15+5\\cdot 6)\\\\ &amp;=\\underbrace{5^{k-1}\\cdot 15+5^{k-1}\\cdot 15+..}_{k\\text{ times}}+6\\cdot 5^k\\\\ &amp;=3(k+2)\\cdot 5^k \\\\ V_k&amp;=5V_{k-1}+55\\cdot 5^{k-1}+90(k+1)\\cdot 5^{k-1}\\\\ &amp;=5V_{k-1}+5^k(18k+29)\\\\ &amp;=5^2V_{k-2}+5^k((18k+29)+(18(k-1)+29))\\\\ &amp;=5^{k-1}V_1+5^k\\left(\\sum _{j=2}^k(18j+29)\\right)\\\\ &amp;=5^{k-1}\\cdot 415 +…","headline":"Tutorial 1","mainEntityOfPage":{"@type":"WebPage","@id":"https://adityagupta1089.github.io/probability/tutorial-1.html"},"url":"https://adityagupta1089.github.io/probability/tutorial-1.html"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2017-09-22T16:33:00+00:00","datePublished":"2017-09-22T16:33:00+00:00","description":"Here (M) is the total money, we use Law of total expectation in the first step, i.e. (E[M]=E[E[M|Y]]) where (Y) is the die throw and (E[M|Y=y] = y+ E[M]) for (1\\le y \\le 5) and (6) for (Y=6). \\(\\begin{align}E[M]&amp;=\\frac 16((1+E[M])+(2+E[M])+(3+E[M])+(4+E[M])+(5+E[M])+6)\\\\ E[M]&amp;=\\frac 16(21 + 5E[M])\\\\ E[M]&amp;=21 \\end{align}\\) Method 1: For standard deviation this particular form seems useful \\(\\begin{align} \\sigma(M)&amp;=\\sqrt{E[M^2]-E^2[m])]}\\\\ E[M^2]&amp;=\\frac 166^2+\\left(\\frac 16\\right)^2((1+6)^2+(2+6)^2+..(5+6)^2)+\\left(\\frac 16\\right)^3(\\sum_{1\\le y_1\\le 5\\\\1\\le y_2\\le 5}(y_1+y_2+6)^2)+... \\end{align}\\) Now let’s define (here \\(y_1,y_2...y_k\\in\\{1,2,..5\\}\\)) \\(\\begin{align}V_k&amp;=\\sum_{y_1}\\sum_{y_2}...\\sum_{y_k}(y_1+y_2+...y_k+6)^2\\\\ &amp;=\\sum_{y_1}\\sum_{y_2}..\\sum_{y_k}(y_1+y_2+..y_{k-1}+6)^2+\\sum_{y_1}\\sum_{y_2}..\\sum_{y_k}y_k^2+2\\underbrace{\\sum_{y_1}\\sum_{y_2}..\\sum_{y_{k-1}}(y_1+y_2+..y_{k-1}+6)}_{T_{k-1}}\\sum_{y_k}y_k\\\\ &amp;=5V_{k-1}+55\\cdot 5^{k-1}+2\\cdot T_{k-1} \\cdot 15\\\\ T_k&amp;=\\sum_{y_1}\\sum_{y_2}..\\sum_{y_k}(y_1+y_2+..y_k+6)\\\\ &amp;=\\sum_{y_1}\\sum_{y_2}..\\sum_{y_{k-1}}(5y_1+5y_2+..5y_{k-1}+15+5\\cdot 6)\\\\ &amp;=\\underbrace{5^{k-1}\\cdot 15+5^{k-1}\\cdot 15+..}_{k\\text{ times}}+6\\cdot 5^k\\\\ &amp;=3(k+2)\\cdot 5^k \\\\ V_k&amp;=5V_{k-1}+55\\cdot 5^{k-1}+90(k+1)\\cdot 5^{k-1}\\\\ &amp;=5V_{k-1}+5^k(18k+29)\\\\ &amp;=5^2V_{k-2}+5^k((18k+29)+(18(k-1)+29))\\\\ &amp;=5^{k-1}V_1+5^k\\left(\\sum _{j=2}^k(18j+29)\\right)\\\\ &amp;=5^{k-1}\\cdot 415 +…","headline":"Tutorial 1","mainEntityOfPage":{"@type":"WebPage","@id":"https://adityagupta1089.github.io/probability/tutorial-1.html"},"url":"https://adityagupta1089.github.io/probability/tutorial-1.html"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -158,7 +158,7 @@
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
     tex2jax: {
-      inlineMath: [ ['$','$'], ['\\(','\\)'] ],
+      inlineMath: [ ['\\(','\\)'] ],
       displayMath: [ ['$$', '$$'], ['\\[','\\]'] ],
       processEscapes: true
     },
@@ -209,7 +209,7 @@ $(document).ready(function () {
   <div class="post-content" itemprop="articleBody">
     <ol>
   <li>
-    <p>Here $M$ is the total money, we use Law of total expectation in the first step, i.e. $E[M]=E[E[M|Y]]$ where $Y$ is the die throw and $E[M|Y=y] = y+ E[M]$ for $1\le y \le 5$ and $6$ for $Y=6$.
+    <p>Here (M) is the total money, we use Law of total expectation in the first step, i.e. (E[M]=E[E[M|Y]]) where (Y) is the die throw and (E[M|Y=y] = y+ E[M]) for (1\le y \le 5) and (6) for (Y=6).
   \(\begin{align}E[M]&amp;=\frac 16((1+E[M])+(2+E[M])+(3+E[M])+(4+E[M])+(5+E[M])+6)\\
   E[M]&amp;=\frac 16(21 + 5E[M])\\
   E[M]&amp;=21
@@ -238,11 +238,11 @@ $(document).ready(function () {
  \(E[M^2]=6+\sum_{k=1}^{\infty}\left(\frac 16\right)^{k+1}V_k=6+715=721\)<br />
  <strong>Method 2</strong>:<br />
  \(E[M^2]=\frac 16\sum_{y=1}^6E[M^2|Y=y]\)<br />
- Now let’s define the sum of money that we obtain after first roll as $M’$:<br />
+ Now let’s define the sum of money that we obtain after first roll as (M’):<br />
  \(M=Y+M'\implies M^2=Y^2+M'^2+2YM'\)<br />
- Here $Y$ and $M’$ are independent and $M$ and $M’$ are identical, hence $E[M]=E[M’]$ and $E[M^2]=E[M’^2]$:<br />
+ Here (Y) and (M’) are independent and (M) and (M’) are identical, hence (E[M]=E[M’]) and (E[M^2]=E[M’^2]):<br />
  \(E[M^2|Y=y]=y^2+E[M'^2]+2yE[M']\)<br />
- Giving us (using $E[M]=21$):<br />
+ Giving us (using (E[M]=21)):<br />
  \(\begin{align}E[M^2]&amp;=\frac 16\sum_{y=1}^5(y^2+E[M^2]+42y)+\frac 166^2\\&amp;=\frac 16(55+5E[M^2]+630)+6\\&amp;=721\end{align}\)<br />
  and hence:<br />
  \(\sigma(M)=\sqrt{721-21^2}=\sqrt{280}\approx 16.73\)<br />
@@ -256,7 +256,7 @@ $(document).ready(function () {
  25&amp;y=4\\
  26&amp;y=5\\
  6&amp;y=6\end{cases}\)<br />
- and hence $Var(E[M|Y])=\frac 16(1^2+2^2+3^2+4^2+5^2+(-15)^2)=\frac {140}3$<br />
+ and hence (Var(E[M|Y])=\frac 16(1^2+2^2+3^2+4^2+5^2+(-15)^2)=\frac {140}3)<br />
  Also:<br />
  \(Var(M|Y)=\begin{cases}
  Var(y+M')=Var(M')&amp;y\in\{1,2,3,4,5\}\\
@@ -268,7 +268,7 @@ $(document).ready(function () {
  <strong>Note:</strong> See a simulation using:
  <script src="https://gist.github.com/adityagupta1089/0e3154f94c667ef3e14f165659cf5189.js"></script></p>
   </li>
-  <li>Again using law of total expectation ($X$ is for coin and $Y$ is for die and $S$ is for sum on die, dice is thrown first):
+  <li>Again using law of total expectation ((X) is for coin and (Y) is for die and (S) is for sum on die, dice is thrown first):
 \(\begin{align}E[S]&amp;=E[Y]+P(X=H)E[S|X=H]+P(X=T)E[S|X=T]\\&amp;=E[Y]+\frac 12E[S|X=H]+\frac 12\cdot 0\\&amp;=E[Y]+\frac 12E[S|X=H]\\&amp;=E[Y]+\frac 12(E[Y]+E[S])\\E[S]&amp;=2E[Y]=7\end{align}\)<br />
 Now for standard deviation:<br />
 \(\begin{align}\sigma(S)&amp;=\sqrt{E[S^2]-E^2[S]}\\
@@ -292,11 +292,11 @@ Now:<br />
   </li>
   <li>Secretary Problem:
     <ul>
-      <li>Expected number of candidates ($C$) seen (we see $i$ candidates):<br />
+      <li>Expected number of candidates ((C)) seen (we see (i) candidates):<br />
 \(\displaystyle E[C]=\sum_{i=k+1}^ni\cdot \left(\underbrace{\frac k{i-1}}_{\text{Pseudo-best}\\\text{in k-slot}}\cdot \underbrace{\frac 1i}_{i^{\text{th}}\text{best in}\\1^{\text{st}}\text{ to }i}\right)+\underbrace{n\cdot \frac k n}_{\text{None selected}}=k+k\sum_{i=k}^{n-1}\frac 1i\sim k\left(1+\ln \frac {n-1}{k-1}\right)\sim2k\)</li>
       <li>Probability of getting the best girl:<br />
 \(\displaystyle P_1=\sum_{i=k+1}^n\frac k{i-1}\frac 1n=\frac kn\ln \frac nk=\frac 1e\)</li>
-      <li>Probability of getting the second best girl. The best girl cannot be in the k-slot. Also she can’t be in $(k+1)$-th position to $(i-1)$-th position if the second best girl is in $i$-th position, i.e. the best girl must occur after the second best girl:<br />
+      <li>Probability of getting the second best girl. The best girl cannot be in the k-slot. Also she can’t be in ((k+1))-th position to ((i-1))-th position if the second best girl is in (i)-th position, i.e. the best girl must occur after the second best girl:<br />
 \(\displaystyle\begin{align} P_2&amp;=\sum_{i=k+1}^{n-1}\frac k{i-1}\frac 1n\frac{n-i}{n-1}\\
 &amp;=\frac k{n(n-1)}\sum_{i=k+1}^{n-1}\frac{n-i}{i-1}
 =\frac k{n(n-1)}\sum_{i=k}^{n-2}\frac{n-i-1}i\\
@@ -315,7 +315,7 @@ P_3&amp;=\sum_{i=k+1}^{n-2}\frac k{i-1}\frac 1n \frac{\binom {n-i}2}{\binom {n-1
 &amp;\sim\frac 1e-\frac{2}{e}\left(1-\frac1e\right)+\frac 1{2e}\left(1-\frac 1{e^2}\right)\\
 &amp;=\frac{4e-1-e^2}{2e^3}
 \end{align}\)</li>
-      <li>Probability of getting the $t^{\text{th}}$ best girl:<br />
+      <li>Probability of getting the (t^{\text{th}}) best girl:<br />
 \(\begin{align}
 P_t&amp;=\sum_{i=k+1}^{n-t+1}\frac k{i-1}\frac 1n\frac{\binom {n-i}{t-1}}{\binom {n-1}{t-1}}\\
 &amp;=\frac k{n\binom {n-1}{t-1}}\sum_{i=k+1}^{n-t+1}\frac 1{i-1}\binom{n-i}{t-1}\\
@@ -330,7 +330,7 @@ P_t&amp;=\sum_{i=k+1}^{n-t+1}\frac k{i-1}\frac 1n\frac{\binom {n-i}{t-1}}{\binom
 &amp;=P_{t-1}-\frac{1}{e(t-1)}\frac{n-k}{n-1}\frac{n-k-1}{n-2}...\frac{n-k-t+2}{n-t+1}\\
 &amp;\sim P_{t-1}-\frac 1{e(t-1)}\left(1-\frac 1e\right)^{t-1}\\
 P_t&amp;\sim \underbrace{\frac 1e}_{P_1} -\sum _{i=1}^{t-1}\frac 1{e\cdot i}\left(1-\frac 1e\right)^i\end{align}\)<br />
-Interestingly the second term contains the partial sum for expansion of $-\ln(1-x)$ where $x=1-1/e$.</li>
+Interestingly the second term contains the partial sum for expansion of (-\ln(1-x)) where (x=1-1/e).</li>
     </ul>
   </li>
 </ol>

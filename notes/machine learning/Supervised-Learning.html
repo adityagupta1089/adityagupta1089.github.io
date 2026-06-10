@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Aditya Gupta&#39;s Blog | Supervised Learning</title>
-  <meta name="description" content="Given a set $(x,y)$ need to estimate $f(x)=y$ .">
+  <meta name="description" content="Given a set ((x,y)) need to estimate (f(x)=y) .">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,8 +23,8 @@
 <meta name="generator" content="Jekyll v4.4.1" />
 <meta property="og:title" content="Supervised Learning" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Given a set $(x,y)$ need to estimate $f(x)=y$ ." />
-<meta name="twitter:description" property="og:description" content="Given a set $(x,y)$ need to estimate $f(x)=y$ ." />
+<meta name="description" content="Given a set ((x,y)) need to estimate (f(x)=y) ." />
+<meta name="twitter:description" property="og:description" content="Given a set ((x,y)) need to estimate (f(x)=y) ." />
 <link rel="canonical" href="https://adityagupta1089.github.io/notes/machine%20learning/Supervised-Learning.html" />
 <meta property="og:url" content="https://adityagupta1089.github.io/notes/machine%20learning/Supervised-Learning.html" />
 <meta property="og:site_name" content="Aditya Gupta’s Blog" />
@@ -34,7 +34,7 @@
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="Supervised Learning" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2019-10-14T00:00:00+00:00","datePublished":"2019-10-14T00:00:00+00:00","description":"Given a set $(x,y)$ need to estimate $f(x)=y$ .","headline":"Supervised Learning","mainEntityOfPage":{"@type":"WebPage","@id":"https://adityagupta1089.github.io/notes/machine%20learning/Supervised-Learning.html"},"url":"https://adityagupta1089.github.io/notes/machine%20learning/Supervised-Learning.html"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2019-10-14T00:00:00+00:00","datePublished":"2019-10-14T00:00:00+00:00","description":"Given a set ((x,y)) need to estimate (f(x)=y) .","headline":"Supervised Learning","mainEntityOfPage":{"@type":"WebPage","@id":"https://adityagupta1089.github.io/notes/machine%20learning/Supervised-Learning.html"},"url":"https://adityagupta1089.github.io/notes/machine%20learning/Supervised-Learning.html"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -158,7 +158,7 @@
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
     tex2jax: {
-      inlineMath: [ ['$','$'], ['\\(','\\)'] ],
+      inlineMath: [ ['\\(','\\)'] ],
       displayMath: [ ['$$', '$$'], ['\\[','\\]'] ],
       processEscapes: true
     },
@@ -207,32 +207,32 @@ $(document).ready(function () {
   </header>
 
   <div class="post-content" itemprop="articleBody">
-    <p>Given a set $(x,y)$ need to estimate $f(x)=y$ .</p>
+    <p>Given a set ((x,y)) need to estimate (f(x)=y) .</p>
 
 <p>Terms:</p>
 
 <ul>
-  <li>Feature $x_i$ - property of object to be classified</li>
-  <li>Instance $x=\begin{pmatrix}x_1&amp;x_2&amp;x_3&amp;\ldots\end{pmatrix}$ - features of an object</li>
-  <li>Instance Space $\cal I$ - space of all possible instances</li>
-  <li>Class $\cal Y$ - categorical feature of an object</li>
-  <li>Example $(x,y)$ - instance with membership</li>
-  <li>Training Set $X = {}_{i=1}^N{x_i,y_i}$</li>
-  <li>Target Concept $\cal C$ - correct expression of class.</li>
+  <li>Feature (x_i) - property of object to be classified</li>
+  <li>Instance (x=\begin{pmatrix}x_1&amp;x_2&amp;x_3&amp;\ldots\end{pmatrix}) - features of an object</li>
+  <li>Instance Space (\cal I) - space of all possible instances</li>
+  <li>Class (\cal Y) - categorical feature of an object</li>
+  <li>Example ((x,y)) - instance with membership</li>
+  <li>Training Set (X = {}_{i=1}^N{x_i,y_i})</li>
+  <li>Target Concept (\cal C) - correct expression of class.</li>
   <li>Concept Class - Space of all possible concepts</li>
-  <li>Hypothesis $h :x\mapsto{0,1}$ - Approximation to target concept</li>
-  <li>Hypothesis class $\cal H$ - Space of all possible hypothesis</li>
-  <li>Learning Goal - Find $h\in\cal H$ that closely approximates $\cal C$ (possible $\cal C\not\in H$)</li>
+  <li>Hypothesis (h :x\mapsto{0,1}) - Approximation to target concept</li>
+  <li>Hypothesis class (\cal H) - Space of all possible hypothesis</li>
+  <li>Learning Goal - Find (h\in\cal H) that closely approximates (\cal C) (possible (\cal C\not\in H))</li>
 </ul>
 
 <p>Errors:</p>
 
 <ul>
-  <li>Empirical: $E(h|X) = \frac 1N\sum_{t=1}^N 1(h(x_t)\ne y_t)$</li>
-  <li>Generalization: instances not in $X$</li>
-  <li>True: instances in $\cal I$</li>
-  <li>Most specific and general hypothesis $\cal S$ and $\cal G$ covering fewest and most instances.</li>
-  <li>Version space - between $\cal S$ and $\cal G$</li>
+  <li>Empirical: (E(h|X) = \frac 1N\sum_{t=1}^N 1(h(x_t)\ne y_t))</li>
+  <li>Generalization: instances not in (X)</li>
+  <li>True: instances in (\cal I)</li>
+  <li>Most specific and general hypothesis (\cal S) and (\cal G) covering fewest and most instances.</li>
+  <li>Version space - between (\cal S) and (\cal G)</li>
 </ul>
 
   </div>

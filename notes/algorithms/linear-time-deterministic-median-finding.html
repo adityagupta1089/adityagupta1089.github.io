@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Aditya Gupta&#39;s Blog | Linear time deterministic median finding</title>
-  <meta name="description" content="Selection algorithm SELECT for finding the $i^{\rm th}$ smallest element:">
+  <meta name="description" content="Selection algorithm SELECT for finding the (i^{\rm th}) smallest element:">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,8 +23,8 @@
 <meta name="generator" content="Jekyll v4.4.1" />
 <meta property="og:title" content="Linear time deterministic median finding" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Selection algorithm SELECT for finding the $i^{\rm th}$ smallest element:" />
-<meta name="twitter:description" property="og:description" content="Selection algorithm SELECT for finding the $i^{\rm th}$ smallest element:" />
+<meta name="description" content="Selection algorithm SELECT for finding the (i^{\rm th}) smallest element:" />
+<meta name="twitter:description" property="og:description" content="Selection algorithm SELECT for finding the (i^{\rm th}) smallest element:" />
 <link rel="canonical" href="https://adityagupta1089.github.io/notes/algorithms/linear-time-deterministic-median-finding.html" />
 <meta property="og:url" content="https://adityagupta1089.github.io/notes/algorithms/linear-time-deterministic-median-finding.html" />
 <meta property="og:site_name" content="Aditya Gupta’s Blog" />
@@ -34,7 +34,7 @@
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="Linear time deterministic median finding" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2019-11-10T11:34:00+00:00","datePublished":"2019-11-10T11:34:00+00:00","description":"Selection algorithm SELECT for finding the $i^{\\rm th}$ smallest element:","headline":"Linear time deterministic median finding","mainEntityOfPage":{"@type":"WebPage","@id":"https://adityagupta1089.github.io/notes/algorithms/linear-time-deterministic-median-finding.html"},"url":"https://adityagupta1089.github.io/notes/algorithms/linear-time-deterministic-median-finding.html"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2019-11-10T11:34:00+00:00","datePublished":"2019-11-10T11:34:00+00:00","description":"Selection algorithm SELECT for finding the (i^{\\rm th}) smallest element:","headline":"Linear time deterministic median finding","mainEntityOfPage":{"@type":"WebPage","@id":"https://adityagupta1089.github.io/notes/algorithms/linear-time-deterministic-median-finding.html"},"url":"https://adityagupta1089.github.io/notes/algorithms/linear-time-deterministic-median-finding.html"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -158,7 +158,7 @@
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
     tex2jax: {
-      inlineMath: [ ['$','$'], ['\\(','\\)'] ],
+      inlineMath: [ ['\\(','\\)'] ],
       displayMath: [ ['$$', '$$'], ['\\[','\\]'] ],
       processEscapes: true
     },
@@ -207,35 +207,35 @@ $(document).ready(function () {
   </header>
 
   <div class="post-content" itemprop="articleBody">
-    <p>Selection algorithm SELECT for finding the $i^{\rm th}$ smallest element:</p>
+    <p>Selection algorithm SELECT for finding the (i^{\rm th}) smallest element:</p>
 
 <ol>
   <li>
-    <p>Divide the array into $\lfloor n/5\rfloor$ groups of 5 elements each (last one has $n\mod 5$).  $O(n)$</p>
+    <p>Divide the array into (\lfloor n/5\rfloor) groups of 5 elements each (last one has (n\mod 5)).  (O(n))</p>
   </li>
   <li>
-    <p>Find the median of each of the groups by insertion-sorting the elements of each group and picking the median from the sorted list of group elements. $O(n)$</p>
+    <p>Find the median of each of the groups by insertion-sorting the elements of each group and picking the median from the sorted list of group elements. (O(n))</p>
   </li>
   <li>
-    <p>Use SELECT recursively to find the median $x$ of the $\lceil n/5\rceil$ medians found. $T(\lceil n/5\rceil)$</p>
+    <p>Use SELECT recursively to find the median (x) of the (\lceil n/5\rceil) medians found. (T(\lceil n/5\rceil))</p>
   </li>
-  <li>Partition the array into $L$ &amp; $R$ based on $x$. Let $k=\vert L\vert  + 1$. Note that $x$ is $k^{\rm th}$ smallest element and there are $n-k$ elements in $R$. $O(n)$</li>
-  <li>Based on $i$:
+  <li>Partition the array into (L) &amp; (R) based on (x). Let (k=\vert L\vert  + 1). Note that (x) is (k^{\rm th}) smallest element and there are (n-k) elements in (R). (O(n))</li>
+  <li>Based on (i):
     <ol>
-      <li>$i=k$, return $x$.</li>
-      <li>$i&lt;k$, recurse SELECT on $L$ for $i$</li>
-      <li>$i&gt;k$, recurse SELECT on R for $i-k$</li>
+      <li>(i=k), return (x).</li>
+      <li>(i&lt;k), recurse SELECT on (L) for (i)</li>
+      <li>(i&gt;k), recurse SELECT on R for (i-k)</li>
     </ol>
   </li>
 </ol>
 
 <p><img src="/images/mom.png" alt="" /></p>
 
-<p>We see that atleast $1/2$ of the medians found in 2 are greater than or equal to medians-of-medians $x$. Thus atleast half of the $\lceil n/5\rceil$ groups contribute atleast 3 elements that are greater than $x$, except for the last one and the group containing $x$ itself.Thus number of elements greater than $x$ is at least:</p>
+<p>We see that atleast (1/2) of the medians found in 2 are greater than or equal to medians-of-medians (x). Thus atleast half of the (\lceil n/5\rceil) groups contribute atleast 3 elements that are greater than (x), except for the last one and the group containing (x) itself.Thus number of elements greater than (x) is at least:</p>
 
-<p>$\displaystyle 3\left(\left\lceil\frac 12\left\lceil\frac n5\right\rceil\right\rceil-2\right)\ge \frac {3n}{10}-6$</p>
+<p>(\displaystyle 3\left(\left\lceil\frac 12\left\lceil\frac n5\right\rceil\right\rceil-2\right)\ge \frac {3n}{10}-6)</p>
 
-<p>Thus in worst case step 5 calls SELECT recursively on atmost $7n/10+6$ elements.  \(\begin{align}
+<p>Thus in worst case step 5 calls SELECT recursively on atmost (7n/10+6) elements.  \(\begin{align}
 T(n)&amp;\le cn+T(n/5)+T(7n/10)\\
 &amp;\le cn + \left(c\frac n5+T(n/5^2)+T(7n/50)\right)+\left(c\frac {7n}{10}+T(7n/50)+T(7^2n/10^2)\right)\\
 &amp;= cn + 9\frac {cn}{10} + T(n/5^2) + 2T(7n/50) + T(7^2n/10^2)\\
@@ -244,7 +244,7 @@ T(n)&amp;\le cn+T(n/5)+T(7n/10)\\
 &amp;\le cn\frac 1{1-9/10} = O(n)
 \end{align}\)</p>
 
-<p>Max height of tree is $(7/10)^h\le 1\implies h\ge \log_{10/7}n$.</p>
+<p>Max height of tree is ((7/10)^h\le 1\implies h\ge \log_{10/7}n).</p>
 
 
   </div>

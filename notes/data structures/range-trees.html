@@ -158,7 +158,7 @@
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
     tex2jax: {
-      inlineMath: [ ['$','$'], ['\\(','\\)'] ],
+      inlineMath: [ ['\\(','\\)'] ],
       displayMath: [ ['$$', '$$'], ['\\[','\\]'] ],
       processEscapes: true
     },
@@ -209,77 +209,77 @@ $(document).ready(function () {
   <div class="post-content" itemprop="articleBody">
     <h1 id="motivation">Motivation</h1>
 
-<p>Given a set of $n$ points $P$ on a real line and a query interval $[x:x’]$ find all the points inside the interval.</p>
+<p>Given a set of (n) points (P) on a real line and a query interval ([x:x’]) find all the points inside the interval.</p>
 
-<p>Construct a binary search tree from $P$ and perform the following query:</p>
+<p>Construct a binary search tree from (P) and perform the following query:</p>
 
 <p><img src="https://adityagupta1089.github.io/images/rangetree1.png" alt="" /></p>
 
 <p><strong>Figure: Example of searching in range tree</strong></p>
 
 <ul>
-  <li>Search for $x$ and $x’$ until we get to $v_{\rm split}$ where the search path splits.</li>
-  <li>From the left child of $v_{\rm split}$ we continue search with $x$ and at every node $v$ we where search path goes left we all points in right subtree of $v$.</li>
-  <li>Symmetrically we go right from $v_{\rm split}$ searching for $x’$ and taking left subtrees of $v$ respectively.</li>
+  <li>Search for (x) and (x’) until we get to (v_{\rm split}) where the search path splits.</li>
+  <li>From the left child of (v_{\rm split}) we continue search with (x) and at every node (v) we where search path goes left we all points in right subtree of (v).</li>
+  <li>Symmetrically we go right from (v_{\rm split}) searching for (x’) and taking left subtrees of (v) respectively.</li>
 </ul>
 
 <h1 id="definition">Definition</h1>
 
-<p><strong>Canonical Subset of node</strong> $v$ (i.e. $P(v)$): subset of points stored in the leaves of the subtree at $v$.</p>
+<p><strong>Canonical Subset of node</strong> (v) (i.e. (P(v))): subset of points stored in the leaves of the subtree at (v).</p>
 
 <h1 id="2-d-range-trees">2-D Range Trees</h1>
 
 <ul>
-  <li>The main tree is a balanced binary search tree built $T$ built on the x-coordinates of $P$.</li>
-  <li>For any internal node / leaf node $v$ in $T$, the canonical subset $P(v)$ is stored in a balanced binary search tree $T_1(v)$ on the y-coordinates of the points. The node $v$ contains a pointer to the root of $T_1(v)$.</li>
+  <li>The main tree is a balanced binary search tree built (T) built on the x-coordinates of (P).</li>
+  <li>For any internal node / leaf node (v) in (T), the canonical subset (P(v)) is stored in a balanced binary search tree (T_1(v)) on the y-coordinates of the points. The node (v) contains a pointer to the root of (T_1(v)).</li>
 </ul>
 
-<h2 id="creation-onlog-n">Creation $O(n\log n)$</h2>
+<h2 id="creation-onlog-n">Creation (O(n\log n))</h2>
 
-<p><strong>Note</strong> Use presorted $P$</p>
+<p><strong>Note</strong> Use presorted (P)</p>
 
 <ul>
-  <li>Create $T_1(v)$ binary search tree.</li>
-  <li>If $P$ has only one point then create leaf else split $P$ into two sets $P_{\rm left}$ and $P_{\rm right}$ using $x_{\rm mid}$ median point. Recursively create $v_{\rm left}$ and $v_{\rm right}$ from $P_{\rm left}$ and $P_{\rm right}$ respectively. Create a node with $x_{\rm mid}$ and $v_{\rm left}$ and $v_{\rm right}$ left and right children of this node. Make $T_1(v)$ the associated structure of $v$.</li>
+  <li>Create (T_1(v)) binary search tree.</li>
+  <li>If (P) has only one point then create leaf else split (P) into two sets (P_{\rm left}) and (P_{\rm right}) using (x_{\rm mid}) median point. Recursively create (v_{\rm left}) and (v_{\rm right}) from (P_{\rm left}) and (P_{\rm right}) respectively. Create a node with (x_{\rm mid}) and (v_{\rm left}) and (v_{\rm right}) left and right children of this node. Make (T_1(v)) the associated structure of (v).</li>
 </ul>
 
-<h2 id="querying-olog-2n-k">Querying $O(\log ^2n +k)$</h2>
+<h2 id="querying-olog-2n-k">Querying (O(\log ^2n +k))</h2>
 
 <ul>
-  <li>Find $v_{\rm split}$</li>
-  <li>If $v_{\rm split}$ is a leaf check point inside it and report if necessary.</li>
+  <li>Find (v_{\rm split})</li>
+  <li>If (v_{\rm split}) is a leaf check point inside it and report if necessary.</li>
   <li>Else
     <ul>
-      <li>Follow path to $x$ and perform 1-D range query on the subtrees right of the path. Also check if point stored at the final leaf node $v$ must be reported.</li>
-      <li>Similary do for $x’$ and perform 1-D range query on the subtrees left of the path from $v_{\rm split}$. Again check at the end for the point stored at $v$.</li>
+      <li>Follow path to (x) and perform 1-D range query on the subtrees right of the path. Also check if point stored at the final leaf node (v) must be reported.</li>
+      <li>Similary do for (x’) and perform 1-D range query on the subtrees left of the path from (v_{\rm split}). Again check at the end for the point stored at (v).</li>
     </ul>
   </li>
 </ul>
 
 <h2 id="fractional-cascading">Fractional Cascading</h2>
 
-<p>If two sets of objects $S_1$ and $S_2$ are stored int sorted arrays $A_1$ and $A_2$. To find keys in $[y:y’]$</p>
+<p>If two sets of objects (S_1) and (S_2) are stored int sorted arrays (A_1) and (A_2). To find keys in ([y:y’])</p>
 
 <ul>
-  <li>We can binary search for ceil of  $y$ in $A_1$ and then walk along the array until the floor of $y’$. Similary for $S_2$. Total time will be $O(k)$ plus two binary searches ($k$ reported objects).</li>
-  <li>If $S_2\subseteq S_1$ we can maintain pointers from $A_1$ to $A_2$, i.e. we store the pointer to ceil key for every value in $A_1$. This will avoid the second binary search.</li>
+  <li>We can binary search for ceil of  (y) in (A_1) and then walk along the array until the floor of (y’). Similary for (S_2). Total time will be (O(k)) plus two binary searches ((k) reported objects).</li>
+  <li>If (S_2\subseteq S_1) we can maintain pointers from (A_1) to (A_2), i.e. we store the pointer to ceil key for every value in (A_1). This will avoid the second binary search.</li>
 </ul>
 
 <p><img src="https://adityagupta1089.github.io/images/rangetree2.png" alt="" /></p>
 
 <p><strong>Figure: Layered Range Tree showing only x-coordinates. Full points are given below</strong></p>
 
-<p>Similarly $P(lc(v))\subseteq P(v)$ and $P(rc(v))\subseteq P(v)$. Instead of associated binary trees we will store an array sorted on the y-coordinates. Each value in the array will additionaly store two pointers to $A(lc(v))$ and $A(rc(v))$. This becomes the <strong>layered range tree</strong>. This makes the query time $O(\log n + k)$.</p>
+<p>Similarly (P(lc(v))\subseteq P(v)) and (P(rc(v))\subseteq P(v)). Instead of associated binary trees we will store an array sorted on the y-coordinates. Each value in the array will additionaly store two pointers to (A(lc(v))) and (A(rc(v))). This becomes the <strong>layered range tree</strong>. This makes the query time (O(\log n + k)).</p>
 
 <p><img src="https://adityagupta1089.github.io/images/rangetree3.png" alt="" /></p>
 
 <p><strong>Figure: The associated arrays with the nodes.</strong></p>
 
-<p>While querying for $[x:x’]\times[y:y’]$:</p>
+<p>While querying for ([x:x’]\times[y:y’]):</p>
 
 <ul>
-  <li>We search for $x$, $x’$ and $v_{\rm split}$. At $A(v_{\rm split})$ we we find the ceil entry of $y$.</li>
-  <li>While searching in $x$ and $x’$ in main tree we keep track of ceil entry of $y$ by following pointers in constant time.</li>
+  <li>We search for (x), (x’) and (v_{\rm split}). At (A(v_{\rm split})) we we find the ceil entry of (y).</li>
+  <li>While searching in (x) and (x’) in main tree we keep track of ceil entry of (y) by following pointers in constant time.</li>
 </ul>
 
 

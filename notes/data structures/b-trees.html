@@ -158,7 +158,7 @@
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
     tex2jax: {
-      inlineMath: [ ['$','$'], ['\\(','\\)'] ],
+      inlineMath: [ ['\\(','\\)'] ],
       displayMath: [ ['$$', '$$'], ['\\[','\\]'] ],
       processEscapes: true
     },
@@ -214,30 +214,30 @@ $(document).ready(function () {
 <p><strong>Figure: B-Tree of height 3 containing minimum number of keys</strong></p>
 
 <ul>
-  <li>Every node $x$ has $x.n$ keys and $x.n+1$ children (possibly undefined).</li>
-  <li>The key $x.k_i$ separates the range of keys stores in children subtrees, say $l_i$ then $l_1\le x.k_1\le l_2\le x.k_2\le \ldots x.k_n \le l_{n+1}$</li>
+  <li>Every node (x) has (x.n) keys and (x.n+1) children (possibly undefined).</li>
+  <li>The key (x.k_i) separates the range of keys stores in children subtrees, say (l_i) then (l_1\le x.k_1\le l_2\le x.k_2\le \ldots x.k_n \le l_{n+1})</li>
   <li>All leaves have same depth</li>
-  <li>Each node except root has $t-1$ keys to $2t-1$ keys. Therefore $t$ to $2t$ children.</li>
-  <li>Height of tree $h=O(\log_tn)$</li>
+  <li>Each node except root has (t-1) keys to (2t-1) keys. Therefore (t) to (2t) children.</li>
+  <li>Height of tree (h=O(\log_tn))</li>
 </ul>
 
 <h1 id="operations">Operations</h1>
 
-<h2 id="search-othotlog_tn">Search $O(th)=O(t\log_tn)$</h2>
+<h2 id="search-othotlog_tn">Search (O(th)=O(t\log_tn))</h2>
 
 <ul>
   <li>Find the subtree where given key exists using linear search</li>
   <li>recurse in that tree</li>
 </ul>
 
-<h2 id="create-o1">Create $O(1)$</h2>
+<h2 id="create-o1">Create (O(1))</h2>
 
 <ul>
   <li>Create a empty root node</li>
   <li>Insert keys</li>
 </ul>
 
-<h2 id="insert-othotlog_tn">Insert $O(th)=O(t\log_tn)$</h2>
+<h2 id="insert-othotlog_tn">Insert (O(th)=O(t\log_tn))</h2>
 
 <ul>
   <li>Find the the leaf node by searching.</li>
@@ -250,7 +250,7 @@ $(document).ready(function () {
 
 <p><img src="https://adityagupta1089.github.io/images/btree2.png" alt="" /></p>
 
-<p><strong>Figure: Splitting a node with $t=4$</strong></p>
+<p><strong>Figure: Splitting a node with (t=4)</strong></p>
 
 <ul>
   <li>Make two nodes with keys less than and more than the median key respectively.</li>
@@ -259,15 +259,15 @@ $(document).ready(function () {
   <li>Move the children around the median key to the left and right new nodes respectively.</li>
 </ul>
 
-<h2 id="delete-othotlog_tn">Delete $O(th)=O(t\log_tn)$</h2>
+<h2 id="delete-othotlog_tn">Delete (O(th)=O(t\log_tn))</h2>
 
 <ul>
-  <li>If key $k$ is in leaf node $x$ then delete $k$ from $x$.</li>
-  <li>If key $k$ is in internal node $x$ then
+  <li>If key (k) is in leaf node (x) then delete (k) from (x).</li>
+  <li>If key (k) is in internal node (x) then
     <ul>
-      <li>If left child $y$ of $k$ has $\ge t$ keys then find predecessor $k’$ of $k$ in $y$. Delete $k’$ from $y$ and replace $k$ by $k’$ in $x$.</li>
-      <li>Otherwise check for right child $z$ and do symmetrically.</li>
-      <li>Otherwise merge $y$ and $z$ along with $k$ into $y$. Recursively delete $k$ from $y$.</li>
+      <li>If left child (y) of (k) has (\ge t) keys then find predecessor (k’) of (k) in (y). Delete (k’) from (y) and replace (k) by (k’) in (x).</li>
+      <li>Otherwise check for right child (z) and do symmetrically.</li>
+      <li>Otherwise merge (y) and (z) along with (k) into (y). Recursively delete (k) from (y).</li>
     </ul>
   </li>
 </ul>

@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Aditya Gupta&#39;s Blog | Integer Multiplication</title>
-  <meta name="description" content="To multiply $x$ and $y$, split them into left and right halves which are $n/2$ bits long.">
+  <meta name="description" content="To multiply (x) and (y), split them into left and right halves which are (n/2) bits long.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,8 +23,8 @@
 <meta name="generator" content="Jekyll v4.4.1" />
 <meta property="og:title" content="Integer Multiplication" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="To multiply $x$ and $y$, split them into left and right halves which are $n/2$ bits long." />
-<meta name="twitter:description" property="og:description" content="To multiply $x$ and $y$, split them into left and right halves which are $n/2$ bits long." />
+<meta name="description" content="To multiply (x) and (y), split them into left and right halves which are (n/2) bits long." />
+<meta name="twitter:description" property="og:description" content="To multiply (x) and (y), split them into left and right halves which are (n/2) bits long." />
 <link rel="canonical" href="https://adityagupta1089.github.io/notes/algorithms/integer-multiplication.html" />
 <meta property="og:url" content="https://adityagupta1089.github.io/notes/algorithms/integer-multiplication.html" />
 <meta property="og:site_name" content="Aditya Gupta’s Blog" />
@@ -34,7 +34,7 @@
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="Integer Multiplication" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2019-10-24T15:02:00+00:00","datePublished":"2019-10-24T15:02:00+00:00","description":"To multiply $x$ and $y$, split them into left and right halves which are $n/2$ bits long.","headline":"Integer Multiplication","mainEntityOfPage":{"@type":"WebPage","@id":"https://adityagupta1089.github.io/notes/algorithms/integer-multiplication.html"},"url":"https://adityagupta1089.github.io/notes/algorithms/integer-multiplication.html"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2019-10-24T15:02:00+00:00","datePublished":"2019-10-24T15:02:00+00:00","description":"To multiply (x) and (y), split them into left and right halves which are (n/2) bits long.","headline":"Integer Multiplication","mainEntityOfPage":{"@type":"WebPage","@id":"https://adityagupta1089.github.io/notes/algorithms/integer-multiplication.html"},"url":"https://adityagupta1089.github.io/notes/algorithms/integer-multiplication.html"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -158,7 +158,7 @@
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
     tex2jax: {
-      inlineMath: [ ['$','$'], ['\\(','\\)'] ],
+      inlineMath: [ ['\\(','\\)'] ],
       displayMath: [ ['$$', '$$'], ['\\[','\\]'] ],
       processEscapes: true
     },
@@ -207,7 +207,7 @@ $(document).ready(function () {
   </header>
 
   <div class="post-content" itemprop="articleBody">
-    <p>To multiply $x$ and $y$, split them into left and right halves which are $n/2$ bits long.</p>
+    <p>To multiply (x) and (y), split them into left and right halves which are (n/2) bits long.</p>
 
 \[\begin{align}
 x&amp;=2^{n/2}x_L+x_R\\
@@ -217,9 +217,9 @@ xy&amp;=(2^{n/2}x_L+x_R)(2^{n/2}y_L+y_R)\\
 x_Ly_R+x_Ry_R&amp;=(x_L+x_R)(y_L+y_R)-x_Ly_L-x_Ry_R
 \end{align}\]
 
-<p>Additional and multiplication by power of 2 takes linear time. We only need to calculate $x_Ly_L$, $x_Ry_R$ and $(x_L+x_R)(y_L+y_R)$ which we can calculate recursively.</p>
+<p>Additional and multiplication by power of 2 takes linear time. We only need to calculate (x_Ly_L), (x_Ry_R) and ((x_L+x_R)(y_L+y_R)) which we can calculate recursively.</p>
 
-<p>$T(n)=3T(n/2)+O(n)\implies T(n)=O(n^{\log_23})=O(n^{1.59})$</p>
+<p>(T(n)=3T(n/2)+O(n)\implies T(n)=O(n^{\log_23})=O(n^{1.59}))</p>
 
   </div>
 

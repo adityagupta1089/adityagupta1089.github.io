@@ -158,7 +158,7 @@
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
     tex2jax: {
-      inlineMath: [ ['$','$'], ['\\(','\\)'] ],
+      inlineMath: [ ['\\(','\\)'] ],
       displayMath: [ ['$$', '$$'], ['\\[','\\]'] ],
       processEscapes: true
     },
@@ -209,29 +209,29 @@ $(document).ready(function () {
   <div class="post-content" itemprop="articleBody">
     <h1 id="entropy-2-class">Entropy 2-class</h1>
 
-<p>If $\cal I$ is the set of training examples, $p_+$ ratio of posititive examples in $\cal I$ and $p_-$ negative examples then entropy which measures impurity:</p>
+<p>If (\cal I) is the set of training examples, (p_+) ratio of posititive examples in (\cal I) and (p_-) negative examples then entropy which measures impurity:</p>
 
 \[\text{Entropy}(I) = -p_+\log_2p_+ - p_-\log _2p_-\]
 
-<p>This represents expected number of bits to encode the class of a randomly drawn member of $\cal I$</p>
+<p>This represents expected number of bits to encode the class of a randomly drawn member of (\cal I)</p>
 
 <h1 id="information-gain">Information Gain</h1>
 
-<p>Expected reduction in entropy due to sorting on attribute $x_i$</p>
+<p>Expected reduction in entropy due to sorting on attribute (x_i)</p>
 
 \[\text{Gain}({\cal I}, x_i)=\text{Entropy}(I)-\sum_{v\in\text{values}(x
 _i)}\frac{|\cal I_v|}{|\cal I|}\text{Entropy}(\cal I_v)\]
 
 <ul>
-  <li>$\text{values}(x_i)$: all possible values of $x_i$</li>
-  <li>$\cal I_v\subset \cal I$ : points in $\cal I$ that take value $v$ for $x_i$</li>
+  <li>(\text{values}(x_i)): all possible values of (x_i)</li>
+  <li>(\cal I_v\subset \cal I) : points in (\cal I) that take value (v) for (x_i)</li>
 </ul>
 
 <h1 id="mutual-information-gain--information-gain">Mutual Information Gain &amp; Information Gain</h1>
 
 <p>Mutual information is the measure of mutual dependence of two random variables.</p>
 
-<p>Mutual information gain for two random variables $X$ and $Y$ is:</p>
+<p>Mutual information gain for two random variables (X) and (Y) is:</p>
 
 \[I(X;Y)=\sum_{y\in Y}\sum_{x\in X}p(x, y)\log\left(\frac{p(x,y)}{p(x)p(y)}\right)\]
 
@@ -244,7 +244,7 @@ _i)}\frac{|\cal I_v|}{|\cal I|}\text{Entropy}(\cal I_v)\]
 <p>Recursively perform on all examples.</p>
 
 <ul>
-  <li>For all $+$/$-$ examples return single node with corresponding label.</li>
+  <li>For all (+)/(-) examples return single node with corresponding label.</li>
   <li>Otherwise split on attribute that best classifies current set of examples.</li>
 </ul>
 
@@ -262,9 +262,9 @@ _i)}\frac{|\cal I_v|}{|\cal I|}\text{Entropy}(\cal I_v)\]
 
 <h1 id="overfitting">Overfitting</h1>
 
-<p>Hypothesis $h\in \cal H$ overfits $X$ if $\exists h’$ such that:</p>
+<p>Hypothesis (h\in \cal H) overfits (X) if (\exists h’) such that:</p>
 
-<p>$E(h|X)&lt; E(h’|X)$ but $E_p(h)&gt;E_p(h’)$ where $p$ is the entire distribution of data.</p>
+<p>(E(h|X)&lt; E(h’|X)) but (E_p(h)&gt;E_p(h’)) where (p) is the entire distribution of data.</p>
 
 <p>Strategies:</p>
 
@@ -296,7 +296,7 @@ _i)}\frac{|\cal I_v|}{|\cal I|}\text{Entropy}(\cal I_v)\]
 <h2 id="instane-bagging--bootstrap-aggregation">Instane Bagging / Bootstrap aggregation</h2>
 
 <ul>
-  <li>Generate $K$ different bootstrapped trainig datasets (sampling with replacement)</li>
+  <li>Generate (K) different bootstrapped trainig datasets (sampling with replacement)</li>
   <li>Learn a decision tree on each</li>
   <li>Final prediction is the majority/average vote of all.</li>
 </ul>
@@ -305,7 +305,7 @@ _i)}\frac{|\cal I_v|}{|\cal I|}\text{Entropy}(\cal I_v)\]
 
 <ul>
   <li>Improved than instance bagging</li>
-  <li>Build a decision tree using a subset of $m$ features rather than all $D$ features, typically $m\approx \sqrt D$</li>
+  <li>Build a decision tree using a subset of (m) features rather than all (D) features, typically (m\approx \sqrt D)</li>
 </ul>
 
   </div>

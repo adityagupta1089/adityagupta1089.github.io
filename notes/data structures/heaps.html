@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Aditya Gupta&#39;s Blog | Heaps - Binary, Binomial, Fibonacci</title>
-  <meta name="description" content="            Procedure      Binary Heap      Binomial Heap (worst case)      Fibonacci Heap (amortized)                  Make Heap      $\Theta(1)$      $\The...">
+  <meta name="description" content="            Procedure      Binary Heap      Binomial Heap (worst case)      Fibonacci Heap (amortized)                  Make Heap      (\Theta(1))      (\The...">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,8 +23,8 @@
 <meta name="generator" content="Jekyll v4.4.1" />
 <meta property="og:title" content="Heaps - Binary, Binomial, Fibonacci" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Procedure Binary Heap Binomial Heap (worst case) Fibonacci Heap (amortized) Make Heap $\Theta(1)$ $\Theta(1)$ $\Theta(1)$ Insert $\Theta(\lg n)$ $O(\lg n)$ $\Theta(1)$ Minimum $\Theta(1)$ $O(\lg n)$ $\Theta(1)$ Extract Min $\Theta(\lg n)$ $\Theta(\lg n)$ $\Theta(\lg n)$ Union $\Theta(n)$ $O(\lg n)$ $\Theta(1)$ Decrease Key $\Theta(\lg n)$ $\Theta(\lg n)$ $\Theta(1)$ Delete $\Theta(\lg n)$ $\Theta(\lg n)$ $\Theta(\lg n)$" />
-<meta name="twitter:description" property="og:description" content="Procedure Binary Heap Binomial Heap (worst case) Fibonacci Heap (amortized) Make Heap $\Theta(1)$ $\Theta(1)$ $\Theta(1)$ Insert $\Theta(\lg n)$ $O(\lg n)$ $\Theta(1)$ Minimum $\Theta(1)$ $O(\lg n)$ $\Theta(1)$ Extract Min $\Theta(\lg n)$ $\Theta(\lg n)$ $\Theta(\lg n)$ Union $\Theta(n)$ $O(\lg n)$ $\Theta(1)$ Decrease Key $\Theta(\lg n)$ $\Theta(\lg n)$ $\Theta(1)$ Delete $\Theta(\lg n)$ $\Theta(\lg n)$ $\Theta(\lg n)$" />
+<meta name="description" content="Procedure Binary Heap Binomial Heap (worst case) Fibonacci Heap (amortized) Make Heap (\Theta(1)) (\Theta(1)) (\Theta(1)) Insert (\Theta(\lg n)) (O(\lg n)) (\Theta(1)) Minimum (\Theta(1)) (O(\lg n)) (\Theta(1)) Extract Min (\Theta(\lg n)) (\Theta(\lg n)) (\Theta(\lg n)) Union (\Theta(n)) (O(\lg n)) (\Theta(1)) Decrease Key (\Theta(\lg n)) (\Theta(\lg n)) (\Theta(1)) Delete (\Theta(\lg n)) (\Theta(\lg n)) (\Theta(\lg n))" />
+<meta name="twitter:description" property="og:description" content="Procedure Binary Heap Binomial Heap (worst case) Fibonacci Heap (amortized) Make Heap (\Theta(1)) (\Theta(1)) (\Theta(1)) Insert (\Theta(\lg n)) (O(\lg n)) (\Theta(1)) Minimum (\Theta(1)) (O(\lg n)) (\Theta(1)) Extract Min (\Theta(\lg n)) (\Theta(\lg n)) (\Theta(\lg n)) Union (\Theta(n)) (O(\lg n)) (\Theta(1)) Decrease Key (\Theta(\lg n)) (\Theta(\lg n)) (\Theta(1)) Delete (\Theta(\lg n)) (\Theta(\lg n)) (\Theta(\lg n))" />
 <link rel="canonical" href="https://adityagupta1089.github.io/notes/data%20structures/heaps.html" />
 <meta property="og:url" content="https://adityagupta1089.github.io/notes/data%20structures/heaps.html" />
 <meta property="og:site_name" content="Aditya Gupta’s Blog" />
@@ -34,7 +34,7 @@
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="Heaps - Binary, Binomial, Fibonacci" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2019-10-23T00:00:00+00:00","datePublished":"2019-10-23T00:00:00+00:00","description":"Procedure Binary Heap Binomial Heap (worst case) Fibonacci Heap (amortized) Make Heap $\\Theta(1)$ $\\Theta(1)$ $\\Theta(1)$ Insert $\\Theta(\\lg n)$ $O(\\lg n)$ $\\Theta(1)$ Minimum $\\Theta(1)$ $O(\\lg n)$ $\\Theta(1)$ Extract Min $\\Theta(\\lg n)$ $\\Theta(\\lg n)$ $\\Theta(\\lg n)$ Union $\\Theta(n)$ $O(\\lg n)$ $\\Theta(1)$ Decrease Key $\\Theta(\\lg n)$ $\\Theta(\\lg n)$ $\\Theta(1)$ Delete $\\Theta(\\lg n)$ $\\Theta(\\lg n)$ $\\Theta(\\lg n)$","headline":"Heaps - Binary, Binomial, Fibonacci","mainEntityOfPage":{"@type":"WebPage","@id":"https://adityagupta1089.github.io/notes/data%20structures/heaps.html"},"url":"https://adityagupta1089.github.io/notes/data%20structures/heaps.html"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2019-10-23T00:00:00+00:00","datePublished":"2019-10-23T00:00:00+00:00","description":"Procedure Binary Heap Binomial Heap (worst case) Fibonacci Heap (amortized) Make Heap (\\Theta(1)) (\\Theta(1)) (\\Theta(1)) Insert (\\Theta(\\lg n)) (O(\\lg n)) (\\Theta(1)) Minimum (\\Theta(1)) (O(\\lg n)) (\\Theta(1)) Extract Min (\\Theta(\\lg n)) (\\Theta(\\lg n)) (\\Theta(\\lg n)) Union (\\Theta(n)) (O(\\lg n)) (\\Theta(1)) Decrease Key (\\Theta(\\lg n)) (\\Theta(\\lg n)) (\\Theta(1)) Delete (\\Theta(\\lg n)) (\\Theta(\\lg n)) (\\Theta(\\lg n))","headline":"Heaps - Binary, Binomial, Fibonacci","mainEntityOfPage":{"@type":"WebPage","@id":"https://adityagupta1089.github.io/notes/data%20structures/heaps.html"},"url":"https://adityagupta1089.github.io/notes/data%20structures/heaps.html"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -158,7 +158,7 @@
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
     tex2jax: {
-      inlineMath: [ ['$','$'], ['\\(','\\)'] ],
+      inlineMath: [ ['\\(','\\)'] ],
       displayMath: [ ['$$', '$$'], ['\\[','\\]'] ],
       processEscapes: true
     },
@@ -219,45 +219,45 @@ $(document).ready(function () {
   <tbody>
     <tr>
       <td>Make Heap</td>
-      <td>$\Theta(1)$</td>
-      <td>$\Theta(1)$</td>
-      <td>$\Theta(1)$</td>
+      <td>(\Theta(1))</td>
+      <td>(\Theta(1))</td>
+      <td>(\Theta(1))</td>
     </tr>
     <tr>
       <td>Insert</td>
-      <td>$\Theta(\lg n)$</td>
-      <td>$O(\lg n)$</td>
-      <td>$\Theta(1)$</td>
+      <td>(\Theta(\lg n))</td>
+      <td>(O(\lg n))</td>
+      <td>(\Theta(1))</td>
     </tr>
     <tr>
       <td>Minimum</td>
-      <td>$\Theta(1)$</td>
-      <td>$O(\lg n)$</td>
-      <td>$\Theta(1)$</td>
+      <td>(\Theta(1))</td>
+      <td>(O(\lg n))</td>
+      <td>(\Theta(1))</td>
     </tr>
     <tr>
       <td>Extract Min</td>
-      <td>$\Theta(\lg n)$</td>
-      <td>$\Theta(\lg n)$</td>
-      <td>$\Theta(\lg n)$</td>
+      <td>(\Theta(\lg n))</td>
+      <td>(\Theta(\lg n))</td>
+      <td>(\Theta(\lg n))</td>
     </tr>
     <tr>
       <td>Union</td>
-      <td>$\Theta(n)$</td>
-      <td>$O(\lg n)$</td>
-      <td>$\Theta(1)$</td>
+      <td>(\Theta(n))</td>
+      <td>(O(\lg n))</td>
+      <td>(\Theta(1))</td>
     </tr>
     <tr>
       <td>Decrease Key</td>
-      <td>$\Theta(\lg n)$</td>
-      <td>$\Theta(\lg n)$</td>
-      <td>$\Theta(1)$</td>
+      <td>(\Theta(\lg n))</td>
+      <td>(\Theta(\lg n))</td>
+      <td>(\Theta(1))</td>
     </tr>
     <tr>
       <td>Delete</td>
-      <td>$\Theta(\lg n)$</td>
-      <td>$\Theta(\lg n)$</td>
-      <td>$\Theta(\lg n)$</td>
+      <td>(\Theta(\lg n))</td>
+      <td>(\Theta(\lg n))</td>
+      <td>(\Theta(\lg n))</td>
     </tr>
   </tbody>
 </table>
@@ -269,76 +269,76 @@ $(document).ready(function () {
 <p>A binary heap is an array object which we can view as a nearly complete binary tree with pointers as follows:</p>
 
 <ul>
-  <li>Parent: $\lfloor i/2\rfloor$</li>
-  <li>Left child: $2i$</li>
-  <li>Right child: $2i+1$</li>
+  <li>Parent: (\lfloor i/2\rfloor)</li>
+  <li>Left child: (2i)</li>
+  <li>Right child: (2i+1)</li>
 </ul>
 
-<p>These satisfy the <strong>heap property,</strong> i.e. for max-heap $A[{\rm Parent}(i)]\ge A[i]$ or vice versa for min-heap. A heap of height $h$ can have nodes from $2^h$(1 node at last level) to $2^{h+1}-1$(full tree). So $h\le \lg n \le h+1$ so $h=\lfloor \lg n\rfloor$.</p>
+<p>These satisfy the <strong>heap property,</strong> i.e. for max-heap (A[{\rm Parent}(i)]\ge A[i]) or vice versa for min-heap. A heap of height (h) can have nodes from (2^h)(1 node at last level) to (2^{h+1}-1)(full tree). So (h\le \lg n \le h+1) so (h=\lfloor \lg n\rfloor).</p>
 
-<h2 id="heapify-oholg-n">Heapify $O(h)=O(\lg n)$</h2>
+<h2 id="heapify-oholg-n">Heapify (O(h)=O(\lg n))</h2>
 
-<p>If binary tree at ${\rm Left}(i)$ and ${\rm Right}(i)$ satisfy the heap property but $A[i]$ does not then we need to perform heapify operation. In max-heap we exchange $A[i]$ with the largest of ${\rm Right}(i)$ and ${\rm Left}(i)$ and recursively perform heapify operation at the exchanged node (the new parent).</p>
+<p>If binary tree at ({\rm Left}(i)) and ({\rm Right}(i)) satisfy the heap property but (A[i]) does not then we need to perform heapify operation. In max-heap we exchange (A[i]) with the largest of ({\rm Right}(i)) and ({\rm Left}(i)) and recursively perform heapify operation at the exchanged node (the new parent).</p>
 
-<h2 id="building-on">Building $O(n)$</h2>
+<h2 id="building-on">Building (O(n))</h2>
 
-<p>Elements from $\lfloor n/2\rfloor+1$ to $n$ are all leaves of the tree so each is a 1-element heap. We run heapify on rest of the elements in order from $\lfloor n/2\rfloor$ to $1$. Total time taken for height $i$ is $2^i\cdot O(h-i)$. Sum over all levels is 
+<p>Elements from (\lfloor n/2\rfloor+1) to (n) are all leaves of the tree so each is a 1-element heap. We run heapify on rest of the elements in order from (\lfloor n/2\rfloor) to (1). Total time taken for height (i) is (2^i\cdot O(h-i)). Sum over all levels is 
 \(O(\sum_{i=0}^{\lg n} 2^{h-i}.i) =O\left(\sum _{i=0}^{\lg n}2^h . \frac i{2^i}\right)=O\left(n\cdot\sum_{i=0}^{\lg n}\frac i{2^i}\right)=O(n)\)
-Where $\sum_{x=0}^\infty x/2^x=x/(1-x)^2$ and we put $x=1/2$ to get $\sum i/2^i\le 2$.</p>
+Where (\sum_{x=0}^\infty x/2^x=x/(1-x)^2) and we put (x=1/2) to get (\sum i/2^i\le 2).</p>
 
-<h2 id="extract-min-olg-n">Extract Min $O(\lg n)$</h2>
+<h2 id="extract-min-olg-n">Extract Min (O(\lg n))</h2>
 
 <p>Replace min value with last element and perform heapify after removing the min element.</p>
 
 <h1 id="binomial-heap">Binomial Heap</h1>
 
-<p>A binomial tree $B_k$ is defined recursively consisting of two $B_{k-1}$ linked together.</p>
+<p>A binomial tree (B_k) is defined recursively consisting of two (B_{k-1}) linked together.</p>
 
 <p><img src="https://adityagupta1089.github.io/images/heap2.gif" alt="" /></p>
 
-<p>A tree $B_k$</p>
+<p>A tree (B_k)</p>
 
 <ul>
-  <li>Contains $2^k$ nodes</li>
-  <li>has height $k$</li>
-  <li>there are $k \choose i$ nodes at depth $i$ (which gives it the name <strong>binomial heap</strong>)</li>
-  <li>root has degree $k$</li>
+  <li>Contains (2^k) nodes</li>
+  <li>has height (k)</li>
+  <li>there are (k \choose i) nodes at depth (i) (which gives it the name <strong>binomial heap</strong>)</li>
+  <li>root has degree (k)</li>
 </ul>
 
-<p>A binomial heap $H$:</p>
+<p>A binomial heap (H):</p>
 
 <ul>
   <li>Each binomial tree is heap ordered.</li>
   <li>there is atmost 1 tree whose root has a given degree.</li>
 </ul>
 
-<p>So a binomial heap $H$ has atmost $\lfloor\lg n\rfloor+1$ binomial trees (from binary representation)</p>
+<p>So a binomial heap (H) has atmost (\lfloor\lg n\rfloor+1) binomial trees (from binary representation)</p>
 
-<h2 id="finding-min-olg-n">Finding Min $O(\lg n)$</h2>
+<h2 id="finding-min-olg-n">Finding Min (O(\lg n))</h2>
 
-<p>See the roots of all $O(\lg n)$ trees.</p>
+<p>See the roots of all (O(\lg n)) trees.</p>
 
-<h2 id="uniting-two-binomial-heaps-olg-n">Uniting two binomial heaps $O(\lg n)$</h2>
+<h2 id="uniting-two-binomial-heaps-olg-n">Uniting two binomial heaps (O(\lg n))</h2>
 
-<p>For merging two binomial trees $B_{k-1}$ with roots $y$ and $z$ we would make $z$ parent of $y$ and make the child of $z$ sibling of $y$. This takes $O(1)$ time.</p>
+<p>For merging two binomial trees (B_{k-1}) with roots (y) and (z) we would make (z) parent of (y) and make the child of (z) sibling of (y). This takes (O(1)) time.</p>
 
-<p>For merging two heaps we would do the same as binary addition. This would take $O(\lg n)$ time as there are atmax $\lg n$ trees.</p>
+<p>For merging two heaps we would do the same as binary addition. This would take (O(\lg n)) time as there are atmax (\lg n) trees.</p>
 
-<h2 id="inserting-a-node-olg-n">Inserting a node $O(\lg n)$</h2>
+<h2 id="inserting-a-node-olg-n">Inserting a node (O(\lg n))</h2>
 
-<p>Create $B_0$ with the node and perform heap union.</p>
+<p>Create (B_0) with the node and perform heap union.</p>
 
-<h2 id="extracting-min-olg-n">Extracting Min $O(\lg n)$</h2>
+<h2 id="extracting-min-olg-n">Extracting Min (O(\lg n))</h2>
 
 <p>Merge the children of the tree with minimunm key with the rest of the trees.</p>
 
-<h2 id="decreasing-a-key-olg-n">Decreasing a key $O(\lg n)$</h2>
+<h2 id="decreasing-a-key-olg-n">Decreasing a key (O(\lg n))</h2>
 
 <p>Change key value and perform heapify operation.</p>
 
-<h2 id="deleting-a-key-olg-n">Deleting a key $O(\lg n)$</h2>
+<h2 id="deleting-a-key-olg-n">Deleting a key (O(\lg n))</h2>
 
-<p>Decrease key to $-\infty$ and extract min.</p>
+<p>Decrease key to (-\infty) and extract min.</p>
 
 <h1 id="fibonacci-heap">Fibonacci Heap</h1>
 
@@ -347,79 +347,79 @@ Where $\sum_{x=0}^\infty x/2^x=x/(1-x)^2$ and we put $x=1/2$ to get $\sum i/2^i\
 <p>Suppose</p>
 
 <ol>
-  <li>At some time, $x$ was a root.</li>
-  <li>then $x$ was linked to (made child of) another node</li>
-  <li>then two children of $x$ were removed by cut operation</li>
+  <li>At some time, (x) was a root.</li>
+  <li>then (x) was linked to (made child of) another node</li>
+  <li>then two children of (x) were removed by cut operation</li>
 </ol>
 
-<p>As soon as second child has been lost we remove $x$ from it’s parents making it a new root. $x.{\rm mark}$ is true if steps $1$ and $2$ have occured and one child of $x$ has been cut.</p>
+<p>As soon as second child has been lost we remove (x) from it’s parents making it a new root. (x.{\rm mark}) is true if steps (1) and (2) have occured and one child of (x) has been cut.</p>
 
-<p><strong>Note</strong>: Maximum degree of a node is $D(n)\le \lfloor\log_{\phi}n\rfloor$ where $\phi$ is the golden ration $\phi=(1+\sqrt 5)/2$. Hence $D(n)\le O(\lg n)$</p>
+<p><strong>Note</strong>: Maximum degree of a node is (D(n)\le \lfloor\log_{\phi}n\rfloor) where (\phi) is the golden ration (\phi=(1+\sqrt 5)/2). Hence (D(n)\le O(\lg n))</p>
 
 <h2 id="potential">Potential</h2>
 
-<p>$t(H)$ represents the number of trees in heap $H$ and $m(H)$ represents the number of marked nodes in $H$. We define the potential of $H$ as $\phi(H)=t(H)+2m(H)$</p>
+<p>(t(H)) represents the number of trees in heap (H) and (m(H)) represents the number of marked nodes in (H). We define the potential of (H) as (\phi(H)=t(H)+2m(H))</p>
 
-<h2 id="create-a-new-heap-o1">Create a new heap $O(1)$</h2>
+<h2 id="create-a-new-heap-o1">Create a new heap (O(1))</h2>
 
-<p>Just allocate empty heap $H$ with $0$ trees and <code class="language-plaintext highlighter-rouge">NULL</code> min pointer $\phi(H)=0$</p>
+<p>Just allocate empty heap (H) with (0) trees and <code class="language-plaintext highlighter-rouge">NULL</code> min pointer (\phi(H)=0)</p>
 
-<h2 id="insert-a-node-o1">Insert a node $O(1)$</h2>
+<h2 id="insert-a-node-o1">Insert a node (O(1))</h2>
 
-<p>Just insert the node in the root list and update min-pointer if necessary. $\Delta\phi(H)=1$</p>
+<p>Just insert the node in the root list and update min-pointer if necessary. (\Delta\phi(H)=1)</p>
 
-<h2 id="finding-the-min-o1">Finding the min $O(1)$</h2>
+<h2 id="finding-the-min-o1">Finding the min (O(1))</h2>
 
-<p>Return the value pointed by min pointer. $\Delta \phi(H)=0$</p>
+<p>Return the value pointed by min pointer. (\Delta \phi(H)=0)</p>
 
-<h2 id="uniting-two-fibonacci-heaps-o1">Uniting two fibonacci heaps $O(1)$</h2>
+<h2 id="uniting-two-fibonacci-heaps-o1">Uniting two fibonacci heaps (O(1))</h2>
 
 <p>Concatenate two root lists and update min-pointer if necessary. 
 \(\begin{align}\Delta\phi(H)&amp;=\phi(H)-\phi(H_1)-\phi(H_2)\\&amp;=(t(H)+2m(H))-((t(H_1)+2m(H_1))+(t(H_2)+2m(H_2)))
 \\&amp;=0\end{align}\)</p>
 
-<p>since $t(H)=t(H_1)+t(H_2)$ and $m(H)=m(H_1)+m(H_2)$</p>
+<p>since (t(H)=t(H_1)+t(H_2)) and (m(H)=m(H_1)+m(H_2))</p>
 
-<h2 id="extracting-the-min-node-olg-n">Extracting the min node $O(\lg n)$</h2>
+<h2 id="extracting-the-min-node-olg-n">Extracting the min node (O(\lg n))</h2>
 
-<p>Add the children of tree whose root is pointer by min-pointer to the root list of $H$ and then remove it from the root list. Also update min pointer. This takes $O(D(n))$. Then consolidate the root list by linking roots of equal degrees until atmost one root remains of each degree. To link $y$ and $x$ remove $y$ from root list of $H$ and make $y$ child of $x$ and unmark $y$ is previously marked (step 2).</p>
+<p>Add the children of tree whose root is pointer by min-pointer to the root list of (H) and then remove it from the root list. Also update min pointer. This takes (O(D(n))). Then consolidate the root list by linking roots of equal degrees until atmost one root remains of each degree. To link (y) and (x) remove (y) from root list of (H) and make (y) child of (x) and unmark (y) is previously marked (step 2).</p>
 
-<p>The above operation will increate elements in root list to at most $D(n)+t(H)-1$, original $t(H)$ minus $1$ extracted node, new $D(n)$ children of extracted node. The total time taken for combining roots is therefore atmost $O(D(n)+t(H))$.</p>
+<p>The above operation will increate elements in root list to at most (D(n)+t(H)-1), original (t(H)) minus (1) extracted node, new (D(n)) children of extracted node. The total time taken for combining roots is therefore atmost (O(D(n)+t(H))).</p>
 
-<p>The potential before is $t(H)+2m(H)$ and afterwards at most $(D(n)+1)+2m(H)$. Thus amortized cost is
+<p>The potential before is (t(H)+2m(H)) and afterwards at most ((D(n)+1)+2m(H)). Thus amortized cost is
 \(\begin{align}
 &amp;O(D(n)+t(H))+((D(n)+1)+2m(H))-(t(H)+2m(H))\\
 &amp;=O(D(n))+O(t(H))-t(H))\\
 &amp;=O(D(n))
 \end{align}\)</p>
 
-<h2 id="decreasing-a-key-o1">Decreasing a key $O(1)$</h2>
+<h2 id="decreasing-a-key-o1">Decreasing a key (O(1))</h2>
 
-<p>Cut the link between the node $x$ with the key and it’s parent $y$, making $x$ the root (also unmark it if marked, step 1). This is a cut operation.  Then perform a cascading cut where:</p>
+<p>Cut the link between the node (x) with the key and it’s parent (y), making (x) the root (also unmark it if marked, step 1). This is a cut operation.  Then perform a cascading cut where:</p>
 
 <ul>
-  <li>If $y$ is unmarked then mark it (since it has lost it’s first child)</li>
-  <li>Else perform cut operation at $y$ and perform cascading cut at $y$’s parent.</li>
+  <li>If (y) is unmarked then mark it (since it has lost it’s first child)</li>
+  <li>Else perform cut operation at (y) and perform cascading cut at (y)’s parent.</li>
 </ul>
 
-<p>This goes on until a unmarked node or root is found. Finally we update the min-pointer. Total time taken is $O(1)$ for decreasing key, $O(c)$ for cascading cuts consisting of $c$ total cuts.</p>
+<p>This goes on until a unmarked node or root is found. Finally we update the min-pointer. Total time taken is (O(1)) for decreasing key, (O(c)) for cascading cuts consisting of (c) total cuts.</p>
 
 <p>For change in potential:</p>
 
 <ul>
-  <li>Cutting $x$ from $y$ creates a new tree rooted at $x$ and clears $x$’s mark bit.</li>
-  <li>Each call of the cascading cut except for the last one cuts a marked node and clears the mark bit. Finally fibonacci heap contains $t(H)+c$ trees ($t(H)$ original, $c-1$ from cascading cuts and $1$ from $x$) and at most $m(H)-c+2$ marked nodes ($m(H)$ original, $c-1$ unmarked from cascading cuts except last one which marked $1$ node).</li>
+  <li>Cutting (x) from (y) creates a new tree rooted at (x) and clears (x)’s mark bit.</li>
+  <li>Each call of the cascading cut except for the last one cuts a marked node and clears the mark bit. Finally fibonacci heap contains (t(H)+c) trees ((t(H)) original, (c-1) from cascading cuts and (1) from (x)) and at most (m(H)-c+2) marked nodes ((m(H)) original, (c-1) unmarked from cascading cuts except last one which marked (1) node).</li>
 </ul>
 
-<p>$((t(H)+c)+2(m(H)-c+2))-(t(H)+2m(H))=4-c$</p>
+<p>(((t(H)+c)+2(m(H)-c+2))-(t(H)+2m(H))=4-c)</p>
 
-<p>Thus total amortized time taken is $O(c)+4-c=O(1)$</p>
+<p>Thus total amortized time taken is (O(c)+4-c=O(1))</p>
 
-<p>1 unit of potential pays for (i) cut and clearing the mark bit. (ii) decrease in potential due to node $y$ becoming a root.</p>
+<p>1 unit of potential pays for (i) cut and clearing the mark bit. (ii) decrease in potential due to node (y) becoming a root.</p>
 
-<h2 id="deleting-a-key-olg-n-1">Deleting a key $O(\lg n)$</h2>
+<h2 id="deleting-a-key-olg-n-1">Deleting a key (O(\lg n))</h2>
 
-<p>Decrease key to $-\infty$ and extract min.</p>
+<p>Decrease key to (-\infty) and extract min.</p>
 
 
   </div>

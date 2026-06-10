@@ -5,8 +5,8 @@
     <description>ML infrastructure engineer at Google. Notes on algorithms, chess, systems, and whatever else.</description>
     <link>https://adityagupta1089.github.io/</link>
     <atom:link href="https://adityagupta1089.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 10 Jun 2026 02:15:40 +0000</pubDate>
-    <lastBuildDate>Wed, 10 Jun 2026 02:15:40 +0000</lastBuildDate>
+    <pubDate>Wed, 10 Jun 2026 02:38:05 +0000</pubDate>
+    <lastBuildDate>Wed, 10 Jun 2026 02:38:05 +0000</lastBuildDate>
     <generator>Jekyll v4.4.1</generator>
     
       <item>
@@ -470,35 +470,35 @@ Full source: &lt;a href=&quot;https://github.com/adityagupta1089/unfair-flips-an
     
       <item>
         <title>Linear time deterministic median finding</title>
-        <description>&lt;p&gt;Selection algorithm SELECT for finding the $i^{\rm th}$ smallest element:&lt;/p&gt;
+        <description>&lt;p&gt;Selection algorithm SELECT for finding the (i^{\rm th}) smallest element:&lt;/p&gt;
 
 &lt;ol&gt;
   &lt;li&gt;
-    &lt;p&gt;Divide the array into $\lfloor n/5\rfloor$ groups of 5 elements each (last one has $n\mod 5$).  $O(n)$&lt;/p&gt;
+    &lt;p&gt;Divide the array into (\lfloor n/5\rfloor) groups of 5 elements each (last one has (n\mod 5)).  (O(n))&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;Find the median of each of the groups by insertion-sorting the elements of each group and picking the median from the sorted list of group elements. $O(n)$&lt;/p&gt;
+    &lt;p&gt;Find the median of each of the groups by insertion-sorting the elements of each group and picking the median from the sorted list of group elements. (O(n))&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;Use SELECT recursively to find the median $x$ of the $\lceil n/5\rceil$ medians found. $T(\lceil n/5\rceil)$&lt;/p&gt;
+    &lt;p&gt;Use SELECT recursively to find the median (x) of the (\lceil n/5\rceil) medians found. (T(\lceil n/5\rceil))&lt;/p&gt;
   &lt;/li&gt;
-  &lt;li&gt;Partition the array into $L$ &amp;amp; $R$ based on $x$. Let $k=\vert L\vert  + 1$. Note that $x$ is $k^{\rm th}$ smallest element and there are $n-k$ elements in $R$. $O(n)$&lt;/li&gt;
-  &lt;li&gt;Based on $i$:
+  &lt;li&gt;Partition the array into (L) &amp;amp; (R) based on (x). Let (k=\vert L\vert  + 1). Note that (x) is (k^{\rm th}) smallest element and there are (n-k) elements in (R). (O(n))&lt;/li&gt;
+  &lt;li&gt;Based on (i):
     &lt;ol&gt;
-      &lt;li&gt;$i=k$, return $x$.&lt;/li&gt;
-      &lt;li&gt;$i&amp;lt;k$, recurse SELECT on $L$ for $i$&lt;/li&gt;
-      &lt;li&gt;$i&amp;gt;k$, recurse SELECT on R for $i-k$&lt;/li&gt;
+      &lt;li&gt;(i=k), return (x).&lt;/li&gt;
+      &lt;li&gt;(i&amp;lt;k), recurse SELECT on (L) for (i)&lt;/li&gt;
+      &lt;li&gt;(i&amp;gt;k), recurse SELECT on R for (i-k)&lt;/li&gt;
     &lt;/ol&gt;
   &lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;p&gt;&lt;img src=&quot;/images/mom.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;We see that atleast $1/2$ of the medians found in 2 are greater than or equal to medians-of-medians $x$. Thus atleast half of the $\lceil n/5\rceil$ groups contribute atleast 3 elements that are greater than $x$, except for the last one and the group containing $x$ itself.Thus number of elements greater than $x$ is at least:&lt;/p&gt;
+&lt;p&gt;We see that atleast (1/2) of the medians found in 2 are greater than or equal to medians-of-medians (x). Thus atleast half of the (\lceil n/5\rceil) groups contribute atleast 3 elements that are greater than (x), except for the last one and the group containing (x) itself.Thus number of elements greater than (x) is at least:&lt;/p&gt;
 
-&lt;p&gt;$\displaystyle 3\left(\left\lceil\frac 12\left\lceil\frac n5\right\rceil\right\rceil-2\right)\ge \frac {3n}{10}-6$&lt;/p&gt;
+&lt;p&gt;(\displaystyle 3\left(\left\lceil\frac 12\left\lceil\frac n5\right\rceil\right\rceil-2\right)\ge \frac {3n}{10}-6)&lt;/p&gt;
 
-&lt;p&gt;Thus in worst case step 5 calls SELECT recursively on atmost $7n/10+6$ elements.  \(\begin{align}
+&lt;p&gt;Thus in worst case step 5 calls SELECT recursively on atmost (7n/10+6) elements.  \(\begin{align}
 T(n)&amp;amp;\le cn+T(n/5)+T(7n/10)\\
 &amp;amp;\le cn + \left(c\frac n5+T(n/5^2)+T(7n/50)\right)+\left(c\frac {7n}{10}+T(7n/50)+T(7^2n/10^2)\right)\\
 &amp;amp;= cn + 9\frac {cn}{10} + T(n/5^2) + 2T(7n/50) + T(7^2n/10^2)\\
@@ -507,7 +507,7 @@ T(n)&amp;amp;\le cn+T(n/5)+T(7n/10)\\
 &amp;amp;\le cn\frac 1{1-9/10} = O(n)
 \end{align}\)&lt;/p&gt;
 
-&lt;p&gt;Max height of tree is $(7/10)^h\le 1\implies h\ge \log_{10/7}n$.&lt;/p&gt;
+&lt;p&gt;Max height of tree is ((7/10)^h\le 1\implies h\ge \log_{10/7}n).&lt;/p&gt;
 
 </description>
         <pubDate>Sun, 10 Nov 2019 11:34:00 +0000</pubDate>
@@ -525,20 +525,20 @@ T(n)&amp;amp;\le cn+T(n/5)+T(7n/10)\\
         <title>Closest Pair of Points</title>
         <description>&lt;h1 id=&quot;the-divide-and-conquer-algorithm&quot;&gt;The divide-and-conquer algorithm&lt;/h1&gt;
 
-&lt;p&gt;We need to find the closest pair of points in a set $Q$ of $n\ge 2$ points. Brute force will take $\Theta(n^2)$ time.&lt;/p&gt;
+&lt;p&gt;We need to find the closest pair of points in a set (Q) of (n\ge 2) points. Brute force will take (\Theta(n^2)) time.&lt;/p&gt;
 
-&lt;p&gt;Each recursive call takes as input a subset $P\subseteq Q$ and arrays $Z$ and $Y$ each of which contains all the points o fhte input subset $P$. Points in $X$ are sorted on their $x$-coordinates monotonically increasing and $Y$ is sorted on monotonically increasing $y$-coordindate.&lt;/p&gt;
+&lt;p&gt;Each recursive call takes as input a subset (P\subseteq Q) and arrays (Z) and (Y) each of which contains all the points o fhte input subset (P). Points in (X) are sorted on their (x)-coordinates monotonically increasing and (Y) is sorted on monotonically increasing (y)-coordindate.&lt;/p&gt;
 
-&lt;p&gt;If $\vert P\vert\le 3$ we use brute force method otherwise:&lt;/p&gt;
+&lt;p&gt;If (\vert P\vert\le 3) we use brute force method otherwise:&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Divide&lt;/strong&gt;: Find a vertical line $l$ that bisects the point set $P$ intro two sets $P_L$ and $P_R$ such that $\vert P_L\vert =\lceil \vert P\vert /2\rceil$, $\vert P_R\vert =\lfloor \vert P\vert /2\rfloor$. Divide $X$ into $X_L$ and $X_R$. Similarly $Y$ into $Y_L$ and $Y_R$.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Conquer&lt;/strong&gt;: Make two recursive calls one in $P_L$ and other one $P_R$ for closest pair of point. Let the closest-pair distances returned be $\delta_L$ and $\delta_R$ respectively and let $\delta=\min(\delta_L, \delta_R)$&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Combine&lt;/strong&gt;: The closest pair is either (i) the pair with $\delta$ or   (ii) a pair of point with one in $P_L$ and one in $P_R$ whose distance is less than $\delta$
+  &lt;li&gt;&lt;strong&gt;Divide&lt;/strong&gt;: Find a vertical line (l) that bisects the point set (P) intro two sets (P_L) and (P_R) such that (\vert P_L\vert =\lceil \vert P\vert /2\rceil), (\vert P_R\vert =\lfloor \vert P\vert /2\rfloor). Divide (X) into (X_L) and (X_R). Similarly (Y) into (Y_L) and (Y_R).&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Conquer&lt;/strong&gt;: Make two recursive calls one in (P_L) and other one (P_R) for closest pair of point. Let the closest-pair distances returned be (\delta_L) and (\delta_R) respectively and let (\delta=\min(\delta_L, \delta_R))&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Combine&lt;/strong&gt;: The closest pair is either (i) the pair with (\delta) or   (ii) a pair of point with one in (P_L) and one in (P_R) whose distance is less than (\delta)
     &lt;ul&gt;
-      &lt;li&gt;Create $Y’$ which is the array $Y$ with all points in $2\delta$-wide vertical strip around $l$&lt;/li&gt;
-      &lt;li&gt;For each point $p$ in $Y’$ try to find points in $Y’$ that are withing $\delta$ units of $p$. Only $7$ points in $Y’$ that follow $p$ need to be considered. Compute distance from $p$ to each of these 7 points and keep track of the closest-pair distance $\delta’$ found over all pairs of points in $Y’$.&lt;/li&gt;
-      &lt;li&gt;Return pair of point with smallest distance $\delta’$ or $\delta$.&lt;/li&gt;
+      &lt;li&gt;Create (Y’) which is the array (Y) with all points in (2\delta)-wide vertical strip around (l)&lt;/li&gt;
+      &lt;li&gt;For each point (p) in (Y’) try to find points in (Y’) that are withing (\delta) units of (p). Only (7) points in (Y’) that follow (p) need to be considered. Compute distance from (p) to each of these 7 points and keep track of the closest-pair distance (\delta’) found over all pairs of points in (Y’).&lt;/li&gt;
+      &lt;li&gt;Return pair of point with smallest distance (\delta’) or (\delta).&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
@@ -547,15 +547,15 @@ T(n)&amp;amp;\le cn+T(n/5)+T(7n/10)\\
 
 &lt;p&gt;&lt;img src=&quot;/images/closestpair.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Suppose $p_L\in P_L$ and $p_R\in P_R$ have distance less than $\delta$. $p_L$ and $p_R$ should be individually less than $\delta$ distance from $l$. They are also within $\delta$ distance of each other vertically. So they must be in $\delta\times 2\delta$ rectangle as shown.&lt;/p&gt;
+&lt;p&gt;Suppose (p_L\in P_L) and (p_R\in P_R) have distance less than (\delta). (p_L) and (p_R) should be individually less than (\delta) distance from (l). They are also within (\delta) distance of each other vertically. So they must be in (\delta\times 2\delta) rectangle as shown.&lt;/p&gt;
 
-&lt;p&gt;Consider a $\delta\times\delta$ square forming the left half of a $\delta\times 2\delta$ rectangle, since all points withing $P_L$ are atleast $\delta$ apart, atmost 4 points in $P_R$ can reside withing the $\delta\times \delta$ square. Similarly 4 for right side and total 8 points.&lt;/p&gt;
+&lt;p&gt;Consider a (\delta\times\delta) square forming the left half of a (\delta\times 2\delta) rectangle, since all points withing (P_L) are atleast (\delta) apart, atmost 4 points in (P_R) can reside withing the (\delta\times \delta) square. Similarly 4 for right side and total 8 points.&lt;/p&gt;
 
 &lt;p&gt;Therefore we need to only check next 7 points.&lt;/p&gt;
 
 &lt;h2 id=&quot;time-complexity&quot;&gt;Time Complexity&lt;/h2&gt;
 
-&lt;p&gt;$T(n)=2T(n/2)+O(n)\implies O(n\log n)$&lt;/p&gt;
+&lt;p&gt;(T(n)=2T(n/2)+O(n)\implies O(n\log n))&lt;/p&gt;
 
 </description>
         <pubDate>Sat, 02 Nov 2019 15:04:00 +0000</pubDate>
@@ -574,31 +574,31 @@ T(n)&amp;amp;\le cn+T(n/5)+T(7n/10)\\
         <description>&lt;h1 id=&quot;notation&quot;&gt;Notation&lt;/h1&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;${\rm CH(Q)}$ represents convex hull&lt;/li&gt;
+  &lt;li&gt;({\rm CH(Q)}) represents convex hull&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&quot;grahams-scan-onlg-n&quot;&gt;Graham’s Scan $O(n\lg n)$&lt;/h1&gt;
+&lt;h1 id=&quot;grahams-scan-onlg-n&quot;&gt;Graham’s Scan (O(n\lg n))&lt;/h1&gt;
 
-&lt;p&gt;It solves convex-hull problem by maintaining a stack $S$ of candidate points. It pushes each point of the input set $Q$ onto the stack one time, and it eventually pops from the stack each point that is not a vertex of ${\rm CH}(Q)$.&lt;/p&gt;
+&lt;p&gt;It solves convex-hull problem by maintaining a stack (S) of candidate points. It pushes each point of the input set (Q) onto the stack one time, and it eventually pops from the stack each point that is not a vertex of ({\rm CH}(Q)).&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;$p_0$ is the point in $Q$ with th eminimum $y$-coordinate (leftmost in case of tie)&lt;/li&gt;
-  &lt;li&gt;$\langle p_1, p_2,…p_m\rangle$ remaining points in $Q$ sorted by polar angle in counterclockwise order around $p_0$, (take farthest in case of tie.)&lt;/li&gt;
-  &lt;li&gt;$S=\langle p_0, p_1, p_2\rangle$ (pop from right side, $p_2$ first)&lt;/li&gt;
-  &lt;li&gt;For point $p_i=p_3$ to $p_m$
+  &lt;li&gt;(p_0) is the point in (Q) with th eminimum (y)-coordinate (leftmost in case of tie)&lt;/li&gt;
+  &lt;li&gt;(\langle p_1, p_2,…p_m\rangle) remaining points in (Q) sorted by polar angle in counterclockwise order around (p_0), (take farthest in case of tie.)&lt;/li&gt;
+  &lt;li&gt;(S=\langle p_0, p_1, p_2\rangle) (pop from right side, (p_2) first)&lt;/li&gt;
+  &lt;li&gt;For point (p_i=p_3) to (p_m)
     &lt;ul&gt;
-      &lt;li&gt;While angle formed by points second and first element of $S$ make a nonleft turn: Remove top elemnt.&lt;/li&gt;
-      &lt;li&gt;push $p_i$ to $S$&lt;/li&gt;
+      &lt;li&gt;While angle formed by points second and first element of (S) make a nonleft turn: Remove top elemnt.&lt;/li&gt;
+      &lt;li&gt;push (p_i) to (S)&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;Finally, $S={\rm CH(Q)}$&lt;/li&gt;
+  &lt;li&gt;Finally, (S={\rm CH(Q)})&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&quot;jarvis-march-onh&quot;&gt;Jarvis’ March $O(nh)$&lt;/h1&gt;
+&lt;h1 id=&quot;jarvis-march-onh&quot;&gt;Jarvis’ March (O(nh))&lt;/h1&gt;
 
-&lt;p&gt;[Here $h$ is the number of vertices in ${\rm CH(Q)}$, where $h$ is $o(\lg n)$]&lt;/p&gt;
+&lt;p&gt;[Here (h) is the number of vertices in ({\rm CH(Q)}), where (h) is (o(\lg n))]&lt;/p&gt;
 
-&lt;p&gt;We start from lowest point $p_0$ and take the point with smallest polar angle wrt $p_1$. Then we take $p_2$ with the smallest poisitive angle wrt $p_1$ and so on until we reach the highest point $p_k$, then we do the same but we calculate the angle from negative x-axis. Finally we reach back at $p_0$.&lt;/p&gt;
+&lt;p&gt;We start from lowest point (p_0) and take the point with smallest polar angle wrt (p_1). Then we take (p_2) with the smallest poisitive angle wrt (p_1) and so on until we reach the highest point (p_k), then we do the same but we calculate the angle from negative x-axis. Finally we reach back at (p_0).&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;https://adityagupta1089.github.io/images/jarvis.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
@@ -723,15 +723,15 @@ T(n)&amp;amp;\le cn+T(n/5)+T(7n/10)\\
         <description>&lt;h1 id=&quot;formalization&quot;&gt;Formalization:&lt;/h1&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Text: $T[1..n]$&lt;/li&gt;
-  &lt;li&gt;Pattern: $P[1..m]$ ($m\le n$)&lt;/li&gt;
-  &lt;li&gt;elements of $P$ and $T$ are characters drawn from a finite alphabet $\Sigma$.&lt;/li&gt;
-  &lt;li&gt;$\Sigma^*$ denotes the set of all finite-length string using $\Sigma$&lt;/li&gt;
-  &lt;li&gt;$\varepsilon\in \Sigma ^*$ emptry string&lt;/li&gt;
-  &lt;li&gt;$x y$ denotes concatenation of $x$ and $y$&lt;/li&gt;
-  &lt;li&gt;$w\sqsubset x$: $w$ is a prefix of $x$, i.e. $x=wy$ for some $y\in \Sigma^*$&lt;/li&gt;
-  &lt;li&gt;$w\sqsupset x$: $w$ is a suffix of $x$, i.e. $x=yw$ for some $y\in \Sigma^*$&lt;/li&gt;
-  &lt;li&gt;$P_k$ is the $k$-character prefix $P[q..k]$&lt;/li&gt;
+  &lt;li&gt;Text: (T[1..n])&lt;/li&gt;
+  &lt;li&gt;Pattern: (P[1..m]) ((m\le n))&lt;/li&gt;
+  &lt;li&gt;elements of (P) and (T) are characters drawn from a finite alphabet (\Sigma).&lt;/li&gt;
+  &lt;li&gt;(\Sigma^*) denotes the set of all finite-length string using (\Sigma)&lt;/li&gt;
+  &lt;li&gt;(\varepsilon\in \Sigma ^*) emptry string&lt;/li&gt;
+  &lt;li&gt;(x y) denotes concatenation of (x) and (y)&lt;/li&gt;
+  &lt;li&gt;(w\sqsubset x): (w) is a prefix of (x), i.e. (x=wy) for some (y\in \Sigma^*)&lt;/li&gt;
+  &lt;li&gt;(w\sqsupset x): (w) is a suffix of (x), i.e. (x=yw) for some (y\in \Sigma^*)&lt;/li&gt;
+  &lt;li&gt;(P_k) is the (k)-character prefix (P[q..k])&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h1 id=&quot;comparison-of-algorithms&quot;&gt;Comparison of Algorithms:&lt;/h1&gt;
@@ -748,27 +748,27 @@ T(n)&amp;amp;\le cn+T(n/5)+T(7n/10)\\
     &lt;tr&gt;
       &lt;td&gt;Naive&lt;/td&gt;
       &lt;td&gt;0&lt;/td&gt;
-      &lt;td&gt;$O((n-m+1)m)$&lt;/td&gt;
+      &lt;td&gt;(O((n-m+1)m))&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td&gt;Rabin-Karp&lt;/td&gt;
-      &lt;td&gt;$\Theta(m)$&lt;/td&gt;
-      &lt;td&gt;$O((n-m+1)m)$&lt;/td&gt;
+      &lt;td&gt;(\Theta(m))&lt;/td&gt;
+      &lt;td&gt;(O((n-m+1)m))&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td&gt;Finite Automaton&lt;/td&gt;
-      &lt;td&gt;$O(m\vert \Sigma\vert)$&lt;/td&gt;
-      &lt;td&gt;$\Theta(n)$&lt;/td&gt;
+      &lt;td&gt;(O(m\vert \Sigma\vert))&lt;/td&gt;
+      &lt;td&gt;(\Theta(n))&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td&gt;Knuth-Morris-Pratt&lt;/td&gt;
-      &lt;td&gt;$\Theta(m)$&lt;/td&gt;
-      &lt;td&gt;$\Theta(n)$&lt;/td&gt;
+      &lt;td&gt;(\Theta(m))&lt;/td&gt;
+      &lt;td&gt;(\Theta(n))&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td&gt;Z-Algorithm&lt;/td&gt;
       &lt;td&gt;0&lt;/td&gt;
-      &lt;td&gt;$\Theta(m+n)$&lt;/td&gt;
+      &lt;td&gt;(\Theta(m+n))&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
@@ -776,90 +776,90 @@ T(n)&amp;amp;\le cn+T(n/5)+T(7n/10)\\
 &lt;h1 id=&quot;rabin-karp-algorithm&quot;&gt;Rabin-Karp algorithm&lt;/h1&gt;
 &lt;p&gt;Based on certain assumptions its average-case running time is better.&lt;/p&gt;
 
-&lt;p&gt;Let us assume $\Sigma={0,1,2,\ldots,d}$. Let $p$ denote the interpretation of $P[1..m]$ as a radix-d number. Similarly let $t_s$ denote the interpretatin of $T[s+1\ldots s+m]$ for $s\in {0,1,\dots n-m}$. Now $t_s=p\iff T[s+1\ldots s+m]=P[1..m]$.&lt;/p&gt;
+&lt;p&gt;Let us assume (\Sigma={0,1,2,\ldots,d}). Let (p) denote the interpretation of (P[1..m]) as a radix-d number. Similarly let (t_s) denote the interpretatin of (T[s+1\ldots s+m]) for (s\in {0,1,\dots n-m}). Now (t_s=p\iff T[s+1\ldots s+m]=P[1..m]).&lt;/p&gt;
 
-&lt;p&gt;We can compute $p$ in $\Theta(m)$ using Horner’s rule&lt;/p&gt;
+&lt;p&gt;We can compute (p) in (\Theta(m)) using Horner’s rule&lt;/p&gt;
 
-&lt;p&gt;$p=P[m]+10(P[m-1]+10(P[m-2]+\ldots))$&lt;/p&gt;
+&lt;p&gt;(p=P[m]+10(P[m-1]+10(P[m-2]+\ldots)))&lt;/p&gt;
 
 &lt;p&gt;Similarly&lt;/p&gt;
 
-&lt;p&gt;$t_{s+1}=10(t_s-10^{m-1}T[s+1])+T[s+m+1]$&lt;/p&gt;
+&lt;p&gt;(t_{s+1}=10(t_s-10^{m-1}T[s+1])+T[s+m+1])&lt;/p&gt;
 
-&lt;p&gt;where we can calculate $10^{m-1}$ in $O(\lg m)$.&lt;/p&gt;
+&lt;p&gt;where we can calculate (10^{m-1}) in (O(\lg m)).&lt;/p&gt;
 
-&lt;p&gt;For string matching we work with $\mathbb Z_q$ where $q$ is a prime such that $dq$ fits inside a computer word. However $t_{s} \equiv p\pmod q$ doesn’t imply that $t_s=p$, but $t_s\not\equiv p\mod q\implies t_s\neq p$. So we additionaly check explicity string equality.&lt;/p&gt;
+&lt;p&gt;For string matching we work with (\mathbb Z_q) where (q) is a prime such that (dq) fits inside a computer word. However (t_{s} \equiv p\pmod q) doesn’t imply that (t_s=p), but (t_s\not\equiv p\mod q\implies t_s\neq p). So we additionaly check explicity string equality.&lt;/p&gt;
 
-&lt;p&gt;In worst case it could be $\Theta((n-m+1)m)$ when all shifts are valid.&lt;/p&gt;
+&lt;p&gt;In worst case it could be (\Theta((n-m+1)m)) when all shifts are valid.&lt;/p&gt;
 
-&lt;p&gt;In average case we expect only $c$ shifts to be valid, then matching time is $O((n-m+1)+cm)=O(n+m)$ plus time required to process spurious hits. We can expect the number of spurious hits to be $O(n/q)$ since $t_s\equiv p\pmod q$ with probability $1/q$. This makes the expected matching time to be $O(n)+O(m(\nu+n/q))$ where $\nu$ is number of valid shifts. This is $O(n)$ if $\nu=O(1)$ (expected number of valid shifts is small) and $q\ge m$ ($q$ larger than the length of pattern)&lt;/p&gt;
+&lt;p&gt;In average case we expect only (c) shifts to be valid, then matching time is (O((n-m+1)+cm)=O(n+m)) plus time required to process spurious hits. We can expect the number of spurious hits to be (O(n/q)) since (t_s\equiv p\pmod q) with probability (1/q). This makes the expected matching time to be (O(n)+O(m(\nu+n/q))) where (\nu) is number of valid shifts. This is (O(n)) if (\nu=O(1)) (expected number of valid shifts is small) and (q\ge m) ((q) larger than the length of pattern)&lt;/p&gt;
 
 &lt;h1 id=&quot;finite-automata&quot;&gt;Finite Automata&lt;/h1&gt;
 
 &lt;h2 id=&quot;definition&quot;&gt;Definition&lt;/h2&gt;
 
-&lt;p&gt;A finite automaton $M(Q, q_0, A, \Sigma, \delta)$ where&lt;/p&gt;
+&lt;p&gt;A finite automaton (M(Q, q_0, A, \Sigma, \delta)) where&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;$Q$: states,&lt;/li&gt;
-  &lt;li&gt;$q_0\in Q$: start state,&lt;/li&gt;
-  &lt;li&gt;$A\subseteq Q$: accepting states,&lt;/li&gt;
-  &lt;li&gt;$\Sigma$: input alphabet&lt;/li&gt;
-  &lt;li&gt;$\delta:Q\times \Sigma\mapsto Q$: transition function&lt;/li&gt;
+  &lt;li&gt;(Q): states,&lt;/li&gt;
+  &lt;li&gt;(q_0\in Q): start state,&lt;/li&gt;
+  &lt;li&gt;(A\subseteq Q): accepting states,&lt;/li&gt;
+  &lt;li&gt;(\Sigma): input alphabet&lt;/li&gt;
+  &lt;li&gt;(\delta:Q\times \Sigma\mapsto Q): transition function&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;$M$ induces a function $\phi:\Sigma^*\mapsto Q$ (final-state function) such that $\phi(w)$ is the state $M$ ends up in after scanning the string $w$. $M$ accepts a string $w$ iff $\phi(w)\in A$.&lt;/p&gt;
+&lt;p&gt;(M) induces a function (\phi:\Sigma^*\mapsto Q) (final-state function) such that (\phi(w)) is the state (M) ends up in after scanning the string (w). (M) accepts a string (w) iff (\phi(w)\in A).&lt;/p&gt;
 
-&lt;p&gt;$\phi(\varepsilon)=q_0$&lt;/p&gt;
+&lt;p&gt;(\phi(\varepsilon)=q_0)&lt;/p&gt;
 
-&lt;p&gt;$\phi(wa)=\delta(\phi(w), a)\text{ for }w\in\Sigma^*, a\in \Sigma$&lt;/p&gt;
+&lt;p&gt;(\phi(wa)=\delta(\phi(w), a)\text{ for }w\in\Sigma^*, a\in \Sigma)&lt;/p&gt;
 
 &lt;h2 id=&quot;string-matching-automata&quot;&gt;String-matching automata&lt;/h2&gt;
 
-&lt;p&gt;For $P$ we generate a string-matching automaton in a preprocessing step.&lt;/p&gt;
+&lt;p&gt;For (P) we generate a string-matching automaton in a preprocessing step.&lt;/p&gt;
 
-&lt;p&gt;For this we define an auxilary function $\sigma:\Sigma^*\mapsto{0,1,\ldots,m}$, the suffix function corresponding to $P$. $\sigma(x)$ is the length of the longest prefix of $P$ that is also a suffix of $x$.&lt;/p&gt;
+&lt;p&gt;For this we define an auxilary function (\sigma:\Sigma^*\mapsto{0,1,\ldots,m}), the suffix function corresponding to (P). (\sigma(x)) is the length of the longest prefix of (P) that is also a suffix of (x).&lt;/p&gt;
 
-&lt;p&gt;$\sigma(x)=\max{k: P_k \sqsupset x}$&lt;/p&gt;
+&lt;p&gt;(\sigma(x)=\max{k: P_k \sqsupset x})&lt;/p&gt;
 
-&lt;p&gt;We have $\sigma(x)=m\iff P\sqsupset x$, also $x\sqsubset y\implies \sigma(x)\le \sigma(y)$ from definition.&lt;/p&gt;
+&lt;p&gt;We have (\sigma(x)=m\iff P\sqsupset x), also (x\sqsubset y\implies \sigma(x)\le \sigma(y)) from definition.&lt;/p&gt;
 
 &lt;p&gt;We define &lt;strong&gt;string-matching automaton&lt;/strong&gt; as:&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;$Q={0,1,\ldots,m}$, $q_0=0$, $A={m}$&lt;/li&gt;
-  &lt;li&gt;$\delta(q, a)=\sigma(P_qa)$ is the longest prefix of pattern $P$ that has matched the text string $T$ so far.&lt;/li&gt;
+  &lt;li&gt;(Q={0,1,\ldots,m}), (q_0=0), (A={m})&lt;/li&gt;
+  &lt;li&gt;(\delta(q, a)=\sigma(P_qa)) is the longest prefix of pattern (P) that has matched the text string (T) so far.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;We consider most recently read characters of $T$. For $T_i=P_j$, $P_j\sqsupset T_i$.&lt;/p&gt;
+&lt;p&gt;We consider most recently read characters of (T). For (T_i=P_j), (P_j\sqsupset T_i).&lt;/p&gt;
 
-&lt;p&gt;Let $q=\phi(T_i)$. We design $\delta$ such that at $q$, $P_q\sqsupset T_i$ and $q=\sigma(T_i)$. Therefore $\phi(T_i)=\sigma(T_i)$.&lt;/p&gt;
+&lt;p&gt;Let (q=\phi(T_i)). We design (\delta) such that at (q), (P_q\sqsupset T_i) and (q=\sigma(T_i)). Therefore (\phi(T_i)=\sigma(T_i)).&lt;/p&gt;
 
-&lt;p&gt;If the automaton is in state $q$ and reads the next characters $T[i+1]=a$, then we want the transition to lead to the state corresponding to the longest prefix of $P$ that is a suffix of $T_ia$, i.e. $\sigma(T_ia)$.&lt;/p&gt;
+&lt;p&gt;If the automaton is in state (q) and reads the next characters (T[i+1]=a), then we want the transition to lead to the state corresponding to the longest prefix of (P) that is a suffix of (T_ia), i.e. (\sigma(T_ia)).&lt;/p&gt;
 
-&lt;p&gt;Because $P_q$ is the longest prefix of $P$ that is a suffix of $T_i$ , i.e. $P_q=\sigma(T_i)$ we also have the longest prefix of $P$ that is a suffix of $T_ia$ is not only $\sigma(T_ia)$ but also $\sigma(P_qa)$.&lt;/p&gt;
+&lt;p&gt;Because (P_q) is the longest prefix of (P) that is a suffix of (T_i) , i.e. (P_q=\sigma(T_i)) we also have the longest prefix of (P) that is a suffix of (T_ia) is not only (\sigma(T_ia)) but also (\sigma(P_qa)).&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;If $a=P[q+1]$, $\delta(q, a)=q+1$.&lt;/li&gt;
-  &lt;li&gt;If $a\neq P[q+1]$ we find a smaller prefix of $P$ that is also a suffix of $T_i$.&lt;/li&gt;
+  &lt;li&gt;If (a=P[q+1]), (\delta(q, a)=q+1).&lt;/li&gt;
+  &lt;li&gt;If (a\neq P[q+1]) we find a smaller prefix of (P) that is also a suffix of (T_i).&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h1 id=&quot;kunth-morris-pratt-algorithm&quot;&gt;Kunth-Morris-Pratt Algorithm&lt;/h1&gt;
 
-&lt;p&gt;Given a pattern $P[1..m]$, the &lt;strong&gt;prefix function&lt;/strong&gt; for the pattern $P$ is the function $\pi:{1,2,\ldots, m}\mapsto{0,1,\ldots, m-1}$ such that&lt;/p&gt;
+&lt;p&gt;Given a pattern (P[1..m]), the &lt;strong&gt;prefix function&lt;/strong&gt; for the pattern (P) is the function (\pi:{1,2,\ldots, m}\mapsto{0,1,\ldots, m-1}) such that&lt;/p&gt;
 
-&lt;p&gt;$\pi[q]=\max{k:k&amp;lt;q\wedge P_k\sqsupset P_q}$&lt;/p&gt;
+&lt;p&gt;(\pi[q]=\max{k:k&amp;lt;q\wedge P_k\sqsupset P_q})&lt;/p&gt;
 
-&lt;p&gt;i.e. $\pi[q]$ is the length of the longest prefix of $P$ that is a proper suffix of $P_q$.&lt;/p&gt;
+&lt;p&gt;i.e. (\pi[q]) is the length of the longest prefix of (P) that is a proper suffix of (P_q).&lt;/p&gt;
 
 &lt;p&gt;For matching:&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Scan the text $T$ from left to right starting with $q=0$ (number of characters matched is $0$ initially):
+  &lt;li&gt;Scan the text (T) from left to right starting with (q=0) (number of characters matched is (0) initially):
     &lt;ul&gt;
-      &lt;li&gt;While $q&amp;gt;0$ and next character doesn’t match, i.e. $P[q+1]\neq T[i]$, keep doing $q\leftarrow\pi[q]$&lt;/li&gt;
-      &lt;li&gt;If next character matches, i.e. $P[q+1]=T[i]$, then $q\leftarrow q+1$&lt;/li&gt;
-      &lt;li&gt;If $q=m$, pattern is found, and set $q\leftarrow\pi[q]$
+      &lt;li&gt;While (q&amp;gt;0) and next character doesn’t match, i.e. (P[q+1]\neq T[i]), keep doing (q\leftarrow\pi[q])&lt;/li&gt;
+      &lt;li&gt;If next character matches, i.e. (P[q+1]=T[i]), then (q\leftarrow q+1)&lt;/li&gt;
+      &lt;li&gt;If (q=m), pattern is found, and set (q\leftarrow\pi[q])
         &lt;pre&gt;&lt;code class=&quot;language-pseudocode&quot;&gt;  q = 0
   for i = 0 to n - 1:
   	while (k &amp;gt; 0 &amp;amp;&amp;amp; T[i] != P[q]):
@@ -880,14 +880,14 @@ T(n)&amp;amp;\le cn+T(n/5)+T(7n/10)\\
 
 &lt;ul&gt;
   &lt;li&gt;
-    &lt;p&gt;$\pi[1]\leftarrow0$ by definition&lt;/p&gt;
+    &lt;p&gt;(\pi[1]\leftarrow0) by definition&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;Scan the pattern $P$ from left to right starting from $q=2$ 2 (loop starts from 2nd character, 1-indexed) and $k=0$ (number of characters matched in 0 initially):&lt;/p&gt;
+    &lt;p&gt;Scan the pattern (P) from left to right starting from (q=2) 2 (loop starts from 2nd character, 1-indexed) and (k=0) (number of characters matched in 0 initially):&lt;/p&gt;
     &lt;ul&gt;
-      &lt;li&gt;While $k&amp;gt;0$ and next character doesn’t match, i.e. $P[k+1]\ne P[q]$, keep doing $k\leftarrow\pi[k]$&lt;/li&gt;
-      &lt;li&gt;If next character matches, i.e. $P[k+1]=P[q]$, then $k\leftarrow k+1$.&lt;/li&gt;
-      &lt;li&gt;Set $\pi[q]\leftarrow k$&lt;/li&gt;
+      &lt;li&gt;While (k&amp;gt;0) and next character doesn’t match, i.e. (P[k+1]\ne P[q]), keep doing (k\leftarrow\pi[k])&lt;/li&gt;
+      &lt;li&gt;If next character matches, i.e. (P[k+1]=P[q]), then (k\leftarrow k+1).&lt;/li&gt;
+      &lt;li&gt;Set (\pi[q]\leftarrow k)&lt;/li&gt;
     &lt;/ul&gt;
 
     &lt;pre&gt;&lt;code class=&quot;language-pseudocode&quot;&gt;  pi[1] = 0
@@ -904,30 +904,30 @@ T(n)&amp;amp;\le cn+T(n/5)+T(7n/10)\\
 
 &lt;h1 id=&quot;z-algorithm&quot;&gt;Z-Algorithm&lt;/h1&gt;
 
-&lt;p&gt;The algorithm produces an array $Z$  where $Z[i]$ denotes the length of the longest substring starting from $S[i]$ which is also a prefix of $S$. We refer to prefix-substrings as substrings which are also prefix.&lt;/p&gt;
+&lt;p&gt;The algorithm produces an array (Z)  where (Z[i]) denotes the length of the longest substring starting from (S[i]) which is also a prefix of (S). We refer to prefix-substrings as substrings which are also prefix.&lt;/p&gt;
 
-&lt;p&gt;As we iterate over the letters in the string we maintain an interval $[L, R]$ which is the interval with maximum $R$ such that $1\le L\le i\le R$ and $S[L\ldots R]$is a prefix-substring (if no such inteval exists $L=R=-1$)&lt;/p&gt;
+&lt;p&gt;As we iterate over the letters in the string we maintain an interval ([L, R]) which is the interval with maximum (R) such that (1\le L\le i\le R) and (S[L\ldots R])is a prefix-substring (if no such inteval exists (L=R=-1))&lt;/p&gt;
 
-&lt;p&gt;Now suppose we have correct interval $[L, R]$ for $i-1$ and for all values of $Z$ upto $i-1$, we will compute  $Z[i]$ and new $[L, R]$ by following steps:&lt;/p&gt;
+&lt;p&gt;Now suppose we have correct interval ([L, R]) for (i-1) and for all values of (Z) upto (i-1), we will compute  (Z[i]) and new ([L, R]) by following steps:&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;$i&amp;gt;R$:
+  &lt;li&gt;(i&amp;gt;R):
     &lt;ul&gt;
-      &lt;li&gt;there is not a prefix-substring of $S$ that starts before $i$ and ends at $\ge i$. We would have taken that interval instead.&lt;/li&gt;
-      &lt;li&gt;Set $[L,R]$ to $[i,i]$ and start comparing $S[0…]$ to $S[i…]$ and $Z[i]=R-L+1$.&lt;/li&gt;
+      &lt;li&gt;there is not a prefix-substring of (S) that starts before (i) and ends at (\ge i). We would have taken that interval instead.&lt;/li&gt;
+      &lt;li&gt;Set ([L,R]) to ([i,i]) and start comparing (S[0…]) to (S[i…]) and (Z[i]=R-L+1).&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;$i\le R$:
+  &lt;li&gt;(i\le R):
     &lt;ul&gt;
-      &lt;li&gt;Let $k=i-L$. We know that $Z[i]\ge \min (Z[k], R-i+1)$&lt;/li&gt;
-      &lt;li&gt;$Z[k]&amp;lt;R-i+1$:
+      &lt;li&gt;Let (k=i-L). We know that (Z[i]\ge \min (Z[k], R-i+1))&lt;/li&gt;
+      &lt;li&gt;(Z[k]&amp;lt;R-i+1):
         &lt;ul&gt;
-          &lt;li&gt;$Z[i]=Z[k]$&lt;/li&gt;
+          &lt;li&gt;(Z[i]=Z[k])&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/li&gt;
-      &lt;li&gt;$Z[k]\ge R-i+1$:
+      &lt;li&gt;(Z[k]\ge R-i+1):
         &lt;ul&gt;
-          &lt;li&gt;Update $[L,R]$ to $[i,R]$ and start comparing $S[R+1…]$ to $S[k+1…]$&lt;/li&gt;
+          &lt;li&gt;Update ([L,R]) to ([i,R]) and start comparing (S[R+1…]) to (S[k+1…])&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/li&gt;
     &lt;/ul&gt;
@@ -956,7 +956,7 @@ T(n)&amp;amp;\le cn+T(n/5)+T(7n/10)\\
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;For pattern matching we use Z-algorithm on string $P\Phi T$ where $\Phi$ matches nothing Then indices with $Z[i]=m$ correspond to matches in $T$ of $P$.&lt;/p&gt;
+&lt;p&gt;For pattern matching we use Z-algorithm on string (P\Phi T) where (\Phi) matches nothing Then indices with (Z[i]=m) correspond to matches in (T) of (P).&lt;/p&gt;
 
 </description>
         <pubDate>Wed, 30 Oct 2019 19:12:00 +0000</pubDate>
@@ -972,75 +972,75 @@ T(n)&amp;amp;\le cn+T(n/5)+T(7n/10)\\
     
       <item>
         <title>Splay Trees</title>
-        <description>&lt;p&gt;Self-adjusting binary trees that work in $O(\log n)$ amortized time bound. The operation performed is the &lt;em&gt;splay&lt;/em&gt; operation.&lt;/p&gt;
+        <description>&lt;p&gt;Self-adjusting binary trees that work in (O(\log n)) amortized time bound. The operation performed is the &lt;em&gt;splay&lt;/em&gt; operation.&lt;/p&gt;
 
-&lt;p&gt;For a splay operation at node x: ($p(x)$ is the parent of $x$)&lt;/p&gt;
+&lt;p&gt;For a splay operation at node x: ((p(x)) is the parent of (x))&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Case (a):&lt;/strong&gt; If $x$ has a parent but no grandparent we rotate at $p(x)$.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Case (b):&lt;/strong&gt; If $x$ has a grandparent and both $x$ and $p(x)$ are both left or right childrenn, we rotate at $p^2(x)$ and then at $p(x)$.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Case (c):&lt;/strong&gt; If $x$ has a grandparent and $x$ is a left and $p(x)$ is a right child, or vice versa, we rotate at $p(x)$ and then at the new parent of $x$.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Case (a):&lt;/strong&gt; If (x) has a parent but no grandparent we rotate at (p(x)).&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Case (b):&lt;/strong&gt; If (x) has a grandparent and both (x) and (p(x)) are both left or right childrenn, we rotate at (p^2(x)) and then at (p(x)).&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Case (c):&lt;/strong&gt; If (x) has a grandparent and (x) is a left and (p(x)) is a right child, or vice versa, we rotate at (p(x)) and then at the new parent of (x).&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;&lt;img src=&quot;https://adityagupta1089.github.io/images/splaytree1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;This moves $x$ to the root of the tree while rearranging the rest of the original path to $x$.&lt;/p&gt;
+&lt;p&gt;This moves (x) to the root of the tree while rearranging the rest of the original path to (x).&lt;/p&gt;
 
-&lt;p&gt;We perform a splay operation during each access or update operation. Using amortized time analysis for $m$ operations total time taken is $O(m\log n)$ or $O(\log n)$ amortized time per operation.&lt;/p&gt;
+&lt;p&gt;We perform a splay operation during each access or update operation. Using amortized time analysis for (m) operations total time taken is (O(m\log n)) or (O(\log n)) amortized time per operation.&lt;/p&gt;
 
 &lt;h1 id=&quot;amortized-time-analysis&quot;&gt;Amortized Time Analysis&lt;/h1&gt;
 
-&lt;p&gt;Let $T$ be a tree of $n$ nodes. For node $v\in T$ let $n_T(v)$ ve the number of nodes in the subtree of $v$ including $v$.&lt;/p&gt;
+&lt;p&gt;Let (T) be a tree of (n) nodes. For node (v\in T) let (n_T(v)) ve the number of nodes in the subtree of (v) including (v).&lt;/p&gt;
 
-&lt;p&gt;We define the potential function $\phi(T)=\sum_{v\in T}r_T(v)$ where $r_{T}(v)=\log &lt;em&gt;{2}\lfloor n&lt;/em&gt;{T}(v)\rfloor$.&lt;/p&gt;
+&lt;p&gt;We define the potential function (\phi(T)=\sum_{v\in T}r_T(v)) where (r_{T}(v)=\log &lt;em&gt;{2}\lfloor n&lt;/em&gt;{T}(v)\rfloor).&lt;/p&gt;
 
-&lt;p&gt;For a completely skewed tree it will be $\log_2n+\log_2(n-1)+\ldots \log_21=O(n\log n)$.&lt;/p&gt;
+&lt;p&gt;For a completely skewed tree it will be (\log_2n+\log_2(n-1)+\ldots \log_21=O(n\log n)).&lt;/p&gt;
 
-&lt;p&gt;For a completely balanced tree of height $h$ it will be $\sum_{i=0}^h2^i\log_2(2^{h-i+1})=\sum_{i=0}^h2^i(h-i+1)=O(n)$&lt;/p&gt;
+&lt;p&gt;For a completely balanced tree of height (h) it will be (\sum_{i=0}^h2^i\log_2(2^{h-i+1})=\sum_{i=0}^h2^i(h-i+1)=O(n))&lt;/p&gt;
 
-&lt;p&gt;Suppose the tree undergoes $m$ searches for keys $k_{i_1},k_{i_2},\ldots k_{i_m}$ starting from tree $T_0$ and after searching for $k_{i_1}$ to $T_1$ and so on until $T_m$.&lt;/p&gt;
+&lt;p&gt;Suppose the tree undergoes (m) searches for keys (k_{i_1},k_{i_2},\ldots k_{i_m}) starting from tree (T_0) and after searching for (k_{i_1}) to (T_1) and so on until (T_m).&lt;/p&gt;
 
-&lt;p&gt;Let actual cost of $i^{\rm th}$ search be $c_i$ and amortized cost of $i^{\rm th}$ search be $\hat c_i=c_i+\phi(T_i)-\phi(T_{i-1})$. We claim that $\hat{c}_{i} \leqslant 3 \log _{2} n$. Hence actual cost becomes
+&lt;p&gt;Let actual cost of (i^{\rm th}) search be (c_i) and amortized cost of (i^{\rm th}) search be (\hat c_i=c_i+\phi(T_i)-\phi(T_{i-1})). We claim that (\hat{c}_{i} \leqslant 3 \log _{2} n). Hence actual cost becomes
 \(\begin{align}
 \sum_{i=1}^mc_i&amp;amp;=\sum_{i=1}^m[\hat c_i+\phi(T_{i-1})-\phi(T_i)]\\
 &amp;amp;=\sum_{i=1}^m\hat c_i+\sum_{i=1}^m(\phi(T_{i-1}-\phi(T_i)))\\
 &amp;amp;=\sum_{i=1}^m\hat c_i+[\phi(T_0)-\phi(T_m)]\\
 &amp;amp;=\sum_{i=1}^m\hat c_i+n\log n\\
 &amp;amp;\le3m\log n+n\log n\\
-&amp;amp;\le 4m\log n\tag{$m\ge n$}
+&amp;amp;\le 4m\log n\tag{\(m\ge n\)}
 \end{align}\)&lt;/p&gt;
 
-&lt;p&gt;Now we prove $\hat{c}_{i} \leqslant 3 \log _{2} n$ for various cases. $r’$ represents the rank after rotation.&lt;/p&gt;
+&lt;p&gt;Now we prove (\hat{c}_{i} \leqslant 3 \log _{2} n) for various cases. (r’) represents the rank after rotation.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;Lemma&lt;/strong&gt; If $a+b\le c$ then $\log a+\log b\le 2\log c-2$ since $ab\le c^2/4$  where $c^2\ge (a+b)^2\ge 4ab$ using AM-GM inequality.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Lemma&lt;/strong&gt; If (a+b\le c) then (\log a+\log b\le 2\log c-2) since (ab\le c^2/4)  where (c^2\ge (a+b)^2\ge 4ab) using AM-GM inequality.&lt;/p&gt;
 
 &lt;h2 id=&quot;case-a-zig&quot;&gt;Case (a) (zig)&lt;/h2&gt;
 
-&lt;p&gt;Total cost involves 1 rotation and potential change. We have $r’(x)=r(y)$ so $\Delta \phi=(r’(x)+r’(y))-(r(x)+r(y))=r’(y)-r(x)\le r’(x)-r(x)$ as $y$ has less nodes afterwards and less rank. So $\hat c_i\le 1+(r’(x)-r(x))\le 1+3(r’(x)-r(x))$&lt;/p&gt;
+&lt;p&gt;Total cost involves 1 rotation and potential change. We have (r’(x)=r(y)) so (\Delta \phi=(r’(x)+r’(y))-(r(x)+r(y))=r’(y)-r(x)\le r’(x)-r(x)) as (y) has less nodes afterwards and less rank. So (\hat c_i\le 1+(r’(x)-r(x))\le 1+3(r’(x)-r(x)))&lt;/p&gt;
 
 &lt;h2 id=&quot;case-c-zig-zag&quot;&gt;Case (c) (zig-zag)&lt;/h2&gt;
 
-&lt;p&gt;Total cost involves 2 rotation and potential change $\Delta \phi=r’(x)+r’(y)+r’(z)-r(x)-r(y)-r(z)$&lt;/p&gt;
+&lt;p&gt;Total cost involves 2 rotation and potential change (\Delta \phi=r’(x)+r’(y)+r’(z)-r(x)-r(y)-r(z))&lt;/p&gt;
 
-&lt;p&gt;Here $\hat c_i=2+(r’(x)-r(x))+r’(y)+r’(z)-r(y)-r(z)$&lt;/p&gt;
+&lt;p&gt;Here (\hat c_i=2+(r’(x)-r(x))+r’(y)+r’(z)-r(y)-r(z))&lt;/p&gt;
 
-&lt;p&gt;Also $n’(y)+n’(z)= n’(x)-1\le n’(x)$. Using the lemma $\log (n’(y)) + \log (n’(z))\le 2\log (n’(x))-2$ or $r’(y)+r’(z)\le 2r’(x)-2$.&lt;/p&gt;
+&lt;p&gt;Also (n’(y)+n’(z)= n’(x)-1\le n’(x)). Using the lemma (\log (n’(y)) + \log (n’(z))\le 2\log (n’(x))-2) or (r’(y)+r’(z)\le 2r’(x)-2).&lt;/p&gt;
 
-&lt;p&gt;So we have $\hat c_i\le 2+ (r’(x)-r(x))+(2r’(x)-2)-r(y)-r(z)$ or $\hat c_i\le (3r’(x)-r(x)-r(y)-r(z)$. Also we have $r(z)=r(x)$ and $r(y)\ge  r(x)$ so $\hat c_i\le 3(r’(x)-r(x))$&lt;/p&gt;
+&lt;p&gt;So we have (\hat c_i\le 2+ (r’(x)-r(x))+(2r’(x)-2)-r(y)-r(z)) or (\hat c_i\le (3r’(x)-r(x)-r(y)-r(z)). Also we have (r(z)=r(x)) and (r(y)\ge  r(x)) so (\hat c_i\le 3(r’(x)-r(x)))&lt;/p&gt;
 
 &lt;h2 id=&quot;case-b-zig-zig&quot;&gt;Case (b) (zig-zig)&lt;/h2&gt;
 
 &lt;p&gt;Total cost involves 2 rotation and potential change&lt;/p&gt;
 
-&lt;p&gt;Similar to &lt;strong&gt;case (c)&lt;/strong&gt; we have $\hat c_i=2+(r’(x)-r(x))+r’(y)+r’(z)-r(y)-r(z)$ and $n(x)+n’(z)+1=n’(x)$ giving $r(x)+r’(z)\le 2r’(x)-2$ or $r’(z)\le 2r’(x)-r(x)-2$&lt;/p&gt;
+&lt;p&gt;Similar to &lt;strong&gt;case (c)&lt;/strong&gt; we have (\hat c_i=2+(r’(x)-r(x))+r’(y)+r’(z)-r(y)-r(z)) and (n(x)+n’(z)+1=n’(x)) giving (r(x)+r’(z)\le 2r’(x)-2) or (r’(z)\le 2r’(x)-r(x)-2)&lt;/p&gt;
 
-&lt;p&gt;So we have $\hat c_i\le 2+(r’(x)-r(x))+r’(y)+(2r’(x)-r(x)-2)-r(y)-r(z)$ or $\hat c_i\le (3r’(x)-2r(x))+r’(y)-r(y)-r(z)$. Also we have $r(z)=r’(x)$ and  $r(y)\ge r(x) $ giving $\hat c_i\le 3(r’(x)-r(x))-\underbrace{(r(z)-r’(y))}_{&amp;gt;0}\ge 3(r’(x)-r(x))$&lt;/p&gt;
+&lt;p&gt;So we have (\hat c_i\le 2+(r’(x)-r(x))+r’(y)+(2r’(x)-r(x)-2)-r(y)-r(z)) or (\hat c_i\le (3r’(x)-2r(x))+r’(y)-r(y)-r(z)). Also we have (r(z)=r’(x)) and  (r(y)\ge r(x) ) giving (\hat c_i\le 3(r’(x)-r(x))-\underbrace{(r(z)-r’(y))}_{&amp;gt;0}\ge 3(r’(x)-r(x)))&lt;/p&gt;
 
 &lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
 
-&lt;p&gt;If we have $d$ splays then $\hat c=\sum_{i=1}^d\hat c_i\le \sum_{i=1}^d3(r_i(x)-r_{i-1}(x))=3(r_d(x)-r_0(x))$&lt;/p&gt;
+&lt;p&gt;If we have (d) splays then (\hat c=\sum_{i=1}^d\hat c_i\le \sum_{i=1}^d3(r_i(x)-r_{i-1}(x))=3(r_d(x)-r_0(x)))&lt;/p&gt;
 
-&lt;p&gt;The maximum change in rank can be $\log n$ giving $\hat c\le 3\log n$&lt;/p&gt;
+&lt;p&gt;The maximum change in rank can be (\log n) giving (\hat c\le 3\log n)&lt;/p&gt;
 
 </description>
         <pubDate>Tue, 29 Oct 2019 18:42:00 +0000</pubDate>

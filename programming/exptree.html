@@ -158,7 +158,7 @@
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
     tex2jax: {
-      inlineMath: [ ['$','$'], ['\\(','\\)'] ],
+      inlineMath: [ ['\\(','\\)'] ],
       displayMath: [ ['$$', '$$'], ['\\[','\\]'] ],
       processEscapes: true
     },
@@ -209,19 +209,19 @@ $(document).ready(function () {
   <div class="post-content" itemprop="articleBody">
     <p>This post is about <a href="https://www.codechef.com/JULY17/problems/EXPTREE">this</a> question.</p>
 
-<p>The first thing I noted was that the total trees with $N$ nodes are $C_{n-1}$ (Catalan Number). So if we consider the size of subtrees rooted at children then we get an ordered tuple $(a_1, a_2 … a_k)$ where $a_1+a_2 … a_k=n-1$. Thus it is evident that:</p>
+<p>The first thing I noted was that the total trees with (N) nodes are (C_{n-1}) (Catalan Number). So if we consider the size of subtrees rooted at children then we get an ordered tuple ((a_1, a_2 … a_k)) where (a_1+a_2 … a_k=n-1). Thus it is evident that:</p>
 
-\[C_{n-1} = \sum_{a_1+a_2+...a_k=n-1}C_{a_1-1}C_{a_2-1}..C_{a_k-1}\tag{$n\ge 1$}\]
+\[C_{n-1} = \sum_{a_1+a_2+...a_k=n-1}C_{a_1-1}C_{a_2-1}..C_{a_k-1}\tag{\(n\ge 1\)}\]
 
-<p>Now consider the expected value of number of vertices as $E_n$. Suppose we change only a particular parent, say, the first, then we will have $C_{a_1-1}E_{a_1}$ total such nodes in that children and considering permutations of other children we will have corresponding to this children $(C_{a_1-1}E_{a_1})C_{a_2-1}C_{a_3-1}…C_{a_k-1}$ total such vertices, hence total vertices from varying all children, $T_n$ will be:</p>
+<p>Now consider the expected value of number of vertices as (E_n). Suppose we change only a particular parent, say, the first, then we will have (C_{a_1-1}E_{a_1}) total such nodes in that children and considering permutations of other children we will have corresponding to this children ((C_{a_1-1}E_{a_1})C_{a_2-1}C_{a_3-1}…C_{a_k-1}) total such vertices, hence total vertices from varying all children, (T_n) will be:</p>
 
-\[T_n=\sum_{a_1+a_2+...a_k=n-1}C_{a_1-1}C_{a_2-2}...C_{a_k-1}\left(E_{a_1}+E_{a_2}...E_{a_n}\right)\tag{$n\ge 1$}\]
+\[T_n=\sum_{a_1+a_2+...a_k=n-1}C_{a_1-1}C_{a_2-2}...C_{a_k-1}\left(E_{a_1}+E_{a_2}...E_{a_n}\right)\tag{\(n\ge 1\)}\]
 
-<p>we need to also consider the case when $k=1$ where the root node will be such a vertex where we will only have $1$ child with $N-1$ nodes, i.e. $C_{(n-1)-1}$ such root nodes. Therefore (in particular $E_1=0$):</p>
+<p>we need to also consider the case when (k=1) where the root node will be such a vertex where we will only have (1) child with (N-1) nodes, i.e. (C_{(n-1)-1}) such root nodes. Therefore (in particular (E_1=0)):</p>
 
-\[E_{n}=\frac{\#\text{total such nodes in all trees with n nodes}}{\#\text{total trees with n nodes}}=\frac{T_n+C_{n-2}}{C_{n-1}}\tag{$n\ge 2$}\]
+\[E_{n}=\frac{\#\text{total such nodes in all trees with n nodes}}{\#\text{total trees with n nodes}}=\frac{T_n+C_{n-2}}{C_{n-1}}\tag{\(n\ge 2\)}\]
 
-<p>Now $T_n$ can be simplified as follows ($n\ge 3, T_0=0, T_1=0$):</p>
+<p>Now (T_n) can be simplified as follows ((n\ge 3, T_0=0, T_1=0)):</p>
 
 \[\begin{align}T_n&amp;=\sum_{a_1}C_{a_1-1}\sum_{a_2+a_3+..a_k=n-a_1-1}C_{a_2-2}...C_{a_k-1}\left(E_{a_1}+E_{a_2}...E_{a_n}\right)\\
 &amp;=\sum_{a_1}C_{a_1-1}\left(E_{a_1}\sum_{a_2+a_3+...a_k=n-a_1-1}C_{a_2-1}C_{a_3-1}...C_{a_k-1}+\sum_{a_2+a_3+...a_k=n-a_1-1}C_{a_2-1}C_{a_3-1}...C_{a_k-1}(E_{a_2}E_{a_3}...E_{a_k})\right)\\
@@ -234,7 +234,7 @@ T_n&amp;=C_{n-2}+2\sum_{\alpha=1}^{n-1}C_{\alpha-1}T_{n-\alpha}=C_{n-2}+2\sum_{\
 
 <p>So:</p>
 
-\[T_n=C_{n-2}+2(C_0T_{n-1}+C_1T_{n-2}+...C_{n-1}T_0)\tag{$n\ge3$}\]
+\[T_n=C_{n-2}+2(C_0T_{n-1}+C_1T_{n-2}+...C_{n-1}T_0)\tag{\(n\ge3\)}\]
 
 <p>We can verify these relations with (values in red are defined to satisfy the relations):</p>
 
@@ -249,7 +249,7 @@ n&amp;C_n&amp;E_n&amp;T_n&amp;T_n+C_{n-2}\\\hline
 6&amp;132&amp;5/3&amp;56&amp;70
 \end{array}\]
 
-<p>Let generating function of $T_n$ be $U(x)$ such that:</p>
+<p>Let generating function of (T_n) be (U(x)) such that:</p>
 
 \[U(x)=T_0+T_1x+T_2x^2+...=T_3x^3+T_4x^4+...=x^3+4x^4+15x^5+...\]
 
@@ -278,7 +278,7 @@ U+\frac x2&amp;=\frac x2(1-2x)(1-4x)^{-1/2}\\
 &amp;=\frac x2(1-2x)\left(\binom{-1/2}0+\binom{-1/2}1(-4x)+\binom{-1/2}2(-4x)^2+...\right)
 \end{align}\]
 
-<p>Coefficient of $x^{n+1}$ ($n\ge 2$) in that would be:</p>
+<p>Coefficient of (x^{n+1}) ((n\ge 2)) in that would be:</p>
 
 \[\begin{align}
 T_{n+1}&amp;=\frac12\binom{-1/2}n(-4)^n-\binom{-1/2}{n-1}(-4)^{n-1}\\
@@ -297,7 +297,7 @@ T_{n+1}&amp;=\binom{2n-2}{n}
 &amp;=\frac{n(n-1)}{2(2n-3)}
 \end{align}\]
 
-<p>Now define $P=n(n-1)$ and $Q=2(2n-3)$. We can easily find modular inverse using Fermat’s theorem and calculate accordingly:</p>
+<p>Now define (P=n(n-1)) and (Q=2(2n-3)). We can easily find modular inverse using Fermat’s theorem and calculate accordingly:</p>
 
 <h2 id="c-code">C++ Code:</h2>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#include &lt;iostream&gt;

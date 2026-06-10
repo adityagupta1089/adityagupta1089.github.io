@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Aditya Gupta&#39;s Blog | Strassen Matrix Multiplication</title>
-  <meta name="description" content="The product of two $n\times n$ matrices $X$ and $Y$ which takes $O(n^3)$">
+  <meta name="description" content="The product of two (n\times n) matrices (X) and (Y) which takes (O(n^3))">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,8 +23,8 @@
 <meta name="generator" content="Jekyll v4.4.1" />
 <meta property="og:title" content="Strassen Matrix Multiplication" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="The product of two $n\times n$ matrices $X$ and $Y$ which takes $O(n^3)$" />
-<meta name="twitter:description" property="og:description" content="The product of two $n\times n$ matrices $X$ and $Y$ which takes $O(n^3)$" />
+<meta name="description" content="The product of two (n\times n) matrices (X) and (Y) which takes (O(n^3))" />
+<meta name="twitter:description" property="og:description" content="The product of two (n\times n) matrices (X) and (Y) which takes (O(n^3))" />
 <link rel="canonical" href="https://adityagupta1089.github.io/notes/algorithms/matrix-multiplication.html" />
 <meta property="og:url" content="https://adityagupta1089.github.io/notes/algorithms/matrix-multiplication.html" />
 <meta property="og:site_name" content="Aditya Gupta’s Blog" />
@@ -34,7 +34,7 @@
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="Strassen Matrix Multiplication" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2019-10-26T18:46:00+00:00","datePublished":"2019-10-26T18:46:00+00:00","description":"The product of two $n\\times n$ matrices $X$ and $Y$ which takes $O(n^3)$","headline":"Strassen Matrix Multiplication","mainEntityOfPage":{"@type":"WebPage","@id":"https://adityagupta1089.github.io/notes/algorithms/matrix-multiplication.html"},"url":"https://adityagupta1089.github.io/notes/algorithms/matrix-multiplication.html"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2019-10-26T18:46:00+00:00","datePublished":"2019-10-26T18:46:00+00:00","description":"The product of two (n\\times n) matrices (X) and (Y) which takes (O(n^3))","headline":"Strassen Matrix Multiplication","mainEntityOfPage":{"@type":"WebPage","@id":"https://adityagupta1089.github.io/notes/algorithms/matrix-multiplication.html"},"url":"https://adityagupta1089.github.io/notes/algorithms/matrix-multiplication.html"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -158,7 +158,7 @@
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
     tex2jax: {
-      inlineMath: [ ['$','$'], ['\\(','\\)'] ],
+      inlineMath: [ ['\\(','\\)'] ],
       displayMath: [ ['$$', '$$'], ['\\[','\\]'] ],
       processEscapes: true
     },
@@ -207,7 +207,7 @@ $(document).ready(function () {
   </header>
 
   <div class="post-content" itemprop="articleBody">
-    <p>The product of two $n\times n$ matrices $X$ and $Y$ which takes $O(n^3)$</p>
+    <p>The product of two (n\times n) matrices (X) and (Y) which takes (O(n^3))</p>
 
 \[X=\begin{bmatrix}A&amp;B\\C&amp;D\end{bmatrix}\]
 
@@ -216,7 +216,7 @@ $(document).ready(function () {
 <p>is 
 \(XY=\begin{bmatrix}A&amp;B\\C&amp;D\end{bmatrix}\begin{bmatrix}E&amp;F\\G&amp;H\end{bmatrix}=\begin{bmatrix}AE+BG&amp;AF+BH\\CE+DG&amp;CF+DH\end{bmatrix}\)</p>
 
-<p>here $T(n)=8T(n/2)+O(n^2)\implies O(n^3)$</p>
+<p>here (T(n)=8T(n/2)+O(n^2)\implies O(n^3))</p>
 
 <p>Strassen gave:</p>
 
@@ -232,7 +232,7 @@ P_3&amp;=(C+D)E&amp;P_7&amp;=(A-C)(E+F)\\
 P_4&amp;=D(G-E)\\
 \end{align}\]
 
-<p>The new running time is $T(n)=7T(n/2)+O(n^2)$ which by the master theorem works out to be $O(n^{\log_27})\approx O(n^{2.81})$</p>
+<p>The new running time is (T(n)=7T(n/2)+O(n^2)) which by the master theorem works out to be (O(n^{\log_27})\approx O(n^{2.81}))</p>
 
   </div>
 

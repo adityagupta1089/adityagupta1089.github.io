@@ -158,7 +158,7 @@
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
     tex2jax: {
-      inlineMath: [ ['$','$'], ['\\(','\\)'] ],
+      inlineMath: [ ['\\(','\\)'] ],
       displayMath: [ ['$$', '$$'], ['\\[','\\]'] ],
       processEscapes: true
     },
@@ -209,29 +209,29 @@ $(document).ready(function () {
   <div class="post-content" itemprop="articleBody">
     <h1 id="mergesort">Mergesort</h1>
 
-<p>Split the list into 2 halves, recursively sort each half and then merge the two sorted sublists. For merging $x[1..k]$ and $y[1..l]$ into $z[1..k+l]$. The first element of $z$ is smaller of $x[1]$ and $y[1]$ and rest can be constrcuted recrusively.</p>
+<p>Split the list into 2 halves, recursively sort each half and then merge the two sorted sublists. For merging (x[1..k]) and (y[1..l]) into (z[1..k+l]). The first element of (z) is smaller of (x[1]) and (y[1]) and rest can be constrcuted recrusively.</p>
 
 \[\begin{align}
 \text{mergesort}(a[1..n]) =&amp;\text{merge}(\text{mergesort}(a[1..\lfloor n/2\rfloor]),\\&amp;\quad\text{mergesort}(a[\lfloor n/2\rfloor+1...n]))\\
 \text{merge}(x[1..k],y[1..l])=&amp;\begin{cases}x[1]\circ\text{merge}(x[2..k],y[1..l])&amp;x[1]\le y[1]\\y[1]\circ\text{merge}(x[1..k],y[2..l])&amp;\text{otherwise}\end{cases}
 \end{align}\]
 
-<p>Time Complexity $T(n)=2T(n/2)+O(n)\implies O(n\log n)$</p>
+<p>Time Complexity (T(n)=2T(n/2)+O(n)\implies O(n\log n))</p>
 
 <h1 id="quicksort--quickselect">Quicksort &amp; Quickselect</h1>
 
-<p>Select a pivot $v$ (pick randomly). Split the array into three categories: elements smaller than $v$, those equal to $v$ and those greater than $v$. Call these $S_L$, $S_v$, and $S_R$ respectively. Recursively sort the array.</p>
+<p>Select a pivot (v) (pick randomly). Split the array into three categories: elements smaller than (v), those equal to (v) and those greater than (v). Call these (S_L), (S_v), and (S_R) respectively. Recursively sort the array.</p>
 
-<p>Time complexity: $O(n^2)$ worst case. $O(n\log n)$ best and average case.</p>
+<p>Time complexity: (O(n^2)) worst case. (O(n\log n)) best and average case.</p>
 
-<p>For selecting the $k^{\rm th}$ element:
+<p>For selecting the (k^{\rm th}) element:
 \(\text{selection}=
 \begin{cases}
 \text{selection(S_L, k)}&amp;k\le |S_L|\\
 v &amp;|S_L|&lt;k\le|S_L|+|S_v|\\
 \text{selection}(S_R, k-|S_L|-|S_v|)&amp;k&gt;|S_L|+|S_v|
 \end{cases}\)
-Time complexity: $T(n)=T(n/2)+O(n)\implies O(n)$</p>
+Time complexity: (T(n)=T(n/2)+O(n)\implies O(n))</p>
 
   </div>
 

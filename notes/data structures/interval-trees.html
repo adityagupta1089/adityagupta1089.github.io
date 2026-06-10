@@ -158,7 +158,7 @@
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
     tex2jax: {
-      inlineMath: [ ['$','$'], ['\\(','\\)'] ],
+      inlineMath: [ ['\\(','\\)'] ],
       displayMath: [ ['$$', '$$'], ['\\[','\\]'] ],
       processEscapes: true
     },
@@ -209,50 +209,50 @@ $(document).ready(function () {
   <div class="post-content" itemprop="articleBody">
     <h1 id="motivation">Motivation</h1>
 
-<p>Given a set of intervals $I$ on the real line and a query point $q_x$, find the intervals that contain $q_x$.</p>
+<p>Given a set of intervals (I) on the real line and a query point (q_x), find the intervals that contain (q_x).</p>
 
-<p>Let $I:={[x_1:x_1’],[x_2:x_2’],\ldots,[x_n:x_n’]}$. Let $x_{\rm mid}$ be the median of the $2n$ interval endpoints such that atmost half of them lie on the left and half of them lie on the right.</p>
+<p>Let (I:={[x_1:x_1’],[x_2:x_2’],\ldots,[x_n:x_n’]}). Let (x_{\rm mid}) be the median of the (2n) interval endpoints such that atmost half of them lie on the left and half of them lie on the right.</p>
 
 <h1 id="definition">Definition</h1>
 
 <p><img src="https://adityagupta1089.github.io/images/intervaltree1.png" alt="" /></p>
 
 <ul>
-  <li>If $I=\phi$ then interval tree is a leaf.</li>
-  <li>Otherwise let $x_{\rm mid}$ be the median of the endpoints of the interval. Let
+  <li>If (I=\phi) then interval tree is a leaf.</li>
+  <li>Otherwise let (x_{\rm mid}) be the median of the endpoints of the interval. Let
     <ul>
-      <li>$I_{\rm left}:={[x_j:x_j’]\in I\mid x_j’&lt;x_{\rm mid}}$</li>
-      <li>$I_{\rm mid}:={[x_j:x_j’]\in I\mid x_j\le x_{\rm mid}\le x_j’}$.</li>
-      <li>$I_{\rm right}:={[x_j:x_j’]\in I\mid x_j&gt;x_{\rm mid}}$</li>
+      <li>(I_{\rm left}:={[x_j:x_j’]\in I\mid x_j’&lt;x_{\rm mid}})</li>
+      <li>(I_{\rm mid}:={[x_j:x_j’]\in I\mid x_j\le x_{\rm mid}\le x_j’}).</li>
+      <li>(I_{\rm right}:={[x_j:x_j’]\in I\mid x_j&gt;x_{\rm mid}})</li>
     </ul>
   </li>
 </ul>
 
 <p><img src="https://adityagupta1089.github.io/images/intervaltree2.png" alt="" /></p>
 
-<p>The Interval tree consists of a root node $v$ storing $x_{\rm mid}$.</p>
+<p>The Interval tree consists of a root node (v) storing (x_{\rm mid}).</p>
 <ul>
   <li>
-    <p>$I_{\rm mid}$ is stored twice:</p>
+    <p>(I_{\rm mid}) is stored twice:</p>
 
     <ol>
       <li>
-        <p>${\cal L}_{\rm left}$ that is sorted on the left endpoints of $I_{\rm mid}$</p>
+        <p>({\cal L}_{\rm left}) that is sorted on the left endpoints of (I_{\rm mid})</p>
       </li>
       <li>
-        <p>${\cal L}_{\rm right}$ that is sorted on the right endpoints of  $I_{\rm mid}$</p>
+        <p>({\cal L}_{\rm right}) that is sorted on the right endpoints of  (I_{\rm mid})</p>
       </li>
     </ol>
   </li>
   <li>
-    <p>Left subtree of $v$ is an interval tree for the set $I_{\rm left}$.</p>
+    <p>Left subtree of (v) is an interval tree for the set (I_{\rm left}).</p>
   </li>
   <li>
-    <p>Right subtree of $v$ is an interval tree for the set $I_{\rm right}$.</p>
+    <p>Right subtree of (v) is an interval tree for the set (I_{\rm right}).</p>
   </li>
 </ul>
 
-<h1 id="creation-onlog-n">Creation $O(n\log n)$</h1>
+<h1 id="creation-onlog-n">Creation (O(n\log n))</h1>
 
 <pre><code class="language-pseudocode">create(I)
   if I = null
@@ -267,29 +267,29 @@ $(document).ready(function () {
     return v
 </code></pre>
 
-<h1 id="querying-olog-nk">Querying $O(\log n+k)$</h1>
+<h1 id="querying-olog-nk">Querying (O(\log n+k))</h1>
 
 <ul>
-  <li>If $q_x &lt; x_{\rm mid}(v)$ walk along $\cal L_{\rm left}$ reporting all intervals that contain $q_x$. Stop as soon as an interval doesn’t contain $q_x$. Query left subtree of $v$.</li>
-  <li>Symmetrically do for $q_x&gt;x_{\rm mid(v)}$</li>
+  <li>If (q_x &lt; x_{\rm mid}(v)) walk along (\cal L_{\rm left}) reporting all intervals that contain (q_x). Stop as soon as an interval doesn’t contain (q_x). Query left subtree of (v).</li>
+  <li>Symmetrically do for (q_x&gt;x_{\rm mid(v)})</li>
 </ul>
 
-<p>$k$ = Number of reported intervals.</p>
+<p>(k) = Number of reported intervals.</p>
 
 <h1 id="2-d-range-tree">2-D Range Tree</h1>
 
-<p>The data structure to store a a horizontal line segments is $\rm T$. If we want to create a 2-D range tree then instead of $\cal L_{\rm left}(v)$ and $\cal L_{\rm right}(v)$ we will store:</p>
+<p>The data structure to store a a horizontal line segments is (\rm T). If we want to create a 2-D range tree then instead of (\cal L_{\rm left}(v)) and (\cal L_{\rm right}(v)) we will store:</p>
 
 <ul>
-  <li>A range tree $T_{\rm left}(v)$ on left endpoint segments in $I_{\rm mid}(v)$.</li>
-  <li>A range tree $T_{\rm right}(v)$ on right endpoint segments in $I_{\rm mid}(v)$</li>
+  <li>A range tree (T_{\rm left}(v)) on left endpoint segments in (I_{\rm mid}(v)).</li>
+  <li>A range tree (T_{\rm right}(v)) on right endpoint segments in (I_{\rm mid}(v))</li>
 </ul>
 
-<p>At time of querying instead of walking along $\cal L_{\rm left}(v)$ and $\cal L_{\rm right}(v)$ we will perform a query in the range trees $\rm T_{left}(v)$ and $\rm T_{right}(v)$.</p>
+<p>At time of querying instead of walking along (\cal L_{\rm left}(v)) and (\cal L_{\rm right}(v)) we will perform a query in the range trees (\rm T_{left}(v)) and (\rm T_{right}(v)).</p>
 
 <ul>
-  <li>Creation: $O(n\log n)$</li>
-  <li>Querying: $O(\log^2n+k)$</li>
+  <li>Creation: (O(n\log n))</li>
+  <li>Querying: (O(\log^2n+k))</li>
 </ul>
 
 
