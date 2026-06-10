@@ -1,13 +1,280 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Aditya Gupta</title>
-    <description>Software engineer at Verily. Notes on algorithms, chess, music, and whatever else.</description>
+    <title>Aditya Gupta&apos;s Blog</title>
+    <description>ML infrastructure engineer at Google. Notes on algorithms, chess, systems, and whatever else.</description>
     <link>https://adityagupta1089.github.io/</link>
     <atom:link href="https://adityagupta1089.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 09 Jun 2026 05:01:15 +0000</pubDate>
-    <lastBuildDate>Tue, 09 Jun 2026 05:01:15 +0000</lastBuildDate>
+    <pubDate>Wed, 10 Jun 2026 02:15:40 +0000</pubDate>
+    <lastBuildDate>Wed, 10 Jun 2026 02:15:40 +0000</lastBuildDate>
     <generator>Jekyll v4.4.1</generator>
+    
+      <item>
+        <title>Unfair Flips: Optimal Strategy via Markov Chains and Dynamic Programming</title>
+        <description>&lt;p&gt;&lt;a href=&quot;https://store.steampowered.com/app/2835570/Unfair_Flips/&quot;&gt;Unfair Flips&lt;/a&gt; is a Steam idle game where you flip coins to earn money,
+then spend that money on upgrades that make you flip faster, earn more per flip, or increase your win probability.
+I wanted to know: what’s the mathematically optimal upgrade path?&lt;/p&gt;
+
+&lt;p&gt;This post is the story of that analysis — the dead ends, the model that finally worked, some surprising findings, and a real playthrough to verify.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-setup&quot;&gt;The Setup&lt;/h2&gt;
+
+&lt;p&gt;The game has four upgradeable parameters:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Flip probability&lt;/strong&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;p&lt;/code&gt;: chance of heads, starts at 20%, upgrades add 5pp each (8 levels, costs 1¢ → $100k)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Base worth&lt;/strong&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;b&lt;/code&gt;: cents earned per head in a streak (4 levels: 1¢, 5¢, 10¢, 25¢, $1)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Combo multiplier&lt;/strong&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;m&lt;/code&gt;: each consecutive head multiplies payout (5 levels: 1×→3.5×, costs 1¢→$100)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Flip duration&lt;/strong&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;d&lt;/code&gt;: time per flip (5 levels: 2.0s→1.0s, costs 1¢→$10k)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The k-th consecutive head in a streak earns \(b \cdot \lceil m^{k-1} \rceil\) cents.
+At max multiplier (3.5×) the sequence per flip is 1¢, 4¢, 13¢, 43¢, 151¢, 526¢, $18.39, $64.34, $225.19, $788.16 — each flip worth exponentially more than the last.&lt;/p&gt;
+
+&lt;p&gt;The win condition: 10 consecutive heads. You accumulate cash from failed streaks and spend it on upgrades.&lt;/p&gt;
+
+&lt;h2 id=&quot;dead-end-greedy-on-marginal-rate-of-return&quot;&gt;Dead End: Greedy on Marginal Rate of Return&lt;/h2&gt;
+
+&lt;p&gt;My first instinct was to greedily pick whichever upgrade maximises \(\Delta(\text{earnings/second}) / \text{cost}\).
+The problem: it’s myopic. Buying a cheap low-value upgrade can prevent you from saving for a more transformative one sooner. The greedy path kept oscillating between small upgrades instead of building toward a big one.&lt;/p&gt;
+
+&lt;h2 id=&quot;dead-end-raw-flip-count&quot;&gt;Dead End: Raw Flip Count&lt;/h2&gt;
+
+&lt;p&gt;The next attempt tried to minimise total flip count. This ignored flip duration entirely — a 0.5s flip and a 2s flip both count as “one flip” but take very different wall-clock time. Any model that doesn’t account for flip duration is measuring the wrong thing.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-actually-works-markov-chain--dp&quot;&gt;What Actually Works: Markov Chain + DP&lt;/h2&gt;
+
+&lt;p&gt;The correct model treats the game as a Markov chain over streak states \(\{0, 1, \ldots, 9\}\).&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Expected earnings per flip&lt;/strong&gt; in steady state is derived by summing over all streak outcomes:&lt;/p&gt;
+
+\[E[\text{¢/flip}] = \frac{\sum_{k=0}^{9} p^k(1-p) \sum_{j=1}^{k} b\lceil m^{j-1}\rceil + p^{10} \sum_{j=1}^{10} b\lceil m^{j-1}\rceil}{\sum_{k=0}^{9} p^k(1-p)(k+1) + 10p^{10}}\]
+
+&lt;p&gt;&lt;strong&gt;Optimal path&lt;/strong&gt;: dynamic programming over the state space &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(p_level, b_level, m_level, d_level)&lt;/code&gt;. At each state, try every upgrade, compute transition cost (time to save for it) + DP-optimal from the next state, and take the minimum. Memoised with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;lru_cache&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-optimal-path&quot;&gt;The Optimal Path&lt;/h2&gt;
+
+&lt;p&gt;The time-optimal path (21 steps, ~26 minutes expected):&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Step&lt;/th&gt;
+      &lt;th&gt;Upgrade&lt;/th&gt;
+      &lt;th&gt;Cost&lt;/th&gt;
+      &lt;th&gt;¢/flip after&lt;/th&gt;
+      &lt;th&gt;Cumulative time&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;FlipMultiplier +0.5&lt;/td&gt;
+      &lt;td&gt;1¢&lt;/td&gt;
+      &lt;td&gt;0.20&lt;/td&gt;
+      &lt;td&gt;10s&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;HeadsChance +5%&lt;/td&gt;
+      &lt;td&gt;1¢&lt;/td&gt;
+      &lt;td&gt;0.25&lt;/td&gt;
+      &lt;td&gt;18s&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;3&lt;/td&gt;
+      &lt;td&gt;FlipTime -0.2s&lt;/td&gt;
+      &lt;td&gt;1¢&lt;/td&gt;
+      &lt;td&gt;0.33&lt;/td&gt;
+      &lt;td&gt;24s&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;4&lt;/td&gt;
+      &lt;td&gt;FlipBaseWorth ↑&lt;/td&gt;
+      &lt;td&gt;25¢&lt;/td&gt;
+      &lt;td&gt;0.33&lt;/td&gt;
+      &lt;td&gt;2.6min&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;…&lt;/td&gt;
+      &lt;td&gt;…&lt;/td&gt;
+      &lt;td&gt;…&lt;/td&gt;
+      &lt;td&gt;…&lt;/td&gt;
+      &lt;td&gt;…&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;13&lt;/td&gt;
+      &lt;td&gt;FlipMultiplier +0.5&lt;/td&gt;
+      &lt;td&gt;$10&lt;/td&gt;
+      &lt;td&gt;35.24&lt;/td&gt;
+      &lt;td&gt;6.8min&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;…&lt;/td&gt;
+      &lt;td&gt;…&lt;/td&gt;
+      &lt;td&gt;…&lt;/td&gt;
+      &lt;td&gt;…&lt;/td&gt;
+      &lt;td&gt;…&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;21&lt;/td&gt;
+      &lt;td&gt;HeadsChance +5%&lt;/td&gt;
+      &lt;td&gt;$10k&lt;/td&gt;
+      &lt;td&gt;89.69&lt;/td&gt;
+      &lt;td&gt;11.3min&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;→&lt;/td&gt;
+      &lt;td&gt;WIN (55% per flip)&lt;/td&gt;
+      &lt;td&gt;—&lt;/td&gt;
+      &lt;td&gt;—&lt;/td&gt;
+      &lt;td&gt;&lt;strong&gt;25.9min&lt;/strong&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Flip duration upgrades dominate the early game.&lt;/strong&gt; Halving your flip time compounds across every subsequent upgrade purchase, making it the most leveraged early investment.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-spread-how-much-do-wrong-choices-cost&quot;&gt;The Spread: How Much Do Wrong Choices Cost?&lt;/h2&gt;
+
+&lt;p&gt;At each step I computed the “spread” — the gap in expected total time between the best and worst available upgrades.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Step 13 is the highest-stakes decision in the game.&lt;/strong&gt; At state &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;p=35%, b=25¢, m=2.5×, d=1.4s&lt;/code&gt;, both FlipMultiplier ($10) and FlipBaseWorth ($10) cost the same, but:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Choice&lt;/th&gt;
+      &lt;th&gt;Extra expected time&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;FlipMultiplier (optimal)&lt;/td&gt;
+      &lt;td&gt;+0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;FlipBaseWorth&lt;/td&gt;
+      &lt;td&gt;+4.5 min&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Most other steps have spreads under 30 seconds. But several mid-game steps where base worth and multiplier compete have spreads of 2–4 minutes — the game’s hidden asymmetry.&lt;/p&gt;
+
+&lt;h2 id=&quot;wait-time-variance-why-you-get-stuck&quot;&gt;Wait Time Variance: Why You Get Stuck&lt;/h2&gt;
+
+&lt;p&gt;The expected wait time for each upgrade is just &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cost / E[¢/flip]&lt;/code&gt;. But the &lt;em&gt;actual&lt;/em&gt; wait time has high variance — especially at expensive upgrades where your earnings rate is still modest.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Step&lt;/th&gt;
+      &lt;th&gt;Upgrade&lt;/th&gt;
+      &lt;th&gt;E[wait]&lt;/th&gt;
+      &lt;th&gt;P95 wait&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;4&lt;/td&gt;
+      &lt;td&gt;FlipBaseWorth ↑ (25¢)&lt;/td&gt;
+      &lt;td&gt;2.2 min&lt;/td&gt;
+      &lt;td&gt;3.6 min&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;12&lt;/td&gt;
+      &lt;td&gt;FlipBaseWorth ↑ ($6.25)&lt;/td&gt;
+      &lt;td&gt;1.0 min&lt;/td&gt;
+      &lt;td&gt;7.1 min&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;16&lt;/td&gt;
+      &lt;td&gt;FlipBaseWorth ↑ ($100)&lt;/td&gt;
+      &lt;td&gt;1.3 min&lt;/td&gt;
+      &lt;td&gt;&lt;strong&gt;12.3 min&lt;/strong&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;21&lt;/td&gt;
+      &lt;td&gt;HeadsChance ($10k)&lt;/td&gt;
+      &lt;td&gt;1.9 min&lt;/td&gt;
+      &lt;td&gt;10.1 min&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Step 16 (the $100 FlipBaseWorth upgrade) has a P95 wait of &lt;strong&gt;12.3 minutes&lt;/strong&gt; vs the 1.3-minute expectation — a &lt;strong&gt;9× ratio&lt;/strong&gt;. This is the most variance-prone step in the game. If you felt stuck here, it was bad luck, not bad strategy.&lt;/p&gt;
+
+&lt;h2 id=&quot;how-bad-can-wrong-ordering-be&quot;&gt;How Bad Can Wrong Ordering Be?&lt;/h2&gt;
+
+&lt;p&gt;I computed three strategies:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Strategy&lt;/th&gt;
+      &lt;th&gt;Expected time&lt;/th&gt;
+      &lt;th&gt;×optimal&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Optimal&lt;/td&gt;
+      &lt;td&gt;25.9 min&lt;/td&gt;
+      &lt;td&gt;1.0×&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;2nd-worst (avoids single worst choice each step)&lt;/td&gt;
+      &lt;td&gt;1.5 h&lt;/td&gt;
+      &lt;td&gt;&lt;strong&gt;3.4×&lt;/strong&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Worst (always picks worst available)&lt;/td&gt;
+      &lt;td&gt;11,358 h&lt;/td&gt;
+      &lt;td&gt;26,296×&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;The worst strategy — maxing HeadsChance before having any earnings — takes over a year of continuous play in expectation. But even avoiding just the single worst choice each step (2nd-worst) leaves you at 3.4× the optimal time. The ordering matters enormously, and “not the worst” is very different from “close to optimal.”&lt;/p&gt;
+
+&lt;h2 id=&quot;a-real-playthrough&quot;&gt;A Real Playthrough&lt;/h2&gt;
+
+&lt;p&gt;After computing the optimal path, I played through the game following it exactly. Results:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Actual flips&lt;/strong&gt;: 2,220&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Expected flips&lt;/strong&gt;: ~1,400&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Percentile&lt;/strong&gt;: approximately P70–P75&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;2,220 flips is realistic — the distribution has a long right tail, and finishing at the ~70th percentile just means the streak phase was unlucky (needing more attempts than average to land 10 consecutive heads at 55%). The upgrade phase itself was fast, consistent with the model.&lt;/p&gt;
+
+&lt;p&gt;The model correctly predicted the two “stuck” points: the $100 FlipBaseWorth upgrade (Step 16) and the $10k HeadsChance upgrade (Step 21) both took noticeably longer than their expected values — consistent with their high P95/P99 variance.&lt;/p&gt;
+
+&lt;h2 id=&quot;code&quot;&gt;Code&lt;/h2&gt;
+
+&lt;p&gt;The model is pure Python with no external dependencies beyond the standard library.
+Full source: &lt;a href=&quot;https://github.com/adityagupta1089/unfair-flips-analysis&quot;&gt;github.com/adityagupta1089/unfair-flips-analysis&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Tue, 09 Jun 2026 00:00:00 +0000</pubDate>
+        <link>https://adityagupta1089.github.io/notes/algorithms/machine%20learning/programming/probability/ai%20generated/unfair-flips-analysis.html</link>
+        <guid isPermaLink="true">https://adityagupta1089.github.io/notes/algorithms/machine%20learning/programming/probability/ai%20generated/unfair-flips-analysis.html</guid>
+        
+        
+        <category>Notes</category>
+        
+        <category>Algorithms</category>
+        
+        <category>Machine Learning</category>
+        
+        <category>Programming</category>
+        
+        <category>Probability</category>
+        
+        <category>AI Generated</category>
+        
+      </item>
     
       <item>
         <title>Types and Programming Languages`:` Introduction</title>
@@ -109,11 +376,11 @@
 &lt;/ul&gt;
 </description>
         <pubDate>Wed, 29 Sep 2021 06:05:00 +0000</pubDate>
-        <link>https://adityagupta1089.github.io/types%20and%20programming%20languages/notes/2021-09-29-tapl-introduction.html</link>
-        <guid isPermaLink="true">https://adityagupta1089.github.io/types%20and%20programming%20languages/notes/2021-09-29-tapl-introduction.html</guid>
+        <link>https://adityagupta1089.github.io/tapl/notes/2021-09-29-tapl-introduction.html</link>
+        <guid isPermaLink="true">https://adityagupta1089.github.io/tapl/notes/2021-09-29-tapl-introduction.html</guid>
         
         
-        <category>Types and Programming Languages</category>
+        <category>TAPL</category>
         
         <category>Notes</category>
         
@@ -784,89 +1051,6 @@ T(n)&amp;amp;\le cn+T(n/5)+T(7n/10)\\
         <category>Notes</category>
         
         <category>Data Structures</category>
-        
-      </item>
-    
-      <item>
-        <title>Fast Fourier Transform</title>
-        <description>&lt;h1 id=&quot;motivation&quot;&gt;Motivation&lt;/h1&gt;
-
-&lt;p&gt;The product of two $d$-degree polynomials is a polynomial of degree $2d$, i.e. if $A(x)=a_0+a_1x+a_2x^2+\ldots+a_dx^d$ and $B(x)=b_0+b_1+b_2x^2+\ldots+b_dx^d$ then&lt;/p&gt;
-
-\[A(x)B(x)=a_0b_k+a_1b_{k-1}+\ldots+a_kb_0=\sum_{i=0}^{k}a_i b_{k-i}\]
-
-&lt;p&gt;Computing $c_k$ from this formula takes $O(k)$ steps aand finding all $2d+1$ coefficients would therefore take $\Theta(d^2)$&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;A degree-$d$ polynomial is uniquely characterized by its values at any $d+1$ distinct points.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;We can represent a degree-$d$ polynomial $A(x)$ by either (i) it’s coefficients $a_0, a_1,\ldots a_d$ or (ii) the values $A(x_0), A(x_1),\ldots A(x_d)$&lt;/p&gt;
-
-&lt;p&gt;In the second representation polynomial multiplication takes linear time.&lt;/p&gt;
-
-&lt;h1 id=&quot;evaluation-by-divide-and-conquer&quot;&gt;Evaluation by divide-and-conquer&lt;/h1&gt;
-
-&lt;p&gt;If we choose the $n$ points for evaluation of $A(x)$ as:&lt;/p&gt;
-
-\[\pm x_0, \pm x_1, \ldots, \pm x_{n/2-1}\]
-
-&lt;p&gt;then the computatin required for each $A(x_i)$ and $A(-x_i)$ overlap a lot because the even powers of $x_i$ coincide with those of $-x_i$.&lt;/p&gt;
-
-\[A(x)=(a_0+a_2x^2+a_4x^4+\ldots)+x(a_1+a_3x^2+\ldots)
-A(x)=A_{\rm even}(x^2)+xA_{\rm odd}(x^2)\]
-
-&lt;p&gt;hence&lt;/p&gt;
-
-\[A(x_i)=A_e(x_i^2)+x_iA_o(x_i^2)
-A(-x_i)=A_e(x_i^2)-x_iA_o(x_i^2)\]
-
-&lt;p&gt;Noew we need to evaluate $A_e(x)$ and $A_o(x)$ (which each have half the degree of $A(x)$) at just $n/2$ points, $x_0^2,\ldots x_{n/2-1}^2$.&lt;/p&gt;
-
-&lt;p&gt;If we could recurse then time complexity would be $T(n)=2T(n/2)+O(n)\implies O(n\log n)$. The plus-minus trick only works at the top level of the recursion. To recurse at the next level, we need the $n/2$ evaluation points $x_0^2, x_1^2,\ldots x_{n/2-1}^2$ to be themselves plus-minus pairs. For this we take $n^{\rm th}$ roots of unity as the evaluation points.&lt;/p&gt;
-
-&lt;h1 id=&quot;interpolation&quot;&gt;Interpolation&lt;/h1&gt;
-
-&lt;p&gt;We have $\rm \langle values\rangle = FFT(\langle coefficients\rangle, \omega)$. where the complex roots of unity are ${1,\omega,\omega^2,\ldots,\omega^{n-1}}$&lt;/p&gt;
-
-&lt;p&gt;We have:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://adityagupta1089.github.io/images/fft1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Call the matrix in the middle $M$. Its specialized format - a &lt;em&gt;Vandermonde&lt;/em&gt; matrix gives its many remarkable properties&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;If $x_0, \ldots x_{n-1}$ are distinct numbers, then $M$ is invertible. Vandermonde matrices are quicker to invert than more general matrices in $O(n^2)$ instead of $O(n^3)$. However, this is still not fast enough so we turn to complex roots of unity.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;interpolation-resolved&quot;&gt;Interpolation resolved&lt;/h2&gt;
-
-&lt;p&gt;The FFT multiplies an arbitary $n$-dimensional vector (&lt;em&gt;coefficient representation&lt;/em&gt;) by the $n\times n$ matrix&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://adityagupta1089.github.io/images/fft2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;It’s $(j,k)^{\rm th}$ entry is $\omega^{jk}$. The columns of $M$ are orthogonal to each other and are called &lt;em&gt;Fourier basis&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;Take $\omega=e^{2\pi i/n}$ and $\langle u, v\rangle = u_0\overline{v_0}+u_1\overline{v_1}+\ldots u_{n-1}\overline{v_{n-1}}$ where $\overline {re^{i\theta}}=re^{-i\theta}$.&lt;/p&gt;
-
-&lt;p&gt;Multiplication of columns $j$ and $k$ of matrix $M$ gives&lt;/p&gt;
-
-\[1+\omega^{j-k}+\omega^{2(j-k)}+\ldots+\omega^{(n-1)(j-k)}=\frac{(1-\omega^{n(j-k)})}{(1-\omega^{j-k})}\]
-
-&lt;p&gt;which is a Geometric series which is $0$  except $j=k$ in which case all terms are $1$ and sum is $n$.&lt;/p&gt;
-
-&lt;p&gt;Thus $M\overline {M}=nI$ or $M^{-1}=\frac 1n\overline {M}$. The $(j, k)^{\rm th}$ entry of $\overline M$ is the complex conjugate of the correspoding entry of $M$, i.e. $\omega ^{-jk}$. So $\overline {M}=M_n(\omega^{-1})$&lt;/p&gt;
-
-&lt;p&gt;So we have $ \langle {\rm coefficient}\rangle = \frac 1n \rm FFT(\langle values\rangle, \omega^{-1})$&lt;/p&gt;
-</description>
-        <pubDate>Tue, 29 Oct 2019 00:00:00 +0000</pubDate>
-        <link>https://adityagupta1089.github.io/notes/algorithms/fast-fourier-transform.html</link>
-        <guid isPermaLink="true">https://adityagupta1089.github.io/notes/algorithms/fast-fourier-transform.html</guid>
-        
-        
-        <category>Notes</category>
-        
-        <category>Algorithms</category>
         
       </item>
     

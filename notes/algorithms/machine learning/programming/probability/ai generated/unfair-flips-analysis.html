@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Aditya Gupta&#39;s Blog | Unfair Flips: Optimal Strategy via Markov Chains and Dynamic Programming</title>
+  <meta name="description" content="Unfair Flips is a Steam idle game where you flip coins to earn money,then spend that money on upgrades that make you flip faster, earn more per flip, or incr...">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+3:wght@200;300;400;700&family=Josefin+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="canonical" href="https://adityagupta1089.github.io/notes/algorithms/machine%20learning/programming/probability/ai%20generated/unfair-flips-analysis.html">
+  <link rel="alternate" type="application/rss+xml" title="Aditya Gupta's Blog" href="https://adityagupta1089.github.io/feed.xml">
+
+  <!-- Begin Jekyll SEO tag v2.9.0 -->
+<title>Unfair Flips: Optimal Strategy via Markov Chains and Dynamic Programming | Aditya Gupta’s Blog</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Unfair Flips: Optimal Strategy via Markov Chains and Dynamic Programming" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Unfair Flips is a Steam idle game where you flip coins to earn money, then spend that money on upgrades that make you flip faster, earn more per flip, or increase your win probability. I wanted to know: what’s the mathematically optimal upgrade path?" />
+<meta name="twitter:description" property="og:description" content="Unfair Flips is a Steam idle game where you flip coins to earn money, then spend that money on upgrades that make you flip faster, earn more per flip, or increase your win probability. I wanted to know: what’s the mathematically optimal upgrade path?" />
+<link rel="canonical" href="https://adityagupta1089.github.io/notes/algorithms/machine%20learning/programming/probability/ai%20generated/unfair-flips-analysis.html" />
+<meta property="og:url" content="https://adityagupta1089.github.io/notes/algorithms/machine%20learning/programming/probability/ai%20generated/unfair-flips-analysis.html" />
+<meta property="og:site_name" content="Aditya Gupta’s Blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2026-06-09T00:00:00+00:00" />
+<meta property="article:modified_time" content="2026-06-09T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Unfair Flips: Optimal Strategy via Markov Chains and Dynamic Programming" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2026-06-09T00:00:00+00:00","datePublished":"2026-06-09T00:00:00+00:00","description":"Unfair Flips is a Steam idle game where you flip coins to earn money, then spend that money on upgrades that make you flip faster, earn more per flip, or increase your win probability. I wanted to know: what’s the mathematically optimal upgrade path?","headline":"Unfair Flips: Optimal Strategy via Markov Chains and Dynamic Programming","mainEntityOfPage":{"@type":"WebPage","@id":"https://adityagupta1089.github.io/notes/algorithms/machine%20learning/programming/probability/ai%20generated/unfair-flips-analysis.html"},"url":"https://adityagupta1089.github.io/notes/algorithms/machine%20learning/programming/probability/ai%20generated/unfair-flips-analysis.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  <script>
+    (function() {
+      var stored = localStorage.getItem('theme');
+      var prefer = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      var theme = stored || prefer;
+      if (theme === 'dark') document.documentElement.classList.add('dark');
+    })();
+  </script>
+</head>
+
+
+  <body class=" light  ">
+
+    <div class="wrapper topround">
+  <center><a href="/index.html"><div class="site-title">Aditya Gupta's Blog</div></a></center>
+</div>
+<div class="wrapper">
+  <nav class="trigger site-navigation">
+    
+    
+      
+        <a class="page-link" href="/about/">About</a>
+      
+    
+      
+        <a class="page-link" href="/index.html">Home</a>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        <a class="page-link" href="/random/">Random</a>
+      
+    
+    <button class="theme-toggle" id="theme-toggle" title="Toggle dark mode" aria-label="Toggle dark mode">
+      <i class="fa-solid fa-moon" id="theme-icon"></i>
+    </button>
+  </nav>
+</div>
+
+<script>
+  var toggle = document.getElementById('theme-toggle');
+  var icon   = document.getElementById('theme-icon');
+
+  function applyTheme(dark) {
+    if (dark) {
+      document.documentElement.classList.add('dark');
+      icon.className = 'fa-solid fa-sun';
+    } else {
+      document.documentElement.classList.remove('dark');
+      icon.className = 'fa-solid fa-moon';
+    }
+    localStorage.setItem('theme', dark ? 'dark' : 'light');
+  }
+
+  // Sync icon with current state on load
+  applyTheme(document.documentElement.classList.contains('dark'));
+
+  toggle.addEventListener('click', function() {
+    applyTheme(!document.documentElement.classList.contains('dark'));
+  });
+
+  // Follow OS changes if user hasn't set a preference
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+    if (!localStorage.getItem('theme')) applyTheme(e.matches);
+  });
+</script>
+
+<div class="wrapper topic-nav">
+  
+  
+    
+      <a class="topic-link" href="/category/ai%20generated">AI Generated</a>
+    
+  
+    
+      <a class="topic-link" href="/category/algorithms">Algorithms</a>
+    
+  
+    
+      <a class="topic-link" href="/category/chess">Chess</a>
+    
+  
+    
+      <a class="topic-link" href="/category/data%20structures">Data Structures</a>
+    
+  
+    
+      <a class="topic-link" href="/category/machine%20learning">Machine Learning</a>
+    
+  
+    
+      <a class="topic-link" href="/category/music">Music</a>
+    
+  
+    
+      <a class="topic-link" href="/category/notes">Notes</a>
+    
+  
+    
+      <a class="topic-link" href="/category/probability">Probability</a>
+    
+  
+    
+      <a class="topic-link" href="/category/programming">Programming</a>
+    
+  
+    
+      <a class="topic-link" href="/category/tapl">TAPL</a>
+    
+  
+</div>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ['\\(','\\)'] ],
+      displayMath: [ ['$$', '$$'], ['\\[','\\]'] ],
+      processEscapes: true
+    },
+    CommonHTML: { linebreaks: { automatic: true , width: "30em"} }
+  });
+</script>
+<script
+  type="text/javascript"
+  charset="utf-8"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"
+>
+</script>
+
+<link rel="stylesheet" type="text/css" href="https://adityagupta1089.github.io/css/chess-replayer.css" />
+<script type="text/javascript" src="https://adityagupta1089.github.io/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="https://adityagupta1089.github.io/js/jquery.chess-replayer.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function () {
+    $('.chess').replayer({
+        size: 'small',
+        lightColor: "#F0F0FF",
+        darkColor: "#00BB99",
+    });
+});
+</script>
+
+
+
+    <div class="page-content">
+      <div class="wrapper bottomround">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">
+      <a class="post-title-link"  href="/notes/algorithms/machine%20learning/programming/probability/ai%20generated/unfair-flips-analysis.html">Unfair Flips: Optimal Strategy via Markov Chains and Dynamic Programming
+      </a>
+    </h1>
+    <center>
+      <p class="post-meta" style="letter-spacing: 3px !important;">
+        <time datetime="2026-06-09T00:00:00+00:00" itemprop="datePublished">Jun 9, 2026
+        </time><br>
+        Categories: <span style="text-transform: uppercase !important">Notes, Algorithms, Machine Learning, Programming, Probability, AI Generated</span>
+      </p>
+
+     </center>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p><a href="https://store.steampowered.com/app/2835570/Unfair_Flips/">Unfair Flips</a> is a Steam idle game where you flip coins to earn money,
+then spend that money on upgrades that make you flip faster, earn more per flip, or increase your win probability.
+I wanted to know: what’s the mathematically optimal upgrade path?</p>
+
+<p>This post is the story of that analysis — the dead ends, the model that finally worked, some surprising findings, and a real playthrough to verify.</p>
+
+<h2 id="the-setup">The Setup</h2>
+
+<p>The game has four upgradeable parameters:</p>
+
+<ul>
+  <li><strong>Flip probability</strong> <code class="language-plaintext highlighter-rouge">p</code>: chance of heads, starts at 20%, upgrades add 5pp each (8 levels, costs 1¢ → $100k)</li>
+  <li><strong>Base worth</strong> <code class="language-plaintext highlighter-rouge">b</code>: cents earned per head in a streak (4 levels: 1¢, 5¢, 10¢, 25¢, $1)</li>
+  <li><strong>Combo multiplier</strong> <code class="language-plaintext highlighter-rouge">m</code>: each consecutive head multiplies payout (5 levels: 1×→3.5×, costs 1¢→$100)</li>
+  <li><strong>Flip duration</strong> <code class="language-plaintext highlighter-rouge">d</code>: time per flip (5 levels: 2.0s→1.0s, costs 1¢→$10k)</li>
+</ul>
+
+<p>The k-th consecutive head in a streak earns \(b \cdot \lceil m^{k-1} \rceil\) cents.
+At max multiplier (3.5×) the sequence per flip is 1¢, 4¢, 13¢, 43¢, 151¢, 526¢, $18.39, $64.34, $225.19, $788.16 — each flip worth exponentially more than the last.</p>
+
+<p>The win condition: 10 consecutive heads. You accumulate cash from failed streaks and spend it on upgrades.</p>
+
+<h2 id="dead-end-greedy-on-marginal-rate-of-return">Dead End: Greedy on Marginal Rate of Return</h2>
+
+<p>My first instinct was to greedily pick whichever upgrade maximises \(\Delta(\text{earnings/second}) / \text{cost}\).
+The problem: it’s myopic. Buying a cheap low-value upgrade can prevent you from saving for a more transformative one sooner. The greedy path kept oscillating between small upgrades instead of building toward a big one.</p>
+
+<h2 id="dead-end-raw-flip-count">Dead End: Raw Flip Count</h2>
+
+<p>The next attempt tried to minimise total flip count. This ignored flip duration entirely — a 0.5s flip and a 2s flip both count as “one flip” but take very different wall-clock time. Any model that doesn’t account for flip duration is measuring the wrong thing.</p>
+
+<h2 id="what-actually-works-markov-chain--dp">What Actually Works: Markov Chain + DP</h2>
+
+<p>The correct model treats the game as a Markov chain over streak states \(\{0, 1, \ldots, 9\}\).</p>
+
+<p><strong>Expected earnings per flip</strong> in steady state is derived by summing over all streak outcomes:</p>
+
+\[E[\text{¢/flip}] = \frac{\sum_{k=0}^{9} p^k(1-p) \sum_{j=1}^{k} b\lceil m^{j-1}\rceil + p^{10} \sum_{j=1}^{10} b\lceil m^{j-1}\rceil}{\sum_{k=0}^{9} p^k(1-p)(k+1) + 10p^{10}}\]
+
+<p><strong>Optimal path</strong>: dynamic programming over the state space <code class="language-plaintext highlighter-rouge">(p_level, b_level, m_level, d_level)</code>. At each state, try every upgrade, compute transition cost (time to save for it) + DP-optimal from the next state, and take the minimum. Memoised with <code class="language-plaintext highlighter-rouge">lru_cache</code>.</p>
+
+<h2 id="the-optimal-path">The Optimal Path</h2>
+
+<p>The time-optimal path (21 steps, ~26 minutes expected):</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Step</th>
+      <th>Upgrade</th>
+      <th>Cost</th>
+      <th>¢/flip after</th>
+      <th>Cumulative time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>FlipMultiplier +0.5</td>
+      <td>1¢</td>
+      <td>0.20</td>
+      <td>10s</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>HeadsChance +5%</td>
+      <td>1¢</td>
+      <td>0.25</td>
+      <td>18s</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>FlipTime -0.2s</td>
+      <td>1¢</td>
+      <td>0.33</td>
+      <td>24s</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>FlipBaseWorth ↑</td>
+      <td>25¢</td>
+      <td>0.33</td>
+      <td>2.6min</td>
+    </tr>
+    <tr>
+      <td>…</td>
+      <td>…</td>
+      <td>…</td>
+      <td>…</td>
+      <td>…</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>FlipMultiplier +0.5</td>
+      <td>$10</td>
+      <td>35.24</td>
+      <td>6.8min</td>
+    </tr>
+    <tr>
+      <td>…</td>
+      <td>…</td>
+      <td>…</td>
+      <td>…</td>
+      <td>…</td>
+    </tr>
+    <tr>
+      <td>21</td>
+      <td>HeadsChance +5%</td>
+      <td>$10k</td>
+      <td>89.69</td>
+      <td>11.3min</td>
+    </tr>
+    <tr>
+      <td>→</td>
+      <td>WIN (55% per flip)</td>
+      <td>—</td>
+      <td>—</td>
+      <td><strong>25.9min</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Flip duration upgrades dominate the early game.</strong> Halving your flip time compounds across every subsequent upgrade purchase, making it the most leveraged early investment.</p>
+
+<h2 id="the-spread-how-much-do-wrong-choices-cost">The Spread: How Much Do Wrong Choices Cost?</h2>
+
+<p>At each step I computed the “spread” — the gap in expected total time between the best and worst available upgrades.</p>
+
+<p><strong>Step 13 is the highest-stakes decision in the game.</strong> At state <code class="language-plaintext highlighter-rouge">p=35%, b=25¢, m=2.5×, d=1.4s</code>, both FlipMultiplier ($10) and FlipBaseWorth ($10) cost the same, but:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Choice</th>
+      <th>Extra expected time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>FlipMultiplier (optimal)</td>
+      <td>+0</td>
+    </tr>
+    <tr>
+      <td>FlipBaseWorth</td>
+      <td>+4.5 min</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Most other steps have spreads under 30 seconds. But several mid-game steps where base worth and multiplier compete have spreads of 2–4 minutes — the game’s hidden asymmetry.</p>
+
+<h2 id="wait-time-variance-why-you-get-stuck">Wait Time Variance: Why You Get Stuck</h2>
+
+<p>The expected wait time for each upgrade is just <code class="language-plaintext highlighter-rouge">cost / E[¢/flip]</code>. But the <em>actual</em> wait time has high variance — especially at expensive upgrades where your earnings rate is still modest.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Step</th>
+      <th>Upgrade</th>
+      <th>E[wait]</th>
+      <th>P95 wait</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>4</td>
+      <td>FlipBaseWorth ↑ (25¢)</td>
+      <td>2.2 min</td>
+      <td>3.6 min</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>FlipBaseWorth ↑ ($6.25)</td>
+      <td>1.0 min</td>
+      <td>7.1 min</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>FlipBaseWorth ↑ ($100)</td>
+      <td>1.3 min</td>
+      <td><strong>12.3 min</strong></td>
+    </tr>
+    <tr>
+      <td>21</td>
+      <td>HeadsChance ($10k)</td>
+      <td>1.9 min</td>
+      <td>10.1 min</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Step 16 (the $100 FlipBaseWorth upgrade) has a P95 wait of <strong>12.3 minutes</strong> vs the 1.3-minute expectation — a <strong>9× ratio</strong>. This is the most variance-prone step in the game. If you felt stuck here, it was bad luck, not bad strategy.</p>
+
+<h2 id="how-bad-can-wrong-ordering-be">How Bad Can Wrong Ordering Be?</h2>
+
+<p>I computed three strategies:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Strategy</th>
+      <th>Expected time</th>
+      <th>×optimal</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Optimal</td>
+      <td>25.9 min</td>
+      <td>1.0×</td>
+    </tr>
+    <tr>
+      <td>2nd-worst (avoids single worst choice each step)</td>
+      <td>1.5 h</td>
+      <td><strong>3.4×</strong></td>
+    </tr>
+    <tr>
+      <td>Worst (always picks worst available)</td>
+      <td>11,358 h</td>
+      <td>26,296×</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The worst strategy — maxing HeadsChance before having any earnings — takes over a year of continuous play in expectation. But even avoiding just the single worst choice each step (2nd-worst) leaves you at 3.4× the optimal time. The ordering matters enormously, and “not the worst” is very different from “close to optimal.”</p>
+
+<h2 id="a-real-playthrough">A Real Playthrough</h2>
+
+<p>After computing the optimal path, I played through the game following it exactly. Results:</p>
+
+<ul>
+  <li><strong>Actual flips</strong>: 2,220</li>
+  <li><strong>Expected flips</strong>: ~1,400</li>
+  <li><strong>Percentile</strong>: approximately P70–P75</li>
+</ul>
+
+<p>2,220 flips is realistic — the distribution has a long right tail, and finishing at the ~70th percentile just means the streak phase was unlucky (needing more attempts than average to land 10 consecutive heads at 55%). The upgrade phase itself was fast, consistent with the model.</p>
+
+<p>The model correctly predicted the two “stuck” points: the $100 FlipBaseWorth upgrade (Step 16) and the $10k HeadsChance upgrade (Step 21) both took noticeably longer than their expected values — consistent with their high P95/P99 variance.</p>
+
+<h2 id="code">Code</h2>
+
+<p>The model is pure Python with no external dependencies beyond the standard library.
+Full source: <a href="https://github.com/adityagupta1089/unfair-flips-analysis">github.com/adityagupta1089/unfair-flips-analysis</a></p>
+
+  </div>
+
+  <footer class="postNavigation">
+  
+    <a class="postPrev" href="/tapl/notes/2021-09-29-tapl-introduction.html">
+        &laquo; Types and Programming Languages`:` Introduction
+    </a>
+  
+  
+  </footer>
+
+</article>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+  <div class="wrapper topround bottomround">
+    <div class="footer-inner">
+
+      <div class="footer-icons">
+        
+        <a href="https://github.com/adityagupta1089" title="GitHub" aria-label="GitHub">
+          <i class="fa-brands fa-github"></i>
+        </a>
+        
+        
+        <a href="https://linkedin.com/in/aaditya-gupta" title="LinkedIn" aria-label="LinkedIn">
+          <i class="fa-brands fa-linkedin"></i>
+        </a>
+        
+        
+        <a href="https://www.strava.com/athletes/107970902" title="Strava" aria-label="Strava">
+          <i class="fa-brands fa-strava"></i>
+        </a>
+        
+        
+        <a href="https://soundcloud.com/aditya-gupta-580893073" title="SoundCloud" aria-label="SoundCloud">
+          <i class="fa-brands fa-soundcloud"></i>
+        </a>
+        
+        
+        <a href="https://math.stackexchange.com/users/67609/re60k" title="Math Stack Exchange" aria-label="Math Stack Exchange">
+          <i class="fa-brands fa-stack-exchange"></i>
+        </a>
+        
+        <a href="https://adityagupta1089.github.io/feed.xml" title="RSS Feed" aria-label="RSS Feed">
+          <i class="fa-solid fa-rss"></i>
+        </a>
+      </div>
+
+      <div class="footer-credit">
+        Made with <i class="fa-solid fa-heart"></i> using
+        <a href="https://jekyllrb.com">Jekyll</a>
+        &middot;
+        <a href="https://github.com/hemangsk/Gravity">Gravity</a>
+      </div>
+
+    </div>
+  </div>
+</footer>
+
+
+  </body>
+
+</html>

@@ -6,8 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Aditya Gupta&#39;s Blog | B-Trees</title>
-  <meta name="description" content="Definition">
+  <title>Aditya Gupta&#39;s Blog | Tutorial 6</title>
+  <meta name="description" content="  We know that $P(A)\ge 0$, so we assume the opposite, i.e. $P(X\ge \mu)=0$ so $X&lt;\mu$ with 100% certainity, we get $\mu=\sum_{x}xp(x)=\sum_{x&lt; \mu}xp(...">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,26 +15,26 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
 
   <link rel="stylesheet" href="/css/style.css">
-  <link rel="canonical" href="https://adityagupta1089.github.io/notes/data%20structures/b-trees.html">
+  <link rel="canonical" href="https://adityagupta1089.github.io/probability/tutorial-6.html">
   <link rel="alternate" type="application/rss+xml" title="Aditya Gupta's Blog" href="https://adityagupta1089.github.io/feed.xml">
 
   <!-- Begin Jekyll SEO tag v2.9.0 -->
-<title>B-Trees | Aditya Gupta’s Blog</title>
+<title>Tutorial 6 | Aditya Gupta’s Blog</title>
 <meta name="generator" content="Jekyll v4.4.1" />
-<meta property="og:title" content="B-Trees" />
+<meta property="og:title" content="Tutorial 6" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Definition" />
-<meta name="twitter:description" property="og:description" content="Definition" />
-<link rel="canonical" href="https://adityagupta1089.github.io/notes/data%20structures/b-trees.html" />
-<meta property="og:url" content="https://adityagupta1089.github.io/notes/data%20structures/b-trees.html" />
+<meta name="description" content="We know that $P(A)\ge 0$, so we assume the opposite, i.e. $P(X\ge \mu)=0$ so $X&lt;\mu$ with 100% certainity, we get $\mu=\sum_{x}xp(x)=\sum_{x&lt; \mu}xp(x)$ and $\displaystyle\sum_{x&lt;\mu}xp(x)&lt;\sum_{x&lt;\mu}\mu p(x)=\mu\sum_{x&lt;\mu}p(x)=\mu P(X&lt;\mu)=\mu$, a contradiction $\mu&lt;\mu$. Similarly for the opposite case [Reference: Probability and Computing: Randomized Algorithms and Probabilistic Analysis by Michael Mitzenmacher, Eli Upfal (Lemma 6.2)] TODO [Reference: Probability and Computing: Randomized Algorithms and Probabilistic Analysis by Michael Mitzenmacher, Eli Upfal (Theorem 6.3)] TODO (SAT not taught yet) [Reference: Probability and Computing: Randomized Algorithms and Probabilistic Analysis by Michael Mitzenmacher, Eli Upfal (Theorem 6.4)] \(E[M]=\underbrace{\frac 26}_{1,2}\cdot 2+\underbrace{\frac 16}_{5}\cdot 10=2.\bar 3\) Unfair. \(E[M]=\underbrace{\frac 1{13}}_{\text K}\cdot 4+\underbrace{\frac 2{13}}_{5,10}\cdot…" />
+<meta name="twitter:description" property="og:description" content="We know that $P(A)\ge 0$, so we assume the opposite, i.e. $P(X\ge \mu)=0$ so $X&lt;\mu$ with 100% certainity, we get $\mu=\sum_{x}xp(x)=\sum_{x&lt; \mu}xp(x)$ and $\displaystyle\sum_{x&lt;\mu}xp(x)&lt;\sum_{x&lt;\mu}\mu p(x)=\mu\sum_{x&lt;\mu}p(x)=\mu P(X&lt;\mu)=\mu$, a contradiction $\mu&lt;\mu$. Similarly for the opposite case [Reference: Probability and Computing: Randomized Algorithms and Probabilistic Analysis by Michael Mitzenmacher, Eli Upfal (Lemma 6.2)] TODO [Reference: Probability and Computing: Randomized Algorithms and Probabilistic Analysis by Michael Mitzenmacher, Eli Upfal (Theorem 6.3)] TODO (SAT not taught yet) [Reference: Probability and Computing: Randomized Algorithms and Probabilistic Analysis by Michael Mitzenmacher, Eli Upfal (Theorem 6.4)] \(E[M]=\underbrace{\frac 26}_{1,2}\cdot 2+\underbrace{\frac 16}_{5}\cdot 10=2.\bar 3\) Unfair. \(E[M]=\underbrace{\frac 1{13}}_{\text K}\cdot 4+\underbrace{\frac 2{13}}_{5,10}\cdot…" />
+<link rel="canonical" href="https://adityagupta1089.github.io/probability/tutorial-6.html" />
+<meta property="og:url" content="https://adityagupta1089.github.io/probability/tutorial-6.html" />
 <meta property="og:site_name" content="Aditya Gupta’s Blog" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2019-10-14T09:33:00+00:00" />
-<meta property="article:modified_time" content="2019-10-14T09:33:00+00:00" />
+<meta property="article:published_time" content="2017-09-26T07:25:00+00:00" />
+<meta property="article:modified_time" content="2017-09-26T07:25:00+00:00" />
 <meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="B-Trees" />
+<meta name="twitter:title" content="Tutorial 6" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2019-10-14T09:33:00+00:00","datePublished":"2019-10-14T09:33:00+00:00","description":"Definition","headline":"B-Trees","mainEntityOfPage":{"@type":"WebPage","@id":"https://adityagupta1089.github.io/notes/data%20structures/b-trees.html"},"url":"https://adityagupta1089.github.io/notes/data%20structures/b-trees.html"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2017-09-26T07:25:00+00:00","datePublished":"2017-09-26T07:25:00+00:00","description":"We know that $P(A)\\ge 0$, so we assume the opposite, i.e. $P(X\\ge \\mu)=0$ so $X&lt;\\mu$ with 100% certainity, we get $\\mu=\\sum_{x}xp(x)=\\sum_{x&lt; \\mu}xp(x)$ and $\\displaystyle\\sum_{x&lt;\\mu}xp(x)&lt;\\sum_{x&lt;\\mu}\\mu p(x)=\\mu\\sum_{x&lt;\\mu}p(x)=\\mu P(X&lt;\\mu)=\\mu$, a contradiction $\\mu&lt;\\mu$. Similarly for the opposite case [Reference: Probability and Computing: Randomized Algorithms and Probabilistic Analysis by Michael Mitzenmacher, Eli Upfal (Lemma 6.2)] TODO [Reference: Probability and Computing: Randomized Algorithms and Probabilistic Analysis by Michael Mitzenmacher, Eli Upfal (Theorem 6.3)] TODO (SAT not taught yet) [Reference: Probability and Computing: Randomized Algorithms and Probabilistic Analysis by Michael Mitzenmacher, Eli Upfal (Theorem 6.4)] \\(E[M]=\\underbrace{\\frac 26}_{1,2}\\cdot 2+\\underbrace{\\frac 16}_{5}\\cdot 10=2.\\bar 3\\) Unfair. \\(E[M]=\\underbrace{\\frac 1{13}}_{\\text K}\\cdot 4+\\underbrace{\\frac 2{13}}_{5,10}\\cdot…","headline":"Tutorial 6","mainEntityOfPage":{"@type":"WebPage","@id":"https://adityagupta1089.github.io/probability/tutorial-6.html"},"url":"https://adityagupta1089.github.io/probability/tutorial-6.html"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -193,96 +193,40 @@ $(document).ready(function () {
 
   <header class="post-header">
     <h1 class="post-title" itemprop="name headline">
-      <a class="post-title-link"  href="/notes/data%20structures/b-trees.html">B-Trees
+      <a class="post-title-link"  href="/probability/tutorial-6.html">Tutorial 6
       </a>
     </h1>
     <center>
       <p class="post-meta" style="letter-spacing: 3px !important;">
-        <time datetime="2019-10-14T09:33:00+00:00" itemprop="datePublished">Oct 14, 2019
+        <time datetime="2017-09-26T07:25:00+00:00" itemprop="datePublished">Sep 26, 2017
         </time><br>
-        Categories: <span style="text-transform: uppercase !important">Notes, Data Structures</span>
+        Categories: <span style="text-transform: uppercase !important">Probability</span>
       </p>
 
      </center>
   </header>
 
   <div class="post-content" itemprop="articleBody">
-    <h1 id="definition">Definition</h1>
-
-<p><img src="https://adityagupta1089.github.io/images/btree1.png" alt="" /></p>
-
-<p><strong>Figure: B-Tree of height 3 containing minimum number of keys</strong></p>
-
-<ul>
-  <li>Every node $x$ has $x.n$ keys and $x.n+1$ children (possibly undefined).</li>
-  <li>The key $x.k_i$ separates the range of keys stores in children subtrees, say $l_i$ then $l_1\le x.k_1\le l_2\le x.k_2\le \ldots x.k_n \le l_{n+1}$</li>
-  <li>All leaves have same depth</li>
-  <li>Each node except root has $t-1$ keys to $2t-1$ keys. Therefore $t$ to $2t$ children.</li>
-  <li>Height of tree $h=O(\log_tn)$</li>
-</ul>
-
-<h1 id="operations">Operations</h1>
-
-<h2 id="search-othotlog_tn">Search $O(th)=O(t\log_tn)$</h2>
-
-<ul>
-  <li>Find the subtree where given key exists using linear search</li>
-  <li>recurse in that tree</li>
-</ul>
-
-<h2 id="create-o1">Create $O(1)$</h2>
-
-<ul>
-  <li>Create a empty root node</li>
-  <li>Insert keys</li>
-</ul>
-
-<h2 id="insert-othotlog_tn">Insert $O(th)=O(t\log_tn)$</h2>
-
-<ul>
-  <li>Find the the leaf node by searching.</li>
-  <li>If node is full split on median key to make two children nodes and insert the meadian key into parent node.</li>
-</ul>
-
-<p>For single pass, split whenever you come across a full node while searching so as to be assured to no more split any nodes while shifting the median key upwards.</p>
-
-<h2 id="splitting">Splitting</h2>
-
-<p><img src="https://adityagupta1089.github.io/images/btree2.png" alt="" /></p>
-
-<p><strong>Figure: Splitting a node with $t=4$</strong></p>
-
-<ul>
-  <li>Make two nodes with keys less than and more than the median key respectively.</li>
-  <li>Move the children between the keys to respective trees.</li>
-  <li>Move the median key to parent node.</li>
-  <li>Move the children around the median key to the left and right new nodes respectively.</li>
-</ul>
-
-<h2 id="delete-othotlog_tn">Delete $O(th)=O(t\log_tn)$</h2>
-
-<ul>
-  <li>If key $k$ is in leaf node $x$ then delete $k$ from $x$.</li>
-  <li>If key $k$ is in internal node $x$ then
-    <ul>
-      <li>If left child $y$ of $k$ has $\ge t$ keys then find predecessor $k’$ of $k$ in $y$. Delete $k’$ from $y$ and replace $k$ by $k’$ in $x$.</li>
-      <li>Otherwise check for right child $z$ and do symmetrically.</li>
-      <li>Otherwise merge $y$ and $z$ along with $k$ into $y$. Recursively delete $k$ from $y$.</li>
-    </ul>
-  </li>
-</ul>
+    <ol>
+  <li>We know that $P(A)\ge 0$, so we assume the opposite, i.e. $P(X\ge \mu)=0$ so $X&lt;\mu$ with 100% certainity, we get $\mu=\sum_{x}xp(x)=\sum_{x&lt; \mu}xp(x)$ and $\displaystyle\sum_{x&lt;\mu}xp(x)&lt;\sum_{x&lt;\mu}\mu p(x)=\mu\sum_{x&lt;\mu}p(x)=\mu P(X&lt;\mu)=\mu$, a contradiction $\mu&lt;\mu$. Similarly for the opposite case [<strong>Reference</strong>: <em>Probability and Computing: Randomized Algorithms and Probabilistic Analysis</em> by <em>Michael Mitzenmacher, Eli Upfal</em> (<strong>Lemma 6.2</strong>)]</li>
+  <li>TODO [<strong>Reference</strong>: <em>Probability and Computing: Randomized Algorithms and Probabilistic Analysis</em> by <em>Michael Mitzenmacher, Eli Upfal</em> (<strong>Theorem 6.3</strong>)]</li>
+  <li>TODO (SAT not taught yet) [<strong>Reference</strong>: <em>Probability and Computing: Randomized Algorithms and Probabilistic Analysis</em> by <em>Michael Mitzenmacher, Eli Upfal</em> (<strong>Theorem 6.4</strong>)]</li>
+  <li>\(E[M]=\underbrace{\frac 26}_{1,2}\cdot 2+\underbrace{\frac 16}_{5}\cdot 10=2.\bar 3\) Unfair.</li>
+  <li>\(E[M]=\underbrace{\frac 1{13}}_{\text K}\cdot 4+\underbrace{\frac 2{13}}_{5,10}\cdot 3+\underbrace{\frac 3{13}}_{3,6,9}\cdot 2\approx 1.230\) Unfair.</li>
+  <li>\(E[M]=\underbrace{\left(\frac{2\cdot4}{36}\right)}_{(1,3),(2,4),(3,5),(4,6)}\times 2+\underbrace{\left(\frac{2\cdot1}{36}\right)}_{(1,6)}\times 5= 0.7\bar2\) Unfair.</li>
+</ol>
 
   </div>
 
   <footer class="postNavigation">
   
-    <a class="postPrev" href="/notes/machine%20learning/decision-trees.html">
-        &laquo; Decision Trees
+    <a class="postPrev" href="/probability/tutorial-5.html">
+        &laquo; Tutorial 5
     </a>
   
   
-    <a class="postNext" href="/data%20structures/notes/red-black-trees.html">
-        Red Black Trees &raquo;
+    <a class="postNext" href="/notes/git-commands.html">
+        Git Commands &raquo;
     </a>
   
   </footer>

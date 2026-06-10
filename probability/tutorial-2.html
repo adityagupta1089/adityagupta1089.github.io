@@ -6,65 +6,64 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Aditya Gupta | Tutorial 2</title>
+  <title>Aditya Gupta&#39;s Blog | Tutorial 2</title>
   <meta name="description" content="  See proof of \(\displaystyle\lim_{n\to\infty}(H_n-\ln n)=\gamma\)  The probability of $a_k$ is given by:  \(\displaystyle P(a_k=i)=\frac{\binom {i-1}{k-1}}...">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+3:wght@200;300;400;700&family=Josefin+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
 
   <link rel="stylesheet" href="/css/style.css">
-  <link rel="canonical" href="https://adityagupta1089.github.io/csl471/tutorial-2.html">
-  <link rel="alternate" type="application/rss+xml" title="Aditya Gupta" href="https://adityagupta1089.github.io/feed.xml">
+  <link rel="canonical" href="https://adityagupta1089.github.io/probability/tutorial-2.html">
+  <link rel="alternate" type="application/rss+xml" title="Aditya Gupta's Blog" href="https://adityagupta1089.github.io/feed.xml">
 
   <!-- Begin Jekyll SEO tag v2.9.0 -->
-<title>Tutorial 2 | Aditya Gupta</title>
+<title>Tutorial 2 | Aditya Gupta’s Blog</title>
 <meta name="generator" content="Jekyll v4.4.1" />
 <meta property="og:title" content="Tutorial 2" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="See proof of \(\displaystyle\lim_{n\to\infty}(H_n-\ln n)=\gamma\) The probability of $a_k$ is given by: \(\displaystyle P(a_k=i)=\frac{\binom {i-1}{k-1}}{\binom nk}\) And therefore \(\displaystyle \begin{align}E[a_k^2]&amp;=\sum_{i=k}^n\frac{\binom {i-1}{k-1}}{\binom nk}i^2=\frac 1{\binom nk}\sum_{i=k}^{n}ki\binom ik=\frac 1{\binom nk}\sum_{i=k}^{n}\left(k(k+1)\binom {i+1}{k+1}-k\binom ik\right)\\&amp;=\frac1{\binom nk}\left(k(k+1)\binom {n+2}{k+2}-k\binom {n+1}{k+1}\right)\\ &amp;=\frac{k(k+1)(n+k+nk)}{(k+1)(k+2)} \end{align}\) And hence \(\sigma(a_k)=\sqrt{\frac{k(k+1)(n+k+nk)}{(k+1)(k+2)}-\frac {k^2(n+1)^2}{(k+1)^2}}=\frac 1{k+1}\sqrt{\frac{k(k-n)(k^2+(k+2)nk+k-1)}{k+2}}\) Fisher-Yates Shuffle $F$ is whether the coin is faulty, $H$ is heads. We are given: Unbiased coin: $P(H=1|F=0)=P(H=0|F=0)=1/2$ Biased coin: $P(H=1|F=1)=1,P(H=0|F=1)=0$ Now $P(F=1|H=0)=\frac{P(H=0|F=1)P(F=1)}{P(H=0)}=\frac{0\cdot P(F=1)}{P(H=0)}=0$ And: $P(F=1|H=1)=\frac{P(H=1|F=1)P(F=1)}{P(H=1|F=1)P(F=1)+P(H=1|F=0)P(F=0)}=\frac{P(F=1)}{P(F=1)+(1/2)P(F=0)}$ Assuming $P(F=1)=P(F=0)=1/2$ we get $\frac{1/2}{1/2+1/4}=\frac 23$." />
 <meta name="twitter:description" property="og:description" content="See proof of \(\displaystyle\lim_{n\to\infty}(H_n-\ln n)=\gamma\) The probability of $a_k$ is given by: \(\displaystyle P(a_k=i)=\frac{\binom {i-1}{k-1}}{\binom nk}\) And therefore \(\displaystyle \begin{align}E[a_k^2]&amp;=\sum_{i=k}^n\frac{\binom {i-1}{k-1}}{\binom nk}i^2=\frac 1{\binom nk}\sum_{i=k}^{n}ki\binom ik=\frac 1{\binom nk}\sum_{i=k}^{n}\left(k(k+1)\binom {i+1}{k+1}-k\binom ik\right)\\&amp;=\frac1{\binom nk}\left(k(k+1)\binom {n+2}{k+2}-k\binom {n+1}{k+1}\right)\\ &amp;=\frac{k(k+1)(n+k+nk)}{(k+1)(k+2)} \end{align}\) And hence \(\sigma(a_k)=\sqrt{\frac{k(k+1)(n+k+nk)}{(k+1)(k+2)}-\frac {k^2(n+1)^2}{(k+1)^2}}=\frac 1{k+1}\sqrt{\frac{k(k-n)(k^2+(k+2)nk+k-1)}{k+2}}\) Fisher-Yates Shuffle $F$ is whether the coin is faulty, $H$ is heads. We are given: Unbiased coin: $P(H=1|F=0)=P(H=0|F=0)=1/2$ Biased coin: $P(H=1|F=1)=1,P(H=0|F=1)=0$ Now $P(F=1|H=0)=\frac{P(H=0|F=1)P(F=1)}{P(H=0)}=\frac{0\cdot P(F=1)}{P(H=0)}=0$ And: $P(F=1|H=1)=\frac{P(H=1|F=1)P(F=1)}{P(H=1|F=1)P(F=1)+P(H=1|F=0)P(F=0)}=\frac{P(F=1)}{P(F=1)+(1/2)P(F=0)}$ Assuming $P(F=1)=P(F=0)=1/2$ we get $\frac{1/2}{1/2+1/4}=\frac 23$." />
-<link rel="canonical" href="https://adityagupta1089.github.io/csl471/tutorial-2.html" />
-<meta property="og:url" content="https://adityagupta1089.github.io/csl471/tutorial-2.html" />
-<meta property="og:site_name" content="Aditya Gupta" />
+<link rel="canonical" href="https://adityagupta1089.github.io/probability/tutorial-2.html" />
+<meta property="og:url" content="https://adityagupta1089.github.io/probability/tutorial-2.html" />
+<meta property="og:site_name" content="Aditya Gupta’s Blog" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2017-09-23T17:13:00+00:00" />
 <meta property="article:modified_time" content="2017-09-23T17:13:00+00:00" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="Tutorial 2" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2017-09-23T17:13:00+00:00","datePublished":"2017-09-23T17:13:00+00:00","description":"See proof of \\(\\displaystyle\\lim_{n\\to\\infty}(H_n-\\ln n)=\\gamma\\) The probability of $a_k$ is given by: \\(\\displaystyle P(a_k=i)=\\frac{\\binom {i-1}{k-1}}{\\binom nk}\\) And therefore \\(\\displaystyle \\begin{align}E[a_k^2]&amp;=\\sum_{i=k}^n\\frac{\\binom {i-1}{k-1}}{\\binom nk}i^2=\\frac 1{\\binom nk}\\sum_{i=k}^{n}ki\\binom ik=\\frac 1{\\binom nk}\\sum_{i=k}^{n}\\left(k(k+1)\\binom {i+1}{k+1}-k\\binom ik\\right)\\\\&amp;=\\frac1{\\binom nk}\\left(k(k+1)\\binom {n+2}{k+2}-k\\binom {n+1}{k+1}\\right)\\\\ &amp;=\\frac{k(k+1)(n+k+nk)}{(k+1)(k+2)} \\end{align}\\) And hence \\(\\sigma(a_k)=\\sqrt{\\frac{k(k+1)(n+k+nk)}{(k+1)(k+2)}-\\frac {k^2(n+1)^2}{(k+1)^2}}=\\frac 1{k+1}\\sqrt{\\frac{k(k-n)(k^2+(k+2)nk+k-1)}{k+2}}\\) Fisher-Yates Shuffle $F$ is whether the coin is faulty, $H$ is heads. We are given: Unbiased coin: $P(H=1|F=0)=P(H=0|F=0)=1/2$ Biased coin: $P(H=1|F=1)=1,P(H=0|F=1)=0$ Now $P(F=1|H=0)=\\frac{P(H=0|F=1)P(F=1)}{P(H=0)}=\\frac{0\\cdot P(F=1)}{P(H=0)}=0$ And: $P(F=1|H=1)=\\frac{P(H=1|F=1)P(F=1)}{P(H=1|F=1)P(F=1)+P(H=1|F=0)P(F=0)}=\\frac{P(F=1)}{P(F=1)+(1/2)P(F=0)}$ Assuming $P(F=1)=P(F=0)=1/2$ we get $\\frac{1/2}{1/2+1/4}=\\frac 23$.","headline":"Tutorial 2","mainEntityOfPage":{"@type":"WebPage","@id":"https://adityagupta1089.github.io/csl471/tutorial-2.html"},"url":"https://adityagupta1089.github.io/csl471/tutorial-2.html"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2017-09-23T17:13:00+00:00","datePublished":"2017-09-23T17:13:00+00:00","description":"See proof of \\(\\displaystyle\\lim_{n\\to\\infty}(H_n-\\ln n)=\\gamma\\) The probability of $a_k$ is given by: \\(\\displaystyle P(a_k=i)=\\frac{\\binom {i-1}{k-1}}{\\binom nk}\\) And therefore \\(\\displaystyle \\begin{align}E[a_k^2]&amp;=\\sum_{i=k}^n\\frac{\\binom {i-1}{k-1}}{\\binom nk}i^2=\\frac 1{\\binom nk}\\sum_{i=k}^{n}ki\\binom ik=\\frac 1{\\binom nk}\\sum_{i=k}^{n}\\left(k(k+1)\\binom {i+1}{k+1}-k\\binom ik\\right)\\\\&amp;=\\frac1{\\binom nk}\\left(k(k+1)\\binom {n+2}{k+2}-k\\binom {n+1}{k+1}\\right)\\\\ &amp;=\\frac{k(k+1)(n+k+nk)}{(k+1)(k+2)} \\end{align}\\) And hence \\(\\sigma(a_k)=\\sqrt{\\frac{k(k+1)(n+k+nk)}{(k+1)(k+2)}-\\frac {k^2(n+1)^2}{(k+1)^2}}=\\frac 1{k+1}\\sqrt{\\frac{k(k-n)(k^2+(k+2)nk+k-1)}{k+2}}\\) Fisher-Yates Shuffle $F$ is whether the coin is faulty, $H$ is heads. We are given: Unbiased coin: $P(H=1|F=0)=P(H=0|F=0)=1/2$ Biased coin: $P(H=1|F=1)=1,P(H=0|F=1)=0$ Now $P(F=1|H=0)=\\frac{P(H=0|F=1)P(F=1)}{P(H=0)}=\\frac{0\\cdot P(F=1)}{P(H=0)}=0$ And: $P(F=1|H=1)=\\frac{P(H=1|F=1)P(F=1)}{P(H=1|F=1)P(F=1)+P(H=1|F=0)P(F=0)}=\\frac{P(F=1)}{P(F=1)+(1/2)P(F=0)}$ Assuming $P(F=1)=P(F=0)=1/2$ we get $\\frac{1/2}{1/2+1/4}=\\frac 23$.","headline":"Tutorial 2","mainEntityOfPage":{"@type":"WebPage","@id":"https://adityagupta1089.github.io/probability/tutorial-2.html"},"url":"https://adityagupta1089.github.io/probability/tutorial-2.html"}</script>
 <!-- End Jekyll SEO tag -->
 
+
+  <script>
+    (function() {
+      var stored = localStorage.getItem('theme');
+      var prefer = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      var theme = stored || prefer;
+      if (theme === 'dark') document.documentElement.classList.add('dark');
+    })();
+  </script>
 </head>
 
 
   <body class=" light  ">
 
     <div class="wrapper topround">
-  <center> <a href="/index.html"><div class="site-title">Aditya Gupta </div></a></center>
+  <center><a href="/index.html"><div class="site-title">Aditya Gupta's Blog</div></a></center>
 </div>
 <div class="wrapper">
-  <div class="trigger site-navigation">
-    <table>
-    <tr>
+  <nav class="trigger site-navigation">
     
     
       
-        
-          <td style="text-align: center;">
-            <a class="page-link" href="/about/">
-              About
-            </a>
-          </td>
-          
-            <td>
-              <span class="exclamationMark">/</span>
-            </td>
-          
-          
-        
+        <a class="page-link" href="/about/">About</a>
+      
+    
+      
+        <a class="page-link" href="/index.html">Home</a>
       
     
       
@@ -72,193 +71,95 @@
       
     
       
-        
-          <td style="text-align: center;">
-            <a class="page-link" href="/index.html">
-              Home
-            </a>
-          </td>
-          
-            <td>
-              <span class="exclamationMark">/</span>
-            </td>
-          
-          
-        
-      
     
       
-        
+        <a class="page-link" href="/random/">Random</a>
       
     
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-          <td style="text-align: center;">
-            <a class="page-link" href="/category/programming/index.html">
-              programming
-            </a>
-          </td>
-          
-            <td>
-              <span class="exclamationMark">/</span>
-            </td>
-          
-          
-        
-      
-    
-      
-        
-          <td style="text-align: center;">
-            <a class="page-link" href="/category/music/index.html">
-              music
-            </a>
-          </td>
-          
-            <td>
-              <span class="exclamationMark">/</span>
-            </td>
-          
-          
-        
-      
-    
-      
-        
-          <td style="text-align: center;">
-            <a class="page-link" href="/category/csl471/index.html">
-              csl471
-            </a>
-          </td>
-          
-            </tr><tr>
-          
-          
-        
-      
-    
-      
-        
-          <td style="text-align: center;">
-            <a class="page-link" href="/category/notes/index.html">
-              notes
-            </a>
-          </td>
-          
-            <td>
-              <span class="exclamationMark">/</span>
-            </td>
-          
-          
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-          <td style="text-align: center;">
-            <a class="page-link" href="/category/machine learning/index.html">
-              machine learning
-            </a>
-          </td>
-          
-            <td>
-              <span class="exclamationMark">/</span>
-            </td>
-          
-          
-        
-      
-    
-      
-        
-          <td style="text-align: center;">
-            <a class="page-link" href="/category/data structures/index.html">
-              data structures
-            </a>
-          </td>
-          
-            <td>
-              <span class="exclamationMark">/</span>
-            </td>
-          
-          
-        
-      
-    
-      
-        
-          <td style="text-align: center;">
-            <a class="page-link" href="/category/algorithms/index.html">
-              algorithms
-            </a>
-          </td>
-          
-            <td>
-              <span class="exclamationMark">/</span>
-            </td>
-          
-          
-        
-      
-    
-      
-        
-          <td style="text-align: center;">
-            <a class="page-link" href="/category/chess/index.html">
-              chess
-            </a>
-          </td>
-          
-            </tr><tr>
-          
-          
-        
-      
-    
-      
-        
-          <td style="text-align: center;">
-            <a class="page-link" href="/category/types and programming languages/index.html">
-              types and programming languages
-            </a>
-          </td>
-          
-            <td>
-              <span class="exclamationMark">/</span>
-            </td>
-          
-          
-        
-      
-    
-    </tr>
-    </table>
-  </div>
+    <button class="theme-toggle" id="theme-toggle" title="Toggle dark mode" aria-label="Toggle dark mode">
+      <i class="fa-solid fa-moon" id="theme-icon"></i>
+    </button>
+  </nav>
 </div>
 
+<script>
+  var toggle = document.getElementById('theme-toggle');
+  var icon   = document.getElementById('theme-icon');
 
+  function applyTheme(dark) {
+    if (dark) {
+      document.documentElement.classList.add('dark');
+      icon.className = 'fa-solid fa-sun';
+    } else {
+      document.documentElement.classList.remove('dark');
+      icon.className = 'fa-solid fa-moon';
+    }
+    localStorage.setItem('theme', dark ? 'dark' : 'light');
+  }
+
+  // Sync icon with current state on load
+  applyTheme(document.documentElement.classList.contains('dark'));
+
+  toggle.addEventListener('click', function() {
+    applyTheme(!document.documentElement.classList.contains('dark'));
+  });
+
+  // Follow OS changes if user hasn't set a preference
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+    if (!localStorage.getItem('theme')) applyTheme(e.matches);
+  });
+</script>
+
+<div class="wrapper topic-nav">
+  
+  
+    
+      <a class="topic-link" href="/category/ai%20generated">AI Generated</a>
+    
+  
+    
+      <a class="topic-link" href="/category/algorithms">Algorithms</a>
+    
+  
+    
+      <a class="topic-link" href="/category/chess">Chess</a>
+    
+  
+    
+      <a class="topic-link" href="/category/data%20structures">Data Structures</a>
+    
+  
+    
+      <a class="topic-link" href="/category/machine%20learning">Machine Learning</a>
+    
+  
+    
+      <a class="topic-link" href="/category/music">Music</a>
+    
+  
+    
+      <a class="topic-link" href="/category/notes">Notes</a>
+    
+  
+    
+      <a class="topic-link" href="/category/probability">Probability</a>
+    
+  
+    
+      <a class="topic-link" href="/category/programming">Programming</a>
+    
+  
+    
+      <a class="topic-link" href="/category/tapl">TAPL</a>
+    
+  
+</div>
 
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
     tex2jax: {
-      inlineMath: [ ['$','$'] ],
-      displayMath: [ ['$$', '$$'] ],
+      inlineMath: [ ['$','$'], ['\\(','\\)'] ],
+      displayMath: [ ['$$', '$$'], ['\\[','\\]'] ],
       processEscapes: true
     },
     CommonHTML: { linebreaks: { automatic: true , width: "30em"} }
@@ -292,14 +193,14 @@ $(document).ready(function () {
 
   <header class="post-header">
     <h1 class="post-title" itemprop="name headline">
-      <a class="post-title-link"  href="/csl471/tutorial-2.html">Tutorial 2
+      <a class="post-title-link"  href="/probability/tutorial-2.html">Tutorial 2
       </a>
     </h1>
     <center>
       <p class="post-meta" style="letter-spacing: 3px !important;">
         <time datetime="2017-09-23T17:13:00+00:00" itemprop="datePublished">Sep 23, 2017
         </time><br>
-        Categories: <span style="text-transform: uppercase !important">CSL471</span>
+        Categories: <span style="text-transform: uppercase !important">Probability</span>
       </p>
 
      </center>
@@ -396,12 +297,12 @@ $P(C=1)=0.1\implies P(C=0)=0.9$</li>
 
   <footer class="postNavigation">
   
-    <a class="postPrev" href="/csl471/tutorial-1.html">
+    <a class="postPrev" href="/probability/tutorial-1.html">
         &laquo; Tutorial 1
     </a>
   
   
-    <a class="postNext" href="/csl471/tutorial-3.html">
+    <a class="postNext" href="/probability/tutorial-3.html">
         Tutorial 3 &raquo;
     </a>
   
@@ -413,56 +314,49 @@ $P(C=1)=0.1\implies P(C=0)=0.9$</li>
     </div>
 
     <footer class="site-footer">
-
   <div class="wrapper topround bottomround">
+    <div class="footer-inner">
 
-    <div class="footer-col-wrapper">
-      <div class="footer-col footer-col-1">
-        <ul class="contact-list footer-content">
-          <li>Forked &amp; modified from
-            <a href="https://github.com/hemangsk/Gravity">Gravity</a>
-          </li>
-          <li>Made with <i class="fa-solid fa-heart"></i> using
-            <a href="https://jekyllrb.com">Jekyll</a>
-          </li>
-        </ul>
-      </div>
-
-      <div class="footer-col footer-col-2 footer-content">
-        <ul class="social-media-list">
-          
-          <li>
-            <a href="https://github.com/adityagupta1089">
-              <i class="fa-brands fa-github"></i> adityagupta1089
-            </a>
-          </li>
-          
-          
-          <li>
-            <a href="https://linkedin.com/in/aaditya-gupta">
-              <i class="fa-brands fa-linkedin"></i> aaditya-gupta
-            </a>
-          </li>
-          
-          
-          <li>
-            <a href="https://www.strava.com/athletes/107970902">
-              <i class="fa-brands fa-strava"></i> Strava
-            </a>
-          </li>
-          
-        </ul>
-      </div>
-
-      <div class="footer-col footer-col-3 footer-content">
-        <a href="https://adityagupta1089.github.io/feed.xml">
-          <i class="fa-solid fa-rss"></i> RSS Feed
+      <div class="footer-icons">
+        
+        <a href="https://github.com/adityagupta1089" title="GitHub" aria-label="GitHub">
+          <i class="fa-brands fa-github"></i>
+        </a>
+        
+        
+        <a href="https://linkedin.com/in/aaditya-gupta" title="LinkedIn" aria-label="LinkedIn">
+          <i class="fa-brands fa-linkedin"></i>
+        </a>
+        
+        
+        <a href="https://www.strava.com/athletes/107970902" title="Strava" aria-label="Strava">
+          <i class="fa-brands fa-strava"></i>
+        </a>
+        
+        
+        <a href="https://soundcloud.com/aditya-gupta-580893073" title="SoundCloud" aria-label="SoundCloud">
+          <i class="fa-brands fa-soundcloud"></i>
+        </a>
+        
+        
+        <a href="https://math.stackexchange.com/users/67609/re60k" title="Math Stack Exchange" aria-label="Math Stack Exchange">
+          <i class="fa-brands fa-stack-exchange"></i>
+        </a>
+        
+        <a href="https://adityagupta1089.github.io/feed.xml" title="RSS Feed" aria-label="RSS Feed">
+          <i class="fa-solid fa-rss"></i>
         </a>
       </div>
+
+      <div class="footer-credit">
+        Made with <i class="fa-solid fa-heart"></i> using
+        <a href="https://jekyllrb.com">Jekyll</a>
+        &middot;
+        <a href="https://github.com/hemangsk/Gravity">Gravity</a>
+      </div>
+
     </div>
-
   </div>
-
 </footer>
 
 
