@@ -4,7 +4,7 @@ title: "Tutorial 4"
 date: 2017-09-24 13:59 +0530
 
 
-categories: ["CSL471"]
+categories: ["Probability"]
 ---
 1. Given a binary string, the total strings that have maximum length of zeroes as $k$ can be found out by defining $a(n;k)$ as the valid strings that end at $1$ and $b(n;k)$ as the valid strings that end at $0$. Then we have:\\
 - We can $1$ to end of any valid string:\\

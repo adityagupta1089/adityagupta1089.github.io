@@ -1,52 +1,45 @@
 <footer class="site-footer">
-
   <div class="wrapper topround bottomround">
+    <div class="footer-inner">
 
-    <div class="footer-col-wrapper">
-      <div class="footer-col footer-col-1">
-        <ul class="contact-list footer-content">
-          <li>Forked &amp; modified from
-            <a href="https://github.com/hemangsk/Gravity">Gravity</a>
-          </li>
-          <li>Made with <i class="fa-solid fa-heart"></i> using
-            <a href="https://jekyllrb.com">Jekyll</a>
-          </li>
-        </ul>
-      </div>
-
-      <div class="footer-col footer-col-2 footer-content">
-        <ul class="social-media-list">
-          {% if site.github_username %}
-          <li>
-            <a href="https://github.com/{{ site.github_username }}">
-              <i class="fa-brands fa-github"></i> {{ site.github_username }}
-            </a>
-          </li>
-          {% endif %}
-          {% if site.linkedin_username %}
-          <li>
-            <a href="https://linkedin.com/in/{{ site.linkedin_username }}">
-              <i class="fa-brands fa-linkedin"></i> {{ site.linkedin_username }}
-            </a>
-          </li>
-          {% endif %}
-          {% if site.strava_id %}
-          <li>
-            <a href="https://www.strava.com/athletes/{{ site.strava_id }}">
-              <i class="fa-brands fa-strava"></i> Strava
-            </a>
-          </li>
-          {% endif %}
-        </ul>
-      </div>
-
-      <div class="footer-col footer-col-3 footer-content">
-        <a href="{{ site.url }}/feed.xml">
-          <i class="fa-solid fa-rss"></i> RSS Feed
+      <div class="footer-icons">
+        {% if site.github_username %}
+        <a href="https://github.com/{{ site.github_username }}" title="GitHub" aria-label="GitHub">
+          <i class="fa-brands fa-github"></i>
+        </a>
+        {% endif %}
+        {% if site.linkedin_username %}
+        <a href="https://linkedin.com/in/{{ site.linkedin_username }}" title="LinkedIn" aria-label="LinkedIn">
+          <i class="fa-brands fa-linkedin"></i>
+        </a>
+        {% endif %}
+        {% if site.strava_id %}
+        <a href="https://www.strava.com/athletes/{{ site.strava_id }}" title="Strava" aria-label="Strava">
+          <i class="fa-brands fa-strava"></i>
+        </a>
+        {% endif %}
+        {% if site.soundcloud_username %}
+        <a href="https://soundcloud.com/{{ site.soundcloud_username }}" title="SoundCloud" aria-label="SoundCloud">
+          <i class="fa-brands fa-soundcloud"></i>
+        </a>
+        {% endif %}
+        {% if site.mathse_username %}
+        <a href="https://math.stackexchange.com/users/{{ site.mathse_username }}" title="Math Stack Exchange" aria-label="Math Stack Exchange">
+          <i class="fa-brands fa-stack-exchange"></i>
+        </a>
+        {% endif %}
+        <a href="{{ site.url }}/feed.xml" title="RSS Feed" aria-label="RSS Feed">
+          <i class="fa-solid fa-rss"></i>
         </a>
       </div>
+
+      <div class="footer-credit">
+        Made with <i class="fa-solid fa-heart"></i> using
+        <a href="https://jekyllrb.com">Jekyll</a>
+        &middot;
+        <a href="https://github.com/hemangsk/Gravity">Gravity</a>
+      </div>
+
     </div>
-
   </div>
-
 </footer>

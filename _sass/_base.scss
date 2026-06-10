@@ -1,6 +1,11 @@
 body {
-  background: url('../images/back.jpeg');
+  background-image: url('../images/back.jpeg');
+  background-image: image-set(
+    url('../images/back.webp') type('image/webp'),
+    url('../images/back.jpeg') type('image/jpeg')
+  );
   background-attachment: fixed;
+  background-size: cover;
 }
 
 .wrapper {

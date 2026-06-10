@@ -4,7 +4,7 @@ title: "Tutorial 1"
 date: 2017-09-22 22:03 +0530
 
 
-categories: ["CSL471"]
+categories: ["Probability"]
 ---
 1. Here $M$ is the total money, we use Law of total expectation in the first step, i.e. $E[M]=E[E[M|Y]]$ where $Y$ is the die throw and $E[M|Y=y] = y+ E[M]$ for $1\le y \le 5$ and $6$ for $Y=6$.
   $$\begin{align}E[M]&=\frac 16((1+E[M])+(2+E[M])+(3+E[M])+(4+E[M])+(5+E[M])+6)\\

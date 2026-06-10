@@ -1,0 +1,14 @@
+---
+layout: default
+title: Random
+nav: true
+permalink: /random/
+---
+<script>
+  var posts = [
+    {% for post in site.posts %}"{{ post.url }}"{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ];
+  window.location.replace(posts[Math.floor(Math.random() * posts.length)]);
+</script>
+<p style="text-align:center;padding:3rem;opacity:0.5;">Redirecting to a random post…</p>

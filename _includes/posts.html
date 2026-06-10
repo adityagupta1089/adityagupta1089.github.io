@@ -1,15 +1,16 @@
-<table>
+<ul class="post-list">
   {% for post in paginator.posts %}
-    <tr class="post">
-    <td>
-      <a class="postTitle postLink" href="{{site.url}}{{post.url}}"> ~ {{post.title | upcase}}</a>
-      <br>
-      <span class="hint">{{ post.categories | join: ", " }}</span>
-      <br>
-      <time class="postDate"datetime="{{ post.date | date_to_xmlschema }}" itemprop="datePublished">
-      {{ post.date | date: "%B %-d, %Y" }}
-      </time>
-    </td>
-    </tr>
+    <li class="post-item">
+      <a class="post-title-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+      <div class="post-meta">
+        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %-d, %Y" }}</time>
+        {% if post.categories.size > 0 %}
+          &middot;
+          {% for cat in post.categories %}
+            <a href="{{ site.baseurl }}/category/{{ cat | downcase | url_encode }}">{{ cat }}</a>{% unless forloop.last %}, {% endunless %}
+          {% endfor %}
+        {% endif %}
+      </div>
+    </li>
   {% endfor %}
-</table>
+</ul>

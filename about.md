@@ -2,13 +2,16 @@
 layout: page
 title: About
 permalink: /about/
+nav: true
 ---
 
-Hi, I'm Aditya Gupta — a software engineer at [Verily Life Sciences](https://verily.com) (an Alphabet company), working on health and life sciences technology.
+Hi, I'm Aditya Gupta — a software engineer at Google, building ML infrastructure for large-scale recommendation systems on TPUs.
 
-I studied computer science at IIT Roorkee. These days I write code professionally, run recreationally, and play the keyboard when I find the time.
+Previously I was at Verily on Platform Engineering, and before that at Purdue doing research on compilers and garbage collection for functional programs. I did my undergrad in CS at IIT Ropar.
 
-This blog is a place for notes, writeups, and occasional deep-dives — mostly on algorithms, chess, and whatever I'm exploring at the time.
+My interests are in low-level systems: programming languages (especially functional), compilers, architecture, and high-performance computing.
+
+This blog is a place for notes and writeups — mostly on algorithms, chess, and whatever I'm exploring.
 
 ---
 

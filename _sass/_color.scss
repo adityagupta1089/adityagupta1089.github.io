@@ -154,7 +154,7 @@ body.light {
 /**
  * Dark theme color definitions
  */
-body.dark {
+html.dark body {
   color: $d-text-color;
   background-color: $d-background-color;
 

@@ -1,36 +1,56 @@
 <div class="wrapper topround">
-  <center> <a href="/index.html"><div class="site-title">{{site.title }} </div></a></center>
+  <center><a href="/index.html"><div class="site-title">{{ site.title }}</div></a></center>
 </div>
 <div class="wrapper">
-  <div class="trigger site-navigation">
-    <table>
-    <tr>
-    {% assign i = 0 %}
-    {% for sitePage in site.pages %}
-      {% if sitePage.title %}
-        {% unless sitePage.url contains "page" %}
-          <td style="text-align: center;">
-            <a class="page-link" href="{{sitePage.url | prepend: site.baseurl }}">
-              {{sitePage.title}}
-            </a>
-          </td>
-          {% if i == 4 %}
-            </tr><tr>
-          {% else %}
-            <td>
-              <span class="exclamationMark">/</span>
-            </td>
-          {% endif %}
-          {% assign i = i | plus: 1 | modulo: 5 %}
-        {% endunless %}
-      {% endif %}
+  <nav class="trigger site-navigation">
+    {% assign nav_pages = site.pages | where: "nav", true | sort: "title" %}
+    {% for navpage in nav_pages %}
+      {% unless navpage.url contains '/page/' %}
+        <a class="page-link" href="{{ navpage.url | prepend: site.baseurl }}">{{ navpage.title }}</a>
+      {% endunless %}
     {% endfor %}
-    </tr>
-    </table>
-  </div>
+    <button class="theme-toggle" id="theme-toggle" title="Toggle dark mode" aria-label="Toggle dark mode">
+      <i class="fa-solid fa-moon" id="theme-icon"></i>
+    </button>
+  </nav>
 </div>
 
+<script>
+  var toggle = document.getElementById('theme-toggle');
+  var icon   = document.getElementById('theme-icon');
 
+  function applyTheme(dark) {
+    if (dark) {
+      document.documentElement.classList.add('dark');
+      icon.className = 'fa-solid fa-sun';
+    } else {
+      document.documentElement.classList.remove('dark');
+      icon.className = 'fa-solid fa-moon';
+    }
+    localStorage.setItem('theme', dark ? 'dark' : 'light');
+  }
+
+  // Sync icon with current state on load
+  applyTheme(document.documentElement.classList.contains('dark'));
+
+  toggle.addEventListener('click', function() {
+    applyTheme(!document.documentElement.classList.contains('dark'));
+  });
+
+  // Follow OS changes if user hasn't set a preference
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+    if (!localStorage.getItem('theme')) applyTheme(e.matches);
+  });
+</script>
+
+<div class="wrapper topic-nav">
+  {% assign all_cats = site.posts | map: "categories" | join: "," | split: "," | uniq | sort %}
+  {% for cat in all_cats %}
+    {% if cat != "" %}
+      <a class="topic-link" href="{{ site.baseurl }}/category/{{ cat | downcase | replace: ' ', '%20' }}">{{ cat }}</a>
+    {% endif %}
+  {% endfor %}
+</div>
 
 {% include mathjax.html %}
 {% include chess.html %}

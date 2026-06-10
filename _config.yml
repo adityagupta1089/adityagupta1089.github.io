@@ -1,5 +1,5 @@
-title: Aditya Gupta
-description: Software engineer at Verily. Notes on algorithms, chess, music, and whatever else.
+title: Aditya Gupta's Blog
+description: ML infrastructure engineer at Google. Notes on algorithms, chess, systems, and whatever else.
 email: adityagupta1089@gmail.com
 baseurl: ""
 url: "https://adityagupta1089.github.io"
@@ -7,6 +7,8 @@ url: "https://adityagupta1089.github.io"
 github_username: adityagupta1089
 linkedin_username: aaditya-gupta
 strava_id: 107970902
+soundcloud_username: aditya-gupta-580893073
+mathse_username: 67609/re60k
 
 theme-dark: false
 

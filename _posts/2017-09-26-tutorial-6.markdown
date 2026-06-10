@@ -4,7 +4,7 @@ title: "Tutorial 6"
 date: 2017-09-26 12:55 +0530
 
 
-categories: ["CSL471"]
+categories: ["Probability"]
 ---
 1. We know that $P(A)\ge 0$, so we assume the opposite, i.e. $P(X\ge \mu)=0$ so $X<\mu$ with 100% certainity, we get $\mu=\sum_{x}xp(x)=\sum_{x< \mu}xp(x)$ and $\displaystyle\sum_{x<\mu}xp(x)<\sum_{x<\mu}\mu p(x)=\mu\sum_{x<\mu}p(x)=\mu P(X<\mu)=\mu$, a contradiction $\mu<\mu$. Similarly for the opposite case [**Reference**: _Probability and Computing: Randomized Algorithms and Probabilistic Analysis_ by _Michael Mitzenmacher, Eli Upfal_ (**Lemma 6.2**)]
 2. TODO [**Reference**: _Probability and Computing: Randomized Algorithms and Probabilistic Analysis_ by _Michael Mitzenmacher, Eli Upfal_ (**Theorem 6.3**)]

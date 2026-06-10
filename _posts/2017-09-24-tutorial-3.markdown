@@ -4,7 +4,7 @@ title: "Tutorial 3"
 date: 2017-09-24 13:33 +0530
 
 
-categories: ["CSL471"]
+categories: ["Probability"]
 ---
 1. The prover generates an isomorphic graph to a given graph $H$ wherein he knows the Hamiltonian cycles of $G$ and hence for $H$ too. Multiple rounds of questioning either the isomorphism from $G$ to $H$ or hamiltonian cycle in $H$ ensures that the probability of fooling decreases exponentially.
 2. The prover provides the coloring for nodes on a particular edge asked by the verifier. For a valid coloring any such edge must be also valid hence ensuring that the prover cannot fool the verifier.
